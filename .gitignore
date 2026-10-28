@@ -1,0 +1,18 @@
+# Dependencies and build output
+node_modules/
+dist/
+.vite/
+coverage/
+
+# Environment and local files
+.env
+.env.*
+*.log
+
+# Private reference fixtures: never commit
+fixtures/private/
+
+# OS and editor
+.DS_Store
+.vscode/
+.idea/
