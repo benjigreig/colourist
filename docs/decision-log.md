@@ -8,7 +8,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 |---|---|
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
-| [Reach and audience](#reach-and-audience) | D-019 to D-022 |
+| [Reach and audience](#reach-and-audience) | D-019 to D-023 |
 
 ---
 
@@ -286,3 +286,22 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 **Why:** Developers, founders and others end up making these choices with even less to go on. The natural language interface widens the audience anyway.
 
 **Consequences:** Rewriting the explainers so they work with no design vocabulary is a fast follow after the beta (CLR-65), not a beta requirement.
+
+### D-023 · Beta scope additions from the jobs-to-be-done research
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-66, CLR-67, CLR-68, CLR-55, CLR-69
+
+**Decision:** Three jobs the research found are added to the beta:
+- **Interactive state tokens** (default, hover, pressed, focus, disabled) as part of the core semantic set (CLR-66)
+- **A colour vision deficiency check** that flags feedback colours that become hard to tell apart (CLR-67)
+- **A brand fidelity report** in the HTML reference sheet, showing how close each scale stays to its brand colour (CLR-68)
+
+Data visualisation colours (CLR-55) and several brands or themes from one method (CLR-69) are recorded as known jobs and stay post-beta.
+
+**Context:** Benji asked for the jobs to be done to be checked against published accounts from design teams before they were approved. See [jobs-to-be-done.md](jobs-to-be-done.md).
+
+**Alternatives considered:** keeping the beta scope unchanged and adding these after launch.
+
+**Why:** Buttons need at least five states, and brand palettes almost never supply them, so leaving states out would send people back to inventing colours screen by screen. Colour vision deficiency affects about 1 in 12 men, and a distinctness check is cheap because the engine already compares colours. The brand fidelity data is already calculated; surfacing it helps designers bring brand teams with them.
+
+**Consequences:** About two to three extra days across cycles 2 and 3. Full colour-blindness simulation stays post-beta (CLR-51).
+
