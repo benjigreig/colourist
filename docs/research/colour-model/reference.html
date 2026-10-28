@@ -1,0 +1,262 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Choosing the Colour Model · colouri.st</title><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; swatch ladders run full width and scroll inside their own frame on phones.
+   Chrome is strictly achromatic (R=G=B), the same rule colouri.st's own interface follows, so the greys never bias judgement of the swatches. */
+:root {
+  --bg: #ececec;
+  --surface: #f7f7f7;
+  --ink: #1b1b1b;
+  --muted: #5c5c5c;
+  --rule: #c9c9c9;
+  --mark: #1b1b1b;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1c; --surface: #262626; --ink: #ededed; --muted: #a8a8a8; --rule: #444444; --mark: #ededed;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1c; --surface: #262626; --ink: #ededed; --muted: #a8a8a8; --rule: #444444; --mark: #ededed;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 1rem/1.55 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 48px 72px; display: grid; gap: 56px; }
+header { display: grid; gap: 14px; max-width: 68ch; }
+.eyebrow { font: 500 0.78rem/1 var(--font-data); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 clamp(2rem, 5vw, 3.1rem)/1.05 var(--font-display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font: 700 1.55rem/1.15 var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.lead { font-size: 1.12rem; }
+section { display: grid; gap: 18px; }
+.sub { color: var(--muted); }
+.ladder-frame { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 14px; }
+.ladder { display: grid; grid-template-columns: 11.5rem repeat(13, minmax(48px, 1fr)); gap: 3px 2px; min-width: 800px; align-items: center; }
+.ladder .h { font: 500 0.72rem/1 var(--font-data); color: var(--muted); text-align: center; padding-bottom: 4px; }
+.ladder .m { font: 500 0.86rem/1.2 var(--font-body); padding-right: 12px; }
+.ladder .m small { display: block; font: 400 0.72rem/1.2 var(--font-data); color: var(--muted); }
+.ladder .m.pick::before { content: "Chosen · "; font-weight: 600; }
+.ladder .h.src { color: var(--ink); font-weight: 600; }
+.ladder .h.src::after { content: " ▾"; }
+.ladder .gap { height: 40px; }
+.ladder .srccell { position: relative; height: 40px; outline: 2px solid var(--mark); outline-offset: 2px; }
+.ladder .srcrow { padding-bottom: 6px; }
+.ref { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: center; }
+.ref-swatch { width: 64px; height: 64px; border-radius: 4px; outline: 2px solid var(--mark); outline-offset: 3px; flex: none; }
+.ref-text { display: grid; gap: 2px; min-width: 0; }
+.ref-text b { font: 600 0.95rem/1.3 var(--font-body); }
+.ref-text span { font: 400 0.85rem/1.4 var(--font-data); color: var(--muted); }
+.sw { height: 40px; border: 0; padding: 0; cursor: default; }
+.sw:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; position: relative; z-index: 1; }
+.readout { font: 400 0.82rem/1.4 var(--font-data); color: var(--muted); min-height: 1.4em; margin-top: 10px; }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 28px; }
+.note { display: grid; gap: 4px; min-width: 0; }
+.note b { font: 600 0.95rem/1.3 var(--font-body); }
+.note span { color: var(--muted); font-size: 0.93rem; }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px 18px 14px; overflow-x: auto; }
+figure svg { display: block; width: 100%; min-width: 560px; height: auto; }
+figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 8px; max-width: 68ch; }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.92rem; }
+.table-frame { overflow-x: auto; }
+th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 0.78rem/1.2 var(--font-data); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.pick td { font-weight: 600; }
+.fine { font-size: 0.85rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">colouri.st · engine decision CLR-4 · 28 Oct 2026</div>
+    <h1>Same brand colour, four colour models</h1>
+    <p class="lead">Every model below builds the same 13-step ladder from the same brand colour. They differ in how they hold that colour's hue as it gets lighter and darker, and whether contrast stays predictable. We chose the hybrid: lightness from CIE L*, hue and vividness from OKLCH.</p>
+  </header>
+
+  <section aria-labelledby="worst">
+    <div class="eyebrow">Worst case</div>
+    <h2 id="worst">A saturated blue, #0057FF</h2>
+    <p class="sub">This is where the models disagree most. At the same step, two models can differ by up to ΔE 11.4, which is plainly visible side by side.</p>
+    <div class="ref" id="ref-worst"></div>
+    <div class="ladder-frame"><div class="ladder" id="ladder-worst" role="group" aria-label="Saturated blue ladder in four colour models"></div>
+      <div class="readout" id="readout-worst" aria-live="polite">Hover or tab to a swatch to see its value.</div></div>
+    <div class="notes">
+      <div class="note"><b>CIE L* turns lavender</b><span>Steps 200 to 500 drift towards purple. This is a known weakness of CIE hue for blues.</span></div>
+      <div class="note"><b>HCT leans periwinkle</b><span>Closer than CIE, but still shifts towards violet in the light-to-mid steps.</span></div>
+      <div class="note"><b>OKLCH and the hybrid stay blue</b><span>Both hold the hue in OKLCH. The hybrid also keeps every step at the ladder's exact lightness, so contrast stays predictable.</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="best">
+    <div class="eyebrow">Best case</div>
+    <h2 id="best">A pastel blue, #B8D8E8</h2>
+    <p class="sub">With soft brand colours, the four models are almost indistinguishable: the largest difference at any step is ΔE 1.9, around the edge of what most people notice. The choice matters most for vivid colours.</p>
+    <div class="ref" id="ref-best"></div>
+    <div class="ladder-frame"><div class="ladder" id="ladder-best" role="group" aria-label="Pastel blue ladder in four colour models"></div>
+      <div class="readout" id="readout-best" aria-live="polite">Hover or tab to a swatch to see its value.</div></div>
+  </section>
+
+  <section aria-labelledby="contrast">
+    <div class="eyebrow">Why not OKLCH on its own</div>
+    <h2 id="contrast">Can you count steps to get contrast?</h2>
+    <p>colouri.st promises that the distance between two steps tells you their contrast: 7 steps apart meets 4.5:1 for text, in any colour and any pairing. The chart shows the real range of contrast for every pair 7 steps apart, across three test brands and 14 colours.</p>
+    <figure>
+      <svg id="chart" viewBox="0 0 640 230" role="img" aria-labelledby="chart-title chart-desc">
+        <title id="chart-title">Contrast between steps 7 apart, by colour model</title>
+        <desc id="chart-desc">CIE L* 4.90 to 10.05. OKLCH 4.57 to 11.36. Hybrid 4.78 to 10.04. HCT 4.91 to 10.05. The 4.5:1 text minimum is marked.</desc>
+      </svg>
+      <figcaption>All four clear 4.5:1 at 7 steps, but OKLCH's spread is widest, and for one brand it needs 9 steps rather than 8 to reach 7:1. A rule that only holds sometimes can't be taught.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="summary">
+    <div class="eyebrow">Summary</div>
+    <h2 id="summary">How the four compare</h2>
+    <div class="table-frame"><table>
+      <thead><tr><th>Model</th><th>Steps for 4.5:1</th><th>Steps for 7:1</th><th>Worst hue drift</th><th>Trade-off</th></tr></thead>
+      <tbody id="summary-rows"></tbody>
+    </table></div>
+    <p class="fine">Hue drift is the widest hue range across steps 200 to 900 for any one colour, measured in OKLCH. Measured in CAM16 instead, HCT scores best, which is the point: hue models disagree about vivid blues, so the visual comparison above carries as much weight as the numbers.</p>
+  </section>
+
+  <section aria-labelledby="method">
+    <div class="eyebrow">Method</div>
+    <h2 id="method">How this was tested</h2>
+    <p class="fine">Three invented brand sets (pastel, saturated, and close hues; 14 colours). Every model uses the same ladder, in CIE L* with a D65 white: 98, 96, 92, 86, 78, 68, 57, 46, 35, 25, 17, 10, 5. Each colour's own hue and vividness are held, and vividness is reduced only where a step would fall outside sRGB. Contrast is WCAG 2, computed from the final hex values. No vividness curve is applied here, so differences come from the model alone.</p>
+  </section>
+</div>
+
+<script>
+/* Data generated by the CLR-4 analysis script; hex values per step, lightest to darkest. */
+const DATA = {"worstBlue": {"CIE LCh (D65)": ["#faf9ff", "#f4f2ff", "#e9e5ff", "#d8d2ff", "#c0b9ff", "#9f9bff", "#747aff", "#295cff", "#0044cc", "#003098", "#002271", "#001550", "#000b3c"], "OKLCH": ["#f6f9ff", "#eef4ff", "#dde9ff", "#c3d8ff", "#a0c1ff", "#74a4ff", "#4381ff", "#0057fe", "#0041c4", "#002e92", "#00206c", "#00144c", "#000b35"], "Hybrid: L* + OK hue": ["#effaff", "#e7f4ff", "#dce9ff", "#c3d8ff", "#a1c2fe", "#77a5fe", "#4984fc", "#125ffc", "#0545c8", "#023196", "#002270", "#01164e", "#000c38"], "HCT": ["#faf8ff", "#f3f2ff", "#e4e7ff", "#cdd5ff", "#aebeff", "#88a1ff", "#5a80ff", "#1a5dff", "#0044cc", "#003198", "#002270", "#001550", "#000c38"]}, "bestBlue": {"CIE LCh (D65)": ["#f2fbff", "#e5f6ff", "#cdedfd", "#bcdcec", "#a6c6d5", "#8baaba", "#6f8d9c", "#537180", "#385664", "#203f4c", "#0c2e3a", "#001f2a", "#00131a"], "OKLCH": ["#f3fbff", "#e6f7ff", "#ceeefe", "#bddded", "#a7c7d6", "#8cabbb", "#708e9d", "#557280", "#3b5765", "#24404d", "#122e3a", "#031f2b", "#00141d"], "Hybrid: L* + OK hue": ["#f2fbff", "#e6f6ff", "#cdedfd", "#bcdcec", "#a6c6d5", "#8caaba", "#6f8d9c", "#54717f", "#3a5664", "#233f4c", "#112d39", "#021e2a", "#01131c"], "HCT": ["#f3faff", "#e6f6ff", "#cdedfd", "#bcdcec", "#a6c6d5", "#8baaba", "#6f8d9c", "#53717f", "#385764", "#203f4c", "#0c2e3a", "#001f29", "#00131b"]}, "summary": {"CIE LCh (D65)": {"min7": 4.9, "max7": 10.05, "steps7": 8, "steps45": 7, "okDrift": 28.8, "camDrift": 16.1, "fid": 3.7}, "OKLCH": {"min7": 4.57, "max7": 11.36, "steps7": 9, "steps45": 7, "okDrift": 3.7, "camDrift": 13.7, "fid": 4.6}, "Hybrid: L* + OK hue": {"min7": 4.78, "max7": 10.04, "steps7": 8, "steps45": 7, "okDrift": 3.7, "camDrift": 13.4, "fid": 3.6}, "HCT": {"min7": 4.91, "max7": 10.05, "steps7": 8, "steps45": 7, "okDrift": 14.3, "camDrift": 4.8, "fid": 3.5}}};
+
+/** Display names and one-line trade-offs, kept separate from the generated data. */
+const MODELS = [
+  { key: "CIE LCh (D65)", name: "CIE L*", detail: "Classic perceptual model", tradeoff: "Exact contrast, but vivid blues turn purple." },
+  { key: "OKLCH", name: "OKLCH", detail: "CSS-native perceptual model", tradeoff: "Holds hue well, but contrast by step distance isn't reliable." },
+  { key: "Hybrid: L* + OK hue", name: "Hybrid", detail: "L* lightness, OKLCH hue", tradeoff: "Exact-enough contrast and stable hue. Exports as CSS oklch().", chosen: true },
+  { key: "HCT", name: "HCT", detail: "Google's Material model", tradeoff: "Exact contrast, closest to source colours, but heavy to build and to teach." },
+];
+const STEPS = ["25", "50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950", "975"];
+const LADDER = [98, 96, 92, 86, 78, 68, 57, 46, 35, 25, 17, 10, 5];
+
+/** The brand colour each example starts from, with its own CIE L* (D65) and the ladder step nearest that lightness. */
+const SOURCES = {
+  worst: { hex: "#0057FF", name: "Saturated blue", lstar: 44.3, step: 7 },
+  best: { hex: "#B8D8E8", name: "Pastel blue", lstar: 84.5, step: 3 },
+};
+
+/** Shows the reference colour as a large marked swatch with its values, above the ladder it feeds. */
+function renderReference(refId, src) {
+  const el = document.getElementById(refId);
+  el.innerHTML = `<div class="ref-swatch" style="background:${src.hex}" role="img" aria-label="Reference brand colour ${src.hex}"></div>
+    <div class="ref-text"><b>Reference brand colour: ${src.hex}</b>
+    <span>Lightness L* ${src.lstar.toFixed(1)} · lands nearest step ${STEPS[src.step]} (L* ${LADDER[src.step]})</span>
+    <span>Every model keeps this colour's hue and vividness, and takes lightness from the shared ladder.</span></div>`;
+}
+
+/** Builds one ladder grid: header row of step names, then one row of swatch buttons per model. */
+function renderLadder(gridId, readoutId, family, src) {
+  const grid = document.getElementById(gridId);
+  const readout = document.getElementById(readoutId);
+  grid.append(Object.assign(document.createElement("div"), { className: "h" }));
+  STEPS.forEach((s, i) => grid.append(Object.assign(document.createElement("div"), { className: "h" + (i === src.step ? " src" : ""), textContent: s })));
+  // Reference row: the brand colour itself, placed in the column of its nearest step.
+  const refLabel = document.createElement("div");
+  refLabel.className = "m srcrow";
+  refLabel.innerHTML = `Brand colour<small>${src.hex} · L* ${src.lstar.toFixed(1)}</small>`;
+  grid.append(refLabel);
+  STEPS.forEach((_, i) => {
+    if (i !== src.step) { grid.append(Object.assign(document.createElement("div"), { className: "gap" })); return; }
+    const cell = document.createElement("button");
+    cell.type = "button";
+    cell.className = "sw srccell";
+    cell.style.background = src.hex;
+    cell.setAttribute("aria-label", `Reference brand colour ${src.hex}, nearest step ${STEPS[i]}`);
+    const show = () => { readout.textContent = `Reference brand colour · ${src.hex} · L* ${src.lstar.toFixed(1)} · nearest step ${STEPS[i]}`; };
+    cell.addEventListener("mouseenter", show);
+    cell.addEventListener("focus", show);
+    grid.append(cell);
+  });
+  for (const m of MODELS) {
+    const label = document.createElement("div");
+    label.className = "m" + (m.chosen ? " pick" : "");
+    label.innerHTML = `${m.name}<small>${m.detail}</small>`;
+    grid.append(label);
+    family[m.key].forEach((hex, i) => {
+      const sw = document.createElement("button");
+      sw.type = "button";
+      sw.className = "sw";
+      sw.style.background = hex;
+      sw.setAttribute("aria-label", `${m.name}, step ${STEPS[i]}, ${hex.toUpperCase()}`);
+      // Swatches announce their value on hover and keyboard focus, so colour is never the only carrier.
+      const show = () => { readout.textContent = `${m.name} · step ${STEPS[i]} · ${hex.toUpperCase()}`; };
+      sw.addEventListener("mouseenter", show);
+      sw.addEventListener("focus", show);
+      grid.append(sw);
+    });
+  }
+}
+
+/** Draws the contrast range chart on one linear scale from 4 to 12. */
+function renderChart() {
+  const svg = document.getElementById("chart");
+  const NS = "http://www.w3.org/2000/svg";
+  const left = 150, right = 548, top = 24, rowH = 40, min = 4, max = 12;
+  const x = (v) => left + ((v - min) / (max - min)) * (right - left);
+  const add = (tag, attrs, text) => {
+    const el = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    if (text != null) el.textContent = text;
+    svg.append(el);
+    return el;
+  };
+  const bottom = top + rowH * MODELS.length;
+  for (let v = 4; v <= 12; v += 2) {
+    add("line", { x1: x(v), x2: x(v), y1: top - 8, y2: bottom, stroke: "var(--rule)", "stroke-width": 1 });
+    add("text", { x: x(v), y: bottom + 18, "text-anchor": "middle", fill: "var(--muted)", "font-family": "IBM Plex Mono, monospace", "font-size": 11 }, `${v}:1`);
+  }
+  add("line", { x1: x(4.5), x2: x(4.5), y1: top - 14, y2: bottom, stroke: "var(--mark)", "stroke-width": 1.5, "stroke-dasharray": "4 3" });
+  add("text", { x: x(4.5) + 5, y: top - 6, fill: "var(--ink)", "font-family": "IBM Plex Mono, monospace", "font-size": 11 }, "4.5:1 text minimum");
+  MODELS.forEach((m, i) => {
+    const s = DATA.summary[m.key];
+    const y = top + 14 + i * rowH;
+    add("text", { x: 0, y: y + 4, fill: "var(--ink)", "font-family": "IBM Plex Sans, sans-serif", "font-size": 13, "font-weight": m.chosen ? 600 : 400 }, m.chosen ? `${m.name} (chosen)` : m.name);
+    add("line", { x1: x(s.min7), x2: x(s.max7), y1: y, y2: y, stroke: "var(--mark)", "stroke-width": m.chosen ? 6 : 3, "stroke-linecap": "round" });
+    add("circle", { cx: x(s.min7), cy: y, r: 4, fill: "var(--mark)" });
+    add("circle", { cx: x(s.max7), cy: y, r: 4, fill: "var(--mark)" });
+    add("text", { x: x(s.max7) + 9, y: y + 4, fill: "var(--muted)", "font-family": "IBM Plex Mono, monospace", "font-size": 11 }, `${s.min7.toFixed(2)}–${s.max7.toFixed(2)}`);
+  });
+}
+
+/** Fills the summary table from the same data the chart uses. */
+function renderSummary() {
+  const body = document.getElementById("summary-rows");
+  for (const m of MODELS) {
+    const s = DATA.summary[m.key];
+    const tr = document.createElement("tr");
+    if (m.chosen) tr.className = "pick";
+    tr.innerHTML = `<td>${m.name}${m.chosen ? " (chosen)" : ""}</td><td class="num">${s.steps45}</td><td class="num">${s.steps7}</td><td class="num">${s.okDrift.toFixed(1)}°</td><td>${m.tradeoff}</td>`;
+    body.append(tr);
+  }
+}
+
+renderReference("ref-worst", SOURCES.worst);
+renderReference("ref-best", SOURCES.best);
+renderLadder("ladder-worst", "readout-worst", DATA.worstBlue, SOURCES.worst);
+renderLadder("ladder-best", "readout-best", DATA.bestBlue, SOURCES.best);
+renderChart();
+renderSummary();
+</script>
+
+</body></html>

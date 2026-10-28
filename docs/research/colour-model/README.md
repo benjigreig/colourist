@@ -8,6 +8,7 @@ Analysis behind [ADR 0001](../../adr/0001-colour-model.md). This folder is resea
 - `render.mjs`: renders `results.json` as a grey-chromed comparison sheet (`compare.html`).
 - `results.json`: the measured results and every generated hex value.
 - `pastel.png`, `saturated.png`, `close-hues.png`: the comparison sheets as images.
+- `reference.html`: "Choosing the Colour Model", the best-case and worst-case visual comparison made for the decision. Open it in a browser.
 
 ## Running it
 

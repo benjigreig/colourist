@@ -9,6 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-038 |
 
 ---
 
@@ -305,3 +306,201 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 
 **Consequences:** About two to three extra days across cycles 2 and 3. Full colour-blindness simulation stays post-beta (CLR-51).
 
+---
+
+## User stories and delivery
+
+### D-024 · Compare colour methods in the beta, lean version
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-70, CLR-71
+
+**Decision:** In the beta, people can see what other colour methods would do with their own colours, while colouri.st stays on its recommendation. The beta shows CIE L\* (D65) and OKLCH alone beside the recommended method, view only. HCT, and switching to another method, are post-beta.
+
+**Context:** Raised by Benji while reviewing US-03. ADR 0001 chose a hybrid method, and the reference page made for that decision showed how much the alternatives differ.
+
+**Alternatives considered:** no comparison; view and switch between all four methods including HCT in the beta (about four to five days, and the contrast promise and explainers would have to hold for every method).
+
+**Why:** Seeing what the alternatives would have given you is how someone learns to make the call themselves. It's the "strong opinions, loosely held" principle (D-011) shown in the product. The lean version reuses conversions the engine needs anyway, at about a day of work.
+
+**Consequences:** Alternative generators use the swappable model interfaces from ADR 0001. US-03 gains the "Compare methods" scenario.
+
+### D-025 · A colour is a name, a group and a starting value; names are configuration
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-16, CLR-26, CLR-3
+
+**Decision:** The engine attaches no meaning to a colour's name or role. A colour is a name, a group and a starting value. Colour names are configuration: presets cover common language, and people can rename, add, remove or regroup anything. The default preset is error, warning, success and info.
+
+**Context:** A survey of 11 design systems found the feedback roles are stable but their names vary widely. The error role alone is called error, danger, critical, negative, destructive and support-error. The W3C design tokens format prescribes no names. Claude first proposed fixed roles inside the engine with configurable names; Benji pointed out that was building meaning in where only structure is needed. The survey and its sources are recorded on CLR-3.
+
+**Alternatives considered:** fixed names; fixed roles in the engine with configurable names.
+
+**Why:** People may already be building on a framework with its own naming. Being rigid here would make colouri.st's output unusable for them. A colour's role only matters when it's mapped to semantic tokens, and that mapping is configuration too.
+
+**Consequences:** Stage 5 becomes "the rest of your palette", with presets and free editing. Semantic tokens point at colours by name, so renaming or removing a colour can leave tokens unmapped (handled in US-06). D-007 still sets the default starting values for the default preset.
+
+### D-026 · Distinctness is checked shade by shade across the whole palette, with suggestions
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-16, CLR-18, CLR-67
+
+**Decision:** Every shade of every colour must stay distinguishable from the shades of every other colour, across and within groups, including under simulated colour vision deficiency. The check runs on the generated scales, not only the starting values. When a colour is too close, colouri.st can suggest a hue for clearer separation, which the person can accept, reject, or answer by removing the colour. Suggestions are never applied automatically.
+
+**Context:** Two colours can look clearly different at their starting values and still converge in their lighter or darker shades. Benji's earlier generator found exactly that.
+
+**Alternatives considered:** checking starting values only; checking feedback colours against the brand only; warning without suggesting a fix.
+
+**Why:** Colours that can't be told apart in use aren't doing their job. A suggestion helps and teaches, but the decision stays with the person.
+
+**Consequences:** The similar-hue check on input (CLR-18) becomes an early warning only. Thresholds come from the rules, with an allowance for the lightest and darkest steps, which can't carry much colour identity. The colour vision deficiency check covers the whole palette.
+
+### D-027 · Lean naming in the beta; naming templates in the backlog
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-72
+
+**Decision:** The beta makes colour names fully configurable, with colouri.st's own token pattern and a choice of case and separator. Full naming templates, which set the whole token pattern (for example Atlassian's `color.background.danger.hovered` or shadcn/ui's `destructive-foreground`), and importing a convention from an existing tokens file, are high-priority post-beta work.
+
+**Context:** Design systems differ in their whole token pattern, not only their colour names.
+
+**Alternatives considered:** naming templates in the beta (about three to four days, touching every export, risking the cycle 2 date).
+
+**Why:** Colour names differ most and matter first, and the lean option covers them. Benji sees real value in templates, so they stay close behind.
+
+**Consequences:** Templates will live in the rules schema, so new ones can be contributed as data.
+
+### D-028 · Feature requests and voting in GitHub Discussions
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-73, CLR-63
+
+**Decision:** Feature requests and voting live in a GitHub Discussions category called "Feature requests", with upvotes as votes and a public GitHub Project board as the roadmap. People without a GitHub account suggest features through the feedback form, and those suggestions are moved into Discussions by hand. Contributions such as presets and naming templates come in as pull requests.
+
+**Context:** Benji wants people to be able to vote on and contribute to features.
+
+**Alternatives considered:** a self-hosted voting tool such as Fider (needs a server, against D-009); a hosted service such as Canny or Featurebase (usually paid and usually tracks people, against D-020).
+
+**Why:** Free, next to the code, and consistent with the no-server and no-tracking principles.
+
+**Consequences:** The post-beta backlog is published as the starting list to vote on. The wording is "suggest a feature" and "feature requests", not "ideas".
+
+### D-029 · The saved unit is a project, with several projects from day one
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-21
+
+**Decision:** What colouri.st saves is a **project**: the palette plus every choice made in it. Storage supports several projects from the start: a small index of projects plus a separate record for each, every record versioned, and storage behind its own interface. Local storage, share links, project files and AI tools all use the same project format.
+
+**Context:** Benji asked whether storage should support more than one project from the start.
+
+**Alternatives considered:** one saved palette, with several added later.
+
+**Why:** Adding multi-project support later would mean migrating everyone's saved work, which is where data gets lost. "Project" describes what's stored better than "palette", because it includes the choices as well as the colours.
+
+**Consequences:** colouri.st warns before storage gets close to the browser's limit. Storage can move to IndexedDB later without changing anything else.
+
+### D-030 · Choose AA or AAA as a project's target, in the beta
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-81, CLR-80
+
+**Decision:** At the start of a project, people choose WCAG AA (the default) or AAA as their target. The ladder recommendation, semantic mapping, checks, known issues and exports all follow it. Where a colour can't reach AAA for a use, colouri.st says so plainly and never falls back to AA silently.
+
+**Context:** Raised by Benji while reviewing the checklist. The thresholds are already rules, so this is mostly configuration, at about a day of work.
+
+**Alternatives considered:** AA only in the beta, with AAA as a fast follow.
+
+**Why:** It's a powerful feature to lead with, for a tool that puts accessibility first.
+
+**Consequences:** An AAA contrast mode for colouri.st's own interface is agreed in principle, with no timing yet (CLR-80). It's described as a contrast mode rather than full AAA compliance, because W3C doesn't recommend requiring full AAA conformance for whole sites.
+
+### D-031 · Truth in outputs: failures travel with the system
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-30, CLR-32, CLR-33, CLR-34
+
+**Decision:** A failing check stays a failure, even when a suggested alternative isn't applied. Every failure that reaches an output is recorded beside the token it affects: as a comment in the CSS, and in `$description` plus a structured `$extensions` note in the design tokens JSON. The reference sheet has a "Known issues" section written for stakeholders, which can also be exported on its own. Outputs state only what's measured, who it affects and what was suggested. They never say colours were "kept by choice".
+
+**Context:** Claude first drafted a scenario listing kept failures as "decisions I made". Benji questioned whether that was honest, and pointed out that people are sometimes asked to use colours that aren't their choice and need to justify back to stakeholders why those colours may not work.
+
+**Alternatives considered:** reclassifying kept failures as decisions; recording failures in the tool only; recording that colours were kept by choice.
+
+**Why:** Accessibility first means the tool always tells the truth about the palette. We can't know whose choice a colour was, and saying "by choice" could point at the wrong person.
+
+**Consequences:** Continuing past the checks with failures open needs a confirmation that names each one. Unused colours are listed as information, not failures. AI tools can read the structured notes (US-12).
+
+### D-032 · Export colour formats, with hex recommended
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-33, CLR-74
+
+**Decision:** CSS exports are described as "CSS variables (custom properties)". Hex is the recommended default, because it works everywhere. People can choose rgb(), hsl() or oklch() instead, each with a note on when it's the right choice, and oklch() can include hex fallbacks.
+
+**Context:** Benji asked for the most compatible format to be recommended, with sensible recommendations across the formats that are supported. oklch() has been widely available across browsers since May 2023, and color() with Display P3 since November 2025.
+
+**Alternatives considered:** hex and oklch() only; also offering lab(), lch() and Display P3.
+
+**Why:** lab() and lch() add nothing over OKLCH for interface work. colouri.st generates every colour inside sRGB, so a Display P3 value would be the same colour written differently.
+
+**Consequences:** Wide-gamut colour generation for P3 screens is post-beta (CLR-74).
+
+### D-033 · Phones get a read-only report in the beta
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-35, CLR-77
+
+**Decision:** On a phone, a shared link opens as a read-only report: every colour and shade, the tokens in light and dark, the checks, and the reasoning behind each choice. Editing isn't available on phones in the beta. The page says honestly why: we're making the first version solid where it's used most, and phones come next. Visiting colouri.st directly on a phone shows the same message, plus a read-only example report built from an invented brand.
+
+**Context:** People will often open a shared link on their phone. Full phone support is a stretch goal or post-beta (CLR-77).
+
+**Alternatives considered:** leaving phones out of the beta entirely, so a shared link breaks on first contact; full phone editing in the beta.
+
+**Why:** A broken shared link is a poor first impression, and a report covers most of what someone needs on a phone.
+
+**Consequences:** The report reuses the reference sheet layout (CLR-34) and meets WCAG 2.1 AA, including reflow at 320 CSS pixels. Stage layouts are built mobile-friendly from the start.
+
+### D-034 · Content in two passes
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-28, CLR-37
+
+**Decision:** Explainers are written in two passes. First, Claude drafts a skeleton for each stage early: the key points, terms defined, the "why we recommend this" note, and what it depends on. Benji and Claude review these together. Second, once every dependency on a stage's list is settled, Claude drafts near-final copy and Benji edits and signs it off.
+
+**Context:** Estimates showed Benji's assigned work at about four times his capacity, and content was the largest part of it. Benji agreed Claude should draft, but pointed out that some content depends on work that may still change, which could waste the drafting effort.
+
+**Alternatives considered:** drafting everything to near-final now; Benji writing the content.
+
+**Why:** Skeletons catch knock-on effects while they're cheap to fix, and keep Benji's time on review rather than rewriting.
+
+**Consequences:** Benji's share of the content work falls from 10 points to about 3.5.
+
+### D-035 · "color" in code; "colour" is a localisation
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-78
+
+**Decision:** "color" is used everywhere in code: identifiers, the engine API, the rules schema, token names, CSS variables and exports. "Colour" is the Australian English localisation of what people read, from the language files. The product name colouri.st and the repo name are brand names and don't change.
+
+**Context:** Australian English is the default language, but CSS, Figma and token tools all use "color".
+
+**Alternatives considered:** "colour" in code as well; "colour" in token names only.
+
+**Why:** Exports drop into projects without renaming, and it fits keeping all readable text in language files, ready for translation.
+
+**Consequences:** The repo's documentation is written in Australian English, so it says "colour" when describing code that says "color". The convention goes into the coding guidelines when the repo is set up (CLR-1).
+
+### D-036 · Estimates in half-day points
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** all beta tickets
+
+**Decision:** Plane estimates use custom points, where 1 point is half a day of work: 1, 2, 4, 6 and 10. Anything larger than 10 is split. The estimate is the total effort, whoever does it, and Benji's share is tracked separately against his capacity of about 4 hours a week, which is about 1 point.
+
+**Context:** About 15 items were added to the beta during the day, with no estimates to show whether 27 November still held. Plane offers points or categories, not days.
+
+**Alternatives considered:** plain points not tied to time; T-shirt sizes.
+
+**Why:** Tying points to time makes the cycle totals comparable with capacity, which is what answers "does the date hold?".
+
+**Consequences:** The beta came to about 165 points. How to set estimates through the Plane API is recorded in the plane-estimates skill.
+
+### D-037 · Wait for real numbers on capacity; the alpha keeps its full scope
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-82, CLR-38
+
+**Decision:** No scope or date changes yet. The capacity gap is reviewed at the end of cycle 1, on 8 November, using the actual pace. The alpha sessions (CLR-38) keep their full scope of three to five sessions and stay with Benji, who manages that time. Benji and Claude write the moderation guide and set up the tests together, once the flow is stable enough to test.
+
+**Context:** After the two-pass content decision, Benji's share was still about 10 points against about 4.5 points of capacity.
+
+**Alternatives considered:** trimming the alpha to three sessions; more of Benji's hours in cycle 3; moving the date.
+
+**Why:** Decisions made with real numbers are better than decisions made on estimates.
+
+**Consequences:** If the gap remains at the review, Benji chooses how to close it.
+
+### D-038 · colouri.st's interface uses its own engine
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-83 to CLR-87
+
+**Decision:** The interface is predominantly black, white and grey, so it doesn't skew how people judge their own colours. Colour is used only for the person's palette and previews, and for error, warning and success states, which always pair colour with an icon and words. Every interface colour is generated by the colouri.st engine. This is done in four steps: generate the primitives; make a first-pass light and dark mapping together by hand; refine it with the engine once the light and dark mapping is built (CLR-27); and validate it through the CSS export once that's built (CLR-33).
+
+**Context:** Benji suggested using the tool to make its own interface tokens. The engine's light and dark mapping and the CSS export arrive in cycles 2 and 3, so the work is split to start sooner.
+
+**Alternatives considered:** a hand-made interface palette; waiting for the CSS export before starting.
+
+**Why:** It tests the engine on a real system from day one, and it's a worked example for the launch and the case study.
+
+**Consequences:** Problems found are fixed in the engine or rules, not patched in the interface. The interface project file is committed as a test fixture. The alpha sessions check that status colours aren't mistaken for part of the person's palette.
