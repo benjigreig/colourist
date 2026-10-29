@@ -1,0 +1,4 @@
+tone difference 50: worst ratio 4.484:1 at tones 50.0 and 100.0 (needs 4.5:1) -> fails
+   smallest tone difference that always meets 4.5:1: 50.2
+tone difference 40: worst ratio 3.170:1 at tones 60.0 and 100.0 (needs 3.0:1) -> holds
+   smallest tone difference that always meets 3.0:1: 40.0

@@ -1,0 +1,7 @@
+Exact grade differences: {'3:1': 36.08, '4.5:1': 49.4, '7:1': 63.92}
+13 (today): 0 pairs where rounded names meet 37/50/64 but the pair fails []
+11 (option B): 0 pairs where rounded names meet 37/50/64 but the pair fails []
+15 (option B): 0 pairs where rounded names meet 37/50/64 but the pair fails []
+8-bit greys, 3:1: smallest rounded difference that never fails = 37
+8-bit greys, 4.5:1: smallest rounded difference that never fails = 51
+8-bit greys, 7:1: smallest rounded difference that never fails = 65

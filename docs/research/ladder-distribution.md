@@ -54,7 +54,7 @@ It breaks into three parts:
 | B. Independent, same shape | Smooth | Unchanged | Smooth |
 | C. Nested from a new 15 | A big jump at the dark end | Changes from what ADR 0001 tested | Smooth |
 
-**Benji chose B on 29 October 2026.** Nesting mattered when steps were named by position. Tokens now name a contrast grade (D-041) and the engine uses the nearest step, so changing ladder size keeps every token at about the same contrast without nesting. What B gives up: a team running an 11-step product beside a 13-step one won't get exactly the same hex values for shared steps, though their grades still line up.
+**Benji chose B on 29 October 2026 (D-050).** Nesting mattered when steps were named by position. Tokens now name a contrast grade (D-041) and the engine uses the nearest step, so changing ladder size keeps every token at about the same contrast without nesting. What B gives up: a team running an 11-step product beside a 13-step one won't get exactly the same hex values for shared steps, though their grades still line up.
 
 The 11 and 15-step ladders in option B resample the 13-step shape (L\* as a smooth curve of position, from 98 to 5):
 

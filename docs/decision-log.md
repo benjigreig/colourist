@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-048 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-050 |
 
 ---
 
@@ -642,7 +642,7 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 **Date:** 29 Oct 2026 · **Decided by:** Benji Greig (uses, contexts, placeholders, reason text and scope); the typed literal and the two extra sections were proposed by Claude Code while building and reviewed by Benji, who asked for separation targets and both levels on every use · **Status:** Accepted · **Plane:** CLR-7, CLR-20, CLR-75 · **ADR:** builds on [adr/0005-rules-schema.md](adr/0005-rules-schema.md) and [adr/0006-validation-library.md](adr/0006-validation-library.md)
 
 **Decision:**
-- **Contrast targets are keyed by an open list of use IDs,** such as `bodyText`, `largeText` and `interfaceElement`. Each use can vary by context, and contexts are an open list too: `light`, `dark`, and `moreContrast` as a placeholder. Each target stores the WCAG ratio, which checks use, and the grade difference rounded up (37, 50 or 64), which teaching uses. A test keeps the two consistent.
+- **Contrast targets are keyed by an open list of use IDs,** such as `bodyText`, `largeText` and `interfaceElement`. Each use can vary by context, and contexts are an open list too: `light`, `dark`, and `moreContrast` as a placeholder. Each target stores the WCAG ratio, which checks use, and the grade difference rounded up (37, 50 or 64), which teaching uses. Those simple numbers are promised only for colouri.st's own steps (D-049). A test keeps the two consistent.
 - **Every use has both AA and AAA targets** (D-044). The schema requires both, and a test checks it.
 - **Uses WCAG sets no ratio for have a separation target:** a minimum number of grades from what they sit on, by level and context. These are `surface`, `hover` and `subtleBorder`, with stand-ins from the CLR-13 research medians (surfaces about 2 grades in light mode and 4 in dark), as CLR-13 placeholders. A use has WCAG targets or a separation target, never both. Only the page background, which sits on nothing, has no use.
 - **Undecided values are stand-ins with a `placeholder` marker** naming the deciding ticket and the stand-in's source. A test lists every placeholder, and the rules stay at version 0.x until none are left. Assigned tickets:
@@ -667,3 +667,44 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 **Why:** Open lists let CLR-13 add uses and contexts without a schema change. Marked stand-ins keep the shape whole and testable now, and stop a stand-in from being mistaken for a decision. Writing the schema as a typed literal keeps ADR 0006's type check, while the published schema stays standard. The project validator would be generated code that nothing uses yet.
 
 **Consequences:** The rules are at version 0.1.0. CLR-13, CLR-3 and the other tickets replace stand-ins by removing their placeholders, which the placeholder test makes visible. A schema change means running `npm run schema --workspace @colourist/rules`.
+
+### D-049 · The contrast rule colouri.st states: three layers, worded in grades
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted, the wording for now · **Plane:** CLR-13 · **Research:** [research/contrast-rule.md](research/contrast-rule.md)
+
+**Decision:** colouri.st tells people about contrast in three layers:
+- **Everyday use needs no rule.** Semantic tokens come pre-paired and are checked on exact values, in WCAG 2 and APCA, so accessibility comes with the system (job 8).
+- **The stated rule is in grades:** 37 apart for 3:1, 50 for 4.5:1 and 64 for 7:1, promised for colouri.st's own steps. A test checks every ladder preset so that no pair of steps meets those numbers on rounded names while failing on exact values. For colours that aren't steps, such as a brand colour, colouri.st checks the pair, and says so wherever the rule is taught.
+- **Step counts are only a guide** in the ladder view, worked out for whichever ladder is chosen, such as "around the middle, 3 steps apart give 3:1". They're never the rule.
+
+**Context:** CLR-13's first open question, because the others depend on it: a step-count rule only works on an evenly spaced ladder, while a grade rule holds on any ladder, which leaves the ladder free to follow uses (CLR-13 research). The exact thresholds are 36.08, 49.40 and 63.92 grades. People see whole-number names, so two names 50 apart can be 4.44:1 for colours off the ladder; on colouri.st's 11, 13 and 15-step ladders, no pair misleads.
+
+**Alternatives considered:**
+- A step-count rule, as Stripe has
+- A lookup table, as IBM Carbon has
+- A lightness difference, as Material has (approximate: tone 50 on white is 4.48:1)
+- Contrast against one background, as Leonardo has
+- For the wording: 37, 51 and 65 for any colour; names to one decimal place; 40, 55 and 70 with a margin
+
+All are documented in the research.
+
+**Why:** Designers mostly know the guidelines but don't apply them, and make mistakes checking by hand, so guarantees and built-in checks matter most. Grades hide the logarithm, so people only subtract, and the rule is exact on any ladder. The simple numbers are honest only for colouri.st's steps, so that's where they're promised.
+
+**Consequences:**
+- The rounding test sits with the ladder presets (CLR-13).
+- Teaching content (US-11) states the rule with its condition.
+- CLR-95 tests whether people use grades or step counts more accurately. If grades prove hard to use, the wording options can be revisited.
+
+### D-050 · Ladders of each size are designed independently, not nested
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13 · **Research:** [research/ladder-distribution.md](research/ladder-distribution.md), Part 1
+
+**Decision:** The 11, 13 and 15-step ladders aren't subsets of one another. Each is designed for its own size.
+
+**Context:** Nesting would make a step shared between ladder sizes exactly the same colour.
+
+**Alternatives considered:**
+- Nesting on today's 13-step ladder. This leaves the 15-step ladder uneven, with grade gaps of about 6 beside 12.
+- Nesting from a new 15-step ladder. This gives up the 13-step ladder tested in ADR 0001, and leaves a big jump at the dark end of the 11.
+
+**Why:** Tokens name contrast grades (D-041), and the engine uses the nearest step, so changing ladder size keeps every token at about the same contrast without nesting.
+
+**Consequences:** Steps shared between ladder sizes aren't identical hex values, though their grades line up. The ladders' values are still to be derived from uses and contexts (CLR-13).
