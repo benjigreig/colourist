@@ -1,0 +1,94 @@
+
+================ AA ================
+
+Neutral, all ten uses: 10 light + 10 dark tokens → 16 steps (4 shared); distinct steps fit: light yes, dark yes
+  shared: light control border 37.0–43.0 with dark muted text 39.4–45.4
+  shared: light muted text 50.0–56.0 with dark control border 52.4–58.4
+  shared: light text 85.0–95.0 with dark page 92.4–95.4
+  shared: light pressed 7.9–11.9 with dark text 0.4–10.4
+
+Neutral, core eight (no sunken or selected): 8 light + 8 dark tokens → 12 steps (4 shared); distinct steps fit: light yes, dark yes
+  shared: light control border 37.0–43.0 with dark muted text 39.4–45.4
+  shared: light muted text 50.0–56.0 with dark control border 52.4–58.4
+  shared: light text 85.0–95.0 with dark page 92.4–95.4
+  shared: light pressed 7.9–11.9 with dark text 0.4–10.4
+
+Accent: 6 light + 6 dark tokens → 9 steps (3 shared); distinct steps fit: light yes, dark yes
+  shared: light fill 50.0–56.0 with dark fill 50.0–56.0
+  shared: light fill hover 56.0–60.0 with dark fill hover 56.0–60.0
+  shared: light fill pressed 63.0–67.0 with dark fill pressed 63.0–67.0
+
+================ AAA ================
+
+Neutral, all ten uses: 10 light + 10 dark tokens → 18 steps (2 shared); distinct steps fit: light yes, dark yes
+  shared: light text 85.0–95.0 with dark page 92.4–95.4
+  shared: light pressed 7.9–11.9 with dark text 0.4–10.4
+
+Neutral, core eight (no sunken or selected): 8 light + 8 dark tokens → 14 steps (2 shared); distinct steps fit: light yes, dark yes
+  shared: light text 85.0–95.0 with dark page 92.4–95.4
+  shared: light pressed 7.9–11.9 with dark text 0.4–10.4
+
+Accent: 6 light + 6 dark tokens → 9 steps (3 shared); distinct steps fit: light yes, dark yes
+  shared: light fill 64.0–70.0 with dark fill 64.0–70.0
+  shared: light fill hover 70.0–74.0 with dark fill hover 70.0–74.0
+  shared: light fill pressed 77.0–81.0 with dark tint border 74.1–81.2
+
+Ranges (AA, neutral):
+┌─────────┬─────────┬──────────────────┬──────┬──────┐
+│ (index) │ theme   │ name             │ lo   │ hi   │
+├─────────┼─────────┼──────────────────┼──────┼──────┤
+│ 0       │ 'light' │ 'page'           │ 0    │ 2    │
+│ 1       │ 'light' │ 'surface'        │ 1.9  │ 2.8  │
+│ 2       │ 'light' │ 'sunken'         │ 3.1  │ 4.7  │
+│ 3       │ 'light' │ 'selected'       │ 2.8  │ 4.2  │
+│ 4       │ 'light' │ 'hover'          │ 3.4  │ 5.1  │
+│ 5       │ 'light' │ 'pressed'        │ 7.9  │ 11.9 │
+│ 6       │ 'light' │ 'subtle border'  │ 8.9  │ 13.4 │
+│ 7       │ 'light' │ 'control border' │ 37   │ 43   │
+│ 8       │ 'light' │ 'muted text'     │ 50   │ 56   │
+│ 9       │ 'light' │ 'text'           │ 85   │ 95   │
+│ 10      │ 'dark'  │ 'page'           │ 92.4 │ 95.4 │
+│ 11      │ 'dark'  │ 'surface'        │ 89.4 │ 91.4 │
+│ 12      │ 'dark'  │ 'sunken'         │ 83.6 │ 87.5 │
+│ 13      │ 'dark'  │ 'selected'       │ 77.4 │ 83.4 │
+│ 14      │ 'dark'  │ 'hover'          │ 81   │ 85.8 │
+│ 15      │ 'dark'  │ 'pressed'        │ 79.2 │ 84.6 │
+│ 16      │ 'dark'  │ 'subtle border'  │ 74.1 │ 81.2 │
+│ 17      │ 'dark'  │ 'control border' │ 52.4 │ 58.4 │
+│ 18      │ 'dark'  │ 'muted text'     │ 39.4 │ 45.4 │
+│ 19      │ 'dark'  │ 'text'           │ 0.4  │ 10.4 │
+└─────────┴─────────┴──────────────────┴──────┴──────┘
+Ranges (AA, accent):
+┌─────────┬─────────┬────────────────┬──────┬──────┐
+│ (index) │ theme   │ name           │ lo   │ hi   │
+├─────────┼─────────┼────────────────┼──────┼──────┤
+│ 0       │ 'light' │ 'tint surface' │ 3.4  │ 5.1  │
+│ 1       │ 'light' │ 'tint border'  │ 8.9  │ 13.4 │
+│ 2       │ 'light' │ 'fill'         │ 50   │ 56   │
+│ 3       │ 'light' │ 'fill hover'   │ 56   │ 60   │
+│ 4       │ 'light' │ 'fill pressed' │ 63   │ 67   │
+│ 5       │ 'light' │ 'accent text'  │ 50   │ 56   │
+│ 6       │ 'dark'  │ 'tint surface' │ 81   │ 85.8 │
+│ 7       │ 'dark'  │ 'tint border'  │ 74.1 │ 81.2 │
+│ 8       │ 'dark'  │ 'fill'         │ 50   │ 56   │
+│ 9       │ 'dark'  │ 'fill hover'   │ 56   │ 60   │
+│ 10      │ 'dark'  │ 'fill pressed' │ 63   │ 67   │
+│ 11      │ 'dark'  │ 'accent text'  │ 39.4 │ 45.4 │
+└─────────┴─────────┴────────────────┴──────┴──────┘
+
+Today's 13-step ladder against the AA ranges (misses only, in grades):
+┌─────────┬──────────────────────┬─────────────┬──────┐
+│ (index) │ token                │ range       │ miss │
+├─────────┼──────────────────────┼─────────────┼──────┤
+│ 0       │ 'light sunken'       │ '3.1–4.7'   │ 0.1  │
+│ 1       │ 'light hover'        │ '3.4–5.1'   │ 0.4  │
+│ 2       │ 'light pressed'      │ '7.9–11.9'  │ 0.1  │
+│ 3       │ 'dark surface'       │ '89.4–91.4' │ 1.4  │
+│ 4       │ 'dark sunken'        │ '83.6–87.5' │ 0.5  │
+│ 5       │ 'dark hover'         │ '81.0–85.8' │ 2    │
+│ 6       │ 'dark pressed'       │ '79.2–84.6' │ 0.2  │
+│ 7       │ 'light tint surface' │ '3.4–5.1'   │ 0.4  │
+│ 8       │ 'light fill hover'   │ '56.0–60.0' │ 2    │
+│ 9       │ 'dark tint surface'  │ '81.0–85.8' │ 2    │
+│ 10      │ 'dark fill hover'    │ '56.0–60.0' │ 2    │
+└─────────┴──────────────────────┴─────────────┴──────┘

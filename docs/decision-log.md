@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-052 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-053 |
 
 ---
 
@@ -764,3 +764,32 @@ Two things often drawn as layers aren't tiers:
 - US-06 and CLR-27 become the heart of the product, and will be rewritten with Benji around relationships, themes and the test pattern.
 - CLR-13's remaining questions, how the ladder is derived and how many steps it has, sit inside this model. The ladder serves the relationships.
 - Open: export format for states, how emphasis is specified, which dimensions the beta's guided flow covers, exporting interacting dimensions, and the smallest useful test pattern (CLR-95).
+
+### D-053 · Ladders are presets you map onto; gaps are flagged in the beta, and tuning comes after
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13, CLR-17, CLR-98 · **Research:** [research/ladder-derivation.md](research/ladder-derivation.md)
+
+**Decision:**
+- **Every family shares one ladder shape, from a preset** (11, 13 or 15 steps, D-005, D-050). A step means the same in every colour, so people can move between families and themes easily. Full ladders are always exported as primitives.
+- **Mapping shows where a ladder falls short.** Each semantic token's relationships give it a range to sit in, in each theme (D-052). colouri.st flags any token with no step in its range, and any related tokens forced onto the same step.
+- **In the beta, colouri.st flags these gaps** and suggests a larger preset where that helps (CLR-17).
+- **After the beta, the ladder can be tuned to the mapping** (CLR-98):
+  - An in-between step is added only in the family that needs it, named by its grade.
+  - In new work, its neighbours are re-spaced so each gap in the family stays above the minimum L\* gap.
+  - A "keep existing steps fixed" option is on by default for imported systems (CLR-97), and can be switched on once a project is in use. With it on, tuning only adds steps.
+
+**Context:** CLR-13's question 2 asked how the ladder is derived from uses and contexts. Fitting the 27-system targets to one family serving light and dark needs 12 to 18 grey steps and 9 accent steps, depending on the uses and the AA or AAA target. At AA, the middle steps serve both modes: light control borders and dark muted text both land around 40 grades, and light muted text and dark control borders around 55. In 22 systems with both modes, light and dark share only 0 to 4 of 8 to 18 neutral values. Today's 13 steps miss some dark-mode surfaces and states, tints and fill hovers by up to 2 grades, and make uses near the page share steps.
+
+**Alternatives considered:**
+- A different ladder for each colour, fitted to its own needs. Rejected because uneven, varying ladders make switching between families hard. Consistency helps people learn and transfer what they know (Grudin, 1989), and Stripe, Goldman Sachs and Material all keep a step's meaning the same across hues.
+- A ladder per theme, as Radix, Atlassian and Primer do. About twice the primitives, multiplying again with brand × mode.
+- No ladder, with values solved per theme, as Leonardo and Material do. This loses the primitive tier (D-051).
+- Trimming exports to the steps in use. Rejected: full ladders cost little in code and are useful as primitives.
+- Never moving existing steps, in any case. Rejected: that only matters once a system is in use.
+
+**Why:** A common, preset shape keeps steps interchangeable while people explore and choose. The value of fitting to relationships comes at mapping. Adding steps where needed matches practice: Material added surface tones, and Atlassian added in-between dark greys. Flagging gaps in the beta keeps outputs honest (D-031), and leaving tuning until after the beta keeps it trimmed in depth (D-003).
+
+**Consequences:**
+- CLR-17 (checks) gains the gap check for the beta.
+- CLR-98 covers tuning and the "keep steps fixed" option, after the beta.
+- Question 3 (step counts and when each preset is recommended) builds on this: a preset is recommended by how few gaps it leaves for the chosen uses, themes and target.
+- The adjacent-step minimum uses the L\* gap (D-012, D-026). Its value is still to be set.

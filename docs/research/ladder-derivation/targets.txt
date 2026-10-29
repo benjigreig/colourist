@@ -1,0 +1,54 @@
+Systems with both modes: 22
+┌─────────┬──────────────────────┬──────────┬────────┐
+│ (index) │ system               │ distinct │ shared │
+├─────────┼──────────────────────┼──────────┼────────┤
+│ 0       │ 'GitHub Primer'      │ 18       │ 0      │
+│ 1       │ 'Atlassian'          │ 17       │ 0      │
+│ 2       │ 'GitLab Pajamas'     │ 16       │ 2      │
+│ 3       │ 'Twilio Paste'       │ 11       │ 3      │
+│ 4       │ 'SAP Fiori Horizon'  │ 18       │ 1      │
+│ 5       │ 'Red Hat PatternFly' │ 10       │ 3      │
+│ 6       │ 'Bootstrap'          │ 12       │ 2      │
+│ 7       │ 'IBM Carbon'         │ 12       │ 4      │
+│ 8       │ 'Microsoft Fluent 2' │ 16       │ 1      │
+│ 9       │ 'Ant Design'         │ 17       │ 1      │
+│ 10      │ 'Elastic EUI'        │ 18       │ 0      │
+│ 11      │ 'Adobe Spectrum'     │ 15       │ 0      │
+│ 12      │ 'Material 3'         │ 13       │ 4      │
+│ 13      │ 'Radix'              │ 18       │ 0      │
+│ 14      │ 'Chakra UI'          │ 12       │ 2      │
+│ 15      │ 'Apple (iOS)'        │ 9        │ 3      │
+│ 16      │ 'MUI (Material UI)'  │ 13       │ 1      │
+│ 17      │ 'shadcn/ui'          │ 13       │ 0      │
+│ 18      │ 'Mantine'            │ 12       │ 0      │
+│ 19      │ 'daisyUI'            │ 8        │ 0      │
+│ 20      │ 'Uber Base Web'      │ 10       │ 0      │
+│ 21      │ 'Zendesk Garden'     │ 11       │ 2      │
+└─────────┴──────────────────────┴──────────┴────────┘
+
+Median absolute grade of each use (0 = white, 100 = black)
+┌─────────┬─────────┬────────────────┬───────┬────┐
+│ (index) │ mode    │ use            │ grade │ n  │
+├─────────┼─────────┼────────────────┼───────┼────┤
+│ 0       │ 'light' │ 'page'         │ -0    │ 22 │
+│ 1       │ 'light' │ 'surface'      │ 1.5   │ 22 │
+│ 2       │ 'light' │ 'sunken'       │ 3.1   │ 20 │
+│ 3       │ 'light' │ 'selected'     │ 4     │ 9  │
+│ 4       │ 'dark'  │ 'text'         │ 4     │ 22 │
+│ 5       │ 'light' │ 'hover'        │ 4.1   │ 18 │
+│ 6       │ 'light' │ 'borderSubtle' │ 8.8   │ 21 │
+│ 7       │ 'light' │ 'pressed'      │ 8.9   │ 12 │
+│ 8       │ 'light' │ 'borderStrong' │ 18.2  │ 21 │
+│ 9       │ 'dark'  │ 'textMuted'    │ 26.6  │ 20 │
+│ 10      │ 'light' │ 'textMuted'    │ 61.2  │ 20 │
+│ 11      │ 'dark'  │ 'borderStrong' │ 64.3  │ 21 │
+│ 12      │ 'dark'  │ 'borderSubtle' │ 81.3  │ 21 │
+│ 13      │ 'dark'  │ 'selected'     │ 83.8  │ 9  │
+│ 14      │ 'dark'  │ 'pressed'      │ 85.6  │ 12 │
+│ 15      │ 'dark'  │ 'hover'        │ 86.8  │ 18 │
+│ 16      │ 'dark'  │ 'sunken'       │ 91.5  │ 20 │
+│ 17      │ 'dark'  │ 'surface'      │ 92.3  │ 22 │
+│ 18      │ 'light' │ 'text'         │ 92.7  │ 22 │
+│ 19      │ 'dark'  │ 'page'         │ 95.7  │ 22 │
+└─────────┴─────────┴────────────────┴───────┴────┘
+JSON [{"mode":"light","use":"page","grade":0,"n":22},{"mode":"light","use":"surface","grade":1.5,"n":22},{"mode":"light","use":"sunken","grade":3.1,"n":20},{"mode":"light","use":"selected","grade":4,"n":9},{"mode":"dark","use":"text","grade":4,"n":22},{"mode":"light","use":"hover","grade":4.1,"n":18},{"mode":"light","use":"borderSubtle","grade":8.8,"n":21},{"mode":"light","use":"pressed","grade":8.9,"n":12},{"mode":"light","use":"borderStrong","grade":18.2,"n":21},{"mode":"dark","use":"textMuted","grade":26.6,"n":20},{"mode":"light","use":"textMuted","grade":61.2,"n":20},{"mode":"dark","use":"borderStrong","grade":64.3,"n":21},{"mode":"dark","use":"borderSubtle","grade":81.3,"n":21},{"mode":"dark","use":"selected","grade":83.8,"n":9},{"mode":"dark","use":"pressed","grade":85.6,"n":12},{"mode":"dark","use":"hover","grade":86.8,"n":18},{"mode":"dark","use":"sunken","grade":91.5,"n":20},{"mode":"dark","use":"surface","grade":92.3,"n":22},{"mode":"light","use":"text","grade":92.7,"n":22},{"mode":"dark","use":"page","grade":95.7,"n":22}]

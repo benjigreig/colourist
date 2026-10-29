@@ -25,5 +25,8 @@ Terms are defined in the glossary (CLR-93). Each row stays one line and links to
 | Should feedback colours come from the brand? | No. They're chosen for separation from it, from a survey of established systems | [D-007, D-026](decision-log.md) | Settled |
 | Decorative versus functional borders? | A decorative divider needn't reach 3:1; a border that identifies a control must | WCAG 1.4.11; earlier work; [ladder-distribution.md](research/ladder-distribution.md), Part 4 | Settled |
 | Can one focus colour serve a light surface and a dark fill? | No. Use a pair or a two-tone ring | Earlier work | Earlier work, to re-validate; belongs in CLR-27 |
+| How is the ladder derived from uses and contexts? | One preset shape for every family; mapping flags tokens with no step in range; after the beta, in-between steps are added only where a family's mapping needs them | [D-053](decision-log.md), [ladder-derivation.md](research/ladder-derivation.md) | Settled |
+| Can existing steps move? | Yes, in new work, re-spaced to keep gaps distinct. They stay fixed for imported systems, and optionally once a project is in use | [D-053](decision-log.md) | Settled |
+| Are exports trimmed to the steps in use? | No. Full ladders are exported as primitives | [D-053](decision-log.md) | Settled |
 | How do semantic tokens relate to steps? | Through their relationships; each theme resolves them | [D-051, D-052](decision-log.md), [colour-relationships.md](research/colour-relationships.md) | Settled |
 | Are states steps or overlays? | Still open | [D-052](decision-log.md) | Open |
