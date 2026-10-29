@@ -1,0 +1,105 @@
+{
+ "ajv (Ajv2020)": {
+  "pass": 1240,
+  "fail": 62,
+  "total": 1302,
+  "percent": 95.2,
+  "failedFiles": {
+   "dynamicRef.json": 25,
+   "enum.json": 6,
+   "properties.json": 1,
+   "ref.json": 8,
+   "required.json": 4,
+   "unevaluatedItems.json": 12,
+   "unevaluatedProperties.json": 5,
+   "vocabulary.json": 1
+  }
+ },
+ "@cfworker/json-schema": {
+  "pass": 1247,
+  "fail": 55,
+  "total": 1302,
+  "percent": 95.8,
+  "failedFiles": {
+   "anchor.json": 2,
+   "defs.json": 2,
+   "dynamicRef.json": 21,
+   "format.json": 15,
+   "properties.json": 4,
+   "ref.json": 3,
+   "required.json": 4,
+   "unevaluatedItems.json": 2,
+   "unevaluatedProperties.json": 1,
+   "vocabulary.json": 1
+  }
+ },
+ "@hyperjump/json-schema": {
+  "pass": 1274,
+  "fail": 28,
+  "total": 1302,
+  "percent": 97.8,
+  "failedFiles": {
+   "boolean_schema.json": 18,
+   "ref.json": 4,
+   "refRemote.json": 6
+  }
+ },
+ "@exodus/schemasafe": {
+  "pass": 1207,
+  "fail": 95,
+  "total": 1302,
+  "percent": 92.7,
+  "failedFiles": {
+   "anyOf.json": 4,
+   "defs.json": 2,
+   "dynamicRef.json": 10,
+   "format.json": 43,
+   "if-then-else.json": 4,
+   "minContains.json": 4,
+   "not.json": 11,
+   "oneOf.json": 3,
+   "ref.json": 2,
+   "unevaluatedItems.json": 5,
+   "unevaluatedProperties.json": 2,
+   "vocabulary.json": 5
+  }
+ },
+ "json-schema-library": {
+  "pass": 1288,
+  "fail": 14,
+  "total": 1302,
+  "percent": 98.9,
+  "failedFiles": {
+   "defs.json": 1,
+   "format.json": 9,
+   "ref.json": 1,
+   "refRemote.json": 2,
+   "vocabulary.json": 1
+  }
+ },
+ "jsonschema": {
+  "pass": 1059,
+  "fail": 243,
+  "total": 1302,
+  "percent": 81.3,
+  "failedFiles": {
+   "anchor.json": 8,
+   "defs.json": 2,
+   "dependentRequired.json": 6,
+   "dependentSchemas.json": 10,
+   "dynamicRef.json": 32,
+   "format.json": 15,
+   "items.json": 7,
+   "maxContains.json": 6,
+   "minContains.json": 12,
+   "not.json": 1,
+   "prefixItems.json": 2,
+   "ref.json": 45,
+   "refRemote.json": 15,
+   "unevaluatedItems.json": 28,
+   "unevaluatedProperties.json": 47,
+   "uniqueItems.json": 6,
+   "vocabulary.json": 1
+  }
+ }
+}

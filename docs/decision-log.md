@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-045 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-046 |
 
 ---
 
@@ -608,3 +608,16 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 **Consequences:**
 - The upgrade message can't show exact before-and-after colours without the old engine. Benji is fine with that: the person who shared a link can also share the exported reference sheet, which gives an exact comparison. An in-app comparison is a possible later feature.
 - This answers ADR 0005's open questions on old rules versions and on how a person's changes are stored.
+
+### D-046 · Project files and rules are validated by JSON Schema, precompiled with Ajv
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7 · **ADR:** [adr/0006-validation-library.md](adr/0006-validation-library.md)
+
+**Decision:** JSON Schema is written first. Ajv is a dev dependency only, used in tests and to generate the validators at build time. The generated validator is committed, formatted, and checked in CI. hyperjump cross-checks Ajv in CI. The app reads untrusted input through one function of our own, with a size cap.
+
+**Context:** ADR 0005 left the validation library open. Project files and share links come from outside and can't be trusted, the app runs under a strict security policy with no server, and anything that runs in the app ships to everyone, so it was assessed as a substantial dependency (D-014).
+
+**Alternatives considered:** Zod, Valibot, TypeBox and ArkType, writing the schema in code; Ajv compiled in the browser; cfworker, hyperjump and json-schema-library at runtime; schemasafe precompiled; jsonschema; a hand-written validator.
+
+**Why:** It's the only actively released option that works under our strict security policy and adds under 3 KB. The schema stays standard and publishable, and the library is easy to replace. The code-first libraries' exported schemas lost rules or were larger; Ajv in the browser needs `unsafe-eval`; the runtime libraries were larger, crashed on deep nesting or had a single maintainer; schemasafe is inactive; a hand-written validator would drift from the schema. Benji chose to commit the generated validator so every change to what ships can be read in review.
+
+**Consequences:** `packages/rules` gets a build step that generates and formats the validators. CI checks the test inputs through both Ajv and hyperjump, that the generated code is up to date, that the types agree with the schema, and the security-policy check in Chromium, Firefox and WebKit. Ajv's health is reviewed every October. The spike and desk research are kept in [research/validation/](research/validation/).

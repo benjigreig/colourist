@@ -1,0 +1,62 @@
+{
+ "ajv-validator/ajv": {
+  "stars": 14867,
+  "licence": "MIT",
+  "open_issues": 395,
+  "created": "2015-05-19",
+  "releases_12m": 3,
+  "latest_release": "v8.20.0 2026-04-24",
+  "commits_12m": 11,
+  "active_contributors_12m": 4,
+  "top_contributor_share": 0.64,
+  "bus_factor_50pct": 1
+ },
+ "cfworker/cfworker": {
+  "stars": 705,
+  "licence": "MIT",
+  "open_issues": 23,
+  "created": "2020-01-02",
+  "releases_12m": 0,
+  "latest_release": "@cfworker/web@5.1.0 2025-08-12",
+  "commits_12m": 2,
+  "active_contributors_12m": 1,
+  "top_contributor_share": 1.0,
+  "bus_factor_50pct": 1
+ },
+ "hyperjump-io/json-schema": {
+  "stars": 314,
+  "licence": "MIT",
+  "open_issues": 11,
+  "created": "2020-03-13",
+  "releases_12m": 0,
+  "latest_release": null,
+  "commits_12m": 82,
+  "active_contributors_12m": 13,
+  "top_contributor_share": 0.59,
+  "bus_factor_50pct": 1
+ },
+ "ExodusMovement/schemasafe": {
+  "stars": 175,
+  "licence": "MIT",
+  "open_issues": 19,
+  "created": "2020-06-11",
+  "releases_12m": 0,
+  "latest_release": null,
+  "commits_12m": 0,
+  "active_contributors_12m": 0,
+  "top_contributor_share": null,
+  "bus_factor_50pct": 0
+ },
+ "sagold/json-schema-library": {
+  "stars": 254,
+  "licence": "MIT",
+  "open_issues": 2,
+  "created": "2016-11-09",
+  "releases_12m": 4,
+  "latest_release": "v11.6.16 2026-10-23",
+  "commits_12m": 165,
+  "active_contributors_12m": 12,
+  "top_contributor_share": 0.76,
+  "bus_factor_50pct": 1
+ }
+}

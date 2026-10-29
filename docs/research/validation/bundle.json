@@ -1,0 +1,53 @@
+{
+ "ajv-runtime": {
+  "bytes": 136206,
+  "gzip": 41111,
+  "brotli": 36280
+ },
+ "ajv-standalone": {
+  "bytes": 13341,
+  "gzip": 2832,
+  "brotli": 2507
+ },
+ "arktype": {
+  "bytes": 162977,
+  "gzip": 51044,
+  "brotli": 44999
+ },
+ "cfworker": {
+  "bytes": 22926,
+  "gzip": 6410,
+  "brotli": 5769
+ },
+ "hyperjump": {
+  "bytes": 68717,
+  "gzip": 16289,
+  "brotli": 14461,
+  "note": "bundled with Vite: esbuild alone can't resolve the package's browser entry"
+ },
+ "jsl": {
+  "bytes": 127369,
+  "gzip": 33883,
+  "brotli": 29199
+ },
+ "schemasafe-precompiled": {
+  "bytes": 8906,
+  "gzip": 1528,
+  "brotli": 1343
+ },
+ "typebox": {
+  "bytes": 152079,
+  "gzip": 38851,
+  "brotli": 33508
+ },
+ "valibot": {
+  "bytes": 8740,
+  "gzip": 2702,
+  "brotli": 2437
+ },
+ "zod": {
+  "bytes": 97203,
+  "gzip": 28098,
+  "brotli": 24975
+ }
+}

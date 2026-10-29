@@ -1,0 +1,62 @@
+{
+ "sinclairzx81/typebox": {
+  "stars": 7016,
+  "licence": "NOASSERTION",
+  "open_issues": 12,
+  "created": "2017-04-06",
+  "releases_12m": 0,
+  "latest_release": null,
+  "commits_12m": 212,
+  "active_contributors_12m": 11,
+  "top_contributor_share": 0.94,
+  "bus_factor_50pct": 1
+ },
+ "colinhacks/zod": {
+  "stars": 44221,
+  "licence": "MIT",
+  "open_issues": 112,
+  "created": "2020-03-07",
+  "releases_12m": 27,
+  "latest_release": "v4.6.7 2026-10-12",
+  "commits_12m": 545,
+  "active_contributors_12m": 27,
+  "top_contributor_share": 0.8,
+  "bus_factor_50pct": 1
+ },
+ "open-circle/valibot": {
+  "stars": 9053,
+  "licence": "MIT",
+  "open_issues": 231,
+  "created": "2023-07-07",
+  "releases_12m": 19,
+  "latest_release": "v1.3.0-i18n 2026-09-14",
+  "commits_12m": 0,
+  "active_contributors_12m": 0,
+  "top_contributor_share": null,
+  "bus_factor_50pct": 0
+ },
+ "arktypeio/arktype": {
+  "stars": 7888,
+  "licence": "MIT",
+  "open_issues": 233,
+  "created": "2019-06-21",
+  "releases_12m": 100,
+  "latest_release": "@arktype/attest@0.58.0 2026-10-22",
+  "commits_12m": 136,
+  "active_contributors_12m": 40,
+  "top_contributor_share": 0.4,
+  "bus_factor_50pct": 2
+ },
+ "tdegrunt/jsonschema": {
+  "stars": 1875,
+  "licence": "NOASSERTION",
+  "open_issues": 76,
+  "created": "2012-07-06",
+  "releases_12m": 0,
+  "latest_release": null,
+  "commits_12m": 2,
+  "active_contributors_12m": 1,
+  "top_contributor_share": 1.0,
+  "bus_factor_50pct": 1
+ }
+}

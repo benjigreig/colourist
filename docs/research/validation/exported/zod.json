@@ -1,0 +1,91 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "format": {
+   "type": "string",
+   "const": "colourist-project"
+  },
+  "formatVersion": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 1000
+  },
+  "rulesVersion": {
+   "type": "string",
+   "pattern": "^[0-9]{1,4}\\.[0-9]{1,4}\\.[0-9]{1,4}$"
+  },
+  "engineVersion": {
+   "type": "string",
+   "pattern": "^[0-9]{1,4}\\.[0-9]{1,4}\\.[0-9]{1,4}$"
+  },
+  "name": {
+   "type": "string",
+   "minLength": 1,
+   "maxLength": 120
+  },
+  "target": {
+   "type": "string",
+   "enum": [
+    "AA",
+    "AAA"
+   ]
+  },
+  "colours": {
+   "minItems": 1,
+   "maxItems": 64,
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]{1,32}$"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+     },
+     "group": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,31}$"
+     },
+     "value": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "group",
+     "value"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "overrides": {
+   "type": "object",
+   "propertyNames": {
+    "type": "string",
+    "pattern": "^[a-z][a-zA-Z0-9]{0,40}(\\.[a-zA-Z0-9]{1,40}){0,8}$"
+   },
+   "additionalProperties": {
+    "type": [
+     "number",
+     "string",
+     "boolean"
+    ]
+   }
+  }
+ },
+ "required": [
+  "format",
+  "formatVersion",
+  "rulesVersion",
+  "engineVersion",
+  "colours"
+ ],
+ "additionalProperties": false
+}

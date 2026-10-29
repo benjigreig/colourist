@@ -1,0 +1,1757 @@
+{
+ "ajv-runtime": {
+  "name": "Ajv, compiled at runtime",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.7,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0/value must match pattern \"^#[0-9a-fA-F]{6}$\""
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "/ must have required property 'engineVersion'"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/ must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/ must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/overrides must match pattern \"^[a-z][a-zA-Z0-9]{0,40}(\\.[a-zA-Z0-9]{1,40}){0,8}$\"",
+     "/overrides property name must be valid",
+     "/overrides/__proto__ must be number,string,boolean"
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0 must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0 must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.5,
+    "errors": [
+     "/overrides/deep must be number,string,boolean"
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 49,
+    "errors": [
+     "/colours must NOT have more than 64 items"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 6.2,
+    "errors": [
+     "/name must NOT have more than 120 characters"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/overrides must match pattern \"^[a-z][a-zA-Z0-9]{0,40}(\\.[a-zA-Z0-9]{1,40}){0,8}$\"",
+     "/overrides property name must be valid"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/overrides must NOT have more than 200 properties"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours must be array"
+    ]
+   }
+  ],
+  "medianMicroseconds": 3,
+  "correct": "14/14"
+ },
+ "ajv-standalone": {
+  "name": "Ajv, precompiled",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.5,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0/value must match pattern \"^#[0-9a-fA-F]{6}$\""
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/ must have required property 'engineVersion'"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/ must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/ must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/overrides must match pattern \"^[a-z][a-zA-Z0-9]{0,40}(\\.[a-zA-Z0-9]{1,40}){0,8}$\"",
+     "/overrides property name must be valid",
+     "/overrides/__proto__ must be number,string,boolean"
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0 must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0 must NOT have additional properties"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.7,
+    "errors": [
+     "/overrides/deep must be number,string,boolean"
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 46.3,
+    "errors": [
+     "/colours must NOT have more than 64 items"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 2.9,
+    "errors": [
+     "/name must NOT have more than 120 characters"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/overrides must match pattern \"^[a-z][a-zA-Z0-9]{0,40}(\\.[a-zA-Z0-9]{1,40}){0,8}$\"",
+     "/overrides property name must be valid"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/overrides must NOT have more than 200 properties"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours must be array"
+    ]
+   }
+  ],
+  "medianMicroseconds": 3,
+  "correct": "14/14"
+ },
+ "arktype": {
+  "name": "ArkType (jitless)",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.7,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.8,
+    "errors": [
+     "colours[0].value must be matched by ^#[0-9a-fA-F]{6}$ (was \"#12345\")"
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "engineVersion must be a string (was missing)"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "extra must be removed"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "__proto__ must be removed"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": true,
+    "correct": false,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": []
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "colours[0].constructor must be removed"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "colours[0].toString must be removed"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": null,
+    "correct": false,
+    "threw": "Maximum call stack size exceeded",
+    "polluted": false,
+    "ms": 20.3,
+    "errors": []
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 31.1,
+    "errors": [
+     "colours must be at most length 64 (was 100000)"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.4,
+    "errors": [
+     "name must be at most length 120 (was 1000000)"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": true,
+    "correct": false,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": []
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.7,
+    "errors": [
+     "overrides must be valid according to an anonymous predicate (was {\"setting0\":1,\"setting1\":1,\"setting2\":1,\"setting3\":1,\"setting4\":1,\"setting5\":1,\"setting6\":1,\"setting7\":1,\"setting8\":1,\"setting9\":1,\"setting10\":1,\"setting11\":1,\"setting12\":1,\"setting13\":1,\"setting14\":1,\"setting15\":1,\"setting16\":1,\"setting17\":1,\"setting18\":1,\"setting19\":1,\"setting20\":1,\"setting21\":1,\"setting22\":1,\"setting23\":1,\"setting24\":1,\"setting25\":1,\"setting26\":1,\"setting27\":1,\"setting28\":1,\"setting29\":1,\"setting30\":1,\"setting31\":1,\"setting32\":1,\"setting33\":1,\"setting34\":1,\"setting35\":1,\"setting36\":1,\"setting37\":1,\"setting38\":1,\"setting39\":1,\"setting40\":1,\"setting41\":1,\"setting42\":1,\"setting43\":1,\"setting44\":1,\"setting45\":1,\"setting46\":1,\"setting47\":1,\"setting48\":1,\"setting49\":1,\"setting50\":1,\"setting51\":1,\"setting52\":1,\"setting53\":1,\"setting54\":1,\"setting55\":1,\"setting56\":1,\"setting57\":1,\"setting58\":1,\"setting59\":1,\"setting60\":1,\"setting61\":1,\"setting62\":1,\"setting63\":1,\"setting64\":1,\"setting65\":1,\"setting66\":1,\"setting67\":1,\"setting68\":1,\"setting69\":1,\"setting70\":1,\"setting71\":1,\"setting72\":1,\"setting73\":1,\"setting74\":1,\"setting75\":1,\"setting76\":1,\"setting77\":1,\"setting78\":1,\"setting79\":1,\"setting80\":1,\"setting81\":1,\"setting82\":1,\"setting83\":1,\"setting84\":1,\"setting85\":1,\"setting86\":1,\"setting87\":1,\"setting88\":1,\"setting89\":1,\"setting90\":1,\"setting91\":1,\"setting92\":1,\"setting93\":1,\"setting94\":1,\"setting95\":1,\"setting96\":1,\"setting97\":1,\"setting98\":1,\"setting99\":1,\"setting100\":1,\"setting101\":1,\"setting102\":1,\"setting103\":1,\"setting104\":1,\"setting105\":1,\"setting106\":1,\"setting107\":1,\"setting108\":1,\"setting109\":1,\"setting110\":1,\"setting111\":1,\"setting112\":1,\"setting113\":1,\"setting114\":1,\"setting115\":1,\"setting116\":1,\"setting117\":1,\"setting118\":1,\"setting119\":1,\"setting120\":1,\"setting121\":1,\"setting122\":1,\"setting123\":1,\"setting124\":1,\"setting125\":1,\"setting126\":1,\"setting127\":1,\"setting128\":1,\"setting129\":1,\"setting130\":1,\"setting131\":1,\"setting132\":1,\"setting133\":1,\"setting134\":1,\"setting135\":1,\"setting136\":1,\"setting137\":1,\"setting138\":1,\"setting139\":1,\"setting140\":1,\"setting141\":1,\"setting142\":1,\"setting143\":1,\"setting144\":1,\"setting145\":1,\"setting146\":1,\"setting147\":1,\"setting148\":1,\"setting149\":1,\"setting150\":1,\"setting151\":1,\"setting152\":1,\"setting153\":1,\"setting154\":1,\"setting155\":1,\"setting156\":1,\"setting157\":1,\"setting158\":1,\"setting159\":1,\"setting160\":1,\"setting161\":1,\"setting162\":1,\"setting163\":1,\"setting164\":1,\"setting165\":1,\"setting166\":1,\"setting167\":1,\"setting168\":1,\"setting169\":1,\"setting170\":1,\"setting171\":1,\"setting172\":1,\"setting173\":1,\"setting174\":1,\"setting175\":1,\"setting176\":1,\"setting177\":1,\"setting178\":1,\"setting179\":1,\"setting180\":1,\"setting181\":1,\"setting182\":1,\"setting183\":1,\"setting184\":1,\"setting185\":1,\"setting186\":1,\"setting187\":1,\"setting188\":1,\"setting189\":1,\"setting190\":1,\"setting191\":1,\"setting192\":1,\"setting193\":1,\"setting194\":1,\"setting195\":1,\"setting196\":1,\"setting197\":1,\"setting198\":1,\"setting199\":1,\"setting200\":1})"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "colours must be an array (was string)"
+    ]
+   }
+  ],
+  "medianMicroseconds": 7,
+  "correct": "11/14"
+ },
+ "cfworker": {
+  "name": "@cfworker/json-schema",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.3,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "# Property \"colours\" does not match schema.",
+     "#/colours Items did not match schema.",
+     "#/colours/0 Property \"value\" does not match schema."
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "# Instance does not have required property \"engineVersion\"."
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "# Property \"extra\" does not match additional properties schema.",
+     "#/extra False boolean schema."
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "# Property \"__proto__\" does not match additional properties schema.",
+     "#/__proto__ False boolean schema."
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "# Property \"overrides\" does not match schema.",
+     "#/overrides Property name \"__proto__\" does not match schema.",
+     "#/overrides/__proto__ String does not match pattern."
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "# Property \"colours\" does not match schema.",
+     "#/colours Items did not match schema.",
+     "#/colours/0 Property \"constructor\" does not match additional properties schema."
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "# Property \"colours\" does not match schema.",
+     "#/colours Items did not match schema.",
+     "#/colours/0 Property \"toString\" does not match additional properties schema."
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.4,
+    "errors": [
+     "# Property \"overrides\" does not match schema.",
+     "#/overrides Property \"deep\" does not match additional properties schema.",
+     "#/overrides/deep Instance type \"array\" is invalid. Expected \"number\", \"string\", \"boolean\"."
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 364.3,
+    "errors": [
+     "# Property \"colours\" does not match schema.",
+     "#/colours Array has too many items (100000 > 64).",
+     "# Property \"colours\" does not match additional properties schema."
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 2.4,
+    "errors": [
+     "# Property \"name\" does not match schema.",
+     "#/name String is too long (1000000 > 120).",
+     "# Property \"name\" does not match additional properties schema."
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "# Property \"overrides\" does not match schema.",
+     "#/overrides Property name \"Not A Setting\" does not match schema.",
+     "#/overrides/Not%20A%20Setting String does not match pattern."
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.4,
+    "errors": [
+     "# Property \"overrides\" does not match schema.",
+     "#/overrides Instance does not have at least 200 properties.",
+     "# Property \"overrides\" does not match additional properties schema."
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "# Property \"colours\" does not match schema.",
+     "#/colours Instance type \"string\" is invalid. Expected \"array\".",
+     "# Property \"colours\" does not match additional properties schema."
+    ]
+   }
+  ],
+  "medianMicroseconds": 33,
+  "correct": "14/14"
+ },
+ "hyperjump": {
+  "name": "@hyperjump/json-schema",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 25.9,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "#/colours/0/value https://json-schema.org/keyword/pattern"
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "# https://json-schema.org/keyword/required"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "#/extra https://json-schema.org/evaluation/validate"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "#/__proto__ https://json-schema.org/evaluation/validate"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "#*/overrides/__proto__ https://json-schema.org/keyword/pattern",
+     "#/overrides/__proto__ https://json-schema.org/keyword/type"
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours/0/constructor https://json-schema.org/evaluation/validate"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours/0/toString https://json-schema.org/evaluation/validate"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": null,
+    "correct": false,
+    "threw": "Maximum call stack size exceeded",
+    "polluted": false,
+    "ms": 2.2,
+    "errors": []
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 366.2,
+    "errors": [
+     "#/colours https://json-schema.org/keyword/maxItems"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 17.9,
+    "errors": [
+     "#/name https://json-schema.org/keyword/maxLength"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "#*/overrides/Not%20A%20Setting https://json-schema.org/keyword/pattern"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "#/overrides https://json-schema.org/keyword/maxProperties"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours https://json-schema.org/keyword/type"
+    ]
+   }
+  ],
+  "medianMicroseconds": 13,
+  "correct": "13/14"
+ },
+ "jsl": {
+  "name": "json-schema-library",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.9,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "Value in `#/colours/0/value` should match `^#[0-9a-fA-F]{6}$`, but received `#12345`"
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "The required property `engineVersion` is missing at `#`"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "Additional property `extra` in `#/extra` is not allowed"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "Additional property `__proto__` in `#/__proto__` is not allowed"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "Invalid property name `__proto__` at `#/overrides`",
+     "Expected `{\"polluted\":true}` (object) in `#/overrides/__proto__` to be of type `[\"number\",\"string\",\"boolean\"]`"
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "Additional property `constructor` in `#/colours/0/constructor` is not allowed"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "Additional property `toString` in `#/colours/0/toString` is not allowed"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": null,
+    "correct": false,
+    "threw": "Maximum call stack size exceeded",
+    "polluted": false,
+    "ms": 6.3,
+    "errors": []
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 418.8,
+    "errors": [
+     "Too many items in `#/colours`, should be `64` at most, but got `100000`"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 41.5,
+    "errors": [
+     "Value `#/name` should have a maximum length of `120`, but got `1000000`."
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "Invalid property name `Not A Setting` at `#/overrides`"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "Too many properties in `#/overrides`, should be `200` at most, but got `201`"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "Expected `red` (string) in `#/colours` to be of type `array`"
+    ]
+   }
+  ],
+  "medianMicroseconds": 21,
+  "correct": "13/14"
+ },
+ "schemasafe-precompiled": {
+  "name": "schemasafe, precompiled",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.5,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours/0/value #/properties/colours/items/properties/value/pattern"
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "#/engineVersion #/required"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "#/extra #/additionalProperties"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/__proto__ #/additionalProperties"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/overrides/__proto__ #/properties/overrides/propertyNames/pattern",
+     "#/overrides/__proto__ #/properties/overrides/additionalProperties/type"
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours/0/constructor #/properties/colours/items/additionalProperties"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours/0/toString #/properties/colours/items/additionalProperties"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.6,
+    "errors": [
+     "#/overrides/deep #/properties/overrides/additionalProperties/type"
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 75.8,
+    "errors": [
+     "#/colours #/properties/colours/maxItems"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.4,
+    "errors": [
+     "#/name #/properties/name/maxLength"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "#/overrides/Not A Setting #/properties/overrides/propertyNames/pattern"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "#/overrides #/properties/overrides/maxProperties"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "#/colours #/properties/colours/type"
+    ]
+   }
+  ],
+  "medianMicroseconds": 5,
+  "correct": "14/14"
+ },
+ "typebox": {
+  "name": "TypeBox",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 2.1,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.4,
+    "errors": [
+     "/colours/0/value must match pattern \"^#[0-9a-fA-F]{6}$\""
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     " must have required properties engineVersion"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1,
+    "errors": [
+     "/extra schema is false",
+     " must not have additional properties"
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "/__proto__ schema is false",
+     " must not have additional properties"
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "/overrides/__proto__ schema is false",
+     "/overrides must not have additional properties"
+    ]
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "/colours/0/constructor schema is false",
+     "/colours/0 must not have additional properties"
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "/colours/0/toString schema is false",
+     "/colours/0 must not have additional properties"
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1,
+    "errors": [
+     "/overrides/deep must be number",
+     "/overrides/deep must be string",
+     "/overrides/deep must be boolean"
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1151.1,
+    "errors": [
+     "/colours must not have more than 64 items"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.7,
+    "errors": [
+     "/name must not have more than 120 characters"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/overrides/Not A Setting schema is false",
+     "/overrides must not have additional properties"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 2.5,
+    "errors": [
+     "/overrides must not have more than 200 properties"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/colours must be array"
+    ]
+   }
+  ],
+  "medianMicroseconds": 35,
+  "correct": "14/14"
+ },
+ "valibot": {
+  "name": "Valibot",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/colours/0/value Invalid format: Expected /^#[0-9a-fA-F]{6}$/ but received \"#12345\""
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "/engineVersion Invalid key: Expected \"engineVersion\" but received undefined"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/extra Invalid key: Expected never but received \"extra\""
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/__proto__ Invalid key: Expected never but received \"__proto__\""
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": true,
+    "correct": false,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": []
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0/constructor Invalid key: Expected never but received \"constructor\""
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours/0/toString Invalid key: Expected never but received \"toString\""
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.7,
+    "errors": [
+     "/overrides/deep Invalid type: Expected (number | string | boolean) but received Array"
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 96,
+    "errors": [
+     "/colours Invalid length: Expected <=64 but received 100000"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.3,
+    "errors": [
+     "/name Invalid length: Expected <=120 but received 1000000"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/overrides/Not A Setting Invalid format: Expected /^[a-z][a-zA-Z0-9]{0,40}(\\.[a-zA-Z0-9]{1,40}){0,8}$/ but received \"Not A Setting\""
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "/overrides Invalid input: Received Object"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours Invalid type: Expected Array but received \"red\""
+    ]
+   }
+  ],
+  "medianMicroseconds": 7,
+  "correct": "13/14"
+ },
+ "zod": {
+  "name": "Zod (jitless)",
+  "cases": [
+   {
+    "desc": "valid project",
+    "expected": true,
+    "ok": true,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 2,
+    "errors": []
+   },
+   {
+    "desc": "bad hex value",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.5,
+    "errors": [
+     "/colours/0/value Invalid string: must match pattern /^#[0-9a-fA-F]{6}$/"
+    ]
+   },
+   {
+    "desc": "missing engine version",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "/engineVersion Invalid input: expected string, received undefined"
+    ]
+   },
+   {
+    "desc": "unknown top-level property",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.2,
+    "errors": [
+     "/ Unrecognized key: \"extra\""
+    ]
+   },
+   {
+    "desc": "__proto__ at top level",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/ Unrecognized key: \"__proto__\""
+    ]
+   },
+   {
+    "desc": "__proto__ inside overrides",
+    "expected": false,
+    "ok": true,
+    "correct": false,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": []
+   },
+   {
+    "desc": "constructor key in a colour",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/colours/0 Unrecognized key: \"constructor\""
+    ]
+   },
+   {
+    "desc": "colour with an extra toString key",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.1,
+    "errors": [
+     "/colours/0 Unrecognized key: \"toString\""
+    ]
+   },
+   {
+    "desc": "deeply nested override value (10,000 levels)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1,
+    "errors": [
+     "/overrides/deep Invalid input"
+    ]
+   },
+   {
+    "desc": "too many colours (100,000)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 31.9,
+    "errors": [
+     "/colours Too big: expected array to have <=64 items"
+    ]
+   },
+   {
+    "desc": "very long name (1 MB)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 1.3,
+    "errors": [
+     "/name Too big: expected string to have <=120 characters"
+    ]
+   },
+   {
+    "desc": "override with a badly formed name",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.3,
+    "errors": [
+     "/overrides/Not A Setting Invalid key in record"
+    ]
+   },
+   {
+    "desc": "too many overrides (201)",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0.4,
+    "errors": [
+     "/overrides Invalid input"
+    ]
+   },
+   {
+    "desc": "wrong type for colours",
+    "expected": false,
+    "ok": false,
+    "correct": true,
+    "threw": null,
+    "polluted": false,
+    "ms": 0,
+    "errors": [
+     "/colours Invalid input: expected array, received string"
+    ]
+   }
+  ],
+  "medianMicroseconds": 10,
+  "correct": "13/14"
+ }
+}

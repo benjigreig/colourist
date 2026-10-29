@@ -1,0 +1,18 @@
+{
+ "sagold/json-schema-library": {
+  "issues_opened_12m": 34,
+  "issues_closed_of_those": 33,
+  "close_rate": 0.97,
+  "sample": 2,
+  "responded": 2,
+  "median_first_response_h": 783.1
+ },
+ "sinclairzx81/typebox": {
+  "issues_opened_12m": 100,
+  "issues_closed_of_those": 94,
+  "close_rate": 0.94,
+  "sample": 2,
+  "responded": 2,
+  "median_first_response_h": 102.5
+ }
+}

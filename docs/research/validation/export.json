@@ -1,0 +1,26 @@
+{
+ "typebox": {
+  "$schema": null,
+  "disagreements": []
+ },
+ "zod": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "disagreements": [
+   "too many overrides (201)"
+  ]
+ },
+ "valibot": {
+  "$schema": null,
+  "disagreements": [
+   "too many overrides (201)"
+  ]
+ },
+ "arktype": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "disagreements": [
+   "__proto__ inside overrides",
+   "override with a badly formed name",
+   "too many overrides (201)"
+  ]
+ }
+}

@@ -1,6 +1,6 @@
 # ADR 0005 · Rules schema design
 
-**Date:** 29 Oct 2026 · **Status:** Accepted, with one open question (the validation library) · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-045
+**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046
 
 ## Decision
 
@@ -100,10 +100,10 @@ Golden tests, which check fixed reference outputs, enforce it. Published version
 - Contrast grades and their rounding live in the engine. Names are rounded for people, and checks always use exact values.
 - CLR-13 decides the ladder presets' values, and whether smaller ladders are subsets of larger ones.
 
-## Open question
+## Validation library
 
-**The validation library.** ADR 0004 left schema validation to this design. Validation is needed in two places:
+This was left open when the schema design was accepted. ADR 0004 had left schema validation to this design. Validation is needed in two places:
 - **In tests and CI,** to check the rules file against the schema.
 - **In the app,** to check project files and share links, which come from outside and can't be trusted.
 
-Because it runs in the app, the library ships to people using colouri.st. That makes it a substantial dependency, to be assessed under D-014 before it's chosen.
+It was assessed under D-014 and decided in [ADR 0006](0006-validation-library.md) (D-046): JSON Schema, precompiled with Ajv at build time.

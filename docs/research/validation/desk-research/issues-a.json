@@ -1,0 +1,26 @@
+{
+ "ajv-validator/ajv": {
+  "issues_opened_12m": 44,
+  "issues_closed_of_those": 8,
+  "close_rate": 0.18,
+  "sample": 2,
+  "responded": 0,
+  "median_first_response_h": null
+ },
+ "cfworker/cfworker": {
+  "issues_opened_12m": 4,
+  "issues_closed_of_those": 0,
+  "close_rate": 0.0,
+  "sample": 1,
+  "responded": 0,
+  "median_first_response_h": null
+ },
+ "hyperjump-io/json-schema": {
+  "issues_opened_12m": 25,
+  "issues_closed_of_those": 18,
+  "close_rate": 0.72,
+  "sample": 0,
+  "responded": 0,
+  "median_first_response_h": null
+ }
+}

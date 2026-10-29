@@ -1,0 +1,26 @@
+{
+ "colinhacks/zod": {
+  "issues_opened_12m": 420,
+  "issues_closed_of_those": 337,
+  "close_rate": 0.8,
+  "sample": 2,
+  "responded": 2,
+  "median_first_response_h": 21.0
+ },
+ "open-circle/valibot": {
+  "issues_opened_12m": 89,
+  "issues_closed_of_those": 35,
+  "close_rate": 0.39,
+  "sample": 2,
+  "responded": 2,
+  "median_first_response_h": 17.9
+ },
+ "arktypeio/arktype": {
+  "issues_opened_12m": 85,
+  "issues_closed_of_those": 42,
+  "close_rate": 0.49,
+  "sample": 2,
+  "responded": 1,
+  "median_first_response_h": 18.5
+ }
+}

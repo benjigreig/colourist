@@ -1,0 +1,76 @@
+{
+ "ajv": {
+  "transitive": [
+   "fast-deep-equal",
+   "fast-uri",
+   "json-schema-traverse",
+   "require-from-string"
+  ],
+  "count": 4,
+  "installedKB": 3084
+ },
+ "@cfworker/json-schema": {
+  "transitive": [],
+  "count": 0,
+  "installedKB": 376
+ },
+ "@hyperjump/json-schema": {
+  "transitive": [
+   "@hyperjump/json-pointer",
+   "@hyperjump/json-schema-formats",
+   "@hyperjump/uri",
+   "idn-hostname",
+   "punycode",
+   "@hyperjump/pact",
+   "content-type",
+   "just-curry-it",
+   "uuid"
+  ],
+  "count": 9,
+  "installedKB": 2116
+ },
+ "@exodus/schemasafe": {
+  "transitive": [],
+  "count": 0,
+  "installedKB": 172
+ },
+ "json-schema-library": {
+  "transitive": [
+   "@hyperjump/json-schema-formats",
+   "@hyperjump/uri",
+   "idn-hostname",
+   "punycode",
+   "@sagold/json-pointer",
+   "fast-copy",
+   "fast-deep-equal",
+   "fast-uri",
+   "valid-url"
+  ],
+  "count": 9,
+  "installedKB": 5680
+ },
+ "typebox": {
+  "transitive": [],
+  "count": 0,
+  "installedKB": 6492
+ },
+ "zod": {
+  "transitive": [],
+  "count": 0,
+  "installedKB": 8380
+ },
+ "valibot": {
+  "transitive": [],
+  "count": 0,
+  "installedKB": 1848
+ },
+ "arktype": {
+  "transitive": [
+   "@ark/util",
+   "@ark/schema",
+   "arkregex"
+  ],
+  "count": 3,
+  "installedKB": 1804
+ }
+}

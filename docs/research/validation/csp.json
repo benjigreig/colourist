@@ -1,0 +1,200 @@
+{
+ "policy": "default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'",
+ "results": {
+  "chromium": {
+   "ajv-runtime": {
+    "loaded": false,
+    "error": "Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self'\".\n",
+    "violations": [
+     "script-src: eval"
+    ]
+   },
+   "ajv-standalone": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "arktype": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": [
+     "script-src: eval"
+    ]
+   },
+   "cfworker": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "hyperjump": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "jsl": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "schemasafe-precompiled": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "typebox": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "valibot": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "zod": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   }
+  },
+  "firefox": {
+   "ajv-runtime": {
+    "loaded": false,
+    "error": "call to Function() blocked by CSP",
+    "violations": [
+     "script-src: eval"
+    ]
+   },
+   "ajv-standalone": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "arktype": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": [
+     "script-src: eval"
+    ]
+   },
+   "cfworker": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "hyperjump": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "jsl": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "schemasafe-precompiled": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "typebox": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "valibot": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "zod": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   }
+  },
+  "webkit": {
+   "ajv-runtime": {
+    "loaded": false,
+    "error": "Refused to evaluate a string as JavaScript because 'unsafe-eval' or 'trusted-types-eval' is not an allowed source of script in the following Content Security Policy directive: \"script-src 'self'\".\n",
+    "violations": [
+     "script-src: eval"
+    ]
+   },
+   "ajv-standalone": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "arktype": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": [
+     "script-src: eval"
+    ]
+   },
+   "cfworker": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "hyperjump": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "jsl": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "schemasafe-precompiled": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "typebox": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "valibot": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   },
+   "zod": {
+    "loaded": true,
+    "validAccepted": true,
+    "badRejected": true,
+    "violations": []
+   }
+  }
+ }
+}
