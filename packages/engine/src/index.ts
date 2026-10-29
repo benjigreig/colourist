@@ -41,6 +41,7 @@ export {
 } from './oklab.ts';
 export { srgbToHsl, type Hsl } from './hsl.ts';
 export { deltaE2000, deltaEOk } from './delta-e.ts';
+export { contrastGrade, gradesForRatio } from './grade.ts';
 export {
   CIE_LCH,
   CIE_LCH_METHOD,

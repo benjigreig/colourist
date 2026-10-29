@@ -1,0 +1,377 @@
+{
+  "$schema": "./schema/rules.schema.json",
+  "meta": { "rulesVersion": "0.1.0", "schemaVersion": 1 },
+  "ladders": {
+    "presets": {
+      "steps11": {
+        "steps": [
+          { "lstar": 98, "grade": 2 },
+          { "lstar": 94, "grade": 5 },
+          { "lstar": 86, "grade": 12 },
+          { "lstar": 76, "grade": 21 },
+          { "lstar": 65, "grade": 32 },
+          { "lstar": 54, "grade": 45 },
+          { "lstar": 43, "grade": 58 },
+          { "lstar": 33, "grade": 70 },
+          { "lstar": 23, "grade": 81 },
+          { "lstar": 14, "grade": 90 },
+          { "lstar": 7, "grade": 95 }
+        ],
+        "reason": "rules.ladders.steps11.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in L* values from the framework spike (docs/research/framework/core/config.ts)."
+        }
+      },
+      "steps13": {
+        "steps": [
+          { "lstar": 98, "grade": 2 },
+          { "lstar": 96, "grade": 3 },
+          { "lstar": 92, "grade": 7 },
+          { "lstar": 86, "grade": 12 },
+          { "lstar": 78, "grade": 19 },
+          { "lstar": 68, "grade": 29 },
+          { "lstar": 57, "grade": 41 },
+          { "lstar": 46, "grade": 54 },
+          { "lstar": 35, "grade": 67 },
+          { "lstar": 25, "grade": 79 },
+          { "lstar": 17, "grade": 88 },
+          { "lstar": 10, "grade": 93 },
+          { "lstar": 5, "grade": 97 }
+        ],
+        "reason": "rules.ladders.steps13.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in: the 13-step ladder ADR 0001 compared colour models on. The ladder distribution research suggests reshaping it."
+        }
+      },
+      "steps15": {
+        "steps": [
+          { "lstar": 98, "grade": 2 },
+          { "lstar": 96, "grade": 3 },
+          { "lstar": 93, "grade": 6 },
+          { "lstar": 88, "grade": 10 },
+          { "lstar": 82, "grade": 16 },
+          { "lstar": 74, "grade": 23 },
+          { "lstar": 65, "grade": 32 },
+          { "lstar": 56, "grade": 42 },
+          { "lstar": 47, "grade": 53 },
+          { "lstar": 38, "grade": 64 },
+          { "lstar": 30, "grade": 73 },
+          { "lstar": 22, "grade": 83 },
+          { "lstar": 15, "grade": 89 },
+          { "lstar": 9, "grade": 94 },
+          { "lstar": 4, "grade": 97 }
+        ],
+        "reason": "rules.ladders.steps15.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in L* values from the framework spike (docs/research/framework/core/config.ts)."
+        }
+      }
+    },
+    "recommended": {
+      "preset": "steps13",
+      "reason": "rules.ladders.recommended.reason",
+      "placeholder": {
+        "ticket": "CLR-13",
+        "note": "Stand-in: always the 13-step ladder. CLR-13 decides the recommendation and what drives it, such as whether dark mode is needed."
+      }
+    },
+    "states": {
+      "reason": "rules.ladders.states.reason",
+      "placeholder": {
+        "ticket": "CLR-13",
+        "note": "Undecided: whether states such as hover and pressed are ladder steps or overlays. Nothing here assumes either."
+      }
+    }
+  },
+  "contrast": {
+    "defaultLevel": "aa",
+    "contexts": {
+      "light": { "reason": "rules.contrast.contexts.light.reason" },
+      "dark": { "reason": "rules.contrast.contexts.dark.reason" },
+      "moreContrast": {
+        "reason": "rules.contrast.contexts.moreContrast.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in: the ladder distribution research suggests a more-contrast version of every theme. Whether it's in the beta, and its targets, are undecided."
+        }
+      }
+    },
+    "uses": {
+      "bodyText": {
+        "wcag": ["1.4.3", "1.4.6"],
+        "targets": {
+          "aa": { "ratio": 4.5, "grades": 50 },
+          "aaa": { "ratio": 7, "grades": 64 }
+        },
+        "contexts": {
+          "moreContrast": {
+            "placeholder": {
+              "ticket": "CLR-13",
+              "note": "Undecided: the targets for body text in more contrast."
+            }
+          }
+        },
+        "reason": "rules.contrast.uses.bodyText.reason"
+      },
+      "largeText": {
+        "wcag": ["1.4.3", "1.4.6"],
+        "targets": {
+          "aa": { "ratio": 3, "grades": 37 },
+          "aaa": { "ratio": 4.5, "grades": 50 }
+        },
+        "contexts": {
+          "moreContrast": {
+            "placeholder": {
+              "ticket": "CLR-13",
+              "note": "Undecided: the targets for large text in more contrast."
+            }
+          }
+        },
+        "reason": "rules.contrast.uses.largeText.reason"
+      },
+      "interfaceElement": {
+        "wcag": ["1.4.11"],
+        "targets": {
+          "aa": { "ratio": 3, "grades": 37 },
+          "aaa": { "ratio": 3, "grades": 37 }
+        },
+        "contexts": {
+          "moreContrast": {
+            "placeholder": {
+              "ticket": "CLR-13",
+              "note": "Undecided: the targets for interface elements in more contrast."
+            }
+          }
+        },
+        "reason": "rules.contrast.uses.interfaceElement.reason"
+      },
+      "surface": {
+        "separation": {
+          "aa": { "light": 2, "dark": 4 },
+          "aaa": { "light": 2, "dark": 4 }
+        },
+        "reason": "rules.contrast.uses.surface.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in: the median separation of surfaces from the page across the design systems in the ladder distribution research (Part 4), rounded. The same at AAA until CLR-13 decides otherwise."
+        }
+      },
+      "hover": {
+        "separation": {
+          "aa": { "light": 3, "dark": 10 },
+          "aaa": { "light": 3, "dark": 10 }
+        },
+        "reason": "rules.contrast.uses.hover.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in: the median separation of hover states from the page across the design systems in the ladder distribution research (Part 4), rounded. The same at AAA until CLR-13 decides otherwise."
+        }
+      },
+      "subtleBorder": {
+        "separation": {
+          "aa": { "light": 9, "dark": 14 },
+          "aaa": { "light": 9, "dark": 14 }
+        },
+        "reason": "rules.contrast.uses.subtleBorder.reason",
+        "placeholder": {
+          "ticket": "CLR-13",
+          "note": "Stand-in: the median separation of subtle borders from the page across the design systems in the ladder distribution research (Part 4), rounded. The same at AAA until CLR-13 decides otherwise."
+        }
+      }
+    },
+    "apca": {
+      "reason": "rules.contrast.apca.reason",
+      "placeholder": {
+        "ticket": "CLR-17",
+        "note": "Undecided: the APCA Lc targets for each use. Left empty rather than given stand-in values."
+      }
+    }
+  },
+  "vividness": {
+    "presets": {
+      "hold": {
+        "ceiling": 1,
+        "recovery": 0,
+        "reason": "rules.vividness.hold.reason",
+        "placeholder": {
+          "ticket": "CLR-15",
+          "note": "Stand-in: holds each colour's own chroma and reduces it only to fit sRGB, as ADR 0001's comparison did. CLR-15 decides the curves."
+        }
+      }
+    },
+    "defaults": { "brand": "hold", "feedback": "hold", "neutral": "hold" }
+  },
+  "groups": {
+    "brand": { "nameKey": "rules.groups.brand.name", "reason": "rules.groups.brand.reason" },
+    "feedback": {
+      "nameKey": "rules.groups.feedback.name",
+      "reason": "rules.groups.feedback.reason",
+      "placeholder": {
+        "ticket": "CLR-3",
+        "note": "Stand-in group for the default feedback colours. CLR-3 decides the feedback set."
+      }
+    },
+    "neutral": {
+      "nameKey": "rules.groups.neutral.name",
+      "reason": "rules.groups.neutral.reason",
+      "placeholder": {
+        "ticket": "CLR-3",
+        "note": "Stand-in group for the greys that surfaces, borders and text use."
+      }
+    }
+  },
+  "palettePresets": {
+    "neutral": {
+      "nameKey": "rules.palettePresets.neutral.name",
+      "group": "neutral",
+      "value": "#767676",
+      "reason": "rules.palettePresets.neutral.reason",
+      "placeholder": { "ticket": "CLR-3", "note": "Stand-in grey." }
+    },
+    "error": {
+      "nameKey": "rules.palettePresets.error.name",
+      "group": "feedback",
+      "value": "#C4362B",
+      "reason": "rules.palettePresets.error.reason",
+      "placeholder": {
+        "ticket": "CLR-3",
+        "note": "Stand-in value. D-025 names error, warning, success and info as the default set; CLR-3 decides it."
+      }
+    },
+    "warning": {
+      "nameKey": "rules.palettePresets.warning.name",
+      "group": "feedback",
+      "value": "#B5761B",
+      "reason": "rules.palettePresets.warning.reason",
+      "placeholder": { "ticket": "CLR-3", "note": "Stand-in value." }
+    },
+    "success": {
+      "nameKey": "rules.palettePresets.success.name",
+      "group": "feedback",
+      "value": "#2E7D4F",
+      "reason": "rules.palettePresets.success.reason",
+      "placeholder": { "ticket": "CLR-3", "note": "Stand-in value." }
+    },
+    "info": {
+      "nameKey": "rules.palettePresets.info.name",
+      "group": "feedback",
+      "value": "#2F6DB5",
+      "reason": "rules.palettePresets.info.reason",
+      "placeholder": { "ticket": "CLR-3", "note": "Stand-in value." }
+    }
+  },
+  "distinctness": {
+    "betweenGroups": {
+      "metric": "deltaE2000",
+      "minimum": 10,
+      "reason": "rules.distinctness.betweenGroups.reason",
+      "placeholder": { "ticket": "CLR-16", "note": "Stand-in metric and threshold." }
+    },
+    "withinGroup": {
+      "metric": "deltaE2000",
+      "minimum": 10,
+      "reason": "rules.distinctness.withinGroup.reason",
+      "placeholder": { "ticket": "CLR-16", "note": "Stand-in metric and threshold." }
+    },
+    "extremeSteps": {
+      "steps": 2,
+      "factor": 0.5,
+      "reason": "rules.distinctness.extremeSteps.reason",
+      "placeholder": { "ticket": "CLR-16", "note": "Stand-in allowance." }
+    },
+    "similarHue": {
+      "degrees": 15,
+      "reason": "rules.distinctness.similarHue.reason",
+      "placeholder": { "ticket": "CLR-18", "note": "Stand-in threshold." }
+    }
+  },
+  "hue": {
+    "maxDrift": {
+      "degrees": 10,
+      "reason": "rules.hue.maxDrift.reason",
+      "placeholder": {
+        "ticket": "CLR-14",
+        "note": "Stand-in threshold. ADR 0001 measured a worst drift of 3.7° in OKLCH for the recommended method."
+      }
+    }
+  },
+  "semantic": {
+    "surface.default": {
+      "purpose": "surface",
+      "source": "neutral",
+      "grade": { "light": 0, "dark": 97 },
+      "reason": "rules.semantic.surfaceDefault.reason",
+      "placeholder": {
+        "ticket": "CLR-27",
+        "note": "Stand-in token. CLR-27 decides the semantic tokens and the light and dark mapping."
+      }
+    },
+    "surface.raised": {
+      "purpose": "surface",
+      "source": "neutral",
+      "grade": { "light": 2, "dark": 93 },
+      "on": "surface.default",
+      "use": "surface",
+      "reason": "rules.semantic.surfaceRaised.reason",
+      "placeholder": {
+        "ticket": "CLR-27",
+        "note": "Stand-in token, showing a surface with a separation target."
+      }
+    },
+    "text.body": {
+      "purpose": "text",
+      "source": "neutral",
+      "grade": { "light": 90, "dark": 8 },
+      "on": "surface.default",
+      "use": "bodyText",
+      "reason": "rules.semantic.textBody.reason",
+      "placeholder": {
+        "ticket": "CLR-27",
+        "note": "Stand-in token, from ADR 0005's illustrative fragment."
+      }
+    },
+    "border.control": {
+      "purpose": "border",
+      "source": "neutral",
+      "grade": { "light": 41, "dark": 54 },
+      "on": "surface.default",
+      "use": "interfaceElement",
+      "reason": "rules.semantic.borderControl.reason",
+      "placeholder": { "ticket": "CLR-27", "note": "Stand-in token." }
+    }
+  },
+  "naming": {
+    "direction": { "value": "towardsDark", "reason": "rules.naming.direction.reason" },
+    "token": {
+      "pattern": "{group}-{color}-{grade}",
+      "case": "kebab",
+      "separator": "-",
+      "reason": "rules.naming.token.reason",
+      "placeholder": { "ticket": "CLR-72", "note": "Stand-in pattern, case and separator." }
+    },
+    "presets": {
+      "hundreds": {
+        "nameKey": "rules.naming.presets.hundreds.name",
+        "steps": ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"],
+        "reason": "rules.naming.presets.hundreds.reason",
+        "placeholder": {
+          "ticket": "CLR-72",
+          "note": "Stand-in: 50 to 950 names for 11 steps. How names map onto other ladder sizes is undecided."
+        }
+      },
+      "oneToTwelve": {
+        "nameKey": "rules.naming.presets.oneToTwelve.name",
+        "steps": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "reason": "rules.naming.presets.oneToTwelve.reason",
+        "placeholder": {
+          "ticket": "CLR-72",
+          "note": "Stand-in: 1 to 12 names. How names map onto other ladder sizes is undecided."
+        }
+      }
+    }
+  },
+  "guidance": { "refreshAfterMonths": 3, "reason": "rules.guidance.reason" }
+}

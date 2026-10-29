@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-047 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-048 |
 
 ---
 
@@ -637,3 +637,33 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 **Why:** The CSS Color 4 matrices make the engine's `oklch()` exports match what browsers render and what Color.js computes; the two sets of matrices differ by about 0.0001. CSS Color 4's gamut mapping keeps OKLCH lightness rather than CIE L\*, so it would move steps off the ladder and break counting steps for contrast; its stopping tolerance would also dull steps the gamut doesn't require. Clipping shifts hue and lightness. A gamut parameter lets wide-gamut colour come later without a rewrite. A hue of 0 for a grey reads as red and would mislead any hue check, so the absence is made explicit.
 
 **Consequences:** The engine's tests check every mapped colour is in gamut, at its target L\* and hue, and that a hair more chroma would not fit. Conversions are tested against published reference values (IEC 61966-2-1, CIE 15:2004, Ottosson's OKLab table, the 34 CIEDE2000 pairs from Sharma, Wu and Dalal) and cross-checked against Color.js 0.7.1 output committed as a fixture; Color.js isn't a dependency. Code that reads hue must handle an empty hue, including the view's hue, saturation and lightness readout in US-01.
+
+### D-048 · How the rules schema is built: contrast by open lists of uses and contexts, and marked placeholders
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig (uses, contexts, placeholders, reason text and scope); the typed literal and the two extra sections were proposed by Claude Code while building and reviewed by Benji, who asked for separation targets and both levels on every use · **Status:** Accepted · **Plane:** CLR-7, CLR-20, CLR-75 · **ADR:** builds on [adr/0005-rules-schema.md](adr/0005-rules-schema.md) and [adr/0006-validation-library.md](adr/0006-validation-library.md)
+
+**Decision:**
+- **Contrast targets are keyed by an open list of use IDs,** such as `bodyText`, `largeText` and `interfaceElement`. Each use can vary by context, and contexts are an open list too: `light`, `dark`, and `moreContrast` as a placeholder. Each target stores the WCAG ratio, which checks use, and the grade difference rounded up (37, 50 or 64), which teaching uses. A test keeps the two consistent.
+- **Every use has both AA and AAA targets** (D-044). The schema requires both, and a test checks it.
+- **Uses WCAG sets no ratio for have a separation target:** a minimum number of grades from what they sit on, by level and context. These are `surface`, `hover` and `subtleBorder`, with stand-ins from the CLR-13 research medians (surfaces about 2 grades in light mode and 4 in dark), as CLR-13 placeholders. A use has WCAG targets or a separation target, never both. Only the page background, which sits on nothing, has no use.
+- **Undecided values are stand-ins with a `placeholder` marker** naming the deciding ticket and the stand-in's source. A test lists every placeholder, and the rules stay at version 0.x until none are left. Assigned tickets:
+  - **CLR-13:** ladder presets, the recommendation, more-contrast targets, and whether states are ladder steps or overlays. The last is deliberately undecided, and nothing in the schema assumes either.
+  - **CLR-17:** APCA targets, left empty rather than given stand-in values.
+  - **CLR-72:** naming presets, and the token pattern, case and separator.
+  - **CLR-3:** palette presets and groups.
+  - **CLR-15:** vividness.
+  - **CLR-16 and CLR-18:** distinctness.
+  - **CLR-14:** hue drift.
+  - **CLR-27:** semantic tokens.
+- **Reason text stays in the app's language files** (`apps/web/src/lang/`), as ADR 0005 says. A test checks that every key exists, and that only placeholder rules have placeholder text. To be raised again with CLR-90, since a published rules package would carry keys without text.
+- **The project and share-link schemas and their shipped validator** move to CLR-20 and CLR-75, with ADR 0006's commitments noted on both tickets. CLR-7 builds the rules schema only, which is checked in CI and never validated in the browser.
+- **The schema is written as a typed TypeScript literal** (`packages/rules/src/schema.ts`), so Ajv's `JSONSchemaType` checks it against the hand-written types. That check needs Ajv's non-standard `nullable` keyword on optional properties. The published schema, `packages/rules/schema/rules.schema.json`, is the literal with `nullable` removed. Ajv in strict mode and hyperjump both validate against the published copy, and a test fails if it's out of date. One strict rule, `strictRequired`, is off, because "WCAG targets or a separation target" is written with `required` inside `oneOf`.
+- **Two sections beyond ADR 0005's original table,** now added to it: `groups` (brand, feedback, neutral), which presets and vividness defaults refer to, and `hue`, for US-03's drift threshold.
+- **The contrast grade function** lives in the engine (`contrastGrade`, `gradesForRatio`), as ADR 0005 says, so the rules tests check ladder grades against it.
+
+**Context:** CLR-7 builds the rules schema to ADR 0005 and ADR 0006, while CLR-3, CLR-13 and other tickets are still deciding the values. The ladder distribution research (CLR-13) shows that uses will grow beyond text and interface elements, and that contexts such as dark mode and more contrast change the separations they need.
+
+**Alternatives considered:** a fixed set of uses and levels; leaving undecided sections out of the schema; null or empty values instead of marked stand-ins; generating types from the schema, or the schema from code; building the project validator now.
+
+**Why:** Open lists let CLR-13 add uses and contexts without a schema change. Marked stand-ins keep the shape whole and testable now, and stop a stand-in from being mistaken for a decision. Writing the schema as a typed literal keeps ADR 0006's type check, while the published schema stays standard. The project validator would be generated code that nothing uses yet.
+
+**Consequences:** The rules are at version 0.1.0. CLR-13, CLR-3 and the other tickets replace stand-ins by removing their placeholders, which the placeholder test makes visible. A schema change means running `npm run schema --workspace @colourist/rules`.

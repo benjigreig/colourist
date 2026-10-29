@@ -32,8 +32,10 @@ Two reference projects shaped the design (`docs/research/reference-projects.md`)
 | `ladders` | Ladder presets: each step's CIE L\* target and contrast grade, and when each preset is recommended | Stage 2 (US-02) |
 | `contrast` | Required grade differences for AA and AAA by use (body text, large text, interface elements), and APCA targets checked alongside | Every check (US-07) |
 | `vividness` | Curve presets, and default recovery and ceiling per group | Stage 4 (US-04) |
+| `groups` | The groups colours belong to, such as brand, feedback and neutral, each with a name key. Added in D-048 | Stages 1 and 5 (US-01, US-05) |
 | `palettePresets` | Named sets of colours, each with a stable ID, a default name, a group and a starting value, such as the default error, warning, success and info | Stage 5 (US-05) |
 | `distinctness` | Thresholds between and within groups, including the allowance for the lightest and darkest steps | US-05, US-07 |
+| `hue` | How far a colour's hue may drift across its scale. Added in D-048 | Stage 3 (US-03) |
 | `semantic` | The semantic tokens: each token's purpose label, source colour, contrast grade in light and in dark, what it sits on, its states, and an optional target override | Stage 6 (US-06) |
 | `naming` | The token pattern, case and separator; the grade direction; and naming presets for steps | Exports (US-08) |
 | `guidance` | Adaptive guidance settings, such as the three-month gap | US-11 |

@@ -8,7 +8,7 @@ Everyone taking part agrees to the [code of conduct](CODE_OF_CONDUCT.md).
 
 - **Feature requests** go in the "Feature requests" category of GitHub Discussions, where upvotes count as votes (D-028).
 - **Bugs** go in GitHub Issues. Say what you did, what you expected and what happened. Please use an invented palette, or describe the colours, rather than sharing a client's brand.
-- **Presets and naming templates** can be contributed as pull requests to `packages/rules` once the rules schema exists (CLR-7).
+- **Presets and naming templates** can be contributed as pull requests to `packages/rules/rules.json`, which is checked against its schema in CI (D-048).
 
 ## Before you change behaviour
 
