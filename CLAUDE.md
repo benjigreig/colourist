@@ -8,6 +8,7 @@ A free, open-source guided tool that turns a brand's colours into an accessible 
 - `docs/decision-log.md` and `docs/adr/`: why things are the way they are. Check them before reversing a choice.
 - `docs/problem-statement.md` and `docs/jobs-to-be-done.md`: who it's for.
 - `docs/research/`: evidence behind decisions, including the colour model and framework spikes.
+- `docs/colour-theory-index.md`: colour questions already answered. Check it before raising or reopening a colour question, and build on the answer unless Benji reopens it. Rows marked "earlier work, to re-validate" aren't relied on until confirmed.
 
 ## Layers (D-010)
 
