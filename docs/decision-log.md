@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-039 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-040 |
 
 ---
 
@@ -518,3 +518,15 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 
 **Consequences:** svelte-check runs in CI, and the compiler's accessibility warnings are treated as errors. axe and manual testing still run. Health is reviewed yearly. Both spikes are kept in [research/framework/](research/framework/), along with the desk research and the assessment process ([adr/dependency-assessment.md](adr/dependency-assessment.md)).
 
+### D-040 · Development toolchain
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-1 · **ADR:** [adr/0004-toolchain.md](adr/0004-toolchain.md)
+
+**Decision:** The repo uses Node 26 and npm workspaces, with exact versions and install scripts turned off. TypeScript 6.0 runs in strict mode, with svelte-check for the app. Tests run in Vitest, with Playwright and axe for the browser in Chromium, Firefox and WebKit. Lint is ESLint and formatting is Prettier. GitHub Actions checks every push, and `main` deploys to GitHub Pages. The Gherkin scenarios aren't run directly: tests are named after each scenario, and a script lists any scenario without a test.
+
+**Context:** CLR-1 sets up the monorepo from D-010. The build brief asked for the toolchain to be recorded in one short ADR, with a reason and alternatives for each choice, because none of these tools ships to people using colouri.st. ADR 0003 left the Gherkin question to CLR-1.
+
+**Alternatives considered:** pnpm, Yarn or Bun; Turborepo or Nx; TypeScript 7; Node's test runner or Jest; Biome or oxlint; Cypress or WebdriverIO; running the scenarios with playwright-bdd; Netlify or Cloudflare Pages for pull request previews.
+
+**Why:** Every tool either came with Node or was proven in the framework spike, and ESLint is the only linter that can enforce the docstring and "color" rules. Most stories are tested at two or three levels, so running Gherkin in one of them would mean two Gherkin tools, and the stories would have to be copied into `.feature` files. TypeScript 7 isn't supported by typescript-eslint or svelte-check yet.
+
+**Consequences:** `npm run check` runs exactly what CI runs. Lint enforces docstrings on every export and "color" in identifiers. The scenario report becomes a gate, failing the build for any untested scenario, before the closed beta starts on 23 November 2026. GitHub Pages has no per-branch previews, so each pull request's build is kept as a download on its CI run. The site is served at `/colourist/` until the domain is set up (CLR-41).

@@ -1,0 +1,75 @@
+/*
+ * Placeholder page styles (CLR-1).
+ *
+ * Every interface colour must come from colouri.st's own generated tokens (D-038), and those
+ * don't exist until CLR-83. Until then the page uses only the browser's system colours
+ * (Canvas and CanvasText), so no colour is hard-coded. Links stay CanvasText and are
+ * underlined, keeping the page black, white and grey.
+ */
+:root {
+  color-scheme: light dark;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: Canvas;
+  color: CanvasText;
+  font: 1.125rem/1.6 var(--font);
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-3);
+  display: grid;
+  gap: var(--space-4);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+p,
+ul {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.tagline {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+ul {
+  padding-left: var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+}
+
+a {
+  color: CanvasText;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 3px solid CanvasText;
+  outline-offset: 3px;
+}
+
+.status {
+  padding-top: var(--space-4);
+  border-top: 1px solid CanvasText;
+}

@@ -10,7 +10,7 @@ Each story names who it's for, what they want and why, then links to the jobs it
 
 ### Acceptance criteria
 
-Behaviour is written as **Given / When / Then** scenarios (Gherkin). Each scenario can become an automated test almost word for word. Whether to run the Gherkin directly as tests (for example with playwright-bdd) or name ordinary tests after each scenario is decided in the framework assessment (CLR-5).
+Behaviour is written as **Given / When / Then** scenarios (Gherkin). Each scenario can become an automated test almost word for word. The Gherkin isn't run directly: ordinary tests are named after each scenario, and `npm run scenarios` lists any scenario without a test ([ADR 0004](adr/0004-toolchain.md), D-040).
 
 Requirements that aren't behaviour, such as privacy, performance and writing style, are in the [verification checklist](#verification-checklist) at the end.
 
@@ -29,7 +29,7 @@ Each story lists how it's tested, using these tags:
 | `[usability]` | Checked in the alpha sessions against the success measures | Manual (CLR-38) |
 | `[content]` | Benji's review of the explainer text | Manual |
 
-**Traceability:** every automated test is named after its story and scenario, for example `US-02: contrast rule holds for any preset`. A failing test then points straight back to the story, the job and the ticket.
+**Traceability:** every automated test is named after its story and the scenario's exact title, with an optional detail after a dash, for example `US-01: Invalid input — hue shows dashes`. A failing test then points straight back to the story, the job and the ticket.
 
 **Definition of done for a story:** every scenario passes at its tagged level, the explainer text is approved, and the ticket links to the pull request.
 

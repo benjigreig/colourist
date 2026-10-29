@@ -1,0 +1,13 @@
+# Generated
+package-lock.json
+dist/
+coverage/
+playwright-report/
+test-results/
+
+# Markdown is written by hand, and Prettier would realign every table
+# in the decision log and stories (ADR 0004).
+*.md
+
+# Research evidence is kept as it was produced (ADR 0003).
+docs/

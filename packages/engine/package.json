@@ -1,0 +1,14 @@
+{
+  "name": "@colourist/engine",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pure TypeScript colour maths for colouri.st. No interface or framework code (D-010).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ."
+  }
+}
