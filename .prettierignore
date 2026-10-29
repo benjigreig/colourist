@@ -1,5 +1,9 @@
 # Generated
 package-lock.json
+# Written one entry per line by its generator, for readable diffs.
+packages/engine/test/fixtures/colorjs-*.json
+# Published reference data, kept digit for digit as published.
+packages/engine/test/fixtures/sharma-ciede2000.ts
 dist/
 coverage/
 playwright-report/

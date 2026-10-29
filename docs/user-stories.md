@@ -74,7 +74,7 @@ The similar-hue check here is an early warning only. The full test is the shade-
 
 ### US-02 · Choose a ladder
 **As an** individual designer, **I want** to pick how many steps my scales have, with a recommendation, **so that** I get the range my product needs without knowing the theory first.
-**Jobs:** 2, 5, 7, 10 · **Plane:** CLR-13, CLR-23, CLR-81 · **Stage:** 2
+**Jobs:** 2, 5, 7, 10 · **Plane:** CLR-13, CLR-12, CLR-23, CLR-81 · **Stage:** 2
 
 ```gherkin
 Scenario: Recommendation shown
@@ -108,7 +108,7 @@ Scenario: A colour can't reach AAA
 
 ### US-03 · Keep each colour's hue
 **As an** individual designer, **I want** each colour to keep its hue from lightest to darkest, **so that** my blue stays blue and my shades don't turn muddy.
-**Jobs:** 2, 3, 10 · **Plane:** CLR-14, CLR-24, CLR-70 · **Stage:** 3
+**Jobs:** 2, 3, 10 · **Plane:** CLR-14, CLR-12, CLR-24, CLR-70 · **Stage:** 3
 
 ```gherkin
 Scenario: Hue held across the scale
@@ -135,7 +135,7 @@ HCT in the comparison, and switching methods, are post-beta (CLR-71, D-024).
 
 ### US-04 · Keep vividness in the dark shades
 **As an** individual designer with a soft or pastel brand, **I want** to control how vivid my shades are, **so that** dark shades keep the brand's character.
-**Jobs:** 3, 10 · **Plane:** CLR-15, CLR-25 · **Stage:** 4
+**Jobs:** 3, 10 · **Plane:** CLR-15, CLR-12, CLR-25 · **Stage:** 4
 
 ```gherkin
 Scenario: Choose a vividness preset

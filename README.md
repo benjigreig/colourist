@@ -61,7 +61,7 @@ All of them are development tools; nothing is shipped to people using colouri.st
 
 - **Build:** TypeScript, Vite, Svelte 5 and its Vite plugin
 - **Checks:** svelte-check, ESLint (with typescript-eslint, eslint-plugin-svelte and eslint-plugin-jsdoc), Prettier (with prettier-plugin-svelte)
-- **Tests:** Vitest, Playwright, axe-core for Playwright
+- **Tests:** Vitest, fast-check, Playwright, axe-core for Playwright
 
 Any new dependency beyond a small, single-purpose package needs an assessment and an ADR first. See [the assessment process](docs/adr/dependency-assessment.md).
 

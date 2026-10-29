@@ -8,7 +8,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     projects: ['packages/*', 'apps/web', 'scripts'],
-    // The engine and rules have no tests until CLR-12 and CLR-7.
+    // The rules package has no tests until CLR-7.
     passWithNoTests: true,
   },
 });

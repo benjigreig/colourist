@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-046 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-047 |
 
 ---
 
@@ -621,3 +621,19 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 **Why:** It's the only actively released option that works under our strict security policy and adds under 3 KB. The schema stays standard and publishable, and the library is easy to replace. The code-first libraries' exported schemas lost rules or were larger; Ajv in the browser needs `unsafe-eval`; the runtime libraries were larger, crashed on deep nesting or had a single maintainer; schemasafe is inactive; a hand-written validator would drift from the schema. Benji chose to commit the generated validator so every change to what ships can be read in review.
 
 **Consequences:** `packages/rules` gets a build step that generates and formats the validators. CI checks the test inputs through both Ajv and hyperjump, that the generated code is up to date, that the types agree with the schema, and the security-policy check in Chromium, Firefox and WebKit. Ajv's health is reviewed every October. The spike and desk research are kept in [research/validation/](research/validation/).
+
+### D-047 · Colour conversions follow CSS Color 4; gamut mapping keeps L* and hue at the most chroma that fits
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-12 · **ADR:** builds on [adr/0001-colour-model.md](adr/0001-colour-model.md)
+
+**Decision:**
+- **Matrices:** the engine converts through CIE XYZ (D65) using the matrices and white from CSS Color 4's sample code: the exact rational sRGB matrices, and the higher-precision OKLab matrices CSS Color 4 recomputed from XYZ, rather than Ottosson's original linear-sRGB constants that the spike used.
+- **Gamut mapping:** for a target CIE L\*, an OKLCH hue and the chroma wanted, the engine returns the colour at exactly that L\* and hue with the requested chroma if it fits, and otherwise the most chroma that fits. The result reports the requested and achieved chroma and whether it was reduced. The target gamut is a parameter: sRGB in the beta, and Display P3 later (CLR-74).
+- **Greys:** a grey has no hue. OKLCH, CIE LCh and HSL report its hue as empty (`null`), never 0. Whether a converted colour counts as grey uses a rounding tolerance per space (chroma 1e-6 in OKLab, 1e-4 in CIE Lab), which only absorbs floating-point noise. It is not a method threshold; judgements about low chroma belong to the rules.
+
+**Context:** ADR 0001 chose the colour model, and said gamut reduction must find the maximum in-gamut vividness at each step, because the analysis script's coarse reduction dulled some steps. CLR-12 builds the conversions and gamut mapping for the engine.
+
+**Alternatives considered:** Ottosson's original matrices; CSS Color 4's own gamut mapping, which reduces chroma at constant OKLCH lightness and stops within a just noticeable difference (ΔE OK 0.02); clipping channels; a fixed sRGB target; reporting a grey's hue as 0.
+
+**Why:** The CSS Color 4 matrices make the engine's `oklch()` exports match what browsers render and what Color.js computes; the two sets of matrices differ by about 0.0001. CSS Color 4's gamut mapping keeps OKLCH lightness rather than CIE L\*, so it would move steps off the ladder and break counting steps for contrast; its stopping tolerance would also dull steps the gamut doesn't require. Clipping shifts hue and lightness. A gamut parameter lets wide-gamut colour come later without a rewrite. A hue of 0 for a grey reads as red and would mislead any hue check, so the absence is made explicit.
+
+**Consequences:** The engine's tests check every mapped colour is in gamut, at its target L\* and hue, and that a hair more chroma would not fit. Conversions are tested against published reference values (IEC 61966-2-1, CIE 15:2004, Ottosson's OKLab table, the 34 CIEDE2000 pairs from Sharma, Wu and Dalal) and cross-checked against Color.js 0.7.1 output committed as a fixture; Color.js isn't a dependency. Code that reads hue must handle an empty hue, including the view's hue, saturation and lightness readout in US-01.
