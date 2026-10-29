@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-040 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-045 |
 
 ---
 
@@ -518,7 +518,20 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 
 **Consequences:** svelte-check runs in CI, and the compiler's accessibility warnings are treated as errors. axe and manual testing still run. Health is reviewed yearly. Both spikes are kept in [research/framework/](research/framework/), along with the desk research and the assessment process ([adr/dependency-assessment.md](adr/dependency-assessment.md)).
 
-### D-040 · Steps are named by contrast grade
+### D-040 · Development toolchain
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-1 · **ADR:** [adr/0004-toolchain.md](adr/0004-toolchain.md)
+
+**Decision:** The repo uses Node 26 and npm workspaces, with exact versions and install scripts turned off. TypeScript 6.0 runs in strict mode, with svelte-check for the app. Tests run in Vitest, with Playwright and axe for the browser in Chromium, Firefox and WebKit. Lint is ESLint and formatting is Prettier. GitHub Actions checks every push, and `main` deploys to GitHub Pages. The Gherkin scenarios aren't run directly: tests are named after each scenario, and a script lists any scenario without a test.
+
+**Context:** CLR-1 sets up the monorepo from D-010. The build brief asked for the toolchain to be recorded in one short ADR, with a reason and alternatives for each choice, because none of these tools ships to people using colouri.st. ADR 0003 left the Gherkin question to CLR-1.
+
+**Alternatives considered:** pnpm, Yarn or Bun; Turborepo or Nx; TypeScript 7; Node's test runner or Jest; Biome or oxlint; Cypress or WebdriverIO; running the scenarios with playwright-bdd; Netlify or Cloudflare Pages for pull request previews.
+
+**Why:** Every tool either came with Node or was proven in the framework spike, and ESLint is the only linter that can enforce the docstring and "color" rules. Most stories are tested at two or three levels, so running Gherkin in one of them would mean two Gherkin tools, and the stories would have to be copied into `.feature` files. TypeScript 7 isn't supported by typescript-eslint or svelte-check yet.
+
+**Consequences:** `npm run check` runs exactly what CI runs. Lint enforces docstrings on every export and "color" in identifiers. The scenario report becomes a gate, failing the build for any untested scenario, before the closed beta starts on 23 November 2026. GitHub Pages has no per-branch previews, so each pull request's build is kept as a download on its CI run. The site is served at `/colourist/` until the domain is set up (CLR-41).
+
+### D-041 · Steps are named by contrast grade
 **Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7, CLR-13 · **Research:** [research/step-naming.md](research/step-naming.md)
 
 **Decision:** By default, each ladder step is named by its contrast grade: 100 × log(1.05 ÷ (Y + 0.05)) ÷ log(21), from 0 for white to 100 for black. The difference between two grades gives their WCAG 2 contrast exactly: 37 apart for 3:1, 50 for 4.5:1 and 64 for 7:1. Purpose labels, such as background, border or text, belong to the next layer, the semantic tokens, rather than to the steps. Familiar naming, such as Tailwind-style 50 to 950 or Radix-style 1 to 12, is offered as naming presets.
@@ -531,3 +544,67 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 
 **Consequences:** Semantic tokens name a grade, and the engine uses the nearest step on the chosen ladder, with WCAG 2 confirmed by the grades and APCA checked alongside, since APCA can't be captured in one number. Names are rounded for people, and the engine checks exact values. Still open: whether grades count up towards dark or light, how they're displayed, and whether the ladder presets nest (CLR-13).
 
+### D-042 · Contrast grades count up towards dark, with an option to count towards light
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7 · **Research:** [research/step-naming.md](research/step-naming.md), third pass
+
+**Decision:** By default, contrast grades count up towards dark: 0 is white and 100 is black. Counting towards light (100 minus the grade) is a naming setting in the rules, not built into the engine.
+
+**Context:** Benji noticed that stored colour values count up towards light (RGB 0 to 255, hex 00 to FF, CIE L\*, Material 3 tones), while familiar design system names count up towards dark (Material's 2014 palette, Tailwind, USWDS, Carbon, Radix, Spectrum, and print tints by ink).
+
+**Alternatives considered:** counting towards light by default, as stored values and Material 3 tones do; a fixed direction with no option.
+
+**Why:** Measurements count light because screens emit it, while names have counted ink, as print does. The default matches the names people already use for tokens, and every familiar naming preset counts the same way, so switching between grades and a preset never flips direction. It also fits the "dark-is-more" bias found by Soto, Schoenlein and Schloss (2023), though that evidence comes from data visualisation. The contrast rule depends only on differences, so it's the same in either direction.
+
+**Consequences:** The rules' `naming` section holds the direction, with "towards dark" as the default. The engine always works in stored values. Explainers say which way the numbers count.
+
+### D-043 · Contrast grades are shown as 0 to 100
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7 · **Research:** [research/step-naming.md](research/step-naming.md)
+
+**Decision:** Contrast grades are shown as whole numbers from 0 to 100, for example 54. The rule people learn is "37 apart for 3:1, 50 apart for 4.5:1, 64 apart for 7:1".
+
+**Alternatives considered:** multiplying by 10, for example 540, so names look like familiar 50 to 950 naming.
+
+**Why:** Multiplied by 10, grades could be mistaken for Tailwind-style position names, which mean something different. Showing 0 to 100 is honest about being a different scale, and "50 apart" is easy to remember. Familiar naming stays available as presets (D-041).
+
+**Consequences:** Names are rounded to whole numbers for people, and the engine checks exact values (D-041).
+
+### D-044 · One AA or AAA setting per project, with per-token overrides
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7, CLR-81 · **Extends:** D-030
+
+**Decision:** A project's AA or AAA target is one setting. Choosing AAA raises every token's required contrast at once, for example from 50 to 64 grades apart for body text. A single token can override the project's target, for people who need a mix, such as AAA for body text and AA elsewhere.
+
+**Alternatives considered:** a target set on every token, which allows any mix but is more to manage and harder to explain.
+
+**Why:** The simple case stays simple, and it matches how D-030 described the feature. Benji noted that people working to meet both AA and AAA within one system need this explained well, so the override comes with its own guidance.
+
+**Consequences:**
+- The guided flow explains mixed targets when someone overrides a token. That covers which tokens meet which level, and why a mix is common (for example, AAA for body text and AA for interface elements).
+- The explainer is honest that WCAG conformance applies to whole pages, not tokens, so some tokens meeting AAA doesn't make a page AAA.
+- Non-text contrast (WCAG 1.4.11) has an AA requirement of 3:1 and no AAA level, so interface elements need 37 grades apart at either target.
+- Checks, known issues and exports show the target each token was checked against.
+
+### D-045 · The app is always current; the library is pinnable
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7, CLR-21, CLR-35, CLR-75 · **Extends:** D-029
+
+**Decision:** Compatibility is handled in two places.
+
+- **In the app, always current.** A project or share link stores its inputs plus only the rules settings the person changed from the defaults. Opening an older one regenerates it on the current rules and says so: which versions it was made with, and what has changed in the method since, from the release notes. Settings that no longer exist in the new rules are flagged, never dropped silently.
+- **In the library, pinnable.** The engine and rules are published as versioned packages, with every release kept. Anyone building on them, including developers and AI tools, can pin a version and reproduce an old result exactly.
+
+**Supporting rules:**
+- Every project records its rules version and engine version.
+- Semantic versioning with a written promise: patch releases never change outputs, minor releases state exactly what changes, and major releases can change the method. Golden tests (fixed reference outputs) enforce it.
+- During the beta, the app says plainly that projects and links pick up improvements as the method changes.
+
+**Context:** Claude first proposed keeping every past rules version in the app so old projects regenerate exactly. Benji questioned the long-term bloat and maintainability. The real risk is engine code, not rules data: keeping old behaviour alive in the current engine piles up special cases over time.
+
+**Alternatives considered:**
+- Every rules version kept in the app, regenerating exactly forever.
+- A support window, where the last two major versions regenerate exactly and older projects upgrade.
+- Frozen engine snapshots hosted inside the app.
+
+**Why:** Benji's view is that regenerating on the current method is a benefit, not a fault: the person gets an upgraded palette, honestly labelled. Exact reproducibility matters most to people using the library directly, and published, pinned versions serve them without any bloat in the app. A person's design system never depends on regeneration anyway, because their exported tokens hold the final values.
+
+**Consequences:**
+- The upgrade message can't show exact before-and-after colours without the old engine. Benji is fine with that: the person who shared a link can also share the exported reference sheet, which gives an exact comparison. An in-app comparison is a possible later feature.
+- This answers ADR 0005's open questions on old rules versions and on how a person's changes are stored.

@@ -176,12 +176,11 @@ Research on colour scales in data visualisation finds a "dark-is-more" bias: peo
 
 - **Both directions can be offered.** The contrast rule only depends on the difference between two names, so it's the same either way: 50 apart is still 4.5:1. Counting towards light is simply 100 minus the grade.
 - **The direction is a naming setting** in the rules, with a default, not something built into the engine. The engine always works in stored values, which count towards light.
-- **Default: towards dark**, so that 0 is white and 100 is black. It matches the names people already use for tokens, and every familiar naming preset (Tailwind, Radix, Spectrum, Carbon) counts the same way, so switching between contrast grades and a preset never flips the direction. It also matches the dark-is-more bias.
+- **Default: towards dark** (decided, D-042), so that 0 is white and 100 is black. It matches the names people already use for tokens, and every familiar naming preset (Tailwind, Radix, Spectrum, Carbon) counts the same way, so switching between contrast grades and a preset never flips the direction. It also matches the dark-is-more bias.
 - **Option: towards light,** for teams who think in Material 3 tones or in stored values.
 
 ## Still to work out
 
-- Benji to confirm the default direction (towards dark) and the option to count towards light.
 - Whether names are shown as 0 to 100, or multiplied by 10 to look like familiar naming.
 - How the step-counting rule and the grade rule are taught together, without confusing people.
 - How Avenue 1 presets are tested, so exports match each framework's expectations.

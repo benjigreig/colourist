@@ -23,6 +23,8 @@ Visual design (CSS), logic and configuration stay in separate layers. New behavi
 - **Docs in code:** every exported function, class and module has a docstring covering purpose, parameters, return value and errors. Comments explain why.
 - **Tests:** named after their story and the scenario's exact title, with an optional detail after a dash, for example `US-01: Invalid input — hue shows dashes`. The tags in `docs/user-stories.md` say which layer tests each scenario, and `npm run scenarios` lists scenarios without a test (ADR 0004).
 - **Definition of done:** every scenario passes at its tagged level, the ticket links the pull request, and any affected doc in `docs/` is updated in the same change.
+- **Check the repo first:** other sessions (Benji, and Claude in planning sessions) change the repo too. Before writing, run `git status` and `git log`, re-read any file you're about to change, and edit only the part you mean to change rather than rewriting the file. Take the next decision log or ADR number from the repo as it stands just before you write.
+- **Decisions made while building:** when Benji answers a question, record the answer and the reasoning in the same change (decision log or ADR for decisions, the story for clarifications) and note it on the Plane ticket. Without Plane access, list the ticket comment in the summary instead.
 - **Commits:** Benji commits and pushes. Leave changes uncommitted, list what changed, and suggest a commit message that references the ticket, for example `Add ladder presets (CLR-13)`.
 
 ## Accessibility (WCAG 2.1 AA baseline)
