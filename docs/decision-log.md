@@ -518,15 +518,16 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 
 **Consequences:** svelte-check runs in CI, and the compiler's accessibility warnings are treated as errors. axe and manual testing still run. Health is reviewed yearly. Both spikes are kept in [research/framework/](research/framework/), along with the desk research and the assessment process ([adr/dependency-assessment.md](adr/dependency-assessment.md)).
 
-### D-040 · Development toolchain
-**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-1 · **ADR:** [adr/0004-toolchain.md](adr/0004-toolchain.md)
+### D-040 · Steps are named by contrast grade
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-7, CLR-13 · **Research:** [research/step-naming.md](research/step-naming.md)
 
-**Decision:** The repo uses Node 26 and npm workspaces, with exact versions and install scripts turned off. TypeScript 6.0 runs in strict mode, with svelte-check for the app. Tests run in Vitest, with Playwright and axe for the browser in Chromium, Firefox and WebKit. Lint is ESLint and formatting is Prettier. GitHub Actions checks every push, and `main` deploys to GitHub Pages. The Gherkin scenarios aren't run directly: tests are named after each scenario, and a script lists any scenario without a test.
+**Decision:** By default, each ladder step is named by its contrast grade: 100 × log(1.05 ÷ (Y + 0.05)) ÷ log(21), from 0 for white to 100 for black. The difference between two grades gives their WCAG 2 contrast exactly: 37 apart for 3:1, 50 for 4.5:1 and 64 for 7:1. Purpose labels, such as background, border or text, belong to the next layer, the semantic tokens, rather than to the steps. Familiar naming, such as Tailwind-style 50 to 950 or Radix-style 1 to 12, is offered as naming presets.
 
-**Context:** CLR-1 sets up the monorepo from D-010. The build brief asked for the toolchain to be recorded in one short ADR, with a reason and alternatives for each choice, because none of these tools ships to people using colouri.st. ADR 0003 left the Gherkin question to CLR-1.
+**Context:** colouri.st offers 11, 13 and 15-step ladders, so names by position, like "700", mean different colours on different ladders. Benji asked for research into how design systems and other taxonomies name scales, and then for a smarter value than lightness, which can't predict contrast.
 
-**Alternatives considered:** pnpm, Yarn or Bun; Turborepo or Nx; TypeScript 7; Node's test runner or Jest; Biome or oxlint; Cypress or WebdriverIO; running the scenarios with playwright-bdd; Netlify or Cloudflare Pages for pull request previews.
+**Alternatives considered:** names by position (Tailwind, Radix, Spectrum), kept as presets; names by CIE L\* lightness (as Material does), which can't express a contrast rule; picking a token's step by contrast directly, which Benji noted would split hairs where contrast values are very close.
 
-**Why:** Every tool either came with Node or was proven in the framework spike, and ESLint is the only linter that can enforce the docstring and "color" rules. Most stories are tested at two or three levels, so running Gherkin in one of them would mean two Gherkin tools, and the stories would have to be copied into `.feature` files. TypeScript 7 isn't supported by typescript-eslint or svelte-check yet.
+**Why:** A name that means the same thing in every colour and on every ladder, where differences carry meaning, is an interval scale in Stevens' terms. Position names are only ordinal. The contrast grade works like decibels: a logarithm turns the contrast ratio into a difference, so the rule colouri.st teaches can be read straight from the names. It holds for any colour, including a brand colour off the ladder.
 
-**Consequences:** `npm run check` runs exactly what CI runs. Lint enforces docstrings on every export and "color" in identifiers. The scenario report becomes a gate, failing the build for any untested scenario, before the closed beta starts on 23 November 2026. GitHub Pages has no per-branch previews, so each pull request's build is kept as a download on its CI run. The site is served at `/colourist/` until the domain is set up (CLR-41).
+**Consequences:** Semantic tokens name a grade, and the engine uses the nearest step on the chosen ladder, with WCAG 2 confirmed by the grades and APCA checked alongside, since APCA can't be captured in one number. Names are rounded for people, and the engine checks exact values. Still open: whether grades count up towards dark or light, how they're displayed, and whether the ladder presets nest (CLR-13).
+

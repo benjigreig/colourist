@@ -2,7 +2,7 @@
 
 A free, open-source guided tool that takes individual designers and small teams from brand colours to a robust, accessible colour system, teaching the colour theory as you go and handing over tokens that are easy to use.
 
-**Status:** in early development. Beta planned for late November 2026. A placeholder page is deployed from `main` to [benjigreig.github.io/colourist](https://benjigreig.github.io/colourist/) until the colouri.st domain is set up.
+**Status:** in early development. Beta planned for December 2026. A placeholder page is deployed from `main` to [benjigreig.github.io/colourist](https://benjigreig.github.io/colourist/) until the colouri.st domain is set up.
 
 ## Why it exists
 
