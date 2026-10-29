@@ -65,7 +65,11 @@ export type Level = 'aa' | 'aaa';
 export interface ContrastTarget {
   /** The WCAG 2 contrast ratio. Checks use this exact value (D-041). */
   ratio: number;
-  /** The same requirement as a grade difference, rounded up, for teaching (D-043). */
+  /**
+   * The same requirement as a grade difference, rounded up, for teaching (D-043). The stated
+   * rule ("37, 50, 64 apart") is promised only for colouri.st's own steps; other colours, such
+   * as a brand colour, are checked on the exact ratio (D-049).
+   */
   grades: number;
 }
 

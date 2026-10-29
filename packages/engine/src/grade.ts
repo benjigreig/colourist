@@ -6,6 +6,10 @@
  * between two grades gives their WCAG 2 contrast ratio exactly, as 21 to the power of the
  * difference ÷ 100: 37 grades apart is at least 3:1, 50 is 4.5:1 and 64 is 7:1. Grades are
  * rounded only for people; checks use the exact values (D-043).
+ *
+ * Because names are rounded, the simple numbers are promised only for colouri.st's own steps.
+ * D-049 requires a test that no pair of steps on any ladder preset passes on rounded names while
+ * failing on exact values. Any other pair of colours is checked on its exact grades.
  */
 
 const LOG_21 = Math.log(21);
