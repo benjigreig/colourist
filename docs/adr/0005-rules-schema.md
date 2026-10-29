@@ -1,6 +1,6 @@
 # ADR 0005 · Rules schema design
 
-**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046
+**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046 · **Amended:** 30 Oct 2026, D-052 (see the end)
 
 ## Decision
 
@@ -109,3 +109,12 @@ This was left open when the schema design was accepted. ADR 0004 had left schema
 - **In the app,** to check project files and share links, which come from outside and can't be trusted.
 
 It was assessed under D-014 and decided in [ADR 0006](0006-validation-library.md) (D-046): JSON Schema, precompiled with Ajv at build time.
+
+## Amendment: semantic tokens name relationships (30 Oct 2026, D-052)
+
+The decision above says semantic tokens name a grade, with a grade for light and for dark. D-052 changes that:
+- **A semantic token names its relationships** to other semantic tokens, such as legibility on a surface, or a state's change from its resting token. It doesn't name a grade.
+- **Each resolution records the primitive and grade chosen,** for one combination of the dimensions the person defines (D-051), not only light and dark.
+- **The `semantic` section's shape**, including the illustrative fragment above, will be redesigned in CLR-27. Until then, `rules.json` keeps its four stand-in tokens, each with a grade per context and marked as a CLR-27 placeholder (D-048).
+
+See [`docs/research/colour-relationships.md`](../research/colour-relationships.md).

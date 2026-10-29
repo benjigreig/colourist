@@ -1,0 +1,32 @@
+┌─────────┬────────────────────────────────┬──────────────┬───────────────┬──────────────┬───────────────┐
+│ (index) │ system                         │ hover        │ pressed       │ selected     │ subtleBorder  │
+├─────────┼────────────────────────────────┼──────────────┼───────────────┼──────────────┼───────────────┤
+│ 0       │ 'GitHub Primer'                │ 'solid'      │ 'solid'       │ 'solid'      │ 'overlay 70%' │
+│ 1       │ 'Atlassian'                    │ 'overlay 6%' │ 'overlay 14%' │ 'solid'      │ 'overlay 14%' │
+│ 2       │ 'GitLab Pajamas'               │ 'overlay 6%' │ 'overlay 16%' │ '—'          │ 'solid'       │
+│ 3       │ 'Shopify Polaris'              │ 'solid'      │ 'solid'       │ 'solid'      │ 'solid'       │
+│ 4       │ 'Twilio Paste'                 │ 'solid'      │ '—'           │ '—'          │ 'solid'       │
+│ 5       │ 'SAP Fiori Horizon'            │ 'solid'      │ 'solid'       │ 'solid'      │ 'solid'       │
+│ 6       │ 'Red Hat PatternFly'           │ 'solid'      │ '—'           │ '—'          │ 'solid'       │
+│ 7       │ 'Bootstrap'                    │ '—'          │ '—'           │ '—'          │ 'overlay 18%' │
+│ 8       │ 'Workday Canvas'               │ 'overlay 5%' │ 'overlay 9%'  │ '—'          │ 'solid'       │
+│ 9       │ 'GOV.UK'                       │ 'solid'      │ '—'           │ '—'          │ 'solid'       │
+│ 10      │ 'Australian Government (AGDS)' │ '—'          │ '—'           │ 'solid'      │ 'solid'       │
+│ 11      │ 'IBM Carbon'                   │ 'solid'      │ 'solid'       │ 'solid'      │ 'solid'       │
+│ 12      │ 'Microsoft Fluent 2'           │ 'solid'      │ 'solid'       │ 'solid'      │ 'solid'       │
+│ 13      │ 'Ant Design'                   │ 'overlay 6%' │ 'overlay 15%' │ 'solid'      │ 'solid'       │
+│ 14      │ 'Elastic EUI'                  │ 'overlay 4%' │ '—'           │ 'solid'      │ 'solid'       │
+│ 15      │ 'Adobe Spectrum'               │ 'solid'      │ '—'           │ '—'          │ 'solid'       │
+│ 16      │ 'Material 3'                   │ 'overlay 8%' │ 'overlay 10%' │ 'solid'      │ 'solid'       │
+│ 17      │ 'Radix'                        │ 'solid'      │ 'solid'       │ '—'          │ 'solid'       │
+│ 18      │ 'Chakra UI'                    │ 'solid'      │ 'solid'       │ '—'          │ 'solid'       │
+│ 19      │ 'Apple (iOS)'                  │ '—'          │ '—'           │ '—'          │ 'solid'       │
+│ 20      │ 'MUI (Material UI)'            │ 'overlay 4%' │ 'overlay 12%' │ 'overlay 8%' │ 'overlay 12%' │
+│ 21      │ 'shadcn/ui'                    │ 'solid'      │ '—'           │ '—'          │ 'solid'       │
+│ 22      │ 'Mantine'                      │ 'solid'      │ '—'           │ '—'          │ 'solid'       │
+│ 23      │ 'daisyUI'                      │ '—'          │ '—'           │ '—'          │ '—'           │
+│ 24      │ 'Uber Base Web'                │ 'solid'      │ 'solid'       │ '—'          │ 'solid'       │
+│ 25      │ 'Zendesk Garden'               │ '—'          │ '—'           │ '—'          │ 'solid'       │
+│ 26      │ 'Salesforce Lightning (SLDS)'  │ '—'          │ '—'           │ '—'          │ 'solid'       │
+└─────────┴────────────────────────────────┴──────────────┴───────────────┴──────────────┴───────────────┘
+hover { solid: 14, overlay: 7, '—': 6 } pressed { solid: 8, overlay: 6, '—': 13 } selected { solid: 10, '—': 16, overlay: 1 } subtle border { overlay: 4, solid: 22, '—': 1 }

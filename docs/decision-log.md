@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-050 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-052 |
 
 ---
 
@@ -708,3 +708,59 @@ All are documented in the research.
 **Why:** Tokens name contrast grades (D-041), and the engine uses the nearest step, so changing ladder size keeps every token at about the same contrast without nesting.
 
 **Consequences:** Steps shared between ladder sizes aren't identical hex values, though their grades line up. The ladders' values are still to be derived from uses and contexts (CLR-13).
+
+### D-051 · Three token tiers; aliases are a mechanism and themes are dimensions
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13, CLR-27 · **Research:** [research/token-layers.md](research/token-layers.md)
+
+**Decision:** colouri.st uses the common three tiers of design tokens:
+- **Primitive tokens** are the available values: the ladders, one family per colour. colouri.st generates them.
+- **Semantic tokens** are decisions named by purpose, which reference primitives and change with the theme while the name stays the same.
+- **Component tokens** are decisions for one component. They're mostly out of scope: teams map their own components to colouri.st's semantic tokens.
+
+Two things often drawn as layers aren't tiers:
+- **Aliases** are the mechanism that connects tiers, not a tier of their own.
+- **Themes, modes and other contexts** are dimensions, modelled as the DTCG resolver module's modifiers and contexts. Each combination of contexts is a separate resolution.
+
+**Context:** Benji reframed CLR-13's question about states: colouri.st represents relationships between colours, in any number of themes. That needed a precise shared definition of the kinds of tokens. Sources describe between three and five layers, because they count aliases, themes or modes as layers.
+
+**Alternatives considered:**
+- Five layers, counting aliases and themes or modes as tiers
+- Material's naming (reference, system and component)
+- Gossmann's critique that tiers matter to token designers, not consumers. Kept as guidance: explain tiers where people build the system, and show purposeful names where they use it.
+
+**Why:** The three tiers are the most widely shared definition, from Frost, Spectrum, Material and Atlassian. Treating aliases and themes as what they are keeps the model clear and matches the DTCG format, which colouri.st exports.
+
+**Consequences:** Exports carry primitives, semantic tokens and a resolver describing the dimensions (CLR-32). D-052 builds the model on these tiers.
+
+### D-052 · Semantic tokens are defined by their relationships, and themes are dimensions the person defines
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted as the direction; details open · **Plane:** CLR-13, CLR-27 · **Research:** [research/colour-relationships.md](research/colour-relationships.md)
+
+**Decision:**
+- **colouri.st represents relationships between colours.** A semantic token is defined by its relationships to other semantic tokens, not by a fixed grade.
+- **Seven kinds of relationship**, none naming a component: legibility, separation, signifier, emphasis, state, distinctness and harmony. Harmony is only a guide, and never decides whether a combination is valid.
+- **A theme is one resolution:** every semantic token mapped to a primitive, for one combination of the dimensions the person defines, such as brand, product, mode or contrast, in any number.
+- **colouri.st shows which primitives satisfy each token's relationships** in every resolution, suggests a default and lets the person choose. Invalid combinations are never offered as valid.
+- **People choose by looking,** with a component-agnostic test pattern. It shows text, icons, boundaries, fills, and fills with text, small and large, alone and side by side, on each surface, in each theme and each state.
+- **States are semantic tokens** with a state relationship to their resting token. Whether they're exported as solid values or overlays is still open.
+
+**Context:** Benji's view is that states depend on creative choices (dark buttons on a light page need different states from light ones), and that steps and overlays aren't the basis of the model. Themes vary by brand, product and more, not just light and dark.
+
+**Alternatives considered:**
+- A fixed grade for each semantic token in light and dark, as ADR 0005 first described
+- Themes limited to light and dark
+- Component-specific previews, such as button and form-field mock-ups. Replaced by the test pattern, which needs no components.
+
+**Why:**
+- Readability comes from luminance contrast, not hue (Legge et al., 1987 and 1990; Hall & Hanna, 2004).
+- A colour's look depends on its neighbours (Krauskopf et al., 1986; Gilchrist et al., 1999), so relationships are judged in context.
+- Regions group what's inside them (Palmer, 1992; Palmer & Rock, 1994).
+- Standing out depends on neighbours (Wolfe & Horowitz, 2017), and interactive things need visible signals (Moran, 2017).
+- Overlays look different over different backgrounds (Singh & Anderson, 2002). Measured on 27 design systems, overlays don't scale for dark mode and change coloured fills unevenly.
+- Harmony follows patterns but varies between people (Schloss & Palmer, 2011; Ou et al., 2004).
+
+**Consequences:**
+- ADR 0005 is amended: semantic tokens name their relationships, and each resolution records the primitive and grade chosen.
+- The rules schema (D-048) already has open lists of uses and contexts, and its semantic section holds only stand-in tokens marked for CLR-27. CLR-27 redesigns that section around relationship types and theme dimensions.
+- US-06 and CLR-27 become the heart of the product, and will be rewritten with Benji around relationships, themes and the test pattern.
+- CLR-13's remaining questions, how the ladder is derived and how many steps it has, sit inside this model. The ladder serves the relationships.
+- Open: export format for states, how emphasis is specified, which dimensions the beta's guided flow covers, exporting interacting dimensions, and the smallest useful test pattern (CLR-95).
