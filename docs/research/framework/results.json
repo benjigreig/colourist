@@ -1,0 +1,82 @@
+{
+ "svelte": {
+  "axe_initial": [],
+  "tab_order": [
+   "Name",
+   "Hex value",
+   "Remove Primary",
+   "Add a colour",
+   "Try an example",
+   "13 steps",
+   "Scales on the 13 ste",
+   "colouri.st spike Sve",
+   "Name",
+   "Hex value",
+   "Remove Primary",
+   "Add a colour"
+  ],
+  "invalid_partial_shows_error": true,
+  "readout_dashes": true,
+  "axe_invalid": [],
+  "focus_kept_while_typing": true,
+  "value_after_typing": "#E8B931",
+  "rows_in_ladder": 2,
+  "preset_after_arrow": "15",
+  "columns_after_arrow": 15,
+  "focus_after_remove_immediately": "BUTTON#remove-c1",
+  "focus_after_remove": "BUTTON#remove-c1",
+  "announcement_after_remove": "Colour 2 removed",
+  "colours_for_timing": 14,
+  "regeneration_ms": [
+   29,
+   32,
+   32,
+   33,
+   32
+  ],
+  "axe_full": [],
+  "axe_dark": [],
+  "axe_320px": [],
+  "horizontal_scroll_at_320": false
+ },
+ "preact": {
+  "axe_initial": [],
+  "tab_order": [
+   "Name",
+   "Hex value",
+   "Remove Primary",
+   "Add a colour",
+   "Try an example",
+   "13 steps",
+   "Scales on the 13 ste",
+   "colouri.st spikePrea",
+   "Name",
+   "Hex value",
+   "Remove Primary",
+   "Add a colour"
+  ],
+  "invalid_partial_shows_error": true,
+  "readout_dashes": true,
+  "axe_invalid": [],
+  "focus_kept_while_typing": true,
+  "value_after_typing": "#E8B931",
+  "rows_in_ladder": 2,
+  "preset_after_arrow": "15",
+  "columns_after_arrow": 15,
+  "focus_after_remove_immediately": "BUTTON#remove-c1",
+  "focus_after_remove": "BUTTON#remove-c1",
+  "announcement_after_remove": "Colour 2 removed",
+  "colours_for_timing": 14,
+  "regeneration_ms": [
+   25,
+   32,
+   32,
+   32,
+   32
+  ],
+  "axe_full": [],
+  "axe_dark": [],
+  "axe_320px": [],
+  "horizontal_scroll_at_320": false
+ }
+}

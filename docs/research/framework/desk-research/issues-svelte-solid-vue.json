@@ -1,0 +1,26 @@
+{
+ "sveltejs/svelte": {
+  "issues_opened_12m": 625,
+  "issues_closed_of_those": 420,
+  "close_rate": 0.67,
+  "sample": 5,
+  "responded": 5,
+  "median_first_response_h": 26.6
+ },
+ "solidjs/solid": {
+  "issues_opened_12m": 792,
+  "issues_closed_of_those": 772,
+  "close_rate": 0.97,
+  "sample": 5,
+  "responded": 5,
+  "median_first_response_h": 47.3
+ },
+ "vuejs/core": {
+  "issues_opened_12m": 317,
+  "issues_closed_of_those": 278,
+  "close_rate": 0.88,
+  "sample": 5,
+  "responded": 5,
+  "median_first_response_h": 305.0
+ }
+}

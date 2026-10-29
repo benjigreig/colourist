@@ -1,0 +1,26 @@
+{
+ "preactjs/preact": {
+  "issues_opened_12m": 49,
+  "issues_closed_of_those": 45,
+  "close_rate": 0.92,
+  "sample": 5,
+  "responded": 4,
+  "median_first_response_h": 69.9
+ },
+ "preactjs/signals": {
+  "issues_opened_12m": 25,
+  "issues_closed_of_those": 21,
+  "close_rate": 0.84,
+  "sample": 3,
+  "responded": 3,
+  "median_first_response_h": 659.6
+ },
+ "lit/lit": {
+  "issues_opened_12m": 70,
+  "issues_closed_of_those": 17,
+  "close_rate": 0.24,
+  "sample": 4,
+  "responded": 2,
+  "median_first_response_h": 326.9
+ }
+}

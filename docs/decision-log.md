@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-038 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-039 |
 
 ---
 
@@ -504,3 +504,17 @@ Data visualisation colours (CLR-55) and several brands or themes from one method
 **Why:** It tests the engine on a real system from day one, and it's a worked example for the launch and the case study.
 
 **Consequences:** Problems found are fixed in the engine or rules, not patched in the interface. The interface project file is committed as a test fixture. The alpha sessions check that status colours aren't mistaken for part of the person's palette.
+
+### D-039 · Svelte 5 for the view layer
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-5 · **ADR:** [adr/0003-front-end-framework.md](adr/0003-front-end-framework.md)
+
+**Decision:** The view layer is built in Svelte 5, in runes mode, with Vite. State, logic and colour maths stay in plain TypeScript outside it.
+
+**Context:** Six candidates were assessed on desk research, following D-014: Svelte 5, Vue 3, Preact with signals, Solid, Lit and framework-free TypeScript. Svelte and Preact were spiked by building stages 1 and 2 in each, on one shared core and stylesheet.
+
+**Alternatives considered:** Preact with signals; Vue 3; Solid; Lit; framework-free TypeScript, which is kept as the fallback.
+
+**Why:** Svelte is the healthiest project, with 62 active contributors and the best OpenSSF Scorecard of the candidates. Its compiler warns about accessibility problems while building. The core's store works with it directly, with no adapter. It has official llms.txt files and an MCP server for AI tools. Both spikes passed every automated accessibility and keyboard check, so the difference came down to health, coupling and tooling. Preact was smaller, but depends largely on one maintainer.
+
+**Consequences:** svelte-check runs in CI, and the compiler's accessibility warnings are treated as errors. axe and manual testing still run. Health is reviewed yearly. Both spikes are kept in [research/framework/](research/framework/), along with the desk research and the assessment process ([adr/dependency-assessment.md](adr/dependency-assessment.md)).
+

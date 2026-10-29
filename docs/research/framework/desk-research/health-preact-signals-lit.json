@@ -1,0 +1,50 @@
+{
+ "preactjs/preact": {
+  "stars": 38961,
+  "licence": "MIT",
+  "open_issues": 38,
+  "created": "2015-09-11",
+  "releases_12m": 24,
+  "latest_release": "11.0.2 2026-10-23",
+  "commits_12m": 267,
+  "active_contributors_12m": 14,
+  "top_contributor_share": 0.72,
+  "bus_factor_50pct": 1,
+  "sample_issues": 0,
+  "sample_closed": 0,
+  "responded": 0,
+  "median_first_response_h": null
+ },
+ "preactjs/signals": {
+  "stars": 4504,
+  "licence": "MIT",
+  "open_issues": 47,
+  "created": "2022-08-08",
+  "releases_12m": 75,
+  "latest_release": "@preact/signals@2.11.4 2026-10-27",
+  "commits_12m": 224,
+  "active_contributors_12m": 13,
+  "top_contributor_share": 0.71,
+  "bus_factor_50pct": 1,
+  "sample_issues": 3,
+  "sample_closed": 3,
+  "responded": 3,
+  "median_first_response_h": 659.6
+ },
+ "lit/lit": {
+  "stars": 21868,
+  "licence": "BSD-3-Clause",
+  "open_issues": 741,
+  "created": "2017-06-29",
+  "releases_12m": 8,
+  "latest_release": "lit@3.3.3 2026-05-14",
+  "commits_12m": 45,
+  "active_contributors_12m": 21,
+  "top_contributor_share": 0.29,
+  "bus_factor_50pct": 3,
+  "sample_issues": 7,
+  "sample_closed": 2,
+  "responded": 3,
+  "median_first_response_h": 198.0
+ }
+}
