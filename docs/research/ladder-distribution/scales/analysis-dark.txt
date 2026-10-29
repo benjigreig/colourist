@@ -1,0 +1,20 @@
+Radix dark blue: n=12 L* light→dark [89.5, 72.9, 63.8, 59.1, 46.6, 38.9, 32.2, 26.5, 21.0, 15.8, 8.7, 6.6]
+   CV gaps L* 0.51  thirds light/mid/dark [2, 4, 6]  steps apart {'3:1': (7, 4), '4.5:1': (8, 5), '7:1': (10, 7)}
+Radix dark slate: n=12 L* light→dark [94.1, 73.2, 51.6, 46.3, 40.8, 30.3, 24.2, 20.2, 16.9, 13.2, 8.7, 5.1]
+   CV gaps L* 0.8  thirds light/mid/dark [2, 3, 7]  steps apart {'3:1': (7, 2), '4.5:1': (10, 4), '7:1': (10, 5)}
+GitHub Primer dark blue: n=10 L* light→dark [90.5, 83.6, 75.4, 66.9, 58.4, 49.1, 39.9, 30.2, 20.1, 12.3]
+   CV gaps L* 0.11  thirds light/mid/dark [4, 3, 3]  steps apart {'3:1': (5, 4), '4.5:1': (6, 5), '7:1': (7, 7)}
+GitHub Primer dark gray: n=14 L* light→dark [100.0, 96.6, 85.8, 76.5, 62.5, 45.4, 28.5, 22.8, 20.1, 17.8, 15.8, 9.5, 5.0, 1.0]
+   CV gaps L* 0.69  thirds light/mid/dark [4, 2, 8]  steps apart {'3:1': (8, 2), '4.5:1': (9, 3), '7:1': (9, 5)}
+Adobe Spectrum dark blue: n=16 L* light→dark [100.0, 96.3, 91.0, 84.2, 76.9, 69.2, 63.1, 57.0, 49.8, 45.6, 39.3, 32.2, 24.8, 17.7, 12.9, 9.5]
+   CV gaps L* 0.23  thirds light/mid/dark [6, 5, 5]  steps apart {'3:1': (7, 5), '4.5:1': (8, 7), '7:1': (11, 9)}
+Adobe Spectrum dark gray: n=13 L* light→dark [100.0, 95.5, 87.4, 71.5, 57.5, 46.0, 28.9, 24.0, 20.8, 18.0, 13.2, 9.8, 5.1]
+   CV gaps L* 0.64  thirds light/mid/dark [4, 2, 7]  steps apart {'3:1': (7, 3), '4.5:1': (8, 4), '7:1': (9, 4)}
+
+Fluent 2 light surfaces: L* [100.0, 98.3, 96.5, 94.8, 93.0, 91.3]  gaps [1.7, 1.7, 1.7, 1.7, 1.8]
+Fluent 2 dark surfaces: L* [16.6, 11.8, 6.3, 2.7, 0.0, 21.2]  gaps [4.8, 5.4, 3.6, 2.7, 21.2]
+AGDS light surfaces: L* [100.0, 96.5, 93.0, 89.2]  gaps [3.5, 3.5, 3.9]
+AGDS brand-coloured ('dark') surfaces: L* [36.6, 30.7, 25.0, 18.7]  gaps [5.9, 5.7, 6.3]
+GOV.UK blue (primary with tints and shades): L* [97.4, 89.1, 73.0, 59.4, 46.1, 41.7, 34.7, 22.7]  gaps [8.2, 16.1, 13.7, 13.3, 4.4, 7.0, 12.0]
+Material 3 light surfaces (tones): L* [100, 98, 96, 94, 92, 90, 87]  gaps [2, 2, 2, 2, 2, 3]
+Material 3 dark surfaces (tones): L* [4, 6, 10, 12, 17, 22, 24]  gaps [2, 4, 2, 5, 5, 2]

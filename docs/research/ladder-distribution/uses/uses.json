@@ -1,0 +1,2427 @@
+{
+ "GitHub Primer": {
+  "note": "@primer/primitives functional themes",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--bgColor-default",
+     "value": "#ffffff"
+    },
+    "surface": {
+     "token": "--bgColor-muted",
+     "value": "#f6f8fa"
+    },
+    "sunken": {
+     "token": "--bgColor-inset",
+     "value": "#f6f8fa"
+    },
+    "hover": {
+     "token": "--control-bgColor-hover",
+     "value": "#eff2f5"
+    },
+    "pressed": {
+     "token": "--control-bgColor-active",
+     "value": "#e6eaef"
+    },
+    "selected": {
+     "token": "--control-bgColor-selected",
+     "value": "#f6f8fa"
+    },
+    "borderSubtle": {
+     "token": "--borderColor-muted",
+     "value": "#d1d9e0b3"
+    },
+    "borderStrong": {
+     "token": "--control-borderColor-rest",
+     "value": "#d1d9e0"
+    },
+    "fill": {
+     "token": "--button-primary-bgColor-rest",
+     "value": "#1f883d"
+    },
+    "text": {
+     "token": "--fgColor-default",
+     "value": "#1f2328"
+    },
+    "textMuted": {
+     "token": "--fgColor-muted",
+     "value": "#59636e"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--bgColor-default",
+     "value": "#0d1117"
+    },
+    "surface": {
+     "token": "--bgColor-muted",
+     "value": "#151b23"
+    },
+    "sunken": {
+     "token": "--bgColor-inset",
+     "value": "#010409"
+    },
+    "hover": {
+     "token": "--control-bgColor-hover",
+     "value": "#262c36"
+    },
+    "pressed": {
+     "token": "--control-bgColor-active",
+     "value": "#2a313c"
+    },
+    "selected": {
+     "token": "--control-bgColor-selected",
+     "value": "#212830"
+    },
+    "borderSubtle": {
+     "token": "--borderColor-muted",
+     "value": "#3d444db3"
+    },
+    "borderStrong": {
+     "token": "--control-borderColor-rest",
+     "value": "#3d444d"
+    },
+    "fill": {
+     "token": "--button-primary-bgColor-rest",
+     "value": "#238636"
+    },
+    "text": {
+     "token": "--fgColor-default",
+     "value": "#f0f6fc"
+    },
+    "textMuted": {
+     "token": "--fgColor-muted",
+     "value": "#9198a1"
+    }
+   },
+   "light, high contrast": {
+    "page": {
+     "token": "--bgColor-default",
+     "value": "#ffffff"
+    },
+    "surface": {
+     "token": "--bgColor-muted",
+     "value": "#e6eaef"
+    },
+    "sunken": {
+     "token": "--bgColor-inset",
+     "value": "#eff2f5"
+    },
+    "hover": {
+     "token": "--control-bgColor-hover",
+     "value": "#dae0e7"
+    },
+    "pressed": {
+     "token": "--control-bgColor-active",
+     "value": "#d1d9e0"
+    },
+    "selected": {
+     "token": "--control-bgColor-selected",
+     "value": "#e0e6eb"
+    },
+    "borderSubtle": {
+     "token": "--borderColor-muted",
+     "value": "#454c54"
+    },
+    "borderStrong": {
+     "token": "--control-borderColor-rest",
+     "value": "#454c54"
+    },
+    "fill": {
+     "token": "--button-primary-bgColor-rest",
+     "value": "#055d20"
+    },
+    "text": {
+     "token": "--fgColor-default",
+     "value": "#010409"
+    },
+    "textMuted": {
+     "token": "--fgColor-muted",
+     "value": "#454c54"
+    }
+   },
+   "dark, high contrast": {
+    "page": {
+     "token": "--bgColor-default",
+     "value": "#010409"
+    },
+    "surface": {
+     "token": "--bgColor-muted",
+     "value": "#151b23"
+    },
+    "sunken": {
+     "token": "--bgColor-inset",
+     "value": "#010409"
+    },
+    "hover": {
+     "token": "--control-bgColor-hover",
+     "value": "#2a313c"
+    },
+    "pressed": {
+     "token": "--control-bgColor-active",
+     "value": "#2f3742"
+    },
+    "selected": {
+     "token": "--control-bgColor-selected",
+     "value": "#262c36"
+    },
+    "borderSubtle": {
+     "token": "--borderColor-muted",
+     "value": "#b7bdc8"
+    },
+    "borderStrong": {
+     "token": "--control-borderColor-rest",
+     "value": "#b7bdc8"
+    },
+    "fill": {
+     "token": "--button-primary-bgColor-rest",
+     "value": "#006222"
+    },
+    "text": {
+     "token": "--fgColor-default",
+     "value": "#ffffff"
+    },
+    "textMuted": {
+     "token": "--fgColor-muted",
+     "value": "#b7bdc8"
+    }
+   }
+  }
+ },
+ "Atlassian": {
+  "note": "@atlaskit/tokens; in dark mode the raised surface is lighter than the page",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--ds-surface",
+     "value": "#FFFFFF"
+    },
+    "surface": {
+     "token": "--ds-surface-raised",
+     "value": "#FFFFFF"
+    },
+    "sunken": {
+     "token": "--ds-surface-sunken",
+     "value": "#F8F8F8"
+    },
+    "hover": {
+     "token": "--ds-background-neutral-subtle-hovered",
+     "value": "#0515240F"
+    },
+    "pressed": {
+     "token": "--ds-background-neutral-subtle-pressed",
+     "value": "#0B120E24"
+    },
+    "selected": {
+     "token": "--ds-background-selected",
+     "value": "#E9F2FE"
+    },
+    "borderSubtle": {
+     "token": "--ds-border",
+     "value": "#0B120E24"
+    },
+    "borderStrong": {
+     "token": "--ds-border-input",
+     "value": "#8C8F97"
+    },
+    "fill": {
+     "token": "--ds-background-brand-bold",
+     "value": "#1868DB"
+    },
+    "text": {
+     "token": "--ds-text",
+     "value": "#292A2E"
+    },
+    "textMuted": {
+     "token": "--ds-text-subtle",
+     "value": "#505258"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--ds-surface",
+     "value": "#1F1F21"
+    },
+    "surface": {
+     "token": "--ds-surface-raised",
+     "value": "#242528"
+    },
+    "sunken": {
+     "token": "--ds-surface-sunken",
+     "value": "#18191A"
+    },
+    "hover": {
+     "token": "--ds-background-neutral-subtle-hovered",
+     "value": "#CECED912"
+    },
+    "pressed": {
+     "token": "--ds-background-neutral-subtle-pressed",
+     "value": "#E3E4F21F"
+    },
+    "selected": {
+     "token": "--ds-background-selected",
+     "value": "#1C2B42"
+    },
+    "borderSubtle": {
+     "token": "--ds-border",
+     "value": "#E3E4F21F"
+    },
+    "borderStrong": {
+     "token": "--ds-border-input",
+     "value": "#7E8188"
+    },
+    "fill": {
+     "token": "--ds-background-brand-bold",
+     "value": "#669DF1"
+    },
+    "text": {
+     "token": "--ds-text",
+     "value": "#CECFD2"
+    },
+    "textMuted": {
+     "token": "--ds-text-subtle",
+     "value": "#A9ABAF"
+    }
+   },
+   "light, high contrast": {
+    "page": {
+     "token": "--ds-surface",
+     "value": "#FFFFFF"
+    },
+    "surface": {
+     "token": "--ds-surface-raised",
+     "value": "#FFFFFF"
+    },
+    "sunken": {
+     "token": "--ds-surface-sunken",
+     "value": "#FCFDFE"
+    },
+    "hover": {
+     "token": "--ds-background-neutral-subtle-hovered",
+     "value": "#0515240F"
+    },
+    "pressed": {
+     "token": "--ds-background-neutral-subtle-pressed",
+     "value": "#0B120E24"
+    },
+    "selected": {
+     "token": "--ds-background-selected",
+     "value": "#E9F2FE"
+    },
+    "borderSubtle": {
+     "token": "--ds-border",
+     "value": "#E9F0FB5C"
+    },
+    "borderStrong": {
+     "token": "--ds-border-input",
+     "value": "#505258"
+    },
+    "fill": {
+     "token": "--ds-background-brand-bold",
+     "value": "#123263"
+    },
+    "text": {
+     "token": "--ds-text",
+     "value": "#1E1F21"
+    },
+    "textMuted": {
+     "token": "--ds-text-subtle",
+     "value": "#292A2E"
+    }
+   },
+   "dark, high contrast": {
+    "page": {
+     "token": "--ds-surface",
+     "value": "#1F1F21"
+    },
+    "surface": {
+     "token": "--ds-surface-raised",
+     "value": "#242528"
+    },
+    "sunken": {
+     "token": "--ds-surface-sunken",
+     "value": "#18191A"
+    },
+    "hover": {
+     "token": "--ds-background-neutral-subtle-hovered",
+     "value": "#CECED912"
+    },
+    "pressed": {
+     "token": "--ds-background-neutral-subtle-pressed",
+     "value": "#E3E4F21F"
+    },
+    "selected": {
+     "token": "--ds-background-selected",
+     "value": "#1C2B42"
+    },
+    "borderSubtle": {
+     "token": "--ds-border",
+     "value": "#E9F0FB5C"
+    },
+    "borderStrong": {
+     "token": "--ds-border-input",
+     "value": "#A9ABAF"
+    },
+    "fill": {
+     "token": "--ds-background-brand-bold",
+     "value": "#CFE1FD"
+    },
+    "text": {
+     "token": "--ds-text",
+     "value": "#E2E3E4"
+    },
+    "textMuted": {
+     "token": "--ds-text-subtle",
+     "value": "#CECFD2"
+    }
+   }
+  }
+ },
+ "GitLab Pajamas": {
+  "note": "@gitlab/ui tokens",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--gl-background-color-default",
+     "value": "#fff"
+    },
+    "surface": {
+     "token": "--gl-background-color-subtle",
+     "value": "#f7f7f5"
+    },
+    "sunken": {
+     "token": "--gl-background-color-strong",
+     "value": "#ecebea"
+    },
+    "hover": {
+     "token": "--gl-action-neutral-background-color-hover",
+     "value": "rgba(5, 5, 6, 0.06)"
+    },
+    "pressed": {
+     "token": "--gl-action-neutral-background-color-active",
+     "value": "rgba(5, 5, 6, 0.16)"
+    },
+    "borderSubtle": {
+     "token": "--gl-border-color-default",
+     "value": "#dcdbd9"
+    },
+    "borderStrong": {
+     "token": "--gl-control-border-color-default",
+     "value": "#8a8888"
+    },
+    "fill": {
+     "token": "--gl-button-confirm-primary-background-color-default",
+     "value": "#3a383d"
+    },
+    "text": {
+     "token": "--gl-text-color-default",
+     "value": "#3a383d"
+    },
+    "textMuted": {
+     "token": "--gl-text-color-subtle",
+     "value": "#646163"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--gl-background-color-default",
+     "value": "#18171d"
+    },
+    "surface": {
+     "token": "--gl-background-color-subtle",
+     "value": "#28272d"
+    },
+    "sunken": {
+     "token": "--gl-background-color-strong",
+     "value": "#3a383d"
+    },
+    "hover": {
+     "token": "--gl-action-neutral-background-color-hover",
+     "value": "rgba(255, 255, 255, 0.16)"
+    },
+    "pressed": {
+     "token": "--gl-action-neutral-background-color-active",
+     "value": "rgba(255, 255, 255, 0.08)"
+    },
+    "borderSubtle": {
+     "token": "--gl-border-color-default",
+     "value": "#4d4b4e"
+    },
+    "borderStrong": {
+     "token": "--gl-control-border-color-default",
+     "value": "#747273"
+    },
+    "fill": {
+     "token": "--gl-button-confirm-primary-background-color-default",
+     "value": "#ecebea"
+    },
+    "text": {
+     "token": "--gl-text-color-default",
+     "value": "#ecebea"
+    },
+    "textMuted": {
+     "token": "--gl-text-color-subtle",
+     "value": "#c1bfbe"
+    }
+   }
+  }
+ },
+ "Shopify Polaris": {
+  "note": "@shopify/polaris-tokens (light only)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--p-color-bg",
+     "value": "rgba(241, 241, 241, 1)"
+    },
+    "surface": {
+     "token": "--p-color-bg-surface",
+     "value": "rgba(255, 255, 255, 1)"
+    },
+    "sunken": {
+     "token": "--p-color-bg-surface-secondary",
+     "value": "rgba(247, 247, 247, 1)"
+    },
+    "hover": {
+     "token": "--p-color-bg-surface-hover",
+     "value": "rgba(247, 247, 247, 1)"
+    },
+    "pressed": {
+     "token": "--p-color-bg-surface-active",
+     "value": "rgba(243, 243, 243, 1)"
+    },
+    "selected": {
+     "token": "--p-color-bg-surface-selected",
+     "value": "rgba(241, 241, 241, 1)"
+    },
+    "borderSubtle": {
+     "token": "--p-color-border-secondary",
+     "value": "rgba(235, 235, 235, 1)"
+    },
+    "borderStrong": {
+     "token": "--p-color-input-border",
+     "value": "rgba(138, 138, 138, 1)"
+    },
+    "fill": {
+     "token": "--p-color-bg-fill-brand",
+     "value": "rgba(48, 48, 48, 1)"
+    },
+    "text": {
+     "token": "--p-color-text",
+     "value": "rgba(48, 48, 48, 1)"
+    },
+    "textMuted": {
+     "token": "--p-color-text-secondary",
+     "value": "rgba(97, 97, 97, 1)"
+    }
+   }
+  }
+ },
+ "Twilio Paste": {
+  "note": "@twilio-paste/design-tokens",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--color-background-body",
+     "value": "rgb(255, 255, 255)"
+    },
+    "surface": {
+     "token": "--color-background-weak",
+     "value": "rgb(249, 249, 250)"
+    },
+    "sunken": {
+     "token": "--color-background",
+     "value": "rgb(244, 244, 246)"
+    },
+    "hover": {
+     "token": "--color-background-strong",
+     "value": "rgb(225, 227, 234)"
+    },
+    "borderSubtle": {
+     "token": "--color-border-weaker",
+     "value": "rgb(225, 227, 234)"
+    },
+    "borderStrong": {
+     "token": "--color-border",
+     "value": "rgb(139, 147, 170)"
+    },
+    "fill": {
+     "token": "--color-background-primary",
+     "value": "rgb(2, 99, 224)"
+    },
+    "text": {
+     "token": "--color-text",
+     "value": "rgb(18, 28, 45)"
+    },
+    "textMuted": {
+     "token": "--color-text-weak",
+     "value": "rgb(96, 107, 133)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--color-background-body",
+     "value": "rgb(13, 19, 28)"
+    },
+    "surface": {
+     "token": "--color-background-weak",
+     "value": "rgb(18, 28, 45)"
+    },
+    "sunken": {
+     "token": "--color-background",
+     "value": "rgb(24, 37, 60)"
+    },
+    "hover": {
+     "token": "--color-background-strong",
+     "value": "rgb(31, 48, 76)"
+    },
+    "borderSubtle": {
+     "token": "--color-border-weaker",
+     "value": "rgb(31, 48, 76)"
+    },
+    "borderStrong": {
+     "token": "--color-border",
+     "value": "rgb(96, 107, 133)"
+    },
+    "fill": {
+     "token": "--color-background-primary",
+     "value": "rgb(2, 99, 224)"
+    },
+    "text": {
+     "token": "--color-text",
+     "value": "rgb(244, 244, 246)"
+    },
+    "textMuted": {
+     "token": "--color-text-weak",
+     "value": "rgb(136, 145, 170)"
+    }
+   }
+  }
+ },
+ "SAP Fiori Horizon": {
+  "note": "@sap-theming/theming-base-content",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--sapBackgroundColor",
+     "value": "#f5f6f7"
+    },
+    "surface": {
+     "token": "--sapGroup_ContentBackground",
+     "value": "#fff"
+    },
+    "sunken": {
+     "token": "--sapShell_Background",
+     "value": "#eff1f2"
+    },
+    "hover": {
+     "token": "--sapList_Hover_Background",
+     "value": "#eaecee"
+    },
+    "pressed": {
+     "token": "--sapList_Active_Background",
+     "value": "#dee2e5"
+    },
+    "selected": {
+     "token": "--sapList_SelectionBackgroundColor",
+     "value": "#ebf8ff"
+    },
+    "borderSubtle": {
+     "token": "--sapList_BorderColor",
+     "value": "#e5e5e5"
+    },
+    "borderStrong": {
+     "token": "--sapField_BorderColor",
+     "value": "#556b81"
+    },
+    "fill": {
+     "token": "--sapButton_Emphasized_Background",
+     "value": "#0070f2"
+    },
+    "text": {
+     "token": "--sapTextColor",
+     "value": "#131e29"
+    },
+    "textMuted": {
+     "token": "--sapContent_LabelColor",
+     "value": "#556b82"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--sapBackgroundColor",
+     "value": "#12171c"
+    },
+    "surface": {
+     "token": "--sapGroup_ContentBackground",
+     "value": "#1d232a"
+    },
+    "sunken": {
+     "token": "--sapShell_Background",
+     "value": "#12171c"
+    },
+    "hover": {
+     "token": "--sapList_Hover_Background",
+     "value": "#222b35"
+    },
+    "pressed": {
+     "token": "--sapList_Active_Background",
+     "value": "#020303"
+    },
+    "selected": {
+     "token": "--sapList_SelectionBackgroundColor",
+     "value": "#1d2d3e"
+    },
+    "borderSubtle": {
+     "token": "--sapList_BorderColor",
+     "value": "#2e3742"
+    },
+    "borderStrong": {
+     "token": "--sapField_BorderColor",
+     "value": "#a9b4be"
+    },
+    "fill": {
+     "token": "--sapButton_Emphasized_Background",
+     "value": "#0070f2"
+    },
+    "text": {
+     "token": "--sapTextColor",
+     "value": "#f5f6f7"
+    },
+    "textMuted": {
+     "token": "--sapContent_LabelColor",
+     "value": "#8396A8"
+    }
+   }
+  }
+ },
+ "Red Hat PatternFly": {
+  "note": "@patternfly/patternfly tokens",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--pf-t--global--background--color--secondary--default",
+     "value": "#f2f2f2"
+    },
+    "surface": {
+     "token": "--pf-t--global--background--color--primary--default",
+     "value": "#ffffff"
+    },
+    "sunken": {
+     "token": "--pf-t--global--background--color--tertiary--default",
+     "value": "rgb(199, 199, 199, 0.2500)"
+    },
+    "hover": {
+     "token": "--pf-t--global--background--color--primary--hover",
+     "value": "#f2f2f2"
+    },
+    "borderSubtle": {
+     "token": "--pf-t--global--border--color--subtle",
+     "value": "#e0e0e0"
+    },
+    "borderStrong": {
+     "token": "--pf-t--global--border--color--default",
+     "value": "#e0e0e0"
+    },
+    "fill": {
+     "token": "--pf-t--global--color--brand--default",
+     "value": "#0066cc"
+    },
+    "text": {
+     "token": "--pf-t--global--text--color--regular",
+     "value": "#151515"
+    },
+    "textMuted": {
+     "token": "--pf-t--global--text--color--subtle",
+     "value": "#4d4d4d"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--pf-t--global--background--color--secondary--default",
+     "value": "#151515"
+    },
+    "surface": {
+     "token": "--pf-t--global--background--color--primary--default",
+     "value": "#292929"
+    },
+    "sunken": {
+     "token": "--pf-t--global--background--color--tertiary--default",
+     "value": "rgb(199, 199, 199, 0.1500)"
+    },
+    "hover": {
+     "token": "--pf-t--global--background--color--primary--hover",
+     "value": "#383838"
+    },
+    "borderSubtle": {
+     "token": "--pf-t--global--border--color--subtle",
+     "value": "#4d4d4d"
+    },
+    "borderStrong": {
+     "token": "--pf-t--global--border--color--default",
+     "value": "#4d4d4d"
+    },
+    "fill": {
+     "token": "--pf-t--global--color--brand--default",
+     "value": "#92c5f9"
+    },
+    "text": {
+     "token": "--pf-t--global--text--color--regular",
+     "value": "#ffffff"
+    },
+    "textMuted": {
+     "token": "--pf-t--global--text--color--subtle",
+     "value": "#c7c7c7"
+    }
+   }
+  }
+ },
+ "Bootstrap": {
+  "note": "bootstrap 5 CSS variables",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--bs-body-bg",
+     "value": "#fff"
+    },
+    "surface": {
+     "token": "--bs-tertiary-bg",
+     "value": "#f8f9fa"
+    },
+    "sunken": {
+     "token": "--bs-secondary-bg",
+     "value": "#e9ecef"
+    },
+    "borderSubtle": {
+     "token": "--bs-border-color-translucent",
+     "value": "rgba(0, 0, 0, 0.175)"
+    },
+    "borderStrong": {
+     "token": "--bs-border-color",
+     "value": "#dee2e6"
+    },
+    "fill": {
+     "token": "--bs-primary",
+     "value": "#0d6efd"
+    },
+    "text": {
+     "token": "--bs-body-color",
+     "value": "#212529"
+    },
+    "textMuted": {
+     "token": "--bs-secondary-color",
+     "value": "rgba(33, 37, 41, 0.75)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--bs-body-bg",
+     "value": "#212529"
+    },
+    "surface": {
+     "token": "--bs-tertiary-bg",
+     "value": "#2b3035"
+    },
+    "sunken": {
+     "token": "--bs-secondary-bg",
+     "value": "#343a40"
+    },
+    "borderSubtle": {
+     "token": "--bs-border-color-translucent",
+     "value": "rgba(255, 255, 255, 0.15)"
+    },
+    "borderStrong": {
+     "token": "--bs-border-color",
+     "value": "#495057"
+    },
+    "fill": {
+     "token": "--bs-primary",
+     "value": "#0d6efd"
+    },
+    "text": {
+     "token": "--bs-body-color",
+     "value": "#dee2e6"
+    },
+    "textMuted": {
+     "token": "--bs-secondary-color",
+     "value": "rgba(222, 226, 230, 0.75)"
+    }
+   }
+  }
+ },
+ "Workday Canvas": {
+  "note": "@workday/canvas-tokens-web (light only)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--cnvs-sys-color-bg-default",
+     "value": "oklch(1 0 0 / 1)"
+    },
+    "surface": {
+     "token": "--cnvs-sys-color-surface-raised",
+     "value": "oklch(0.4688 0.0781 250.43 / 0.03)"
+    },
+    "sunken": {
+     "token": "--cnvs-sys-color-bg-alt-default",
+     "value": "oklch(0.9692 0.0035 248.23 / 1)"
+    },
+    "hover": {
+     "token": "--cnvs-sys-color-surface-overlay-hover-default",
+     "value": "oklch(0.3343 0.0951 253.3 / 0.05)"
+    },
+    "pressed": {
+     "token": "--cnvs-sys-color-surface-overlay-pressed-default",
+     "value": "oklch(0.3337 0.0688 250.79 / 0.09)"
+    },
+    "borderSubtle": {
+     "token": "--cnvs-sys-color-border-divider",
+     "value": "oklch(0.917 0.0081 254 / 1)"
+    },
+    "borderStrong": {
+     "token": "--cnvs-sys-color-border-input-default",
+     "value": "oklch(0.2187 0.0685 255.77 / 0.51)"
+    },
+    "fill": {
+     "token": "--cnvs-sys-color-bg-primary-default",
+     "value": "oklch(0.5198 0.1782 256.11 / 1)"
+    },
+    "text": {
+     "token": "--cnvs-sys-color-fg-default",
+     "value": "oklch(0 0 0 / 0.77)"
+    },
+    "textMuted": {
+     "token": "--cnvs-sys-color-fg-muted-default",
+     "value": "oklch(0.1793 0.0503 254.55 / 0.64)"
+    }
+   }
+  }
+ },
+ "GOV.UK": {
+  "note": "govuk-frontend (light only)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--govuk-body-background-colour",
+     "value": "#fff"
+    },
+    "surface": {
+     "token": "--govuk-surface-background-colour",
+     "value": "#f4f8fb"
+    },
+    "hover": {
+     "token": "--govuk-hover-colour",
+     "value": "#cecece"
+    },
+    "borderSubtle": {
+     "token": "--govuk-border-colour",
+     "value": "#cecece"
+    },
+    "borderStrong": {
+     "token": "--govuk-input-border-colour",
+     "value": "#0b0c0c"
+    },
+    "fill": {
+     "token": "--govuk-brand-colour",
+     "value": "#1d70b8"
+    },
+    "text": {
+     "token": "--govuk-text-colour",
+     "value": "#0b0c0c"
+    },
+    "textMuted": {
+     "token": "--govuk-secondary-text-colour",
+     "value": "#484949"
+    }
+   }
+  }
+ },
+ "Australian Government (AGDS)": {
+  "note": "@ag.ds-next/react gold theme (light; its 'dark' palette is for brand-coloured sections, not dark mode)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "lightBackgroundBody",
+     "value": "#ffffff"
+    },
+    "surface": {
+     "token": "lightBackgroundShade",
+     "value": "#f5f5f5"
+    },
+    "sunken": {
+     "token": "lightBackgroundBodyAlt",
+     "value": "#ebebeb"
+    },
+    "selected": {
+     "token": "lightSelectedMuted",
+     "value": "#f5f5f5"
+    },
+    "borderSubtle": {
+     "token": "lightBorderMuted",
+     "value": "#d3d3d3"
+    },
+    "borderStrong": {
+     "token": "lightBorder",
+     "value": "#808080"
+    },
+    "fill": {
+     "token": "lightForegroundAction",
+     "value": "#00698f"
+    },
+    "text": {
+     "token": "lightForegroundText",
+     "value": "#313131"
+    },
+    "textMuted": {
+     "token": "lightForegroundMuted",
+     "value": "#626262"
+    }
+   }
+  }
+ },
+ "IBM Carbon": {
+  "note": "@carbon/themes",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "background",
+     "value": "#ffffff"
+    },
+    "surface": {
+     "token": "layer01",
+     "value": "#f4f4f4"
+    },
+    "sunken": {
+     "token": "layer02",
+     "value": "#ffffff"
+    },
+    "hover": {
+     "token": "layerHover01",
+     "value": "#e8e8e8"
+    },
+    "pressed": {
+     "token": "layerActive01",
+     "value": "#c6c6c6"
+    },
+    "selected": {
+     "token": "layerSelected01",
+     "value": "#e0e0e0"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle01",
+     "value": "#c6c6c6"
+    },
+    "borderStrong": {
+     "token": "borderStrong01",
+     "value": "#8d8d8d"
+    },
+    "fill": {
+     "token": "interactive",
+     "value": "#0f62fe"
+    },
+    "text": {
+     "token": "textPrimary",
+     "value": "#161616"
+    },
+    "textMuted": {
+     "token": "textSecondary",
+     "value": "#525252"
+    }
+   },
+   "light (g10)": {
+    "page": {
+     "token": "background",
+     "value": "#f4f4f4"
+    },
+    "surface": {
+     "token": "layer01",
+     "value": "#ffffff"
+    },
+    "sunken": {
+     "token": "layer02",
+     "value": "#f4f4f4"
+    },
+    "hover": {
+     "token": "layerHover01",
+     "value": "#e8e8e8"
+    },
+    "pressed": {
+     "token": "layerActive01",
+     "value": "#c6c6c6"
+    },
+    "selected": {
+     "token": "layerSelected01",
+     "value": "#e0e0e0"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle01",
+     "value": "#e0e0e0"
+    },
+    "borderStrong": {
+     "token": "borderStrong01",
+     "value": "#8d8d8d"
+    },
+    "fill": {
+     "token": "interactive",
+     "value": "#0f62fe"
+    },
+    "text": {
+     "token": "textPrimary",
+     "value": "#161616"
+    },
+    "textMuted": {
+     "token": "textSecondary",
+     "value": "#525252"
+    }
+   },
+   "dark (g90)": {
+    "page": {
+     "token": "background",
+     "value": "#262626"
+    },
+    "surface": {
+     "token": "layer01",
+     "value": "#393939"
+    },
+    "sunken": {
+     "token": "layer02",
+     "value": "#525252"
+    },
+    "hover": {
+     "token": "layerHover01",
+     "value": "#474747"
+    },
+    "pressed": {
+     "token": "layerActive01",
+     "value": "#6f6f6f"
+    },
+    "selected": {
+     "token": "layerSelected01",
+     "value": "#525252"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle01",
+     "value": "#6f6f6f"
+    },
+    "borderStrong": {
+     "token": "borderStrong01",
+     "value": "#8d8d8d"
+    },
+    "fill": {
+     "token": "interactive",
+     "value": "#4589ff"
+    },
+    "text": {
+     "token": "textPrimary",
+     "value": "#f4f4f4"
+    },
+    "textMuted": {
+     "token": "textSecondary",
+     "value": "#c6c6c6"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "background",
+     "value": "#161616"
+    },
+    "surface": {
+     "token": "layer01",
+     "value": "#262626"
+    },
+    "sunken": {
+     "token": "layer02",
+     "value": "#393939"
+    },
+    "hover": {
+     "token": "layerHover01",
+     "value": "#333333"
+    },
+    "pressed": {
+     "token": "layerActive01",
+     "value": "#525252"
+    },
+    "selected": {
+     "token": "layerSelected01",
+     "value": "#393939"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle01",
+     "value": "#525252"
+    },
+    "borderStrong": {
+     "token": "borderStrong01",
+     "value": "#6f6f6f"
+    },
+    "fill": {
+     "token": "interactive",
+     "value": "#4589ff"
+    },
+    "text": {
+     "token": "textPrimary",
+     "value": "#f4f4f4"
+    },
+    "textMuted": {
+     "token": "textSecondary",
+     "value": "#c6c6c6"
+    }
+   }
+  }
+ },
+ "Microsoft Fluent 2": {
+  "note": "@fluentui/tokens web themes",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "colorNeutralBackground1",
+     "value": "#ffffff"
+    },
+    "surface": {
+     "token": "colorNeutralBackground2",
+     "value": "#fafafa"
+    },
+    "sunken": {
+     "token": "colorNeutralBackground3",
+     "value": "#f5f5f5"
+    },
+    "hover": {
+     "token": "colorNeutralBackground1Hover",
+     "value": "#f5f5f5"
+    },
+    "pressed": {
+     "token": "colorNeutralBackground1Pressed",
+     "value": "#e0e0e0"
+    },
+    "selected": {
+     "token": "colorNeutralBackground1Selected",
+     "value": "#ebebeb"
+    },
+    "borderSubtle": {
+     "token": "colorNeutralStroke2",
+     "value": "#e0e0e0"
+    },
+    "borderStrong": {
+     "token": "colorNeutralStrokeAccessible",
+     "value": "#616161"
+    },
+    "fill": {
+     "token": "colorBrandBackground",
+     "value": "#0f6cbd"
+    },
+    "text": {
+     "token": "colorNeutralForeground1",
+     "value": "#242424"
+    },
+    "textMuted": {
+     "token": "colorNeutralForeground2",
+     "value": "#424242"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "colorNeutralBackground1",
+     "value": "#292929"
+    },
+    "surface": {
+     "token": "colorNeutralBackground2",
+     "value": "#1f1f1f"
+    },
+    "sunken": {
+     "token": "colorNeutralBackground3",
+     "value": "#141414"
+    },
+    "hover": {
+     "token": "colorNeutralBackground1Hover",
+     "value": "#3d3d3d"
+    },
+    "pressed": {
+     "token": "colorNeutralBackground1Pressed",
+     "value": "#1f1f1f"
+    },
+    "selected": {
+     "token": "colorNeutralBackground1Selected",
+     "value": "#383838"
+    },
+    "borderSubtle": {
+     "token": "colorNeutralStroke2",
+     "value": "#525252"
+    },
+    "borderStrong": {
+     "token": "colorNeutralStrokeAccessible",
+     "value": "#adadad"
+    },
+    "fill": {
+     "token": "colorBrandBackground",
+     "value": "#115ea3"
+    },
+    "text": {
+     "token": "colorNeutralForeground1",
+     "value": "#ffffff"
+    },
+    "textMuted": {
+     "token": "colorNeutralForeground2",
+     "value": "#d6d6d6"
+    }
+   }
+  }
+ },
+ "Ant Design": {
+  "note": "antd 5 design tokens",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "colorBgLayout",
+     "value": "#f5f5f5"
+    },
+    "surface": {
+     "token": "colorBgContainer",
+     "value": "#ffffff"
+    },
+    "sunken": {
+     "token": "colorBgElevated",
+     "value": "#ffffff"
+    },
+    "hover": {
+     "token": "colorBgTextHover",
+     "value": "rgba(0,0,0,0.06)"
+    },
+    "pressed": {
+     "token": "colorBgTextActive",
+     "value": "rgba(0,0,0,0.15)"
+    },
+    "selected": {
+     "token": "controlItemBgActive",
+     "value": "#e6f4ff"
+    },
+    "borderSubtle": {
+     "token": "colorBorderSecondary",
+     "value": "#f0f0f0"
+    },
+    "borderStrong": {
+     "token": "colorBorder",
+     "value": "#d9d9d9"
+    },
+    "fill": {
+     "token": "colorPrimary",
+     "value": "#1677ff"
+    },
+    "text": {
+     "token": "colorText",
+     "value": "rgba(0,0,0,0.88)"
+    },
+    "textMuted": {
+     "token": "colorTextSecondary",
+     "value": "rgba(0,0,0,0.65)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "colorBgLayout",
+     "value": "#000000"
+    },
+    "surface": {
+     "token": "colorBgContainer",
+     "value": "#141414"
+    },
+    "sunken": {
+     "token": "colorBgElevated",
+     "value": "#1f1f1f"
+    },
+    "hover": {
+     "token": "colorBgTextHover",
+     "value": "rgba(255,255,255,0.12)"
+    },
+    "pressed": {
+     "token": "colorBgTextActive",
+     "value": "rgba(255,255,255,0.18)"
+    },
+    "selected": {
+     "token": "controlItemBgActive",
+     "value": "#15325b"
+    },
+    "borderSubtle": {
+     "token": "colorBorderSecondary",
+     "value": "#303030"
+    },
+    "borderStrong": {
+     "token": "colorBorder",
+     "value": "#424242"
+    },
+    "fill": {
+     "token": "colorPrimary",
+     "value": "#1668dc"
+    },
+    "text": {
+     "token": "colorText",
+     "value": "rgba(255,255,255,0.85)"
+    },
+    "textMuted": {
+     "token": "colorTextSecondary",
+     "value": "rgba(255,255,255,0.65)"
+    }
+   }
+  }
+ },
+ "Elastic EUI": {
+  "note": "@elastic/eui-theme-borealis",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "euiPageBackgroundColor",
+     "value": "#ECF1F9"
+    },
+    "surface": {
+     "token": "euiColorBackgroundBasePlain",
+     "value": "#FFFFFF"
+    },
+    "sunken": {
+     "token": "euiColorBackgroundBaseSubdued",
+     "value": "#F6F9FC"
+    },
+    "hover": {
+     "token": "euiColorBackgroundBaseInteractiveHover",
+     "value": "rgba(23,80,186, 0.04)"
+    },
+    "selected": {
+     "token": "euiColorBackgroundBaseInteractiveSelect",
+     "value": "#F1F6FF"
+    },
+    "borderSubtle": {
+     "token": "euiColorBorderBaseSubdued",
+     "value": "#E3E8F2"
+    },
+    "borderStrong": {
+     "token": "euiFormBorderColor",
+     "value": "#CAD3E2"
+    },
+    "fill": {
+     "token": "euiColorBackgroundFilledPrimary",
+     "value": "#0B64DD"
+    },
+    "text": {
+     "token": "euiColorTextParagraph",
+     "value": "#384861"
+    },
+    "textMuted": {
+     "token": "euiColorTextSubdued",
+     "value": "#516381"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "euiPageBackgroundColor",
+     "value": "#07101F"
+    },
+    "surface": {
+     "token": "euiColorBackgroundBasePlain",
+     "value": "#111C2C"
+    },
+    "sunken": {
+     "token": "euiColorBackgroundBaseSubdued",
+     "value": "#0B1628"
+    },
+    "hover": {
+     "token": "euiColorBackgroundBaseInteractiveHover",
+     "value": "rgba(255,255,255, 0.08)"
+    },
+    "selected": {
+     "token": "euiColorBackgroundBaseInteractiveSelect",
+     "value": "#0D2F5E"
+    },
+    "borderSubtle": {
+     "token": "euiColorBorderBaseSubdued",
+     "value": "#2B394F"
+    },
+    "borderStrong": {
+     "token": "euiFormBorderColor",
+     "value": "#485975"
+    },
+    "fill": {
+     "token": "euiColorBackgroundFilledPrimary",
+     "value": "#61A2FF"
+    },
+    "text": {
+     "token": "euiColorTextParagraph",
+     "value": "#B4C1D5"
+    },
+    "textMuted": {
+     "token": "euiColorTextSubdued",
+     "value": "#98A8C3"
+    }
+   }
+  }
+ },
+ "Adobe Spectrum": {
+  "note": "@adobe/spectrum-tokens; hover and borders are palette steps, as Spectrum has no single neutral hover or border alias",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "background-base-color",
+     "value": "rgb(255, 255, 255)"
+    },
+    "surface": {
+     "token": "background-layer-2-color",
+     "value": "rgb(255, 255, 255)"
+    },
+    "sunken": {
+     "token": "background-layer-1-color",
+     "value": "rgb(248, 248, 248)"
+    },
+    "hover": {
+     "token": "gray-100",
+     "value": "rgb(233, 233, 233)"
+    },
+    "borderSubtle": {
+     "token": "gray-200",
+     "value": "rgb(225, 225, 225)"
+    },
+    "borderStrong": {
+     "token": "gray-500",
+     "value": "rgb(143, 143, 143)"
+    },
+    "fill": {
+     "token": "accent-background-color-default",
+     "value": "rgb(59, 99, 251)"
+    },
+    "text": {
+     "token": "neutral-content-color-default",
+     "value": "rgb(41, 41, 41)"
+    },
+    "textMuted": {
+     "token": "neutral-subdued-content-color-default",
+     "value": "rgb(80, 80, 80)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "background-base-color",
+     "value": "rgb(17, 17, 17)"
+    },
+    "surface": {
+     "token": "background-layer-2-color",
+     "value": "rgb(34, 34, 34)"
+    },
+    "sunken": {
+     "token": "background-layer-1-color",
+     "value": "rgb(27, 27, 27)"
+    },
+    "hover": {
+     "token": "gray-100",
+     "value": "rgb(44, 44, 44)"
+    },
+    "borderSubtle": {
+     "token": "gray-200",
+     "value": "rgb(50, 50, 50)"
+    },
+    "borderStrong": {
+     "token": "gray-500",
+     "value": "rgb(109, 109, 109)"
+    },
+    "fill": {
+     "token": "accent-background-color-default",
+     "value": "rgb(64, 105, 253)"
+    },
+    "text": {
+     "token": "neutral-content-color-default",
+     "value": "rgb(219, 219, 219)"
+    },
+    "textMuted": {
+     "token": "neutral-subdued-content-color-default",
+     "value": "rgb(175, 175, 175)"
+    }
+   }
+  }
+ },
+ "Material 3": {
+  "note": "Material 3 role tones (color_spec_2021.js), as greys of the same L*; hover and pressed are 8% and 10% state layers",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "page",
+     "value": "#f9f9f9"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#f3f3f3"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "#e8e8e8"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#1b1b1b14"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "#1b1b1b1A"
+    },
+    "selected": {
+     "token": "selected",
+     "value": "#e2e2e2"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#c6c6c6"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#777777"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#5e5e5e"
+    },
+    "text": {
+     "token": "text",
+     "value": "#1b1b1b"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#474747"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "page",
+     "value": "#131313"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#1b1b1b"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "#2a2a2a"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#e2e2e214"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "#e2e2e21A"
+    },
+    "selected": {
+     "token": "selected",
+     "value": "#474747"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#474747"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#919191"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#c6c6c6"
+    },
+    "text": {
+     "token": "text",
+     "value": "#e2e2e2"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#c6c6c6"
+    }
+   }
+  }
+ },
+ "Radix": {
+  "note": "@radix-ui/colors, using the documented purpose of each step (slate for neutrals, blue 9 for the fill)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "page",
+     "value": "#fcfcfd"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#f9f9fb"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "#f0f0f3"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#e8e8ec"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "#e0e1e6"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#d9d9e0"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#b9bbc6"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#0090ff"
+    },
+    "text": {
+     "token": "text",
+     "value": "#1c2024"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#60646c"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "page",
+     "value": "#111113"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#18191b"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "#212225"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#272a2d"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "#2e3135"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#363a3f"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#5a6169"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#0090ff"
+    },
+    "text": {
+     "token": "text",
+     "value": "#edeef0"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#b0b4ba"
+    }
+   }
+  }
+ },
+ "Chakra UI": {
+  "note": "@chakra-ui/react v3 semantic tokens (bg, bg.subtle, bg.muted, bg.emphasized, border, border.emphasized, gray.solid, fg, fg.muted)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "page",
+     "value": "#FFFFFF"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#fafafa"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "#f4f4f5"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#f4f4f5"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "#e4e4e7"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#e4e4e7"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#d4d4d8"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#18181b"
+    },
+    "text": {
+     "token": "text",
+     "value": "#09090B"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#52525b"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "page",
+     "value": "#09090B"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#111111"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "#18181b"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#18181b"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "#27272a"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#27272a"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#3f3f46"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#FFFFFF"
+    },
+    "text": {
+     "token": "text",
+     "value": "#fafafa"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#a1a1aa"
+    }
+   }
+  }
+ },
+ "Apple (iOS)": {
+  "note": "Apple HIG Color specifications: system greys 6, 5, 4 and gray, and blue; roles approximate",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "page",
+     "value": "rgb(255,255,255)"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "rgb(242,242,247)"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "rgb(229,229,234)"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "rgb(209,209,214)"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "rgb(142,142,147)"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "rgb(0,136,255)"
+    },
+    "text": {
+     "token": "text",
+     "value": "rgb(0,0,0)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "page",
+     "value": "rgb(0,0,0)"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "rgb(28,28,30)"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "rgb(44,44,46)"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "rgb(58,58,60)"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "rgb(142,142,147)"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "rgb(0,145,255)"
+    },
+    "text": {
+     "token": "text",
+     "value": "rgb(255,255,255)"
+    }
+   },
+   "light, high contrast": {
+    "page": {
+     "token": "page",
+     "value": "rgb(255,255,255)"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "rgb(235,235,240)"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "rgb(216,216,220)"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "rgb(188,188,192)"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "rgb(108,108,112)"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "rgb(30,110,244)"
+    },
+    "text": {
+     "token": "text",
+     "value": "rgb(0,0,0)"
+    }
+   },
+   "dark, high contrast": {
+    "page": {
+     "token": "page",
+     "value": "rgb(0,0,0)"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "rgb(36,36,38)"
+    },
+    "sunken": {
+     "token": "sunken",
+     "value": "rgb(54,54,56)"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "rgb(68,68,70)"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "rgb(174,174,178)"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "rgb(92,184,255)"
+    },
+    "text": {
+     "token": "text",
+     "value": "rgb(255,255,255)"
+    }
+   }
+  }
+ },
+ "MUI (Material UI)": {
+  "note": "@mui/material createTheme defaults; the strong border is the outlined input border MUI hard-codes at 23%; in dark mode, MUI lightens paper by elevation overlays, not measured here",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "page",
+     "value": "#fff"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#fff"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "rgba(0, 0, 0, 0.04)"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "rgba(0, 0, 0, 0.12)"
+    },
+    "selected": {
+     "token": "selected",
+     "value": "rgba(0, 0, 0, 0.08)"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "rgba(0, 0, 0, 0.12)"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "rgba(0, 0, 0, 0.23)"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#1976d2"
+    },
+    "text": {
+     "token": "text",
+     "value": "rgba(0, 0, 0, 0.87)"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "rgba(0, 0, 0, 0.6)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "page",
+     "value": "#121212"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#121212"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "rgba(255, 255, 255, 0.08)"
+    },
+    "pressed": {
+     "token": "pressed",
+     "value": "rgba(255, 255, 255, 0.12)"
+    },
+    "selected": {
+     "token": "selected",
+     "value": "rgba(255, 255, 255, 0.16)"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "rgba(255, 255, 255, 0.12)"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "rgba(255, 255, 255, 0.23)"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#90caf9"
+    },
+    "text": {
+     "token": "text",
+     "value": "#fff"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "rgba(255, 255, 255, 0.7)"
+    }
+   }
+  }
+ },
+ "shadcn/ui": {
+  "note": "shadcn/ui v4 site theme (apps/v4/app/globals.css on GitHub, main branch, 29 Oct 2026); hover is the accent token used for ghost-button and menu hovers",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--background",
+     "value": "oklch(1 0 0)"
+    },
+    "surface": {
+     "token": "--card",
+     "value": "oklch(1 0 0)"
+    },
+    "sunken": {
+     "token": "--muted",
+     "value": "oklch(0.97 0 0)"
+    },
+    "hover": {
+     "token": "--accent",
+     "value": "oklch(0.97 0 0)"
+    },
+    "borderSubtle": {
+     "token": "--border",
+     "value": "oklch(0.922 0 0)"
+    },
+    "borderStrong": {
+     "token": "--input",
+     "value": "oklch(0.922 0 0)"
+    },
+    "fill": {
+     "token": "--primary",
+     "value": "oklch(0% 0 0)"
+    },
+    "text": {
+     "token": "--foreground",
+     "value": "oklch(0% 0 0)"
+    },
+    "textMuted": {
+     "token": "--muted-foreground",
+     "value": "oklch(0.556 0 0)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--background",
+     "value": "oklch(0.145 0 0)"
+    },
+    "surface": {
+     "token": "--card",
+     "value": "oklch(0.205 0 0)"
+    },
+    "sunken": {
+     "token": "--muted",
+     "value": "oklch(0.269 0 0)"
+    },
+    "hover": {
+     "token": "--accent",
+     "value": "oklch(0.371 0 0)"
+    },
+    "borderSubtle": {
+     "token": "--border",
+     "value": "oklch(1 0 0 / 10%)"
+    },
+    "borderStrong": {
+     "token": "--input",
+     "value": "oklch(1 0 0 / 15%)"
+    },
+    "fill": {
+     "token": "--primary",
+     "value": "oklch(0.922 0 0)"
+    },
+    "text": {
+     "token": "--foreground",
+     "value": "oklch(0.985 0 0)"
+    },
+    "textMuted": {
+     "token": "--muted-foreground",
+     "value": "oklch(0.708 0 0)"
+    }
+   }
+  }
+ },
+ "Mantine": {
+  "note": "@mantine/core styles.css: body, default, default-hover, gray-3 or dark-4 (borders), default-border, blue-filled, text, dimmed",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "page",
+     "value": "#fff"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#fff"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#f8f9fa"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#dee2e6"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#ced4da"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#228be6"
+    },
+    "text": {
+     "token": "text",
+     "value": "#000"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#868e96"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "page",
+     "value": "#242424"
+    },
+    "surface": {
+     "token": "surface",
+     "value": "#2e2e2e"
+    },
+    "hover": {
+     "token": "hover",
+     "value": "#3b3b3b"
+    },
+    "borderSubtle": {
+     "token": "borderSubtle",
+     "value": "#424242"
+    },
+    "borderStrong": {
+     "token": "borderStrong",
+     "value": "#424242"
+    },
+    "fill": {
+     "token": "fill",
+     "value": "#1971c2"
+    },
+    "text": {
+     "token": "text",
+     "value": "#c9c9c9"
+    },
+    "textMuted": {
+     "token": "textMuted",
+     "value": "#828282"
+    }
+   }
+  }
+ },
+ "daisyUI": {
+  "note": "daisyui 5 themes; borders and muted text are made with opacity in components, so not measured",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--color-base-100",
+     "value": "oklch(100% 0 0)"
+    },
+    "surface": {
+     "token": "--color-base-200",
+     "value": "oklch(98% 0 0)"
+    },
+    "sunken": {
+     "token": "--color-base-300",
+     "value": "oklch(95% 0 0)"
+    },
+    "fill": {
+     "token": "--color-primary",
+     "value": "oklch(45% 0.24 277.023)"
+    },
+    "text": {
+     "token": "--color-base-content",
+     "value": "oklch(21% 0.006 285.885)"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "--color-base-100",
+     "value": "oklch(25.33% 0.016 252.42)"
+    },
+    "surface": {
+     "token": "--color-base-200",
+     "value": "oklch(23.26% 0.014 253.1)"
+    },
+    "sunken": {
+     "token": "--color-base-300",
+     "value": "oklch(21.15% 0.012 254.09)"
+    },
+    "fill": {
+     "token": "--color-primary",
+     "value": "oklch(58% 0.233 277.117)"
+    },
+    "text": {
+     "token": "--color-base-content",
+     "value": "oklch(97.807% 0.029 256.847)"
+    }
+   }
+  }
+ },
+ "Uber Base Web": {
+  "note": "baseui themes; inputs are filled, so their border is nearly invisible",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "backgroundPrimary",
+     "value": "#FFFFFF"
+    },
+    "surface": {
+     "token": "backgroundSecondary",
+     "value": "#F3F3F3"
+    },
+    "sunken": {
+     "token": "backgroundTertiary",
+     "value": "#E8E8E8"
+    },
+    "hover": {
+     "token": "buttonTertiaryHover",
+     "value": "#F3F3F3"
+    },
+    "pressed": {
+     "token": "buttonTertiaryActive",
+     "value": "#E8E8E8"
+    },
+    "borderSubtle": {
+     "token": "borderOpaque",
+     "value": "#F3F3F3"
+    },
+    "borderStrong": {
+     "token": "inputBorder",
+     "value": "#F3F3F3"
+    },
+    "fill": {
+     "token": "buttonPrimaryFill",
+     "value": "#000000"
+    },
+    "text": {
+     "token": "contentPrimary",
+     "value": "#000000"
+    },
+    "textMuted": {
+     "token": "contentSecondary",
+     "value": "#4B4B4B"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "backgroundPrimary",
+     "value": "#161616"
+    },
+    "surface": {
+     "token": "backgroundSecondary",
+     "value": "#292929"
+    },
+    "sunken": {
+     "token": "backgroundTertiary",
+     "value": "#383838"
+    },
+    "hover": {
+     "token": "buttonTertiaryHover",
+     "value": "#292929"
+    },
+    "pressed": {
+     "token": "buttonTertiaryActive",
+     "value": "#383838"
+    },
+    "borderSubtle": {
+     "token": "borderOpaque",
+     "value": "#292929"
+    },
+    "borderStrong": {
+     "token": "inputBorder",
+     "value": "#292929"
+    },
+    "fill": {
+     "token": "buttonPrimaryFill",
+     "value": "#C4C4C4"
+    },
+    "text": {
+     "token": "contentPrimary",
+     "value": "#DEDEDE"
+    },
+    "textMuted": {
+     "token": "contentSecondary",
+     "value": "#C4C4C4"
+    }
+   }
+  }
+ },
+ "Zendesk Garden": {
+  "note": "@zendeskgarden/react-theming v9 colour variables",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "background.default",
+     "value": "#fff"
+    },
+    "surface": {
+     "token": "background.subtle",
+     "value": "#f8f9f9"
+    },
+    "sunken": {
+     "token": "background.recessed",
+     "value": "#f8f9f9"
+    },
+    "borderSubtle": {
+     "token": "border.subtle",
+     "value": "#e8eaec"
+    },
+    "borderStrong": {
+     "token": "border.default",
+     "value": "#d8dcde"
+    },
+    "fill": {
+     "token": "background.primaryEmphasis",
+     "value": "#1f73b7"
+    },
+    "text": {
+     "token": "foreground.default",
+     "value": "#293239"
+    },
+    "textMuted": {
+     "token": "foreground.subtle",
+     "value": "#5c6970"
+    }
+   },
+   "dark": {
+    "page": {
+     "token": "background.default",
+     "value": "#151a1e"
+    },
+    "surface": {
+     "token": "background.subtle",
+     "value": "#1c2227"
+    },
+    "sunken": {
+     "token": "background.recessed",
+     "value": "#0a0d0e"
+    },
+    "borderSubtle": {
+     "token": "border.subtle",
+     "value": "#293239"
+    },
+    "borderStrong": {
+     "token": "border.default",
+     "value": "#39434b"
+    },
+    "fill": {
+     "token": "background.primaryEmphasis",
+     "value": "#2694d6"
+    },
+    "text": {
+     "token": "foreground.default",
+     "value": "#d8dcde"
+    },
+    "textMuted": {
+     "token": "foreground.subtle",
+     "value": "#919ca5"
+    }
+   }
+  }
+ },
+ "Salesforce Lightning (SLDS)": {
+  "note": "@salesforce-ux/design-system global styling hooks (light only)",
+  "modes": {
+   "light": {
+    "page": {
+     "token": "--slds-g-color-surface-2",
+     "value": "#f3f3f3"
+    },
+    "surface": {
+     "token": "--slds-g-color-surface-container-1",
+     "value": "#fff"
+    },
+    "sunken": {
+     "token": "--slds-g-color-surface-container-3",
+     "value": "#e5e5e5"
+    },
+    "borderSubtle": {
+     "token": "--slds-g-color-border-1",
+     "value": "#c9c9c9"
+    },
+    "borderStrong": {
+     "token": "--slds-g-color-border-2",
+     "value": "#747474"
+    },
+    "fill": {
+     "token": "--slds-g-color-brand-base-50",
+     "value": "#0176d3"
+    },
+    "text": {
+     "token": "--slds-g-color-on-surface-3",
+     "value": "#181818"
+    },
+    "textMuted": {
+     "token": "--slds-g-color-on-surface-1",
+     "value": "#757575"
+    }
+   }
+  }
+ }
+}

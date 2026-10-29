@@ -1,0 +1,16 @@
+Primer light       fill grade  50 (L* 50)  hover   2.9  pressed   6.4
+Primer dark        fill grade  50 (L* 49)  hover  -4.2  pressed  -8.2
+Atlassian light    fill grade  54 (L* 46)  hover   8.1  pressed  17.7
+Atlassian dark     fill grade  33 (L* 64)  hover  -9.9  pressed -16.6
+GitLab light       fill grade  80 (L* 24)  hover  14.1  pressed  18.7
+Polaris light      fill grade  85 (L* 20)  hover   9.1  pressed   9.1
+SAP light          fill grade  50 (L* 49)  hover   6.1  pressed -49.9
+SAP dark           fill grade  50 (L* 49)  hover   6.1  pressed  35.8
+Fluent 2 light     fill grade  55 (L* 45)  hover   7.0  pressed  25.3
+Fluent 2 dark      fill grade  62 (L* 39)  hover  -7.0  pressed  18.4
+Ant Design light   fill grade  46 (L* 52)  hover -10.4  pressed  13.3
+Ant Design dark    fill grade  54 (L* 46)  hover -12.6  pressed  10.9
+Carbon light       fill grade  53 (L* 47)  hover   8.0  pressed  26.8
+Carbon dark        fill grade  53 (L* 47)  hover   8.0  pressed  26.8
+Radix light        fill grade  39 (L* 59)  hover   3.5  pressed     —
+Radix dark         fill grade  39 (L* 59)  hover  -5.1  pressed     —

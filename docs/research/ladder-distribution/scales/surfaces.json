@@ -1,0 +1,296 @@
+{
+ "Fluent 2 light surfaces": [
+  {
+   "name": "colorNeutralBackground1",
+   "rgb": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "colorNeutralBackground2",
+   "rgb": [
+    250,
+    250,
+    250
+   ]
+  },
+  {
+   "name": "colorNeutralBackground3",
+   "rgb": [
+    245,
+    245,
+    245
+   ]
+  },
+  {
+   "name": "colorNeutralBackground4",
+   "rgb": [
+    240,
+    240,
+    240
+   ]
+  },
+  {
+   "name": "colorNeutralBackground5",
+   "rgb": [
+    235,
+    235,
+    235
+   ]
+  },
+  {
+   "name": "colorNeutralBackground6",
+   "rgb": [
+    230,
+    230,
+    230
+   ]
+  }
+ ],
+ "Fluent 2 dark surfaces": [
+  {
+   "name": "colorNeutralBackground1",
+   "rgb": [
+    41,
+    41,
+    41
+   ]
+  },
+  {
+   "name": "colorNeutralBackground2",
+   "rgb": [
+    31,
+    31,
+    31
+   ]
+  },
+  {
+   "name": "colorNeutralBackground3",
+   "rgb": [
+    20,
+    20,
+    20
+   ]
+  },
+  {
+   "name": "colorNeutralBackground4",
+   "rgb": [
+    10,
+    10,
+    10
+   ]
+  },
+  {
+   "name": "colorNeutralBackground5",
+   "rgb": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "colorNeutralBackground6",
+   "rgb": [
+    51,
+    51,
+    51
+   ]
+  }
+ ],
+ "AGDS light surfaces": [
+  {
+   "name": "body",
+   "rgb": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "shade",
+   "rgb": [
+    245,
+    245,
+    245
+   ]
+  },
+  {
+   "name": "bodyAlt",
+   "rgb": [
+    235,
+    235,
+    235
+   ]
+  },
+  {
+   "name": "shadeAlt",
+   "rgb": [
+    224,
+    224,
+    224
+   ]
+  }
+ ],
+ "AGDS brand-coloured ('dark') surfaces": [
+  {
+   "name": "body",
+   "rgb": [
+    19,
+    94,
+    112
+   ]
+  },
+  {
+   "name": "shade",
+   "rgb": [
+    16,
+    79,
+    95
+   ]
+  },
+  {
+   "name": "bodyAlt",
+   "rgb": [
+    13,
+    65,
+    77
+   ]
+  },
+  {
+   "name": "shadeAlt",
+   "rgb": [
+    10,
+    50,
+    60
+   ]
+  }
+ ],
+ "GOV.UK blue (primary with tints and shades)": [
+  {
+   "name": "tint-95",
+   "rgb": [
+    244,
+    248,
+    251
+   ]
+  },
+  {
+   "name": "tint-80",
+   "rgb": [
+    210,
+    226,
+    241
+   ]
+  },
+  {
+   "name": "tint-50",
+   "rgb": [
+    142,
+    184,
+    220
+   ]
+  },
+  {
+   "name": "tint-25",
+   "rgb": [
+    86,
+    148,
+    202
+   ]
+  },
+  {
+   "name": "primary",
+   "rgb": [
+    29,
+    112,
+    184
+   ]
+  },
+  {
+   "name": "shade-10",
+   "rgb": [
+    26,
+    101,
+    166
+   ]
+  },
+  {
+   "name": "shade-25",
+   "rgb": [
+    22,
+    84,
+    138
+   ]
+  },
+  {
+   "name": "shade-50",
+   "rgb": [
+    15,
+    56,
+    92
+   ]
+  }
+ ],
+ "Material 3 light surfaces (tones)": [
+  {
+   "name": "T100",
+   "Lstar": 100
+  },
+  {
+   "name": "T98",
+   "Lstar": 98
+  },
+  {
+   "name": "T96",
+   "Lstar": 96
+  },
+  {
+   "name": "T94",
+   "Lstar": 94
+  },
+  {
+   "name": "T92",
+   "Lstar": 92
+  },
+  {
+   "name": "T90",
+   "Lstar": 90
+  },
+  {
+   "name": "T87",
+   "Lstar": 87
+  }
+ ],
+ "Material 3 dark surfaces (tones)": [
+  {
+   "name": "T4",
+   "Lstar": 4
+  },
+  {
+   "name": "T6",
+   "Lstar": 6
+  },
+  {
+   "name": "T10",
+   "Lstar": 10
+  },
+  {
+   "name": "T12",
+   "Lstar": 12
+  },
+  {
+   "name": "T17",
+   "Lstar": 17
+  },
+  {
+   "name": "T22",
+   "Lstar": 22
+  },
+  {
+   "name": "T24",
+   "Lstar": 24
+  }
+ ]
+}

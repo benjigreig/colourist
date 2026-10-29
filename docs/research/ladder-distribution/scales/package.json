@@ -1,0 +1,22 @@
+{
+  "name": "ladder-scales",
+  "private": true,
+  "description": "Evidence for docs/research/ladder-distribution.md (CLR-13). Exact versions read on 29 Oct 2026. Not part of the app.",
+  "type": "module",
+  "devDependencies": {
+    "@adobe/spectrum-tokens": "15.6.0",
+    "@ag.ds-next/react": "1.36.0",
+    "@ant-design/colors": "8.0.1",
+    "@atlaskit/tokens": "20.8.2",
+    "@carbon/colors": "11.61.0",
+    "@fluentui/tokens": "1.0.0-alpha.24",
+    "@material/material-color-utilities": "0.4.0",
+    "@primer/primitives": "11.10.0",
+    "@radix-ui/colors": "3.0.0",
+    "@shopify/polaris-tokens": "9.4.2",
+    "@uswds/uswds": "3.14.0",
+    "govuk-frontend": "6.6.0",
+    "open-props": "1.7.23",
+    "tailwindcss": "4.3.3"
+  }
+}

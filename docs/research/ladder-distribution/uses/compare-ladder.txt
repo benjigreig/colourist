@@ -1,0 +1,20 @@
+
+light: ladder steps as grade distances from the page step: 0, 1, 5, 10, 17, 27, 39, 52, 65, 77, 86, 91, 95
+  surface       practice   1.9  nearest step 1 at   1  off by -0.9
+  hover         practice   3.4  nearest step 2 at   5  off by 1.6
+  pressed       practice   7.9  nearest step 3 at  10  off by 2.1
+  borderSubtle  practice   8.9  nearest step 3 at  10  off by 1.1
+  borderStrong  practice  36.7  nearest step 6 at  39  off by 2.3
+  fill          practice  52.9  nearest step 7 at  52  off by -0.9
+  textMuted     practice  59.4  nearest step 8 at  65  off by 5.6
+  text          practice  91.0  nearest step 11 at  91  off by -0.0
+
+dark: ladder steps as grade distances from the page step: 0, 4, 9, 18, 30, 43, 56, 68, 78, 85, 90, 94, 95
+  surface       practice   4.0  nearest step 1 at   4  off by -0.0
+  hover         practice   9.6  nearest step 2 at   9  off by -0.6
+  pressed       practice  10.8  nearest step 2 at   9  off by -1.8
+  borderSubtle  practice  14.2  nearest step 3 at  18  off by 3.8
+  borderStrong  practice  32.4  nearest step 4 at  30  off by -2.4
+  fill          practice  57.6  nearest step 6 at  56  off by -1.6
+  textMuted     practice  70.7  nearest step 7 at  68  off by -2.7
+  text          practice  88.9  nearest step 10 at  90  off by 1.1

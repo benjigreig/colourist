@@ -1,0 +1,3766 @@
+[
+ {
+  "system": "GitHub Primer",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f6f8fa",
+   "L": 97.5,
+   "dL": 2.5,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f6f8fa",
+   "L": 97.5,
+   "dL": 2.5,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#eff2f5",
+   "L": 95.3,
+   "dL": 4.7,
+   "ratio": 1.12,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e6eaef",
+   "L": 92.5,
+   "dL": 7.5,
+   "ratio": 1.21,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#f6f8fa",
+   "L": 97.5,
+   "dL": 2.5,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#dfe4e9",
+   "L": 90.4,
+   "dL": 9.6,
+   "ratio": 1.28,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#d1d9e0",
+   "L": 86.3,
+   "dL": 13.7,
+   "ratio": 1.43,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1f883d",
+   "L": 49.8,
+   "dL": 50.2,
+   "ratio": 4.52,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#1f2328",
+   "L": 13.5,
+   "dL": 86.5,
+   "ratio": 15.8,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#59636e",
+   "L": 41.5,
+   "dL": 58.5,
+   "ratio": 6.11,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "GitHub Primer",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#0d1117",
+   "L": 5
+  },
+  "surface": {
+   "hex": "#151b23",
+   "L": 9.5,
+   "dL": 4.6,
+   "ratio": 1.09,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#010409",
+   "L": 1,
+   "dL": 3.9,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#262c36",
+   "L": 17.8,
+   "dL": 12.9,
+   "ratio": 1.35,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#2a313c",
+   "L": 20.1,
+   "dL": 15.2,
+   "ratio": 1.44,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#212830",
+   "L": 15.8,
+   "dL": 10.8,
+   "ratio": 1.27,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#2f353d",
+   "L": 21.8,
+   "dL": 16.8,
+   "ratio": 1.52,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#3d444d",
+   "L": 28.5,
+   "dL": 23.6,
+   "ratio": 1.92,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#238636",
+   "L": 49.1,
+   "dL": 44.1,
+   "ratio": 4.09,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#f0f6fc",
+   "L": 96.6,
+   "dL": 91.6,
+   "ratio": 17.39,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#9198a1",
+   "L": 62.5,
+   "dL": 57.6,
+   "ratio": 6.5,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "GitHub Primer",
+  "mode": "light, high contrast",
+  "group": "light, high contrast",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#e6eaef",
+   "L": 92.5,
+   "dL": 7.5,
+   "ratio": 1.21,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#eff2f5",
+   "L": 95.3,
+   "dL": 4.7,
+   "ratio": 1.12,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#dae0e7",
+   "L": 88.9,
+   "dL": 11.1,
+   "ratio": 1.33,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#d1d9e0",
+   "L": 86.3,
+   "dL": 13.7,
+   "ratio": 1.43,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#e0e6eb",
+   "L": 91,
+   "dL": 9,
+   "ratio": 1.26,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#454c54",
+   "L": 32,
+   "dL": 68,
+   "ratio": 8.7,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#454c54",
+   "L": 32,
+   "dL": 68,
+   "ratio": 8.7,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#055d20",
+   "L": 33.9,
+   "dL": 66.1,
+   "ratio": 8.1,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#010409",
+   "L": 1,
+   "dL": 99,
+   "ratio": 20.54,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#454c54",
+   "L": 32,
+   "dL": 68,
+   "ratio": 8.7,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "GitHub Primer",
+  "mode": "dark, high contrast",
+  "group": "dark, high contrast",
+  "page": {
+   "hex": "#010409",
+   "L": 1
+  },
+  "surface": {
+   "hex": "#151b23",
+   "L": 9.5,
+   "dL": 8.5,
+   "ratio": 1.19,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#010409",
+   "L": 1,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#2a313c",
+   "L": 20.1,
+   "dL": 19.1,
+   "ratio": 1.57,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#2f3742",
+   "L": 22.8,
+   "dL": 21.7,
+   "ratio": 1.71,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#262c36",
+   "L": 17.8,
+   "dL": 16.8,
+   "ratio": 1.46,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#b7bdc8",
+   "L": 76.5,
+   "dL": 75.4,
+   "ratio": 10.88,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#b7bdc8",
+   "L": 76.5,
+   "dL": 75.4,
+   "ratio": 10.88,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#006222",
+   "L": 35.7,
+   "dL": 34.7,
+   "ratio": 2.71,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 99,
+   "ratio": 20.54,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#b7bdc8",
+   "L": 76.5,
+   "dL": 75.4,
+   "ratio": 10.88,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Atlassian",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f8f8f8",
+   "L": 97.6,
+   "dL": 2.4,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f0f1f2",
+   "L": 95.2,
+   "dL": 4.8,
+   "ratio": 1.13,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#dddedd",
+   "L": 88.2,
+   "dL": 11.8,
+   "ratio": 1.35,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#e9f2fe",
+   "L": 95.2,
+   "dL": 4.8,
+   "ratio": 1.13,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#dddedd",
+   "L": 88.2,
+   "dL": 11.8,
+   "ratio": 1.35,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8c8f97",
+   "L": 59.4,
+   "dL": 40.6,
+   "ratio": 3.24,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1868db",
+   "L": 45.9,
+   "dL": 54.1,
+   "ratio": 5.2,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#292a2e",
+   "L": 17.1,
+   "dL": 82.9,
+   "ratio": 14.34,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#505258",
+   "L": 34.9,
+   "dL": 65.1,
+   "ratio": 7.81,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Atlassian",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#1f1f21",
+   "L": 11.8
+  },
+  "surface": {
+   "hex": "#242528",
+   "L": 14.7,
+   "dL": 2.9,
+   "ratio": 1.07,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#18191a",
+   "L": 8.7,
+   "dL": 3.1,
+   "ratio": 1.07,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#2b2b2e",
+   "L": 17.8,
+   "dL": 6,
+   "ratio": 1.17,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#37373a",
+   "L": 23.2,
+   "dL": 11.3,
+   "ratio": 1.39,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#1c2b42",
+   "L": 17.3,
+   "dL": 5.5,
+   "ratio": 1.15,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#37373a",
+   "L": 23.2,
+   "dL": 11.3,
+   "ratio": 1.39,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#7e8188",
+   "L": 53.9,
+   "dL": 42.1,
+   "ratio": 4.22,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#669df1",
+   "L": 64.4,
+   "dL": 52.6,
+   "ratio": 6,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#cecfd2",
+   "L": 83.1,
+   "dL": 71.3,
+   "ratio": 10.56,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#a9abaf",
+   "L": 69.9,
+   "dL": 58.1,
+   "ratio": 7.15,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Atlassian",
+  "mode": "light, high contrast",
+  "group": "light, high contrast",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#fcfdfe",
+   "L": 99.3,
+   "dL": 0.7,
+   "ratio": 1.02,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f0f1f2",
+   "L": 95.2,
+   "dL": 4.8,
+   "ratio": 1.13,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#dddedd",
+   "L": 88.2,
+   "dL": 11.8,
+   "ratio": 1.35,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#e9f2fe",
+   "L": 95.2,
+   "dL": 4.8,
+   "ratio": 1.13,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#f7fafe",
+   "L": 98,
+   "dL": 2,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#505258",
+   "L": 34.9,
+   "dL": 65.1,
+   "ratio": 7.81,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#123263",
+   "L": 21.2,
+   "dL": 78.8,
+   "ratio": 12.64,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#1e1f21",
+   "L": 11.7,
+   "dL": 88.3,
+   "ratio": 16.49,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#292a2e",
+   "L": 17.1,
+   "dL": 82.9,
+   "ratio": 14.34,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Atlassian",
+  "mode": "dark, high contrast",
+  "group": "dark, high contrast",
+  "page": {
+   "hex": "#1f1f21",
+   "L": 11.8
+  },
+  "surface": {
+   "hex": "#242528",
+   "L": 14.7,
+   "dL": 2.9,
+   "ratio": 1.07,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#18191a",
+   "L": 8.7,
+   "dL": 3.1,
+   "ratio": 1.07,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#2b2b2e",
+   "L": 17.8,
+   "dL": 6,
+   "ratio": 1.17,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#37373a",
+   "L": 23.2,
+   "dL": 11.3,
+   "ratio": 1.39,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#1c2b42",
+   "L": 17.3,
+   "dL": 5.5,
+   "ratio": 1.15,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#686a70",
+   "L": 44.9,
+   "dL": 33.1,
+   "ratio": 3.05,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#a9abaf",
+   "L": 69.9,
+   "dL": 58.1,
+   "ratio": 7.15,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#cfe1fd",
+   "L": 89,
+   "dL": 77.2,
+   "ratio": 12.41,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#e2e3e4",
+   "L": 90.2,
+   "dL": 78.4,
+   "ratio": 12.8,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#cecfd2",
+   "L": 83.1,
+   "dL": 71.3,
+   "ratio": 10.56,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "GitLab Pajamas",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f7f7f5",
+   "L": 97.2,
+   "dL": 2.8,
+   "ratio": 1.07,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#ecebea",
+   "L": 93.1,
+   "dL": 6.9,
+   "ratio": 1.19,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f0f0f0",
+   "L": 94.8,
+   "dL": 5.2,
+   "ratio": 1.14,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#d7d7d7",
+   "L": 86,
+   "dL": 14,
+   "ratio": 1.44,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#dcdbd9",
+   "L": 87.4,
+   "dL": 12.6,
+   "ratio": 1.38,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8a8888",
+   "L": 56.9,
+   "dL": 43.1,
+   "ratio": 3.52,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#3a383d",
+   "L": 23.9,
+   "dL": 76.1,
+   "ratio": 11.58,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#3a383d",
+   "L": 23.9,
+   "dL": 76.1,
+   "ratio": 11.58,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#646163",
+   "L": 41.5,
+   "dL": 58.5,
+   "ratio": 6.12,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "GitLab Pajamas",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#18171d",
+   "L": 8.1
+  },
+  "surface": {
+   "hex": "#28272d",
+   "L": 16,
+   "dL": 7.9,
+   "ratio": 1.2,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#3a383d",
+   "L": 23.9,
+   "dL": 15.8,
+   "ratio": 1.54,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#3d3c41",
+   "L": 25.6,
+   "dL": 17.5,
+   "ratio": 1.63,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#2a2a2f",
+   "L": 17.1,
+   "dL": 9.1,
+   "ratio": 1.24,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#4d4b4e",
+   "L": 32.2,
+   "dL": 24.1,
+   "ratio": 2.06,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#747273",
+   "L": 48.2,
+   "dL": 40.2,
+   "ratio": 3.73,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#ecebea",
+   "L": 93.1,
+   "dL": 85,
+   "ratio": 14.96,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ecebea",
+   "L": 93.1,
+   "dL": 85,
+   "ratio": 14.96,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#c1bfbe",
+   "L": 77.5,
+   "dL": 69.4,
+   "ratio": 9.72,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Shopify Polaris",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#f1f1f1",
+   "L": 95.1
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 4.9,
+   "ratio": 1.13,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#f7f7f7",
+   "L": 97.2,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#f7f7f7",
+   "L": 97.2,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#f3f3f3",
+   "L": 95.8,
+   "dL": 0.7,
+   "ratio": 1.02,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#f1f1f1",
+   "L": 95.1,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#ebebeb",
+   "L": 93,
+   "dL": 2.1,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8a8a8a",
+   "L": 57.5,
+   "dL": 37.7,
+   "ratio": 3.06,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#303030",
+   "L": 19.9,
+   "dL": 75.3,
+   "ratio": 11.69,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#303030",
+   "L": 19.9,
+   "dL": 75.3,
+   "ratio": 11.69,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#616161",
+   "L": 41.1,
+   "dL": 54,
+   "ratio": 5.48,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Twilio Paste",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f9f9fa",
+   "L": 98,
+   "dL": 2,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f4f4f6",
+   "L": 96.2,
+   "dL": 3.8,
+   "ratio": 1.1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#e1e3ea",
+   "L": 90.3,
+   "dL": 9.7,
+   "ratio": 1.28,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e1e3ea",
+   "L": 90.3,
+   "dL": 9.7,
+   "ratio": 1.28,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8b93aa",
+   "L": 61,
+   "dL": 39,
+   "ratio": 3.06,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0263e0",
+   "L": 44.7,
+   "dL": 55.3,
+   "ratio": 5.44,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#121c2d",
+   "L": 10.2,
+   "dL": 89.8,
+   "ratio": 17.08,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#606b85",
+   "L": 45.2,
+   "dL": 54.8,
+   "ratio": 5.33,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Twilio Paste",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#0d131c",
+   "L": 5.7
+  },
+  "surface": {
+   "hex": "#121c2d",
+   "L": 10.2,
+   "dL": 4.4,
+   "ratio": 1.09,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#18253c",
+   "L": 14.6,
+   "dL": 8.9,
+   "ratio": 1.21,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#1f304c",
+   "L": 19.7,
+   "dL": 14,
+   "ratio": 1.41,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#1f304c",
+   "L": 19.7,
+   "dL": 14,
+   "ratio": 1.41,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#606b85",
+   "L": 45.2,
+   "dL": 39.5,
+   "ratio": 3.5,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#0263e0",
+   "L": 44.7,
+   "dL": 38.9,
+   "ratio": 3.43,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#f4f4f6",
+   "L": 96.2,
+   "dL": 90.5,
+   "ratio": 16.96,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#8891aa",
+   "L": 60.2,
+   "dL": 54.5,
+   "ratio": 5.92,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "SAP Fiori Horizon",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#f5f6f7",
+   "L": 96.8
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 3.2,
+   "ratio": 1.08,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#eff1f2",
+   "L": 95,
+   "dL": 1.8,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#eaecee",
+   "L": 93.3,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#dee2e5",
+   "L": 89.7,
+   "dL": 7.2,
+   "ratio": 1.2,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#ebf8ff",
+   "L": 96.8,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e5e5e5",
+   "L": 90.9,
+   "dL": 5.9,
+   "ratio": 1.16,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#556b81",
+   "L": 44.3,
+   "dL": 52.6,
+   "ratio": 5.1,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0070f2",
+   "L": 49.5,
+   "dL": 47.3,
+   "ratio": 4.22,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#131e29",
+   "L": 10.8,
+   "dL": 86.1,
+   "ratio": 15.58,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#556b82",
+   "L": 44.3,
+   "dL": 52.5,
+   "ratio": 5.09,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "SAP Fiori Horizon",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#12171c",
+   "L": 7.5
+  },
+  "surface": {
+   "hex": "#1d232a",
+   "L": 13.4,
+   "dL": 6,
+   "ratio": 1.14,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#12171c",
+   "L": 7.5,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#222b35",
+   "L": 17.1,
+   "dL": 9.7,
+   "ratio": 1.26,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#020303",
+   "L": 0.8,
+   "dL": 6.7,
+   "ratio": 1.15,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#1d2d3e",
+   "L": 17.9,
+   "dL": 10.4,
+   "ratio": 1.29,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#2e3742",
+   "L": 22.7,
+   "dL": 15.2,
+   "ratio": 1.49,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#a9b4be",
+   "L": 72.8,
+   "dL": 65.3,
+   "ratio": 8.55,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#0070f2",
+   "L": 49.5,
+   "dL": 42,
+   "ratio": 3.95,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#f5f6f7",
+   "L": 96.8,
+   "dL": 89.4,
+   "ratio": 16.66,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#8396a8",
+   "L": 61.2,
+   "dL": 53.7,
+   "ratio": 5.92,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Red Hat PatternFly",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#f2f2f2",
+   "L": 95.5
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 4.5,
+   "ratio": 1.12,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#e7e7e7",
+   "L": 91.7,
+   "dL": 3.8,
+   "ratio": 1.1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f2f2f2",
+   "L": 95.5,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e0e0e0",
+   "L": 89.2,
+   "dL": 6.3,
+   "ratio": 1.18,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#e0e0e0",
+   "L": 89.2,
+   "dL": 6.3,
+   "ratio": 1.18,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0066cc",
+   "L": 44,
+   "dL": 51.5,
+   "ratio": 4.97,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#151515",
+   "L": 6.8,
+   "dL": 88.7,
+   "ratio": 16.31,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#4d4d4d",
+   "L": 32.7,
+   "dL": 62.7,
+   "ratio": 7.55,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Red Hat PatternFly",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#151515",
+   "L": 6.8
+  },
+  "surface": {
+   "hex": "#292929",
+   "L": 16.6,
+   "dL": 9.8,
+   "ratio": 1.26,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#303030",
+   "L": 19.7,
+   "dL": 13,
+   "ratio": 1.38,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#383838",
+   "L": 23.5,
+   "dL": 16.7,
+   "ratio": 1.56,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#4d4d4d",
+   "L": 32.7,
+   "dL": 26,
+   "ratio": 2.16,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#4d4d4d",
+   "L": 32.7,
+   "dL": 26,
+   "ratio": 2.16,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#92c5f9",
+   "L": 77.8,
+   "dL": 71,
+   "ratio": 10.07,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 93.2,
+   "ratio": 18.26,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#c7c7c7",
+   "L": 80.2,
+   "dL": 73.5,
+   "ratio": 10.8,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Bootstrap",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f8f9fa",
+   "L": 97.9,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#e9ecef",
+   "L": 93.3,
+   "dL": 6.7,
+   "ratio": 1.19,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#d2d2d2",
+   "L": 84.3,
+   "dL": 15.7,
+   "ratio": 1.51,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#dee2e6",
+   "L": 89.7,
+   "dL": 10.3,
+   "ratio": 1.3,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0d6efd",
+   "L": 49.9,
+   "dL": 50.1,
+   "ratio": 4.5,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#212529",
+   "L": 14.4,
+   "dL": 85.6,
+   "ratio": 15.43,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#595c5f",
+   "L": 38.7,
+   "dL": 61.3,
+   "ratio": 6.78,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Bootstrap",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#212529",
+   "L": 14.4
+  },
+  "surface": {
+   "hex": "#2b3035",
+   "L": 19.6,
+   "dL": 5.1,
+   "ratio": 1.16,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#343a40",
+   "L": 24.1,
+   "dL": 9.6,
+   "ratio": 1.34,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#424649",
+   "L": 29.4,
+   "dL": 15,
+   "ratio": 1.62,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#495057",
+   "L": 33.7,
+   "dL": 19.2,
+   "ratio": 1.89,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#0d6efd",
+   "L": 49.9,
+   "dL": 35.5,
+   "ratio": 3.43,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#dee2e6",
+   "L": 89.7,
+   "dL": 75.3,
+   "ratio": 11.85,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#afb3b7",
+   "L": 72.6,
+   "dL": 58.2,
+   "ratio": 7.29,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Workday Canvas",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f9fafb",
+   "L": 98.3,
+   "dL": 1.7,
+   "ratio": 1.04,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f3f5f7",
+   "L": 96.4,
+   "dL": 3.6,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f3f5f7",
+   "L": 96.4,
+   "dL": 3.6,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#eaedf0",
+   "L": 93.6,
+   "dL": 6.4,
+   "ratio": 1.17,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e0e4e9",
+   "L": 90.4,
+   "dL": 9.6,
+   "ratio": 1.28,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#7e8a9a",
+   "L": 57,
+   "dL": 43,
+   "ratio": 3.51,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0065cc",
+   "L": 43.8,
+   "dL": 56.2,
+   "ratio": 5.62,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#3b3b3b",
+   "L": 24.7,
+   "dL": 75.3,
+   "ratio": 11.26,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#5d6775",
+   "L": 43.2,
+   "dL": 56.8,
+   "ratio": 5.74,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "GOV.UK",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f4f8fb",
+   "L": 97.4,
+   "dL": 2.6,
+   "ratio": 1.07,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#cecece",
+   "L": 82.8,
+   "dL": 17.2,
+   "ratio": 1.57,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#cecece",
+   "L": 82.8,
+   "dL": 17.2,
+   "ratio": 1.57,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#0b0c0c",
+   "L": 3.3,
+   "dL": 96.7,
+   "ratio": 19.59,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1d70b8",
+   "L": 46.1,
+   "dL": 53.9,
+   "ratio": 5.17,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#0b0c0c",
+   "L": 3.3,
+   "dL": 96.7,
+   "ratio": 19.59,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#484949",
+   "L": 30.9,
+   "dL": 69.1,
+   "ratio": 9.03,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Australian Government (AGDS)",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#ebebeb",
+   "L": 93,
+   "dL": 7,
+   "ratio": 1.19,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#d3d3d3",
+   "L": 84.6,
+   "dL": 15.4,
+   "ratio": 1.5,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#808080",
+   "L": 53.6,
+   "dL": 46.4,
+   "ratio": 3.95,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#00698f",
+   "L": 41.4,
+   "dL": 58.6,
+   "ratio": 6.15,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#313131",
+   "L": 20.3,
+   "dL": 79.7,
+   "ratio": 13.01,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#626262",
+   "L": 41.6,
+   "dL": 58.4,
+   "ratio": 6.1,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "IBM Carbon",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f4f4f4",
+   "L": 96.2,
+   "dL": 3.8,
+   "ratio": 1.1,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#e8e8e8",
+   "L": 92,
+   "dL": 8,
+   "ratio": 1.23,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#c6c6c6",
+   "L": 79.9,
+   "dL": 20.1,
+   "ratio": 1.71,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#e0e0e0",
+   "L": 89.2,
+   "dL": 10.8,
+   "ratio": 1.32,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#c6c6c6",
+   "L": 79.9,
+   "dL": 20.1,
+   "ratio": 1.71,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8d8d8d",
+   "L": 58.6,
+   "dL": 41.4,
+   "ratio": 3.32,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0f62fe",
+   "L": 47,
+   "dL": 53,
+   "ratio": 5,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#161616",
+   "L": 7.2,
+   "dL": 92.8,
+   "ratio": 18.1,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#525252",
+   "L": 34.9,
+   "dL": 65.1,
+   "ratio": 7.81,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "IBM Carbon",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#161616",
+   "L": 7.2
+  },
+  "surface": {
+   "hex": "#262626",
+   "L": 15.2,
+   "dL": 7.9,
+   "ratio": 1.2,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#393939",
+   "L": 24,
+   "dL": 16.7,
+   "ratio": 1.57,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#333333",
+   "L": 21.2,
+   "dL": 14,
+   "ratio": 1.43,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#525252",
+   "L": 34.9,
+   "dL": 27.6,
+   "ratio": 2.32,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#393939",
+   "L": 24,
+   "dL": 16.7,
+   "ratio": 1.57,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#525252",
+   "L": 34.9,
+   "dL": 27.6,
+   "ratio": 2.32,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#6f6f6f",
+   "L": 46.8,
+   "dL": 39.6,
+   "ratio": 3.6,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#4589ff",
+   "L": 58.4,
+   "dL": 51.1,
+   "ratio": 5.41,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#f4f4f4",
+   "L": 96.2,
+   "dL": 88.9,
+   "ratio": 16.45,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#c6c6c6",
+   "L": 79.9,
+   "dL": 72.6,
+   "ratio": 10.59,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Microsoft Fluent 2",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#fafafa",
+   "L": 98.3,
+   "dL": 1.7,
+   "ratio": 1.04,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e0e0e0",
+   "L": 89.2,
+   "dL": 10.8,
+   "ratio": 1.32,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#ebebeb",
+   "L": 93,
+   "dL": 7,
+   "ratio": 1.19,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e0e0e0",
+   "L": 89.2,
+   "dL": 10.8,
+   "ratio": 1.32,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#616161",
+   "L": 41.1,
+   "dL": 58.9,
+   "ratio": 6.19,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0f6cbd",
+   "L": 44.9,
+   "dL": 55.1,
+   "ratio": 5.38,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#242424",
+   "L": 14.2,
+   "dL": 85.8,
+   "ratio": 15.52,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#424242",
+   "L": 28,
+   "dL": 72,
+   "ratio": 10.05,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Microsoft Fluent 2",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#292929",
+   "L": 16.6
+  },
+  "surface": {
+   "hex": "#1f1f1f",
+   "L": 11.8,
+   "dL": 4.8,
+   "ratio": 1.13,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#141414",
+   "L": 6.3,
+   "dL": 10.3,
+   "ratio": 1.27,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#3d3d3d",
+   "L": 25.8,
+   "dL": 9.2,
+   "ratio": 1.34,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#1f1f1f",
+   "L": 11.8,
+   "dL": 4.8,
+   "ratio": 1.13,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#383838",
+   "L": 23.5,
+   "dL": 6.9,
+   "ratio": 1.24,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#525252",
+   "L": 34.9,
+   "dL": 18.3,
+   "ratio": 1.86,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#adadad",
+   "L": 70.7,
+   "dL": 54.1,
+   "ratio": 6.48,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#115ea3",
+   "L": 39.2,
+   "dL": 22.6,
+   "ratio": 2.18,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 83.4,
+   "ratio": 14.55,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#d6d6d6",
+   "L": 85.6,
+   "dL": 69,
+   "ratio": 10.01,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Ant Design",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#f5f5f5",
+   "L": 96.5
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#e6e6e6",
+   "L": 91.4,
+   "dL": 5.1,
+   "ratio": 1.14,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#d0d0d0",
+   "L": 83.6,
+   "dL": 13,
+   "ratio": 1.41,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#e6f4ff",
+   "L": 95.5,
+   "dL": 1.1,
+   "ratio": 1.03,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#f0f0f0",
+   "L": 94.8,
+   "dL": 1.7,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#d9d9d9",
+   "L": 86.7,
+   "dL": 9.8,
+   "ratio": 1.29,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1677ff",
+   "L": 52.5,
+   "dL": 44,
+   "ratio": 3.76,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#1d1d1d",
+   "L": 11,
+   "dL": 85.6,
+   "ratio": 15.39,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#565656",
+   "L": 36.5,
+   "dL": 60.1,
+   "ratio": 6.76,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Ant Design",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#000000",
+   "L": 0
+  },
+  "surface": {
+   "hex": "#141414",
+   "L": 6.3,
+   "dL": 6.3,
+   "ratio": 1.14,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#1f1f1f",
+   "L": 11.8,
+   "dL": 11.8,
+   "ratio": 1.27,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#1f1f1f",
+   "L": 11.6,
+   "dL": 11.6,
+   "ratio": 1.27,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#2e2e2e",
+   "L": 18.9,
+   "dL": 18.9,
+   "ratio": 1.54,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#15325b",
+   "L": 20.8,
+   "dL": 20.8,
+   "ratio": 1.64,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#303030",
+   "L": 19.9,
+   "dL": 19.9,
+   "ratio": 1.59,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#424242",
+   "L": 28,
+   "dL": 28,
+   "ratio": 2.09,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#1668dc",
+   "L": 46,
+   "dL": 46,
+   "ratio": 4.05,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#d9d9d9",
+   "L": 86.6,
+   "dL": 86.6,
+   "ratio": 14.84,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#a6a6a6",
+   "L": 68,
+   "dL": 68,
+   "ratio": 8.6,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Elastic EUI",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ecf1f9",
+   "L": 95
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 5,
+   "ratio": 1.13,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#f6f9fc",
+   "L": 97.8,
+   "dL": 2.8,
+   "ratio": 1.07,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#e3ebf6",
+   "L": 92.7,
+   "dL": 2.3,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#f1f6ff",
+   "L": 96.8,
+   "dL": 1.8,
+   "ratio": 1.05,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#e3e8f2",
+   "L": 91.9,
+   "dL": 3.1,
+   "ratio": 1.08,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#cad3e2",
+   "L": 84.3,
+   "dL": 10.7,
+   "ratio": 1.33,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0b64dd",
+   "L": 44.8,
+   "dL": 50.2,
+   "ratio": 4.77,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#384861",
+   "L": 30.3,
+   "dL": 64.7,
+   "ratio": 8.17,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#516381",
+   "L": 41.6,
+   "dL": 53.4,
+   "ratio": 5.36,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Elastic EUI",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#07101f",
+   "L": 4.6
+  },
+  "surface": {
+   "hex": "#111c2c",
+   "L": 10,
+   "dL": 5.4,
+   "ratio": 1.11,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#0b1628",
+   "L": 7.2,
+   "dL": 2.6,
+   "ratio": 1.05,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#1b2331",
+   "L": 13.6,
+   "dL": 8.9,
+   "ratio": 1.21,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#0d2f5e",
+   "L": 19.7,
+   "dL": 15.1,
+   "ratio": 1.44,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#2b394f",
+   "L": 23.7,
+   "dL": 19,
+   "ratio": 1.63,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#485975",
+   "L": 37.5,
+   "dL": 32.8,
+   "ratio": 2.68,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#61a2ff",
+   "L": 66.2,
+   "dL": 61.6,
+   "ratio": 7.36,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#b4c1d5",
+   "L": 77.7,
+   "dL": 73,
+   "ratio": 10.45,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#98a8c3",
+   "L": 68.5,
+   "dL": 63.8,
+   "ratio": 7.91,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Adobe Spectrum",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f8f8f8",
+   "L": 97.6,
+   "dL": 2.4,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#e9e9e9",
+   "L": 92.3,
+   "dL": 7.7,
+   "ratio": 1.21,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e1e1e1",
+   "L": 89.5,
+   "dL": 10.5,
+   "ratio": 1.31,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8f8f8f",
+   "L": 59.4,
+   "dL": 40.6,
+   "ratio": 3.23,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#3b63fb",
+   "L": 48,
+   "dL": 52,
+   "ratio": 4.81,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#292929",
+   "L": 16.6,
+   "dL": 83.4,
+   "ratio": 14.55,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#505050",
+   "L": 34,
+   "dL": 66,
+   "ratio": 8.06,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Adobe Spectrum",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#111111",
+   "L": 5.1
+  },
+  "surface": {
+   "hex": "#222222",
+   "L": 13.2,
+   "dL": 8.2,
+   "ratio": 1.19,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#1b1b1b",
+   "L": 9.8,
+   "dL": 4.7,
+   "ratio": 1.1,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#2c2c2c",
+   "L": 18,
+   "dL": 12.9,
+   "ratio": 1.35,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#323232",
+   "L": 20.8,
+   "dL": 15.7,
+   "ratio": 1.47,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#6d6d6d",
+   "L": 46,
+   "dL": 41,
+   "ratio": 3.65,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#4069fd",
+   "L": 49.8,
+   "dL": 44.8,
+   "ratio": 4.19,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#dbdbdb",
+   "L": 87.4,
+   "dL": 82.3,
+   "ratio": 13.64,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#afafaf",
+   "L": 71.5,
+   "dL": 66.4,
+   "ratio": 8.61,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Material 3",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#f9f9f9",
+   "L": 97.9
+  },
+  "surface": {
+   "hex": "#f3f3f3",
+   "L": 95.8,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#e8e8e8",
+   "L": 92,
+   "dL": 5.9,
+   "ratio": 1.16,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#e8e8e8",
+   "L": 91.9,
+   "dL": 6.1,
+   "ratio": 1.17,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e2e2e2",
+   "L": 90,
+   "dL": 7.9,
+   "ratio": 1.23,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#e2e2e2",
+   "L": 89.9,
+   "dL": 8,
+   "ratio": 1.23,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#c6c6c6",
+   "L": 79.9,
+   "dL": 18,
+   "ratio": 1.62,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#777777",
+   "L": 50,
+   "dL": 47.9,
+   "ratio": 4.25,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#5e5e5e",
+   "L": 39.9,
+   "dL": 58,
+   "ratio": 6.16,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#1b1b1b",
+   "L": 9.8,
+   "dL": 88.2,
+   "ratio": 16.36,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#474747",
+   "L": 30.2,
+   "dL": 67.8,
+   "ratio": 8.82,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Material 3",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#131313",
+   "L": 5.9
+  },
+  "surface": {
+   "hex": "#1b1b1b",
+   "L": 9.8,
+   "dL": 3.9,
+   "ratio": 1.08,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#2a2a2a",
+   "L": 17.1,
+   "dL": 11.2,
+   "ratio": 1.29,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#232323",
+   "L": 13.8,
+   "dL": 7.9,
+   "ratio": 1.19,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#282828",
+   "L": 16.2,
+   "dL": 10.3,
+   "ratio": 1.26,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#474747",
+   "L": 30.2,
+   "dL": 24.3,
+   "ratio": 2,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#474747",
+   "L": 30.2,
+   "dL": 24.3,
+   "ratio": 2,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#919191",
+   "L": 60.2,
+   "dL": 54.3,
+   "ratio": 5.9,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#c6c6c6",
+   "L": 79.9,
+   "dL": 74,
+   "ratio": 10.88,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#e2e2e2",
+   "L": 89.9,
+   "dL": 84,
+   "ratio": 14.34,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#c6c6c6",
+   "L": 79.9,
+   "dL": 74,
+   "ratio": 10.88,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Radix",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#fcfcfd",
+   "L": 99
+  },
+  "surface": {
+   "hex": "#f9f9fb",
+   "L": 98,
+   "dL": 1,
+   "ratio": 1.03,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f0f0f3",
+   "L": 94.9,
+   "dL": 4.1,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#e8e8ec",
+   "L": 92.1,
+   "dL": 6.9,
+   "ratio": 1.19,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e0e1e6",
+   "L": 89.6,
+   "dL": 9.4,
+   "ratio": 1.27,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#d9d9e0",
+   "L": 86.9,
+   "dL": 12.1,
+   "ratio": 1.37,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#b9bbc6",
+   "L": 76,
+   "dL": 23,
+   "ratio": 1.86,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0090ff",
+   "L": 59.1,
+   "dL": 39.9,
+   "ratio": 3.18,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#1c2024",
+   "L": 12,
+   "dL": 87,
+   "ratio": 15.98,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#60646c",
+   "L": 42.3,
+   "dL": 56.7,
+   "ratio": 5.79,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Radix",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#111113",
+   "L": 5.1
+  },
+  "surface": {
+   "hex": "#18191b",
+   "L": 8.7,
+   "dL": 3.6,
+   "ratio": 1.07,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#212225",
+   "L": 13.2,
+   "dL": 8.1,
+   "ratio": 1.19,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#272a2d",
+   "L": 16.9,
+   "dL": 11.8,
+   "ratio": 1.31,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#2e3135",
+   "L": 20.2,
+   "dL": 15.1,
+   "ratio": 1.44,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#363a3f",
+   "L": 24.2,
+   "dL": 19.1,
+   "ratio": 1.65,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#5a6169",
+   "L": 40.8,
+   "dL": 35.7,
+   "ratio": 3.01,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#0090ff",
+   "L": 59.1,
+   "dL": 54,
+   "ratio": 5.78,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#edeef0",
+   "L": 94.1,
+   "dL": 89,
+   "ratio": 16.25,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#b0b4ba",
+   "L": 73.2,
+   "dL": 68,
+   "ratio": 9.06,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Chakra UI",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#fafafa",
+   "L": 98.3,
+   "dL": 1.7,
+   "ratio": 1.04,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f4f4f5",
+   "L": 96.2,
+   "dL": 3.8,
+   "ratio": 1.1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f4f4f5",
+   "L": 96.2,
+   "dL": 3.8,
+   "ratio": 1.1,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e4e4e7",
+   "L": 90.7,
+   "dL": 9.3,
+   "ratio": 1.27,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e4e4e7",
+   "L": 90.7,
+   "dL": 9.3,
+   "ratio": 1.27,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#d4d4d8",
+   "L": 85,
+   "dL": 15,
+   "ratio": 1.48,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#18181b",
+   "L": 8.4,
+   "dL": 91.6,
+   "ratio": 17.72,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#09090b",
+   "L": 2.5,
+   "dL": 97.5,
+   "ratio": 19.9,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#52525b",
+   "L": 35.2,
+   "dL": 64.8,
+   "ratio": 7.73,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Chakra UI",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#09090b",
+   "L": 2.5
+  },
+  "surface": {
+   "hex": "#111111",
+   "L": 5.1,
+   "dL": 2.6,
+   "ratio": 1.05,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#18181b",
+   "L": 8.4,
+   "dL": 5.9,
+   "ratio": 1.12,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#18181b",
+   "L": 8.4,
+   "dL": 5.9,
+   "ratio": 1.12,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#27272a",
+   "L": 15.7,
+   "dL": 13.2,
+   "ratio": 1.34,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#27272a",
+   "L": 15.7,
+   "dL": 13.2,
+   "ratio": 1.34,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#3f3f46",
+   "L": 26.9,
+   "dL": 24.4,
+   "ratio": 1.91,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 97.5,
+   "ratio": 19.9,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#fafafa",
+   "L": 98.3,
+   "dL": 95.8,
+   "ratio": 19.06,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#a1a1aa",
+   "L": 66.5,
+   "dL": 64,
+   "ratio": 7.76,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Apple (iOS)",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f2f2f7",
+   "L": 95.6,
+   "dL": 4.4,
+   "ratio": 1.12,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#e5e5ea",
+   "L": 91.1,
+   "dL": 8.9,
+   "ratio": 1.26,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#d1d1d6",
+   "L": 84,
+   "dL": 16,
+   "ratio": 1.52,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#8e8e93",
+   "L": 59.2,
+   "dL": 40.8,
+   "ratio": 3.26,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0088ff",
+   "L": 56.9,
+   "dL": 43.1,
+   "ratio": 3.52,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Apple (iOS)",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#000000",
+   "L": 0
+  },
+  "surface": {
+   "hex": "#1c1c1e",
+   "L": 10.3,
+   "dL": 10.3,
+   "ratio": 1.23,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#2c2c2e",
+   "L": 18.1,
+   "dL": 18.1,
+   "ratio": 1.51,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#3a3a3c",
+   "L": 24.5,
+   "dL": 24.5,
+   "ratio": 1.85,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#8e8e93",
+   "L": 59.2,
+   "dL": 59.2,
+   "ratio": 6.44,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#0091ff",
+   "L": 59.4,
+   "dL": 59.4,
+   "ratio": 6.49,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Apple (iOS)",
+  "mode": "light, high contrast",
+  "group": "light, high contrast",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ebebf0",
+   "L": 93.2,
+   "dL": 6.8,
+   "ratio": 1.19,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#d8d8dc",
+   "L": 86.4,
+   "dL": 13.6,
+   "ratio": 1.42,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#bcbcc0",
+   "L": 76.4,
+   "dL": 23.6,
+   "ratio": 1.89,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#6c6c70",
+   "L": 45.7,
+   "dL": 54.3,
+   "ratio": 5.23,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1e6ef4",
+   "L": 49.4,
+   "dL": 50.6,
+   "ratio": 4.57,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Apple (iOS)",
+  "mode": "dark, high contrast",
+  "group": "dark, high contrast",
+  "page": {
+   "hex": "#000000",
+   "L": 0
+  },
+  "surface": {
+   "hex": "#242426",
+   "L": 14.3,
+   "dL": 14.3,
+   "ratio": 1.36,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#363638",
+   "L": 22.7,
+   "dL": 22.7,
+   "ratio": 1.74,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#444446",
+   "L": 28.9,
+   "dL": 28.9,
+   "ratio": 2.16,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#aeaeb2",
+   "L": 71.2,
+   "dL": 71.2,
+   "ratio": 9.5,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#5cb8ff",
+   "L": 72.1,
+   "dL": 72.1,
+   "ratio": 9.75,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "MUI (Material UI)",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e0e0e0",
+   "L": 89.3,
+   "dL": 10.7,
+   "ratio": 1.32,
+   "dir": "darker"
+  },
+  "selected": {
+   "hex": "#ebebeb",
+   "L": 92.9,
+   "dL": 7.1,
+   "ratio": 1.2,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e0e0e0",
+   "L": 89.3,
+   "dL": 10.7,
+   "ratio": 1.32,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#c4c4c4",
+   "L": 79.3,
+   "dL": 20.7,
+   "ratio": 1.74,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1976d2",
+   "L": 49.3,
+   "dL": 50.7,
+   "ratio": 4.6,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#212121",
+   "L": 12.8,
+   "dL": 87.2,
+   "ratio": 16.07,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#666666",
+   "L": 43.2,
+   "dL": 56.8,
+   "ratio": 5.74,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "MUI (Material UI)",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#121212",
+   "L": 5.5
+  },
+  "surface": {
+   "hex": "#121212",
+   "L": 5.5,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#252525",
+   "L": 14.7,
+   "dL": 9.2,
+   "ratio": 1.22,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#2e2e2e",
+   "L": 19.1,
+   "dL": 13.7,
+   "ratio": 1.39,
+   "dir": "lighter"
+  },
+  "selected": {
+   "hex": "#383838",
+   "L": 23.5,
+   "dL": 18,
+   "ratio": 1.6,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#2e2e2e",
+   "L": 19.1,
+   "dL": 13.7,
+   "ratio": 1.39,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#494949",
+   "L": 30.8,
+   "dL": 25.4,
+   "ratio": 2.06,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#90caf9",
+   "L": 79,
+   "dL": 73.6,
+   "ratio": 10.71,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 94.5,
+   "ratio": 18.73,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#b8b8b8",
+   "L": 74.7,
+   "dL": 69.3,
+   "ratio": 9.43,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "shadcn/ui",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f5f5f5",
+   "L": 96.5,
+   "dL": 3.5,
+   "ratio": 1.09,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e5e5e5",
+   "L": 91,
+   "dL": 9,
+   "ratio": 1.26,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#e5e5e5",
+   "L": 91,
+   "dL": 9,
+   "ratio": 1.26,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#737373",
+   "L": 48.5,
+   "dL": 51.5,
+   "ratio": 4.73,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "shadcn/ui",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#0a0a0a",
+   "L": 2.8
+  },
+  "surface": {
+   "hex": "#171717",
+   "L": 7.8,
+   "dL": 5,
+   "ratio": 1.1,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#262626",
+   "L": 15.2,
+   "dL": 12.5,
+   "ratio": 1.31,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#404040",
+   "L": 27,
+   "dL": 24.3,
+   "ratio": 1.91,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#232323",
+   "L": 13.5,
+   "dL": 10.7,
+   "ratio": 1.25,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#2f2f2f",
+   "L": 19.3,
+   "dL": 16.5,
+   "ratio": 1.47,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#e5e5e5",
+   "L": 91,
+   "dL": 88.2,
+   "ratio": 15.72,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#fafafa",
+   "L": 98.3,
+   "dL": 95.5,
+   "ratio": 18.96,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#a1a1a1",
+   "L": 66.1,
+   "dL": 63.4,
+   "ratio": 7.63,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Mantine",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 0,
+   "ratio": 1,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f8f9fa",
+   "L": 97.9,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#dee2e6",
+   "L": 89.7,
+   "dL": 10.3,
+   "ratio": 1.3,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#ced4da",
+   "L": 84.6,
+   "dL": 15.4,
+   "ratio": 1.49,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#228be6",
+   "L": 56.6,
+   "dL": 43.4,
+   "ratio": 3.56,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#868e96",
+   "L": 58.6,
+   "dL": 41.4,
+   "ratio": 3.32,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Mantine",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#242424",
+   "L": 14.2
+  },
+  "surface": {
+   "hex": "#2e2e2e",
+   "L": 18.9,
+   "dL": 4.7,
+   "ratio": 1.14,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#3b3b3b",
+   "L": 24.9,
+   "dL": 10.7,
+   "ratio": 1.39,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#424242",
+   "L": 28,
+   "dL": 13.8,
+   "ratio": 1.54,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#424242",
+   "L": 28,
+   "dL": 13.8,
+   "ratio": 1.54,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#1971c2",
+   "L": 46.9,
+   "dL": 32.7,
+   "ratio": 3.09,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#c9c9c9",
+   "L": 81,
+   "dL": 66.8,
+   "ratio": 9.37,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#828282",
+   "L": 54.4,
+   "dL": 40.2,
+   "ratio": 4.04,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "daisyUI",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f8f8f8",
+   "L": 97.7,
+   "dL": 2.3,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#eeeeee",
+   "L": 94.2,
+   "dL": 5.8,
+   "ratio": 1.16,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#422ad5",
+   "L": 33.2,
+   "dL": 66.8,
+   "ratio": 8.33,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#18181b",
+   "L": 8.3,
+   "dL": 91.7,
+   "ratio": 17.73,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "daisyUI",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#1d232a",
+   "L": 13.4
+  },
+  "surface": {
+   "hex": "#191e24",
+   "L": 11,
+   "dL": 2.4,
+   "ratio": 1.06,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#15191e",
+   "L": 8.6,
+   "dL": 4.9,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#605dff",
+   "L": 49,
+   "dL": 35.5,
+   "ratio": 3.4,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#ecf9ff",
+   "L": 97.2,
+   "dL": 83.7,
+   "ratio": 14.75,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Uber Base Web",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f3f3f3",
+   "L": 95.8,
+   "dL": 4.2,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#e8e8e8",
+   "L": 92,
+   "dL": 8,
+   "ratio": 1.23,
+   "dir": "darker"
+  },
+  "hover": {
+   "hex": "#f3f3f3",
+   "L": 95.8,
+   "dL": 4.2,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "pressed": {
+   "hex": "#e8e8e8",
+   "L": 92,
+   "dL": 8,
+   "ratio": 1.23,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#f3f3f3",
+   "L": 95.8,
+   "dL": 4.2,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#f3f3f3",
+   "L": 95.8,
+   "dL": 4.2,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#000000",
+   "L": 0,
+   "dL": 100,
+   "ratio": 21,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#4b4b4b",
+   "L": 31.9,
+   "dL": 68.1,
+   "ratio": 8.72,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Uber Base Web",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#161616",
+   "L": 7.2
+  },
+  "surface": {
+   "hex": "#292929",
+   "L": 16.6,
+   "dL": 9.3,
+   "ratio": 1.24,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#383838",
+   "L": 23.5,
+   "dL": 16.3,
+   "ratio": 1.54,
+   "dir": "lighter"
+  },
+  "hover": {
+   "hex": "#292929",
+   "L": 16.6,
+   "dL": 9.3,
+   "ratio": 1.24,
+   "dir": "lighter"
+  },
+  "pressed": {
+   "hex": "#383838",
+   "L": 23.5,
+   "dL": 16.3,
+   "ratio": 1.54,
+   "dir": "lighter"
+  },
+  "borderSubtle": {
+   "hex": "#292929",
+   "L": 16.6,
+   "dL": 9.3,
+   "ratio": 1.24,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#292929",
+   "L": 16.6,
+   "dL": 9.3,
+   "ratio": 1.24,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#c4c4c4",
+   "L": 79.2,
+   "dL": 71.9,
+   "ratio": 10.38,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#dedede",
+   "L": 88.5,
+   "dL": 81.2,
+   "ratio": 13.45,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#c4c4c4",
+   "L": 79.2,
+   "dL": 71.9,
+   "ratio": 10.38,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Zendesk Garden",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#ffffff",
+   "L": 100
+  },
+  "surface": {
+   "hex": "#f8f9f9",
+   "L": 97.9,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "sunken": {
+   "hex": "#f8f9f9",
+   "L": 97.9,
+   "dL": 2.1,
+   "ratio": 1.05,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#e8eaec",
+   "L": 92.6,
+   "dL": 7.4,
+   "ratio": 1.21,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#d8dcde",
+   "L": 87.5,
+   "dL": 12.5,
+   "ratio": 1.38,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#1f73b7",
+   "L": 46.9,
+   "dL": 53.1,
+   "ratio": 5.01,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#293239",
+   "L": 20.2,
+   "dL": 79.8,
+   "ratio": 13.05,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#5c6970",
+   "L": 43.6,
+   "dL": 56.4,
+   "ratio": 5.66,
+   "dir": "darker"
+  }
+ },
+ {
+  "system": "Zendesk Garden",
+  "mode": "dark",
+  "group": "dark",
+  "page": {
+   "hex": "#151a1e",
+   "L": 8.9
+  },
+  "surface": {
+   "hex": "#1c2227",
+   "L": 12.8,
+   "dL": 3.9,
+   "ratio": 1.09,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#0a0d0e",
+   "L": 3.5,
+   "dL": 5.5,
+   "ratio": 1.11,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#293239",
+   "L": 20.2,
+   "dL": 11.3,
+   "ratio": 1.34,
+   "dir": "lighter"
+  },
+  "borderStrong": {
+   "hex": "#39434b",
+   "L": 27.8,
+   "dL": 18.9,
+   "ratio": 1.73,
+   "dir": "lighter"
+  },
+  "fill": {
+   "hex": "#2694d6",
+   "L": 58.5,
+   "dL": 49.5,
+   "ratio": 5.25,
+   "dir": "lighter"
+  },
+  "text": {
+   "hex": "#d8dcde",
+   "L": 87.5,
+   "dL": 78.6,
+   "ratio": 12.69,
+   "dir": "lighter"
+  },
+  "textMuted": {
+   "hex": "#919ca5",
+   "L": 63.8,
+   "dL": 54.8,
+   "ratio": 6.26,
+   "dir": "lighter"
+  }
+ },
+ {
+  "system": "Salesforce Lightning (SLDS)",
+  "mode": "light",
+  "group": "light",
+  "page": {
+   "hex": "#f3f3f3",
+   "L": 95.8
+  },
+  "surface": {
+   "hex": "#ffffff",
+   "L": 100,
+   "dL": 4.2,
+   "ratio": 1.11,
+   "dir": "lighter"
+  },
+  "sunken": {
+   "hex": "#e5e5e5",
+   "L": 90.9,
+   "dL": 4.9,
+   "ratio": 1.14,
+   "dir": "darker"
+  },
+  "borderSubtle": {
+   "hex": "#c9c9c9",
+   "L": 81,
+   "dL": 14.9,
+   "ratio": 1.49,
+   "dir": "darker"
+  },
+  "borderStrong": {
+   "hex": "#747474",
+   "L": 48.8,
+   "dL": 47,
+   "ratio": 4.21,
+   "dir": "darker"
+  },
+  "fill": {
+   "hex": "#0176d3",
+   "L": 49.1,
+   "dL": 46.8,
+   "ratio": 4.18,
+   "dir": "darker"
+  },
+  "text": {
+   "hex": "#181818",
+   "L": 8.2,
+   "dL": 87.6,
+   "ratio": 16,
+   "dir": "darker"
+  },
+  "textMuted": {
+   "hex": "#757575",
+   "L": 49.2,
+   "dL": 46.6,
+   "ratio": 4.15,
+   "dir": "darker"
+  }
+ }
+]
