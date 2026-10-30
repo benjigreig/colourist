@@ -376,8 +376,13 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
         states: {
           type: 'object',
           additionalProperties: false,
-          required: ['reason'],
-          properties: { reason, placeholder: optionalPlaceholder },
+          required: ['form', 'reason'],
+          // Solid is the only form in the model (D-059). Overlays are an export option, not a form.
+          properties: {
+            form: { type: 'string', const: 'solid' },
+            reason,
+            placeholder: optionalPlaceholder,
+          },
         },
       },
     },

@@ -2535,13 +2535,7 @@
       "fillHover": { "nameKey": "rules.ladders.uses.fillHover.name" },
       "fillPressed": { "nameKey": "rules.ladders.uses.fillPressed.name" }
     },
-    "states": {
-      "reason": "rules.ladders.states.reason",
-      "placeholder": {
-        "ticket": "CLR-13",
-        "note": "Undecided: whether states such as hover and pressed are ladder steps or overlays. Nothing here assumes either."
-      }
-    }
+    "states": { "form": "solid", "reason": "rules.ladders.states.reason" }
   },
   "contrast": {
     "defaultLevel": "aa",

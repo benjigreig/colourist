@@ -193,7 +193,10 @@ export const rules = {
       fillHover: { name: 'Fill hover' },
       fillPressed: { name: 'Fill pressed' },
     },
-    states: { reason: 'Placeholder: CLR-13 decides whether states are ladder steps or overlays.' },
+    states: {
+      reason:
+        'Hover, pressed and selected are solid steps on the ladder, worked out from the colour they change, so each one can be checked on every surface it sits on.',
+    },
   },
   contrast: {
     contexts: {

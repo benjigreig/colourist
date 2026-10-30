@@ -133,8 +133,13 @@ export interface Ladders {
   };
   /** Ladder uses, keyed by ID. */
   uses: Record<string, LadderUse>;
-  /** Whether states (hover, pressed and so on) are ladder steps or overlays (CLR-13). */
+  /**
+   * How states such as hover, pressed and selected are made. They're solid steps, worked out
+   * from their relationship to the resting colour, in the model and the default export (D-059).
+   * Overlays come later, as an optional export (CLR-101).
+   */
   states: {
+    form: 'solid';
     reason: ReasonKey;
     placeholder?: Placeholder;
   };

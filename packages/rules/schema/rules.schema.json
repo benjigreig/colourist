@@ -349,8 +349,9 @@
         "states": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["reason"],
+          "required": ["form", "reason"],
           "properties": {
+            "form": { "type": "string", "const": "solid" },
             "reason": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
             "placeholder": {
               "type": "object",

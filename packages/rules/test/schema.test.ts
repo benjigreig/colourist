@@ -119,6 +119,7 @@ describe('the rules schema', () => {
           }),
       ),
     ],
+    ['states as overlays (D-059)', changed((r) => (at(r, 'ladders', 'states').form = 'overlay'))],
     ['a missing zone', changed((r) => delete at(r, 'ladders', 'zones').darkBackground)],
     ['a missing section', changed((r) => delete r.guidance)],
     ['the wrong schema version', changed((r) => (at(r, 'meta').schemaVersion = 1))],

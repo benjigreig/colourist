@@ -6,7 +6,6 @@ exports[`the default rules hang together > CLR-7: Default configuration file val
   "questions[2].choices[4].effects",
   "questions[2].choices[5].effects",
   "ladders.zones.darkBackground",
-  "ladders.states",
   "contrast.contexts.moreContrast",
   "contrast.uses.bodyText.contexts.moreContrast",
   "contrast.uses.largeText.contexts.moreContrast",
