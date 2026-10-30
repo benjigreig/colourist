@@ -182,8 +182,17 @@ Scenario: Vividness never changes contrast
   Given any vividness settings
   When the scales are regenerated
   Then every contrast figure is identical to before
+
+Scenario: Say how colour should feel
+  Given my scales are generated
+  When I choose how colour should feel: neutral greys, greys tinted with the brand, or vivid
+  Then the greys' tint and each colour family's vividness update to match
+  And each colour's fill moves to the step where its hue is most vivid for that style, with the reason shown
+  And no step's contrast changes
 ```
-**Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection · `[e2e]` presets and readouts
+**Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection, and the fill step chosen for each hue · `[e2e]` presets and readouts · `[content]` the explanation of each style
+
+The style question moved here from the ladder stage, because it changes chroma, not the ladder (D-055).
 
 ### US-05 · Add the rest of my palette
 **As an** individual designer, **I want** to add the other colours a product needs, such as error, warning, success and info, named the way my team already works, **so that** I have full coverage and every colour stays clearly distinct.
