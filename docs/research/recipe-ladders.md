@@ -1,6 +1,6 @@
 # Recipe ladders: the beta recipes, worked out step by step
 
-> Worked out 30 October 2026 for CLR-13, before CLR-100 builds recipes into the rules schema. Decided the same day (D-056). Scripts and outputs: [`ladder-derivation/`](ladder-derivation/) (`recipes.mjs`, `recipes.json`, `prevalence.mjs`). Builds on [`ladder-zones.md`](ladder-zones.md) (D-054, D-055).
+> Worked out 30 October 2026 for CLR-13, before CLR-100 builds recipes into the rules schema. Decided the same day (D-056), with AAA ladders added in D-057. Scripts and outputs: [`ladder-derivation/`](ladder-derivation/) (`recipes.mjs`, `recipes.json`, `prevalence.mjs`). Builds on [`ladder-zones.md`](ladder-zones.md) (D-054, D-055).
 
 ## Why this came first
 
@@ -70,6 +70,23 @@ All six pass every check. One step needed nudging for rounding: a warning hover 
 | 91 | 13.1 | Dark background | Light: text. Dark: surface |
 | 95 | 6.8 | Dark background | Dark: page |
 
+## At AAA (D-057)
+
+US-02 says the contrast zone reflects the target, so every recipe also has an AAA ladder. At AAA, muted text and white-text fills move from 50 to 64 grades from the light page, and the dark page's 4.5:1 step at about 45 moves to about 31.
+
+**In the dark theme at AAA, a white-text fill can't work.** White text needs the fill at least 64 grades from white, and the fill must also stand 3:1, or 37 grades, from the dark page. With the dark page at about 95, no grade does both. So at AAA, dark-theme fills become **light fills with dark text**, and hover and pressed move lighter, away from the text. That's what Material's dark themes do: a light primary with a dark "on-primary". Benji agreed on 30 October.
+
+| Recipe | AA | AAA |
+|---|---|---|
+| Content site, light | 12 | 12 |
+| Content site, light and dark | 18 | 16 |
+| Simple app, light and dark | 19 | 17 |
+| **Layered app, light and dark (default)** | **21** | **19** |
+| App, light | 15 | 15 |
+| App, light and dark | 23 | 21 |
+
+All twelve pass every check. The AAA ladders come out slightly smaller, because more steps are shared between light and dark: the dark theme's dark-text fills sit near the light theme's warning fill and its states. Both targets are in [`recipes.json`](ladder-derivation/recipes.json), under each recipe's `ladders`.
+
 ## What the ladders show
 
 - **The middle steps land on the thresholds,** as D-054 expected: 37 and 50 from the light page, and 45 and 58 from the dark one. Step counting works there.
@@ -121,13 +138,13 @@ Benji wanted light and dark by default, and the default to reflect the most comm
 
 - Steps are placed by a greedy method, which gives a good answer but not a proven minimum.
 - Separations come from practice medians. The 1-grade gap is a stand-in until CLR-95.
-- Every recipe assumes white text on coloured fills, and one light-fill warning. Brands whose colours need dark text get different fills, which the vividness stage handles (US-04).
+- Every recipe assumes white text on coloured fills (dark text in the dark theme at AAA), and one light-fill warning. Brands whose colours need dark text get different fills, which the vividness stage handles (US-04).
 
 ## Files
 
 | File | What it does |
 |---|---|
-| [`ladder-derivation/recipes.mjs`](ladder-derivation/recipes.mjs) | Works out each beta recipe's ladder and checks it. Output in `recipes.txt` and `recipes.json` |
+| [`ladder-derivation/recipes.mjs`](ladder-derivation/recipes.mjs) | Works out each beta recipe's ladder at AA and AAA, and checks it. Output in `recipes.txt` and `recipes.json` |
 | [`ladder-derivation/prevalence.mjs`](ladder-derivation/prevalence.mjs) | Counts how many of the 27 systems publish each use and a dark mode. Output in `prevalence.txt` |
 | [`ladder-derivation/model.mjs`](ladder-derivation/model.mjs) | Gains the shared-ladder model (theme, family tokens and separation tables), moved out of `untested.mjs`, whose output is unchanged |
 

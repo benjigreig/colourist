@@ -98,11 +98,15 @@ export function theme(name, page, seps, level, scale = 1) {
 }
 
 /** A colour family's tokens in a theme. White text on fills; `lightFill` uses dark text instead. */
-export function familyTokens(th, lightFill = false) {
+export function familyTokens(th, lightFill = false, { fitFillToPage = false } = {}) {
   const t = T[th.level].text;
+  // A white-text fill must also stand 3:1 (37 grades) from its own page. On a dark page at AAA it
+  // can't do both, so with fitFillToPage it becomes a light fill with dark text instead, as
+  // Material's dark themes do, with states moving lighter (D-056).
+  const darkText = fitFillToPage && !lightFill && th.page > 50 && t > th.page - 37;
   // A light fill sits near where yellows are most vivid (grade about 14, see the cusp table), ±6.
-  const fill = lightFill ? [8, 20] : [t, t + 6];
-  const dir = 1; // states move darker: towards the text's contrast on a white-text fill, away from the page on a light fill
+  const fill = lightFill ? [8, 20] : darkText ? [th.page - t - 6, th.page - t] : [t, t + 6];
+  const dir = darkText ? -1 : 1; // states move away from the text colour, keeping the label legible
   return [["tint", "sep", th.s.hover], ["tint border", "sep", th.s.subtle], ["fill", "abs", fill],
     ["fill hover", "abs", fill.map((x) => x + dir * 8).sort((a, b) => a - b)],
     ["fill pressed", "abs", fill.map((x) => x + dir * 15).sort((a, b) => a - b)], ["text", "min", t]];

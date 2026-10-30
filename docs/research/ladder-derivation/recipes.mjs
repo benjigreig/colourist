@@ -4,7 +4,8 @@
  *
  * Every recipe carries greys, one brand colour and four feedback colours (error, warning, success,
  * info), since feedback colours are always in the beta (US-05). The warning has a light fill with
- * dark text; the others have white text. Charts and high contrast are after the beta.
+ * dark text; the others have white text, except on the dark page at AAA, where a white-text fill
+ * can't also stand 3:1 from the page, so it becomes a light fill with dark text (model.mjs). Charts and high contrast are after the beta.
  *
  * Placement, for each theme and family in turn:
  *   - each token has a range (model.mjs) and a preferred grade: its target separation, its
@@ -18,7 +19,8 @@
  * Then each ladder is checked: every token placed in range; rounded names unique; and the
  * contrast rule (D-049) on rounded names: pairs 37, 50 or 64 apart meet 3:1, 4.5:1 or 7:1 exactly.
  *
- * Writes recipes.json: each recipe's answers, themes and steps (grade, L*, name, zone and the
+ * Each recipe is worked out at AA and at AAA, since the target moves the contrast zone (D-054,
+ * US-02). Writes recipes.json: each recipe's answers, themes and, per target, steps (grade, L*, name, zone and the
  * uses that placed it, as theme, family and use), for the rules file (CLR-100). The default
  * recipe is the most common shape among the 27 design systems (prevalence.mjs, D-056).
  */
@@ -53,19 +55,19 @@ function preferred(th, [name, kind, v], [lo, hi]) {
   if (kind === "page") return th.page;
   if (kind === "sep" || kind === "min") return th.page + th.sign * v;
   if (kind === "text") return th.page + th.sign * (th.page < 50 ? 91 : 89);
-  if (name === "fill") return lo >= 50 ? lo : 14;      // white-text fills sit on their threshold; a light fill where yellows are most vivid
+  if (name === "fill") return lo >= 50 ? lo : hi > 25 ? hi : 14; // white-text fills on their threshold; dark-text fills as light as allowed; a warning where yellows are most vivid
   return (lo + hi) / 2;                               // fill states mid-range
 }
 
 /** Places one recipe's ladder. Returns steps with their purposes, and any conflicts. */
-function build(recipe) {
+function build(recipe, level) {
   const steps = [], conflicts = [];
-  const themes = recipe.themes.map((t) => t === "light" ? theme("light", LIGHT_PAGE, LIGHT, "aa") : theme("dark", DARK_PAGE, DARK, "aa"));
+  const themes = recipe.themes.map((t) => t === "light" ? theme("light", LIGHT_PAGE, LIGHT, level) : theme("dark", DARK_PAGE, DARK, level));
   const greyNames = recipe.answers.flatMap((a) => ANSWER_USES[a]);
   const groups = [];
   for (const th of themes) {
     groups.push({ th, family: "grey", tokens: th.grey.filter(([n]) => greyNames.includes(n)) });
-    for (const [family, lightFill] of FAMILIES) groups.push({ th, family, tokens: familyTokens(th, lightFill) });
+    for (const [family, lightFill] of FAMILIES) groups.push({ th, family, tokens: familyTokens(th, lightFill, { fitFillToPage: true }) });
   }
   for (const { th, family, tokens } of groups) {
     const used = new Map(); // step → token name, within this family and theme
@@ -150,15 +152,18 @@ function zoneOf(step, steps) {
 
 const summary = [], out = { default: DEFAULT_RECIPE, minGapGrades: MIN_GAP, recipes: {} };
 for (const [id, recipe] of Object.entries(RECIPES)) {
-  const { steps, conflicts } = build(recipe);
-  const c = check(steps);
-  console.log(`\n=== ${id} (${recipe.answers.join(", ")}; ${recipe.themes.join(" and ")}) ===`);
-  console.table(steps.map((s) => ({ name: Math.round(s.grade), grade: s.grade, "L*": +Lstar(Y(s.grade)).toFixed(1), zone: zoneOf(s, steps), purposes: s.purposes.join("; ") })));
-  console.log(`conflicts: ${conflicts.length ? conflicts.join(" | ") : "none"} · names unique: ${c.unique ? "yes" : "no"} · contrast rule: ${c.fails.length ? c.fails.join(" | ") : "holds"} · smallest L* gap: ${c.minGapL.toFixed(1)}`);
-  out.recipes[id] = { answers: recipe.answers, themes: recipe.themes, steps: steps.map((s) => ({
-    name: Math.round(s.grade), grade: s.grade, lstar: +Lstar(Y(s.grade)).toFixed(2), zone: zoneOf(s, steps), uses: s.uses })) };
-  const z = (n) => steps.filter((s) => zoneOf(s, steps) === n).length;
-  summary.push({ recipe: id, steps: steps.length, "light zone": z("light background"), contrast: z("contrast"), "dark zone": z("dark background"), "rule holds": c.fails.length === 0 && c.unique && conflicts.length === 0 });
+  out.recipes[id] = { answers: recipe.answers, themes: recipe.themes, ladders: {} };
+  for (const level of ["aa", "aaa"]) {
+    const { steps, conflicts } = build(recipe, level);
+    const c = check(steps);
+    console.log(`\n=== ${id}, ${level.toUpperCase()} (${recipe.answers.join(", ")}; ${recipe.themes.join(" and ")}) ===`);
+    console.table(steps.map((s) => ({ name: Math.round(s.grade), grade: s.grade, "L*": +Lstar(Y(s.grade)).toFixed(1), zone: zoneOf(s, steps), purposes: s.purposes.join("; ") })));
+    console.log(`conflicts: ${conflicts.length ? conflicts.join(" | ") : "none"} · names unique: ${c.unique ? "yes" : "no"} · contrast rule: ${c.fails.length ? c.fails.join(" | ") : "holds"} · smallest L* gap: ${c.minGapL.toFixed(1)}`);
+    out.recipes[id].ladders[level] = steps.map((s) => ({
+      name: Math.round(s.grade), grade: s.grade, lstar: +Lstar(Y(s.grade)).toFixed(2), zone: zoneOf(s, steps), uses: s.uses }));
+    const z = (n) => steps.filter((s) => zoneOf(s, steps) === n).length;
+    summary.push({ recipe: id, target: level.toUpperCase(), steps: steps.length, "light zone": z("light background"), contrast: z("contrast"), "dark zone": z("dark background"), "rule holds": c.fails.length === 0 && c.unique && conflicts.length === 0 });
+  }
 }
 console.log("\nSummary (default: " + DEFAULT_RECIPE + "):"); console.table(summary);
 writeFileSync(new URL("./recipes.json", import.meta.url), JSON.stringify(out, null, 1) + "\n");

@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-056 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-057 |
 
 ---
 
@@ -899,3 +899,22 @@ Two things often drawn as layers aren't tiers:
 - CLR-100 is revised: the recipe values come from `recipes.json`; steps carry a list of the uses that placed them; and pages are steps.
 - CLR-95 tests the 1 and 2-grade gaps, the default recipe, and how common dark mode and layered surfaces are among colouri.st's users.
 - The warning's light fill is about 1.4:1 from the white page, so colouri.st says it relies on its text or a border.
+
+### D-057 · Each recipe has an AA and an AAA ladder; dark-theme fills use dark text at AAA
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13, CLR-100 · **Research:** [research/recipe-ladders.md](research/recipe-ladders.md), "At AAA"
+
+**Decision:**
+- **Every beta recipe has a ladder for each target, AA and AAA,** because the target moves the contrast zone (D-054, US-02). Both are worked out by the model and kept in `recipes.json`.
+- **At AAA, coloured fills in the dark theme are light fills with dark text,** and their hover and pressed states move lighter, away from the text. White-text fills stay in the light theme at both targets, and in the dark theme at AA.
+
+**Context:** D-056's ladders were worked out at AA only. At AAA, a white-text fill needs to be at least 64 grades from white, and the fill must also stand 37 grades (3:1) from its page. On a dark page at about grade 95, no fill does both.
+
+**Alternatives considered:**
+- AA ladders only, with AAA projects using the nearest steps. Rejected: US-02 says the contrast zone reflects the target, and the AAA thresholds wouldn't have steps of their own.
+- White-text fills in the dark theme at AAA, accepting less than 3:1 from the page. Rejected: the fill would no longer be a clear signifier (WCAG 1.4.11).
+
+**Why:** Each ladder should hold the steps its target needs. Dark-text fills in dark themes are established practice: Material pairs a light primary with a dark "on-primary".
+
+**Consequences:**
+- In the rules (CLR-100), each recipe holds a ladder per target.
+- The AAA ladders are slightly smaller than the AA ones (12 to 21 steps, against 12 to 23), because more steps are shared between light and dark.
