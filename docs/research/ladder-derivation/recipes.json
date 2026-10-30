@@ -1,0 +1,2874 @@
+{
+ "default": "layered-app-light-dark",
+ "minGapGrades": 1,
+ "recipes": {
+  "content-light": {
+   "answers": [
+    "read",
+    "controls"
+   ],
+   "themes": [
+    "light"
+   ],
+   "steps": [
+    {
+     "name": 0,
+     "grade": 0,
+     "lstar": 100,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    },
+    {
+     "name": 3,
+     "grade": 3.4,
+     "lstar": 95.86,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 8,
+     "grade": 7.9,
+     "lstar": 90.58,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "pressed"
+      }
+     ]
+    },
+    {
+     "name": 9,
+     "grade": 8.9,
+     "lstar": 89.43,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 14,
+     "grade": 14,
+     "lstar": 83.74,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 22,
+     "grade": 22,
+     "lstar": 75.29,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 29,
+     "grade": 29,
+     "lstar": 68.33,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 37,
+     "grade": 37,
+     "lstar": 60.82,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 50,
+     "grade": 50,
+     "lstar": 49.39,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 61,
+     "grade": 61,
+     "lstar": 40.23,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 68,
+     "grade": 68,
+     "lstar": 34.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 91,
+     "grade": 91,
+     "lstar": 13.08,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "content-light-dark": {
+   "answers": [
+    "read",
+    "controls"
+   ],
+   "themes": [
+    "light",
+    "dark"
+   ],
+   "steps": [
+    {
+     "name": 0,
+     "grade": 0,
+     "lstar": 100,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    },
+    {
+     "name": 3,
+     "grade": 3.4,
+     "lstar": 95.86,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 8,
+     "grade": 7.9,
+     "lstar": 90.58,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 9,
+     "grade": 8.9,
+     "lstar": 89.43,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 14,
+     "grade": 14,
+     "lstar": 83.74,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 22,
+     "grade": 21.8,
+     "lstar": 75.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 29,
+     "grade": 29,
+     "lstar": 68.33,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 37,
+     "grade": 37,
+     "lstar": 60.82,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 45,
+     "grade": 45.4,
+     "lstar": 53.34,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 50,
+     "grade": 50,
+     "lstar": 49.39,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 58,
+     "grade": 58.4,
+     "lstar": 42.37,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 61,
+     "grade": 61,
+     "lstar": 40.23,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 68,
+     "grade": 68,
+     "lstar": 34.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 81,
+     "grade": 81.2,
+     "lstar": 23.21,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 85,
+     "grade": 84.6,
+     "lstar": 20.01,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "pressed"
+      }
+     ]
+    },
+    {
+     "name": 86,
+     "grade": 85.8,
+     "lstar": 18.82,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 91,
+     "grade": 91,
+     "lstar": 13.08,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 95,
+     "grade": 95.4,
+     "lstar": 6.79,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    }
+   ]
+  },
+  "simple-app-light-dark": {
+   "answers": [
+    "read",
+    "controls",
+    "cards"
+   ],
+   "themes": [
+    "light",
+    "dark"
+   ],
+   "steps": [
+    {
+     "name": 0,
+     "grade": 0,
+     "lstar": 100,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    },
+    {
+     "name": 2,
+     "grade": 1.9,
+     "lstar": 97.67,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 3,
+     "grade": 3.4,
+     "lstar": 95.86,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 8,
+     "grade": 7.9,
+     "lstar": 90.58,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 9,
+     "grade": 8.9,
+     "lstar": 89.43,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 14,
+     "grade": 14,
+     "lstar": 83.74,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 22,
+     "grade": 21.8,
+     "lstar": 75.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 29,
+     "grade": 29,
+     "lstar": 68.33,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 37,
+     "grade": 37,
+     "lstar": 60.82,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 45,
+     "grade": 45.4,
+     "lstar": 53.34,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 50,
+     "grade": 50,
+     "lstar": 49.39,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 58,
+     "grade": 58.4,
+     "lstar": 42.37,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 61,
+     "grade": 61,
+     "lstar": 40.23,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 68,
+     "grade": 68,
+     "lstar": 34.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 81,
+     "grade": 81.2,
+     "lstar": 23.21,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 85,
+     "grade": 84.6,
+     "lstar": 20.01,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "pressed"
+      }
+     ]
+    },
+    {
+     "name": 86,
+     "grade": 85.8,
+     "lstar": 18.82,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 91,
+     "grade": 91,
+     "lstar": 13.08,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 95,
+     "grade": 95.4,
+     "lstar": 6.79,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    }
+   ]
+  },
+  "layered-app-light-dark": {
+   "answers": [
+    "read",
+    "controls",
+    "cards",
+    "overlays"
+   ],
+   "themes": [
+    "light",
+    "dark"
+   ],
+   "steps": [
+    {
+     "name": 0,
+     "grade": 0,
+     "lstar": 100,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    },
+    {
+     "name": 2,
+     "grade": 1.9,
+     "lstar": 97.67,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 3,
+     "grade": 3.1,
+     "lstar": 96.22,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "sunken"
+      }
+     ]
+    },
+    {
+     "name": 4,
+     "grade": 4.1,
+     "lstar": 95.03,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 8,
+     "grade": 7.9,
+     "lstar": 90.58,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 9,
+     "grade": 8.9,
+     "lstar": 89.43,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 14,
+     "grade": 14,
+     "lstar": 83.74,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 22,
+     "grade": 21.8,
+     "lstar": 75.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 29,
+     "grade": 29,
+     "lstar": 68.33,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 37,
+     "grade": 37,
+     "lstar": 60.82,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 45,
+     "grade": 45.4,
+     "lstar": 53.34,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 50,
+     "grade": 50,
+     "lstar": 49.39,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 58,
+     "grade": 58.4,
+     "lstar": 42.37,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 61,
+     "grade": 61,
+     "lstar": 40.23,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 68,
+     "grade": 68.1,
+     "lstar": 34.41,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 81,
+     "grade": 81.2,
+     "lstar": 23.21,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 85,
+     "grade": 84.6,
+     "lstar": 20.01,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "pressed"
+      }
+     ]
+    },
+    {
+     "name": 86,
+     "grade": 85.8,
+     "lstar": 18.82,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 88,
+     "grade": 87.5,
+     "lstar": 17.06,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "sunken"
+      }
+     ]
+    },
+    {
+     "name": 91,
+     "grade": 91,
+     "lstar": 13.08,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 95,
+     "grade": 95.4,
+     "lstar": 6.79,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    }
+   ]
+  },
+  "app-light": {
+   "answers": [
+    "read",
+    "controls",
+    "cards",
+    "overlays",
+    "selection"
+   ],
+   "themes": [
+    "light"
+   ],
+   "steps": [
+    {
+     "name": 0,
+     "grade": 0,
+     "lstar": 100,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    },
+    {
+     "name": 2,
+     "grade": 1.9,
+     "lstar": 97.67,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 3,
+     "grade": 2.9,
+     "lstar": 96.46,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "selected"
+      }
+     ]
+    },
+    {
+     "name": 4,
+     "grade": 3.9,
+     "lstar": 95.26,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "sunken"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 5,
+     "grade": 4.9,
+     "lstar": 94.08,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "hover"
+      }
+     ]
+    },
+    {
+     "name": 8,
+     "grade": 7.9,
+     "lstar": 90.58,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "pressed"
+      }
+     ]
+    },
+    {
+     "name": 9,
+     "grade": 8.9,
+     "lstar": 89.43,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 14,
+     "grade": 14,
+     "lstar": 83.74,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 22,
+     "grade": 22,
+     "lstar": 75.29,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 29,
+     "grade": 29,
+     "lstar": 68.33,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 37,
+     "grade": 37,
+     "lstar": 60.82,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 50,
+     "grade": 50,
+     "lstar": 49.39,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 61,
+     "grade": 61,
+     "lstar": 40.23,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 68,
+     "grade": 68,
+     "lstar": 34.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 91,
+     "grade": 91,
+     "lstar": 13.08,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "app-light-dark": {
+   "answers": [
+    "read",
+    "controls",
+    "cards",
+    "overlays",
+    "selection"
+   ],
+   "themes": [
+    "light",
+    "dark"
+   ],
+   "steps": [
+    {
+     "name": 0,
+     "grade": 0,
+     "lstar": 100,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    },
+    {
+     "name": 2,
+     "grade": 1.9,
+     "lstar": 97.67,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 3,
+     "grade": 2.9,
+     "lstar": 96.46,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "selected"
+      }
+     ]
+    },
+    {
+     "name": 4,
+     "grade": 3.9,
+     "lstar": 95.26,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "sunken"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 5,
+     "grade": 4.9,
+     "lstar": 94.08,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "hover"
+      }
+     ]
+    },
+    {
+     "name": 8,
+     "grade": 7.9,
+     "lstar": 90.58,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 9,
+     "grade": 8.9,
+     "lstar": 89.43,
+     "zone": "light background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 14,
+     "grade": 14,
+     "lstar": 83.74,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 22,
+     "grade": 21.8,
+     "lstar": 75.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 29,
+     "grade": 29,
+     "lstar": 68.33,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 37,
+     "grade": 37,
+     "lstar": 60.82,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 45,
+     "grade": 45.4,
+     "lstar": 53.34,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "text"
+      }
+     ]
+    },
+    {
+     "name": 50,
+     "grade": 50,
+     "lstar": 49.39,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "muted text"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "warning",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "text"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill"
+      }
+     ]
+    },
+    {
+     "name": 58,
+     "grade": 58.4,
+     "lstar": 42.37,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "control border"
+      }
+     ]
+    },
+    {
+     "name": 61,
+     "grade": 61,
+     "lstar": 40.23,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill hover"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill hover"
+      }
+     ]
+    },
+    {
+     "name": 68,
+     "grade": 68,
+     "lstar": 34.49,
+     "zone": "contrast",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "light",
+       "family": "info",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "fill pressed"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "fill pressed"
+      }
+     ]
+    },
+    {
+     "name": 81,
+     "grade": 81.2,
+     "lstar": 23.21,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "subtle border"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint border"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint border"
+      }
+     ]
+    },
+    {
+     "name": 83,
+     "grade": 83.4,
+     "lstar": 21.16,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "selected"
+      }
+     ]
+    },
+    {
+     "name": 85,
+     "grade": 84.6,
+     "lstar": 20.01,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "pressed"
+      }
+     ]
+    },
+    {
+     "name": 86,
+     "grade": 85.8,
+     "lstar": 18.82,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "hover"
+      },
+      {
+       "theme": "dark",
+       "family": "brand",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "error",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "warning",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "success",
+       "use": "tint"
+      },
+      {
+       "theme": "dark",
+       "family": "info",
+       "use": "tint"
+      }
+     ]
+    },
+    {
+     "name": 88,
+     "grade": 87.5,
+     "lstar": 17.06,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "sunken"
+      }
+     ]
+    },
+    {
+     "name": 91,
+     "grade": 91,
+     "lstar": 13.08,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "light",
+       "family": "grey",
+       "use": "text"
+      },
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "surface"
+      }
+     ]
+    },
+    {
+     "name": 95,
+     "grade": 95.4,
+     "lstar": 6.79,
+     "zone": "dark background",
+     "uses": [
+      {
+       "theme": "dark",
+       "family": "grey",
+       "use": "page"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -2,7 +2,9 @@
  * The ladder-derivation model shared by derive.mjs and additive.mjs (CLR-13, D-053).
  * Turns semantic tokens' relationship targets into allowed ranges of absolute contrast grade
  * (0 = white, 100 = black, D-042), and counts the steps one family needs across two themes.
- * The assumptions behind each range are documented in derive.mjs.
+ * The assumptions behind each range are documented in derive.mjs. The second half (rangeOf, theme,
+ * accent and the separation tables) models one ladder shared by every family and theme, for
+ * untested.mjs and recipes.mjs.
  */
 export const LIGHT_PAGE = 0, DARK_PAGE = 95.4, MIN_GAP = 1, SLACK = 0.5;
 export const T = { aa: { ui: 37, text: 50 }, aaa: { ui: 37, text: 64 } };
@@ -74,4 +76,41 @@ export function fits(ranges) {
   }
   return "yes";
 }
+
+// ---- One ladder shared by every family and theme (untested.mjs, recipes.mjs)
+
+/** Absolute grade range for a token in a theme ("sep" and "min" are measured from the page). */
+export function rangeOf(page, sign, kind, v) {
+  if (kind === "page") return [page - 1.5, page + 1.5].map((x) => Math.min(100, Math.max(0, x)));
+  if (kind === "abs") return v;                         // [lo, hi] given directly
+  const [lo, hi] = kind === "sep" ? [v, v * (1 + SLACK)] : kind === "min" ? [v, v + 6] : [85, 95];
+  return [page + sign * lo, page + sign * hi].sort((a, b) => a - b);
+}
+
+/** A theme: its page and the separations its uses need. */
+export function theme(name, page, seps, level, scale = 1) {
+  const sign = page < 50 ? 1 : -1;
+  const s = Object.fromEntries(Object.entries(seps).map(([k, v]) => [k, v * scale]));
+  const grey = [["page", "page"], ["surface", "sep", s.surface], ["sunken", "sep", s.sunken], ["selected", "sep", s.selected],
+    ["hover", "sep", s.hover], ["pressed", "sep", s.pressed], ["subtle border", "sep", s.subtle],
+    ["control border", "min", s.control ?? T[level].ui], ["muted text", "min", s.muted ?? T[level].text], ["text", "text"]];
+  return { name, page, sign, level, grey, s };
+}
+
+/** A colour family's tokens in a theme. White text on fills; `lightFill` uses dark text instead. */
+export function familyTokens(th, lightFill = false) {
+  const t = T[th.level].text;
+  // A light fill sits near where yellows are most vivid (grade about 14, see the cusp table), ±6.
+  const fill = lightFill ? [8, 20] : [t, t + 6];
+  const dir = 1; // states move darker: towards the text's contrast on a white-text fill, away from the page on a light fill
+  return [["tint", "sep", th.s.hover], ["tint border", "sep", th.s.subtle], ["fill", "abs", fill],
+    ["fill hover", "abs", fill.map((x) => x + dir * 8).sort((a, b) => a - b)],
+    ["fill pressed", "abs", fill.map((x) => x + dir * 15).sort((a, b) => a - b)], ["text", "min", t]];
+}
+
+/** Separations from the page, in grades: the 27-system medians (ladder-distribution.md, Part 4), and the high-contrast modes of Primer, Atlassian and Apple. */
+export const LIGHT = { surface: 1.9, sunken: 3.1, selected: 2.8, hover: 3.4, pressed: 7.9, subtle: 8.9 };
+export const DARK = { surface: 4.0, sunken: 7.9, selected: 12.0, hover: 9.6, pressed: 10.8, subtle: 14.2 };
+export const HC_LIGHT = { surface: 5.7, sunken: 7.8, selected: 7.0, hover: 9.4, pressed: 19.8, subtle: 20.9, control: 64, muted: 80 };
+export const HC_DARK = { surface: 5.7, sunken: 19.8, selected: 30, hover: 14.8, pressed: 27, subtle: 36.6, control: 64, muted: 75 };
 

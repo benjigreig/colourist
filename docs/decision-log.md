@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-055 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-056 |
 
 ---
 
@@ -795,7 +795,7 @@ Two things often drawn as layers aren't tiers:
 - The adjacent-step minimum uses the L\* gap (D-012, D-026). Its value is still to be set.
 
 ### D-054 · The ladder is built in three zones from the product's choices; presets become recipes
-**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Supersedes:** D-005, D-050 · **Amends:** D-053 · **Plane:** CLR-13, CLR-94 · **Research:** [research/ladder-zones.md](research/ladder-zones.md)
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted, amended by D-056 · **Supersedes:** D-005, D-050 · **Amends:** D-053 · **Plane:** CLR-13, CLR-94 · **Research:** [research/ladder-zones.md](research/ladder-zones.md)
 
 **Decision:**
 - **Each project has one fixed ladder, shared by every colour family.** It's built from what the product contains, then held fixed. Steps are named by grade, so a name means the same contrast in every project (D-041).
@@ -863,3 +863,39 @@ Two things often drawn as layers aren't tiers:
 - The question set and its modelled examples are designed next, then tested with people (CLR-95).
 - The multipliers for bright surroundings and for people who need more contrast are assumptions to test.
 - US-04 gains the style question.
+
+### D-056 · The beta recipes' ladders are worked out by the model; the default is a layered app in light and dark
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-054 · **Plane:** CLR-13, CLR-100, CLR-95 · **Research:** [research/recipe-ladders.md](research/recipe-ladders.md)
+
+**Decision:**
+- **Each beta recipe's ladder is worked out by the model,** with every step placed by the uses that need it. Each step records its zone and those uses, as theme, family and use. The values are in [`research/ladder-derivation/recipes.json`](research/ladder-derivation/recipes.json), and each passes the contrast rule (D-049) on rounded names.
+- **Six beta recipes:**
+
+  | Recipe | Steps |
+  |---|---|
+  | Content site, light | 12 |
+  | Content site, light and dark | 18 |
+  | Simple app, light and dark | 19 |
+  | Layered app, light and dark | 21 |
+  | App with overlays and selection, light | 15 |
+  | App with overlays and selection, light and dark | 23 |
+
+- **The default is the layered app, light and dark** (reading, controls, cards and overlays). It's the most common shape among the 27 design systems: 22 publish a dark mode, 22 to 23 have cards and a second surface layer, and only 10 have a selected state.
+- **The minimum gap between steps starts at 1 grade.** That's the gap practice uses near the page, and it's about 1.2 L\* near white. CLR-95 tests 1 and 2 grades with people.
+- **No stand-in ladder.** The 13-step ladder isn't used for any recipe.
+- **Correction to D-054:** it said the default recipe "builds something close to today's 13 steps". That wasn't checked, and the model doesn't support it. The default needs 21 steps.
+
+**Context:** CLR-100's first ticket used the 13-step ladder as the default recipe's stand-in. Claude Code's plan then fitted zones and purposes onto steps that were never placed for a purpose. Benji spotted the anchoring, so the recipes were worked out first.
+
+**Alternatives considered:**
+- Keeping the 13-step stand-in until later. Rejected: it would likely ship as the beta's ladder, which is the fixed preset D-054 replaced.
+- Light only by default, the content site with 12 steps. Rejected: Benji wanted light and dark, and most design systems have both.
+- Content site, light and dark, as the default. Rejected: most systems also have cards and a second layer.
+- A wider minimum gap of 2 grades from the start. Deferred to testing.
+
+**Why:** Every step should exist because a use needs it (D-054). The default should match what most people building colour systems have. The web as a whole is mostly light only (5.11% of sites use `prefers-color-scheme`), but colouri.st's users are building systems (D-022).
+
+**Consequences:**
+- CLR-100 is revised: the recipe values come from `recipes.json`; steps carry a list of the uses that placed them; and pages are steps.
+- CLR-95 tests the 1 and 2-grade gaps, the default recipe, and how common dark mode and layered surfaces are among colouri.st's users.
+- The warning's light fill is about 1.4:1 from the white page, so colouri.st says it relies on its text or a border.

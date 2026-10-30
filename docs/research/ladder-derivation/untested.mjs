@@ -19,36 +19,7 @@
  * Then brand style: where each hue is most colourful, which decides which step a vivid fill
  * sits on. Style changes chroma, not lightness, so it can't move the ladder itself (D-012).
  */
-import { LIGHT_PAGE, DARK_PAGE, SLACK, T } from "./model.mjs";
-
-/** Absolute grade range for a token in a theme ("sep" and "min" are measured from the page). */
-function rangeOf(page, sign, kind, v) {
-  if (kind === "page") return [page - 1.5, page + 1.5].map((x) => Math.min(100, Math.max(0, x)));
-  if (kind === "abs") return v;                         // [lo, hi] given directly
-  const [lo, hi] = kind === "sep" ? [v, v * (1 + SLACK)] : kind === "min" ? [v, v + 6] : [85, 95];
-  return [page + sign * lo, page + sign * hi].sort((a, b) => a - b);
-}
-
-/** A theme: its page and the separations its uses need. */
-function theme(name, page, seps, level, scale = 1) {
-  const sign = page < 50 ? 1 : -1;
-  const s = Object.fromEntries(Object.entries(seps).map(([k, v]) => [k, v * scale]));
-  const grey = [["page", "page"], ["surface", "sep", s.surface], ["sunken", "sep", s.sunken], ["selected", "sep", s.selected],
-    ["hover", "sep", s.hover], ["pressed", "sep", s.pressed], ["subtle border", "sep", s.subtle],
-    ["control border", "min", s.control ?? T[level].ui], ["muted text", "min", s.muted ?? T[level].text], ["text", "text"]];
-  return { name, page, sign, level, grey, s };
-}
-
-/** A colour family's tokens in a theme. White text on fills; `lightFill` uses dark text instead. */
-function accent(th, lightFill = false) {
-  const t = T[th.level].text;
-  // A light fill sits near where yellows are most vivid (grade about 14, see the cusp table), ±6.
-  const fill = lightFill ? [8, 20] : [t, t + 6];
-  const dir = 1; // states move darker: towards the text's contrast on a white-text fill, away from the page on a light fill
-  return [["tint", "sep", th.s.hover], ["tint border", "sep", th.s.subtle], ["fill", "abs", fill],
-    ["fill hover", "abs", fill.map((x) => x + dir * 8).sort((a, b) => a - b)],
-    ["fill pressed", "abs", fill.map((x) => x + dir * 15).sort((a, b) => a - b)], ["text", "min", t]];
-}
+import { LIGHT_PAGE, DARK_PAGE, rangeOf, theme, familyTokens, LIGHT, DARK, HC_LIGHT, HC_DARK } from "./model.mjs";
 
 /** Places steps greedily so each (theme, family) gets distinct steps in range. Returns step positions. */
 function place(groups) {
@@ -67,11 +38,6 @@ function place(groups) {
   return [...new Set(steps.map((p) => +p.toFixed(1)))].sort((a, b) => a - b);
 }
 
-const LIGHT = { surface: 1.9, sunken: 3.1, selected: 2.8, hover: 3.4, pressed: 7.9, subtle: 8.9 };
-const DARK = { surface: 4.0, sunken: 7.9, selected: 12.0, hover: 9.6, pressed: 10.8, subtle: 14.2 };
-const HC_LIGHT = { surface: 5.7, sunken: 7.8, selected: 7.0, hover: 9.4, pressed: 19.8, subtle: 20.9, control: 64, muted: 80 };
-const HC_DARK = { surface: 5.7, sunken: 19.8, selected: 30, hover: 14.8, pressed: 27, subtle: 36.6, control: 64, muted: 75 };
-
 /** Builds a scenario's groups. */
 function scenario({ level = "aa", scaleLight = 1, scaleAll = 1, status = false, hc = false, charts = false }) {
   const themes = [theme("light", LIGHT_PAGE, LIGHT, level, scaleLight * scaleAll), theme("dark", DARK_PAGE, DARK, level, scaleAll)];
@@ -79,8 +45,8 @@ function scenario({ level = "aa", scaleLight = 1, scaleAll = 1, status = false, 
   const groups = [];
   for (const th of themes) {
     groups.push({ th, tokens: th.grey });
-    groups.push({ th, tokens: accent(th) });                 // the brand accent
-    if (status) for (let i = 0; i < 4; i++) groups.push({ th, tokens: accent(th, i === 1) });
+    groups.push({ th, tokens: familyTokens(th) });                 // the brand accent
+    if (status) for (let i = 0; i < 4; i++) groups.push({ th, tokens: familyTokens(th, i === 1) });
     // Charts: eight hues in order, each with a strong version that reaches 3:1 on the page and a
     // lighter one 12 to 21 grades away, as in Elastic's and ColorBrewer's paired palettes (charts.mjs).
     if (charts) for (let i = 0; i < 8; i++) groups.push({ th, tokens: [["chart", "sep", 37], ["chart light", "sep", 18]] });
