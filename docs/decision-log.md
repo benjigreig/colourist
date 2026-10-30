@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-058 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-059 |
 
 ---
 
@@ -953,3 +953,28 @@ Two things often drawn as layers aren't tiers:
   - the US-02 contrast rule holds on exact values
 - The default answers choose the default recipe, and each recipe is chosen by its own answers.
 - D-048's CLR-13 placeholders for ladder presets and the recommendation are gone. Its other placeholders are unchanged.
+
+### D-059 · States are solid steps; overlays are an optional export after the beta
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13, CLR-101 · **Research:** [research/colour-relationships.md](research/colour-relationships.md), "Interaction states"
+
+**Decision:**
+- **States are solid steps in the model and in the default export,** in the beta and after. The engine works out each state, such as hover, pressed or selected, as a solid colour from its relationship to its resting colour (D-052), as the recipe ladders already do (D-056, D-057).
+- **Overlays come after the beta, as an optional export (CLR-101).** colouri.st will work out the overlay that best matches the solid states on the surfaces the person has chosen, check it on every one of those surfaces, and say plainly where it falls short (D-031).
+- **Fill states are always solid.**
+
+**Context:** The last open question from CLR-13. Benji prefers solid steps, and asked whether both should be supported.
+
+**Alternatives considered:**
+- Overlays as the model, as Material and Atlassian do for many states. Rejected for the reasons below.
+- Both as equal choices in the beta. Rejected: two ways to build, check and explain, for the beta's depth (D-003).
+
+**Why:**
+- **In favour of overlays:** one translucent state works on every surface. 8% black gives 5.8 to 5.9 grades on white, a light card and a sunken surface alike. Seven of the 27 systems use overlays for hover.
+- **But they don't scale for dark mode:** 8% white gives 4.4 to 8.2 grades, where practice is about twice the light-mode separation.
+- **They're uneven on coloured fills:** 3.4 to 5.5 grades, dulling the colour by 6 to 7%. Fill states are solid in all 16 sets measured.
+- **They complicate the checks:** an overlay's colour depends on what's underneath, so every state would need checking on every surface it might sit on.
+- **The DTCG format can't express them:** it supports transparency, but not one colour layered over another.
+
+**Consequences:**
+- The `ladders.states` placeholder in the rules (CLR-13) is now decided, so the rules need a small follow-up to record it.
+- D-052's open question on the export format for states is answered.

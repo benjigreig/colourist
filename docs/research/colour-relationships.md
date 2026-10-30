@@ -164,7 +164,7 @@ States are semantic tokens with a **state** relationship to their resting token.
 
 ## Open questions
 
-1. Are steps and overlays only an export format, or do they shape the model anywhere?
+1. Are steps and overlays only an export format, or do they shape the model anywhere? *Decided 30 October (D-059): states are solid steps in the model and the default export; overlays are an optional export after the beta (CLR-101).*
 2. How should emphasis be specified, given it's relative to siblings?
 3. Which dimensions does the beta's guided flow walk through, and how are invalid combinations shown (D-004 limits depth in the beta)?
 4. How are resolutions exported when dimensions interact, such as brand × mode? This is still open in the DTCG resolver (issue #381).

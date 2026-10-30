@@ -40,4 +40,4 @@ Terms are defined in the glossary (CLR-93). Each row stays one line and links to
 | Can existing steps move? | Yes, in new work, re-spaced to keep gaps distinct. They stay fixed for imported systems, and optionally once a project is in use | [D-053](decision-log.md) | Settled |
 | Are exports trimmed to the steps in use? | No. Full ladders are exported as primitives | [D-053](decision-log.md) | Settled |
 | How do semantic tokens relate to steps? | Through their relationships; each theme resolves them | [D-051, D-052](decision-log.md), [colour-relationships.md](research/colour-relationships.md) | Settled |
-| Are states steps or overlays? | Still open | [D-052](decision-log.md) | Open |
+| Are states steps or overlays? | Solid steps, in the model and the default export; overlays an optional export after the beta, matched and checked on every surface | [D-059](decision-log.md), CLR-101 | Settled |
