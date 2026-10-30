@@ -1,6 +1,6 @@
 # ADR 0005 · Rules schema design
 
-**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046 · **Amended:** 30 Oct 2026, D-052 and D-058 (see the end)
+**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046 · **Amended:** 30 Oct 2026, D-052, D-058 and D-059 (see the end)
 
 ## Decision
 
@@ -168,3 +168,7 @@ This shows the shape, abridged. The values are in `packages/rules/rules.json`, c
 ```
 
 The schema version goes from 1 to 2, because removing the presets breaks files written for version 1. The rules version goes to 0.2.0, and stays below 1.0 while placeholders remain.
+
+## Amendment: states are solid steps (30 Oct 2026, D-059)
+
+The D-058 table above describes `ladders` as including "whether states are steps or overlays (still open)". D-059 decides it: states are solid steps, and `ladders.states` records `form: solid`. Overlays are an optional export after the beta (CLR-101), not a form in the rules.
