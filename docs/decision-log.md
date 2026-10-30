@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-053 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-054 |
 
 ---
 
@@ -66,7 +66,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 **Consequences:** The design tokens JSON is the single source for every export. Each new format is a converter from it, never a separate generator. Follow-ups: CLR-43 (Tailwind), CLR-44 (Figma variables).
 
 ### D-005 · Several ladder sizes, with a recommendation
-**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Superseded by D-054 · **Plane:** CLR-13
 
 **Decision:** The tool offers several step counts, at least 11, 13 and 15, and recommends one with its reasoning.
 
@@ -695,7 +695,7 @@ All are documented in the research.
 - CLR-95 tests whether people use grades or step counts more accurately. If grades prove hard to use, the wording options can be revisited.
 
 ### D-050 · Ladders of each size are designed independently, not nested
-**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13 · **Research:** [research/ladder-distribution.md](research/ladder-distribution.md), Part 1
+**Date:** 29 Oct 2026 · **Decided by:** Benji Greig · **Status:** Superseded by D-054 · **Plane:** CLR-13 · **Research:** [research/ladder-distribution.md](research/ladder-distribution.md), Part 1
 
 **Decision:** The 11, 13 and 15-step ladders aren't subsets of one another. Each is designed for its own size.
 
@@ -766,7 +766,7 @@ Two things often drawn as layers aren't tiers:
 - Open: export format for states, how emphasis is specified, which dimensions the beta's guided flow covers, exporting interacting dimensions, and the smallest useful test pattern (CLR-95).
 
 ### D-053 · Ladders are presets you map onto; gaps are flagged in the beta, and tuning comes after
-**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-13, CLR-17, CLR-98 · **Research:** [research/ladder-derivation.md](research/ladder-derivation.md)
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted, amended by D-054 · **Plane:** CLR-13, CLR-17, CLR-98 · **Research:** [research/ladder-derivation.md](research/ladder-derivation.md)
 
 **Decision:**
 - **Every family shares one ladder shape, from a preset** (11, 13 or 15 steps, D-005, D-050). A step means the same in every colour, so people can move between families and themes easily. Full ladders are always exported as primitives.
@@ -793,3 +793,39 @@ Two things often drawn as layers aren't tiers:
 - CLR-98 covers tuning and the "keep steps fixed" option, after the beta.
 - Question 3 (step counts and when each preset is recommended) builds on this: a preset is recommended by how few gaps it leaves for the chosen uses, themes and target.
 - The adjacent-step minimum uses the L\* gap (D-012, D-026). Its value is still to be set.
+
+### D-054 · The ladder is built in three zones from the product's choices; presets become recipes
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Supersedes:** D-005, D-050 · **Amends:** D-053 · **Plane:** CLR-13, CLR-94 · **Research:** [research/ladder-zones.md](research/ladder-zones.md)
+
+**Decision:**
+- **Each project has one fixed ladder, shared by every colour family.** It's built from what the product contains, then held fixed. Steps are named by grade, so a name means the same contrast in every project (D-041).
+- **The ladder has three zones:**
+  1. **Light background zone:** fine steps near the light page, for surfaces, states, selection and subtle borders.
+  2. **Contrast zone:** wide steps placed at the contrast thresholds from each page (37, 50 and 64 grades, or as the target sets them), so the contrast rule holds exactly where text and borders need it.
+  3. **Dark background zone:** fine steps near the dark page, about twice as far apart as in the light zone.
+- **Product choices add steps.** Layers, selection and states add steps to the background zones. A dark theme adds the dark zone. The target moves the contrast zone. The choices add up rather than being one pick.
+- **Presets become recipes (CLR-94):** named sets of answers, such as a content site or an app with a dark theme. Each recipe builds a ladder. Without answers, the default recipe builds something close to today's 13 steps.
+- **In the beta:** a few fixed recipes, their ladders worked out in the rules file. A gap found at mapping suggests changing an answer, such as adding layers, which rebuilds the ladder. Fully open answers and tuning (CLR-98) come after the beta.
+- **D-053 still applies:** mapping flags gaps, and tuning adds in-between steps after the beta. Where D-053 says "preset", read "the recipe's ladder".
+
+**For people used to fixed, even ladders:** familiar ladders are less even in contrast than they look, and systems with even ladders add hover colours or overlays outside the scale near the ends. colouri.st places steps where a system uses colour: close together where surfaces and states need small, visible differences, and far apart where text needs contrast. The steps an old ladder hid become part of the ladder, named, counted and checked. Data palettes stay evenly spaced, because charts need equal-looking steps. The full explanation is in the research.
+
+**Context:** CLR-13's question 3 asked which preset to recommend, and when. Adding product choices together showed the shortfall is crowding near the page: an interactive light theme needs five tokens within about 5 grades of white, and even the 15-step preset has only two steps there. Uses are hard for people to state directly, and choices add up rather than being one pick.
+
+**Alternatives considered:**
+- Fixed presets of 11, 13 and 15 steps, with one recommended (D-005, D-050). Superseded: no preset fits once a product has layers, states and a dark theme.
+- Recommending the preset with the fewest gaps. Rejected for the same reason.
+- Dropping presets with no starting point. Rejected: people need a sensible default and familiar starting points, which recipes give.
+
+**Why:**
+- The zones follow perception: small differences are seen best near the background (crispening), and dark tones need bigger steps.
+- Practice bunches steps the same way: Radix puts 8 of 12 steps in the light third, Polaris 10 of 16, and Material adds surface tones near each end.
+- Placing middle steps on the thresholds keeps step counting exact where text and borders need it (D-049).
+- Each step has a reason that can be shown to people (job 10).
+
+**Consequences:**
+- D-005 and D-050 are superseded.
+- CLR-94 (recipes) moves into the beta, limited to a few fixed recipes.
+- The rules schema gains recipes and the zone rules in place of fixed ladder presets (CLR-7, ADR 0005).
+- US-02 (choose a ladder) needs rewriting around recipes, with Benji.
+- The question set and its modelled interface examples are designed next, then tested with people (CLR-95).

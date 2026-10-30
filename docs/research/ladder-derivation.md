@@ -99,6 +99,7 @@ Fitting every family to its own needs would give each colour a differently shape
 | File | What it does |
 |---|---|
 | [`ladder-derivation/targets.mjs`](ladder-derivation/targets.mjs) | For 22 systems with both modes: each neutral use's absolute grade, and how many values light and dark share. Output in `targets.txt` |
+| [`ladder-derivation/model.mjs`](ladder-derivation/model.mjs) | The shared model (tokens, ranges, sharing between themes, the distinct-step check), split out of `derive.mjs` on 30 October for [`ladder-zones.md`](ladder-zones.md). `derive.mjs`'s output is unchanged |
 | [`ladder-derivation/derive.mjs`](ladder-derivation/derive.mjs) | Turns relationship targets into ranges, counts the steps one family needs for light and dark at AA and AAA, and checks today's 13 steps against the ranges. Output in `derive.txt` |
 
 Both read [`ladder-distribution/uses/`](ladder-distribution/uses/). Run them with `node`, after that folder's `npm install`.

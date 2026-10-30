@@ -1,0 +1,36 @@
+┌─────────┬────────┬────────────────┬─────────────────────────────────┬────────┬───────┬────────────┬────────────┬────────────┐
+│ (index) │ target │ themes         │ choices                         │ tokens │ steps │ gaps on 11 │ gaps on 13 │ gaps on 15 │
+├─────────┼────────┼────────────────┼─────────────────────────────────┼────────┼───────┼────────────┼────────────┼────────────┤
+│ 0       │ 'AA'   │ 'light'        │ 'content only'                  │ 5      │ 5     │ 1          │ 0          │ 0          │
+│ 1       │ 'AA'   │ 'light'        │ 'controls'                      │ 8      │ 8     │ 2          │ 1          │ 1          │
+│ 2       │ 'AA'   │ 'light'        │ 'layers'                        │ 6      │ 6     │ 1          │ 1          │ 1          │
+│ 3       │ 'AA'   │ 'light'        │ 'controls + layers'             │ 9      │ 9     │ 3          │ 2          │ 2          │
+│ 4       │ 'AA'   │ 'light'        │ 'selection'                     │ 6      │ 6     │ 1          │ 1          │ 1          │
+│ 5       │ 'AA'   │ 'light'        │ 'controls + selection'          │ 9      │ 9     │ 3          │ 2          │ 2          │
+│ 6       │ 'AA'   │ 'light'        │ 'layers + selection'            │ 7      │ 7     │ 2          │ 2          │ 2          │
+│ 7       │ 'AA'   │ 'light'        │ 'controls + layers + selection' │ 10     │ 10    │ 4          │ 3          │ 3          │
+│ 8       │ 'AA'   │ 'light + dark' │ 'content only'                  │ 5      │ 8     │ 3          │ 1          │ 0          │
+│ 9       │ 'AA'   │ 'light + dark' │ 'controls'                      │ 8      │ 12    │ 5          │ 4          │ 2          │
+│ 10      │ 'AA'   │ 'light + dark' │ 'layers'                        │ 6      │ 10    │ 3          │ 2          │ 1          │
+│ 11      │ 'AA'   │ 'light + dark' │ 'controls + layers'             │ 9      │ 14    │ 7          │ 5          │ 4          │
+│ 12      │ 'AA'   │ 'light + dark' │ 'selection'                     │ 6      │ 10    │ 4          │ 3          │ 1          │
+│ 13      │ 'AA'   │ 'light + dark' │ 'controls + selection'          │ 9      │ 14    │ 7          │ 6          │ 4          │
+│ 14      │ 'AA'   │ 'light + dark' │ 'layers + selection'            │ 7      │ 12    │ 5          │ 4          │ 3          │
+│ 15      │ 'AA'   │ 'light + dark' │ 'controls + layers + selection' │ 10     │ 16    │ 9          │ 7          │ 6          │
+│ 16      │ 'AAA'  │ 'light'        │ 'content only'                  │ 5      │ 5     │ 2          │ 0          │ 0          │
+│ 17      │ 'AAA'  │ 'light'        │ 'controls'                      │ 8      │ 8     │ 3          │ 1          │ 1          │
+│ 18      │ 'AAA'  │ 'light'        │ 'layers'                        │ 6      │ 6     │ 2          │ 1          │ 1          │
+│ 19      │ 'AAA'  │ 'light'        │ 'controls + layers'             │ 9      │ 9     │ 4          │ 2          │ 2          │
+│ 20      │ 'AAA'  │ 'light'        │ 'selection'                     │ 6      │ 6     │ 2          │ 1          │ 1          │
+│ 21      │ 'AAA'  │ 'light'        │ 'controls + selection'          │ 9      │ 9     │ 4          │ 2          │ 2          │
+│ 22      │ 'AAA'  │ 'light'        │ 'layers + selection'            │ 7      │ 7     │ 3          │ 2          │ 2          │
+│ 23      │ 'AAA'  │ 'light'        │ 'controls + layers + selection' │ 10     │ 10    │ 5          │ 3          │ 3          │
+│ 24      │ 'AAA'  │ 'light + dark' │ 'content only'                  │ 5      │ 8     │ 4          │ 1          │ 0          │
+│ 25      │ 'AAA'  │ 'light + dark' │ 'controls'                      │ 8      │ 14    │ 6          │ 4          │ 2          │
+│ 26      │ 'AAA'  │ 'light + dark' │ 'layers'                        │ 6      │ 10    │ 4          │ 2          │ 1          │
+│ 27      │ 'AAA'  │ 'light + dark' │ 'controls + layers'             │ 9      │ 16    │ 8          │ 5          │ 4          │
+│ 28      │ 'AAA'  │ 'light + dark' │ 'selection'                     │ 6      │ 10    │ 5          │ 3          │ 1          │
+│ 29      │ 'AAA'  │ 'light + dark' │ 'controls + selection'          │ 9      │ 16    │ 8          │ 6          │ 4          │
+│ 30      │ 'AAA'  │ 'light + dark' │ 'layers + selection'            │ 7      │ 12    │ 6          │ 4          │ 3          │
+│ 31      │ 'AAA'  │ 'light + dark' │ 'controls + layers + selection' │ 10     │ 18    │ 10         │ 7          │ 6          │
+└─────────┴────────┴────────────────┴─────────────────────────────────┴────────┴───────┴────────────┴────────────┴────────────┘
