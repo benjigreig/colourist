@@ -72,20 +72,43 @@ Scenario: Try an example
 
 The similar-hue check here is an early warning only. The full test is the shade-by-shade distinctness check in US-05 and US-07 (D-026).
 
-### US-02 · Choose a ladder
-**As an** individual designer, **I want** to pick how many steps my scales have, with a recommendation, **so that** I get the range my product needs without knowing the theory first.
-**Jobs:** 2, 5, 7, 10 · **Plane:** CLR-13, CLR-12, CLR-23, CLR-81 · **Stage:** 2
+### US-02 · Shape my ladder from what my product needs
+**As an** individual designer, **I want** colouri.st to build my ladder from a few easy questions about my product, with a recommendation I can understand, **so that** I get steps where my system actually uses colour, without knowing the theory first.
+**Jobs:** 2, 5, 7, 10 · **Plane:** CLR-13, CLR-94, CLR-12, CLR-23, CLR-81, CLR-17 · **Stage:** 2
 
 ```gherkin
-Scenario: Recommendation shown
+Scenario: Recommended recipe shown
   Given I've entered my brand colours
   When I reach the ladder stage
-  Then one option is marked as recommended, with a one-sentence reason
+  Then one recipe is marked as recommended, with a one-sentence reason
+  And I can continue with it without answering any questions
 
-Scenario: Contrast rule holds for any preset
-  Given any ladder preset and any set of brand colours
+Scenario: Tell colouri.st about my product
+  Given I'm on the ladder stage
+  When I tick what my product will have, shown as examples rather than asked in the abstract
+  Then my choices add up, and none of them has to be my only one
+  And the ladder updates to match, with a reason for each change
+
+Scenario: Every step has a reason
+  Given my ladder is built
+  When I look at any step
+  Then I can see which zone it's in (light background, contrast or dark background) and what it's for
+
+Scenario: One ladder for every colour
+  Given my ladder is built
+  When I look at the scales for my colours
+  Then every colour family uses the same steps, with the same grade names
+
+Scenario: Contrast rule holds on every recipe
+  Given any recipe and any set of brand colours
   When the scales are generated
-  Then colours the stated number of steps apart meet 3:1, 4.5:1 and 7:1 under WCAG 2, for every pair of colours
+  Then no pair of steps whose grade names are 37, 50 or 64 apart falls below 3:1, 4.5:1 or 7:1 under WCAG 2, checked on exact values
+
+Scenario: Changing my answers keeps my tokens steady
+  Given I've mapped some tokens
+  When I change an answer and the ladder is rebuilt
+  Then each token stays at about the same contrast, because steps are named by grade
+  And colouri.st lists what changed
 
 Scenario: Brand colours placed on the ladder
   Given my scales are generated
@@ -95,7 +118,7 @@ Scenario: Brand colours placed on the ladder
 Scenario: Choose my accessibility target
   Given I'm starting a project
   When I choose WCAG AA (the default) or AAA as my target
-  Then the ladder recommendation and the step-counting rule reflect that target
+  Then the ladder's contrast zone and the contrast rule reflect that target
   And every later stage, check and export reports against it
 
 Scenario: A colour can't reach AAA
@@ -104,7 +127,9 @@ Scenario: A colour can't reach AAA
   Then colouri.st says so plainly
   And it never falls back to AA without telling me
 ```
-**Tested:** `[engine, property]` contrast rule at AA and AAA · `[e2e]` recommendation, placement and target choice · `[content]` reason text and what AAA asks for
+**Tested:** `[engine, property]` contrast rule on every recipe at AA and AAA, and one ladder for every family · `[engine]` zones and reasons per recipe, and rebuilding keeps grades · `[e2e]` recommendation, answers, placement and target choice · `[a11y]` the examples and answers by keyboard and screen reader · `[usability]` whether people can answer the questions (CLR-95) · `[content]` reasons, zone explanations and the answer for people used to even ladders
+
+In the beta there's a small set of fixed recipes, with their ladders worked out in the rules file (D-054). Fully open answers, and tuning the ladder to the mapping, come after the beta (CLR-98). Gaps found while mapping are flagged in US-06 and US-07, with a suggestion to change an answer here (D-053).
 
 ### US-03 · Keep each colour's hue
 **As an** individual designer, **I want** each colour to keep its hue from lightest to darkest, **so that** my blue stays blue and my shades don't turn muddy.
@@ -626,7 +651,7 @@ Requirements that aren't behaviour. Each is tagged with how it's checked.
 
 **Performance**
 - [ ] First load under 2 seconds on a typical home connection `[e2e: Lighthouse]`
-- [ ] Changing a setting regenerates the project in under 200 ms, and never takes longer than 500 ms, tested on a mid-range laptop with the largest preset (15 steps, 15 colours) `[engine: benchmark]`
+- [ ] Changing a setting regenerates the project in under 200 ms, and never takes longer than 500 ms, tested on a mid-range laptop with the largest recipe ladder and 15 colours `[engine: benchmark]`
 - [ ] A typical shared link shows its report or editor within 2 seconds on a mid-range phone over 4G `[e2e]`
 - [ ] If loading takes longer, a loading state says what's happening, never a blank page `[e2e]`
 - [ ] A broken, too long or unmigratable link shows a clear message explaining why, and suggests a project file instead `[e2e]`
