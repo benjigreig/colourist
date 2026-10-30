@@ -60,72 +60,72 @@ export const rules = {
     choices: {
       read: {
         label: 'Read content',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'Every product has text on a page, so this is always on.',
       },
       controls: {
         label: 'Use buttons, inputs and other controls',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason:
           'Controls need hover and pressed states and a visible border, which add steps near the page.',
       },
       selection: {
         label: 'Pick items from lists or tables',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason:
           'A selected item needs its own shade near the page, so it can be told apart from hover.',
       },
       charts: {
         label: 'See data in charts',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason:
           'Charts need a lighter partner for each colour, in the band between the light page and the contrast steps.',
       },
       plainPage: {
         label: 'Content on a plain page',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'Every product has a page, so this is always on.',
       },
       cards: {
         label: 'Cards or panels',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'A card on the page needs a surface that stands just apart from it.',
       },
       overlays: {
         label: 'Menus, dialogs or popovers on top',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'Things layered on top need a second surface, so each layer reads as separate.',
       },
       lightTheme: {
         label: 'A light theme',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'A light theme needs fine steps near the white page.',
       },
       darkTheme: {
         label: 'A dark theme',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason:
           'A dark theme needs fine steps near the dark page, about twice as far apart, because dark tones are harder to tell apart.',
       },
       followDevice: {
         label: "Following the device's setting",
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'Following the device means people see either theme, so both are built.',
       },
       highContrast: {
         label: 'A high-contrast version',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason: 'A high-contrast version needs wider separations in both themes.',
       },
       brightLight: {
         label: 'Often used in bright light',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason:
           'Bright surroundings wash out small differences, so the steps near the light page spread further apart.',
       },
       moreContrastPeople: {
         label: 'By people who need more contrast',
-        example: 'Placeholder: CLR-95 designs this modelled example.',
+        example: 'Placeholder: CLR-94 designs this modelled example.',
         reason:
           'People with low vision need more contrast, so this suggests AAA and widens the separations near each page.',
       },

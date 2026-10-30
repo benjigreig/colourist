@@ -46,7 +46,7 @@ New behaviour goes in the engine or the rules first; the view only displays it. 
 
 - Link the story and the Plane ticket (`CLR-xx`) the change serves.
 - Update any affected document in `docs/` in the same change.
-- Write commit messages as a short imperative sentence with the ticket in brackets, for example `Add ladder presets (CLR-13)`.
+- Write commit messages as a short imperative sentence with the ticket in brackets, for example `Add the recipe ladders (CLR-13)`.
 - CI must pass: formatting, lint, type checks, tests, the build and the browser tests.
 
 ## Licence
