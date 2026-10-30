@@ -1,6 +1,6 @@
 # Ladder zones: why steps bunch at the ends, and how the ladder is built
 
-> Researched 30 October 2026 for CLR-13, question 3: which ladder to recommend, and when. It led to a change of approach. The ladder is built in three zones from the product's choices, and presets become recipes. Decided the same day (D-054). Scripts and outputs: [`ladder-derivation/`](ladder-derivation/). Builds on [`ladder-derivation.md`](ladder-derivation.md) (D-053) and [`ladder-distribution.md`](ladder-distribution.md).
+> Researched 30 October 2026 for CLR-13, question 3: which ladder to recommend, and when. It led to a change of approach. The ladder is built in three zones from the product's choices, and presets become recipes. Decided the same day (D-054), and the question set in D-055. Scripts and outputs: [`ladder-derivation/`](ladder-derivation/). Builds on [`ladder-derivation.md`](ladder-derivation.md) (D-053) and [`ladder-distribution.md`](ladder-distribution.md).
 
 ## How the question changed
 
@@ -89,7 +89,87 @@ From Benji's direction and the desk research:
 - **Let people answer as much as they like, and adapt what's asked next** (Yazdanian et al., 2019).
 - **Ask about style separately.** Material asks for a scheme style (tonal spot, neutral, vibrant, expressive, fidelity, monochrome) and a contrast level. Radix asks for appearance, accent and grey colours, panel style, radius and scaling. Neither asks what the product contains. A neutral, tinted or vivid style question shapes the colour families more than the ladder.
 
-**Still to do:** the question set itself, with the modelled examples, tested against the additive model, then with people (CLR-95).
+**Still to do:** the modelled examples for the question set below, then testing with people (CLR-95). The stages as a whole will be revisited later (CLR-99).
+
+## The question set (D-055)
+
+Each candidate question was tested by adding up what its answer changes. The script, [`questions.mjs`](ladder-derivation/questions.mjs), averages over every combination of the other answers, using the grey family only.
+
+| If the product has… | Extra steps on average (up to) | Of which near the light page |
+|---|---|---|
+| A dark theme | 4.5 (8) | 0 |
+| Buttons, inputs and other controls | 4 (6) | 2 |
+| Cards or panels on the page | 1.5 (2) | 1 |
+| Menus, dialogs or popovers on top | 1.5 (2) | 1 |
+| Lists or tables people select items in | 1.5 (2) | 1 |
+| AAA instead of AA | 0.5 (2) | 0 |
+
+The rest needed one ladder shared by every family and theme, so [`untested.mjs`](ladder-derivation/untested.mjs) places steps for greys, a brand colour and any feedback or chart colours together. An app with controls, cards, overlays and selection, in light and dark, needs **18 steps**: 7 near the light page and 7 near the dark page.
+
+| Added to that app | Steps | Near the light page | Near the dark page |
+|---|---|---|---|
+| Baseline | 18 | 7 | 7 |
+| Status messages (four feedback colours) | 20 | 7 | 7 |
+| Charts (eight hues, each with a strong and a lighter version) | 19 | 7 | 7 |
+| A high-contrast version of each theme | 26 | 10 | 8 |
+| Often seen in bright surroundings | 18 | 5 | 7 |
+| People who need more contrast (AAA, wider separations) | 19 | 5 | 5 |
+
+**What each question does:**
+- **A high-contrast version** changes the ladder the most, in both background zones.
+- **A dark theme** changes it next most, adding the dark zone.
+- **Cards, overlays and selection** each add a step in the crowded zone near the page, and they add up.
+- **Status messages** add steps, not because of the number of feedback colours, which reuse the same steps, but because a warning yellow needs a light fill with dark text, at about grade 8 to 20, plus its states. That's the band between the light zone and the contrast zone.
+- **Charts** add a step for their lighter versions, in the same band.
+- **Controls** add a lot, but nearly every product has them, so they're on by default rather than asked.
+- **Bright surroundings** add no steps, but push the light zone's steps further from the page.
+- **People who need more contrast** add a step, widen both zones and suggest AAA.
+
+**The questions, as agreed** (Benji, 30 October). Answers are ticked, not picked, and each is shown as a modelled example:
+1. **What will people do with it?** Read content (always on), use controls (on by default), pick items from lists or tables, see data in charts, get status messages.
+2. **How is it put together?** Content on a plain page, cards or panels, menus, dialogs or popovers on top.
+3. **Where and how will it be seen?** Light, dark or both, or following the device; a high-contrast version; often in bright light; by people who need more contrast.
+
+### How colour should feel: a question for the vividness stage
+
+Style (neutral, tinted or vivid) changes chroma, not lightness, so it can't move the ladder (D-012). What it changes is which step a vivid fill sits on, because each hue is most colourful at a different lightness. Measured in OKLCH, at the edge of sRGB:
+
+| Hue (OKLCH) | Most colourful at L\* | Grade |
+|---|---|---|
+| 0 to 30 (pinks and reds) | 54 to 55 | 44 to 45 |
+| 60 (orange) | 70 | 27 |
+| 90 to 210 (yellows, greens and cyans) | 83 to 94 | 5 to 15 |
+| 240 (sky blue) | 68 | 30 |
+| 270 to 300 (blues and violets) | 34 to 43 | 57 to 69 |
+| 330 (magenta) | 60 | 38 |
+
+So the question belongs with vividness (stage 4, US-04), and the ladder stage keeps the other three groups.
+
+### Charts
+
+Chart colours aren't several full scales. They're a specifically ordered range of colours, often with a couple of shade variations of each, so a chart with a lot of data is readable without becoming a rainbow (Benji). [`charts.mjs`](ladder-derivation/charts.mjs) measured seven published palettes:
+
+| Palette | Colours | Grades | Reach 3:1 on the page | Pairs, grades apart |
+|---|---|---|---|---|
+| Elastic EUI (paired) | 10 | 9 to 34 | 0 of 10 | 12 to 21 |
+| Atlassian, light | 8 | 29 to 62 | 5 of 8 | — |
+| Atlassian, dark | 8 | 22 to 62 | 7 of 8 | — |
+| Tableau 10 | 10 | 16 to 50 | 5 of 10 | — |
+| ColorBrewer Paired | 12 | 2 to 67 | 5 of 12 | 14 to 50 |
+| ColorBrewer Set2 | 8 | 11 to 32 | 0 of 8 | — |
+| Okabe and Ito | 8 | 9 to 100 | 5 of 8 | — |
+
+**What this shows:**
+- **They mostly sit between grades 10 and 60,** and alternate lighter and darker so neighbouring series stand apart.
+- **Many don't reach 3:1 on a white page.** WCAG 1.4.11 asks 3:1 for graphics needed to understand content, so colouri.st should say where a palette relies on labels or patterns instead.
+- **For the ladder,** chart colours use shared steps: a strong one reaching 3:1 and a lighter one. Only the lighter band adds a step.
+
+The source is either a secondary palette that exists with the brand, or one colouri.st offers from the brand colours (Benji). Both come after the beta (CLR-55).
+
+**Limits:**
+- Steps are placed by a quick estimate, not a proven minimum.
+- The 1.6 times for bright surroundings and 1.5 times for people who need more contrast are assumptions built on single studies, to test in CLR-95.
+- The high-contrast figures come from three systems.
 
 ## Decision (D-054, agreed by Benji)
 
@@ -104,6 +184,9 @@ From Benji's direction and the desk research:
 |---|---|
 | [`ladder-derivation/model.mjs`](ladder-derivation/model.mjs) | The shared model: tokens, ranges, sharing between themes and the distinct-step check. Split out of `derive.mjs`, whose output is unchanged |
 | [`ladder-derivation/additive.mjs`](ladder-derivation/additive.mjs) | Adds product choices in every combination, and counts steps needed and gaps on each preset. Output in `additive.txt` |
+| [`ladder-derivation/questions.mjs`](ladder-derivation/questions.mjs) | Tests each candidate question: what ticking it adds to the grey family, averaged over the other answers. Output in `questions.txt` |
+| [`ladder-derivation/untested.mjs`](ladder-derivation/untested.mjs) | Places one shared ladder for greys, a brand colour, and feedback or chart colours, for status, charts, high contrast, bright surroundings and audience; and finds where each hue is most colourful. Output in `untested.txt` |
+| [`ladder-derivation/charts.mjs`](ladder-derivation/charts.mjs) | Measures seven published chart palettes. Output in `charts.txt` |
 
 ## Sources
 
@@ -115,4 +198,7 @@ From Benji's direction and the desk research:
 - Whittle (1992), and Kane & Bertalmío (2019), on crispening. See [`ladder-distribution.md`](ladder-distribution.md).
 - Material. [DynamicSchemeVariant](https://api.flutter.dev/flutter/material/DynamicSchemeVariant.html).
 - Radix Themes. [Theme props](https://cdn.jsdelivr.net/npm/@radix-ui/themes@3.2.1/dist/cjs/components/theme.props.d.ts).
+- Chart palettes: Elastic EUI (`@elastic/eui-theme-borealis`) and Atlassian (`@atlaskit/tokens`), from their npm packages; Tableau 10, ColorBrewer Paired and Set2 from `d3-scale-chromatic` 3.1.0.
+- Okabe, M., & Ito, K. (2008). Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people. J\*Fly. Palette values as widely published.
+- Nikitenko et al. (2026), on bright surroundings. See [`ladder-distribution.md`](ladder-distribution.md), Part 5.
 - IBM Carbon, Tailwind, Primer, Polaris and Radix scales: measured from their packages, in [`ladder-distribution/scales/`](ladder-distribution/scales/).

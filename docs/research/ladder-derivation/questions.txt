@@ -1,0 +1,12 @@
+┌─────────┬──────────────────────────────────────────┬────────────────────┬───────────────────┬────────────────────────────────────────┐
+│ (index) │ question                                 │ extra steps (mean) │ extra steps (max) │ extra steps near the light page (mean) │
+├─────────┼──────────────────────────────────────────┼────────────────────┼───────────────────┼────────────────────────────────────────┤
+│ 0       │ 'cards or panels on the page'            │ 1.5                │ 2                 │ 1                                      │
+│ 1       │ 'menus, dialogs or popovers over it'     │ 1.5                │ 2                 │ 1                                      │
+│ 2       │ 'buttons, inputs and other controls'     │ 4                  │ 6                 │ 2                                      │
+│ 3       │ 'lists or tables people select items in' │ 1.5                │ 2                 │ 1                                      │
+│ 4       │ 'a dark theme'                           │ 4.5                │ 8                 │ 0                                      │
+│ 5       │ 'AAA instead of AA'                      │ 0.5                │ 2                 │ 0                                      │
+└─────────┴──────────────────────────────────────────┴────────────────────┴───────────────────┴────────────────────────────────────────┘
+All ticked: { steps: 16, lightZone: 7 } · none ticked: { steps: 4, lightZone: 2 }
+Not testable with the grey model yet: charts and data; status messages (alerts, badges); brand style (neutral, tinted, vivid); high-contrast theme; bright surroundings; older or low-vision audiences.

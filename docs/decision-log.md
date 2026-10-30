@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-054 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-055 |
 
 ---
 
@@ -829,3 +829,37 @@ Two things often drawn as layers aren't tiers:
 - The rules schema gains recipes and the zone rules in place of fixed ladder presets (CLR-7, ADR 0005).
 - US-02 (choose a ladder) needs rewriting around recipes, with Benji.
 - The question set and its modelled interface examples are designed next, then tested with people (CLR-95).
+
+### D-055 · The ladder stage asks three groups of tick-box questions; style moves to vividness
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-94, CLR-55, CLR-99 · **Research:** [research/ladder-zones.md](research/ladder-zones.md)
+
+**Decision:**
+- **The ladder stage asks three groups of questions.** Answers are ticked, not picked, and each is shown as a modelled example rather than asked in the abstract:
+  1. **What will people do with it?** Read content (always on), use controls (on by default), pick items from lists or tables, see data in charts, get status messages.
+  2. **How is it put together?** Content on a plain page, cards or panels, menus, dialogs or popovers on top.
+  3. **Where and how will it be seen?** Light, dark or both, or following the device; a high-contrast version; often in bright light; by people who need more contrast, which suggests AAA.
+- **"How should colour feel?" (neutral, tinted or vivid) moves to the vividness stage (stage 4).** It changes which step each colour's fill sits on, not the ladder.
+- **Chart palettes are after the beta (CLR-55).** They come from either an existing secondary palette or one offered from the brand colours.
+- **The stages as a whole will be revisited** once the question set and mapping are further along (CLR-99).
+
+**Context:** Each candidate question was tested by adding up what its answer changes in the shared ladder:
+- **A high-contrast version** adds about 8 steps, and **a dark theme** about 4.5.
+- **Cards, overlays and selection** each add about 1.5, in the crowded zone near the page.
+- **Status messages** add 2, because a warning's light fill and its states sit in the band between the light zone and the contrast zone.
+- **Charts** add 1, and **people who need more contrast** add 1.
+- **Controls** add 4, but nearly every product has them, so they're on by default.
+- **Bright surroundings** add no steps, but spread the light zone.
+- **Style** changes chroma, not lightness, so it can't move the ladder (D-012).
+
+**Alternatives considered:**
+- Asking how layered or complex the product is. Rejected: hard to answer and to measure.
+- "Which looks most like yours?" Rejected: it assumes an existing product.
+- Reading, controls or data as one pick. Rejected: too narrow, and choices add up.
+- Similar products. Kept as a later idea: it needs a mapping from kinds of product to shade needs, and real product names stay out of the app.
+
+**Why:** Only questions whose answers change the outcome are worth asking. Ticked, modelled choices suit people who are unsure what they want (Chernev et al., 2015). Short questionnaires keep people starting (Galesic & Bosnjak, 2009).
+
+**Consequences:**
+- The question set and its modelled examples are designed next, then tested with people (CLR-95).
+- The multipliers for bright surroundings and for people who need more contrast are assumptions to test.
+- US-04 gains the style question.

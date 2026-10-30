@@ -1,0 +1,28 @@
+App with controls, cards, overlays and selection, light and dark, grey plus one brand accent:
+
+Baseline                                                   18 steps · 7 near the light page · 7 near the dark page
++ status messages (four feedback colours)                  20 steps · 7 near the light page · 7 near the dark page
++ charts (eight hues, strong and light)                    19 steps · 7 near the light page · 7 near the dark page
++ a high-contrast version of each theme                    26 steps · 10 near the light page · 8 near the dark page
++ often seen in bright surroundings                        18 steps · 5 near the light page · 7 near the dark page
++ people who need more contrast (AAA, separations × 1.5)   19 steps · 5 near the light page · 5 near the dark page
+
+Baseline steps: 1.5, 2.8, 4.2, 4.7, 5.1, 11.9, 13.4, 43.0, 56.0, 64.0, 71.0, 81.2, 83.4, 84.6, 85.8, 87.5, 91.4, 95.0
+
+Where each hue is most colourful (OKLCH hue → L* and grade at its most vivid in sRGB):
+┌─────────┬─────┬────┬───────┬────────┐
+│ (index) │ hue │ L* │ grade │ chroma │
+├─────────┼─────┼────┼───────┼────────┤
+│ 0       │ 0   │ 55 │ 44    │ 0.261  │
+│ 1       │ 30  │ 54 │ 45    │ 0.253  │
+│ 2       │ 60  │ 70 │ 27    │ 0.177  │
+│ 3       │ 90  │ 84 │ 14    │ 0.176  │
+│ 4       │ 120 │ 94 │ 5     │ 0.222  │
+│ 5       │ 150 │ 88 │ 10    │ 0.24   │
+│ 6       │ 180 │ 90 │ 8     │ 0.162  │
+│ 7       │ 210 │ 83 │ 15    │ 0.145  │
+│ 8       │ 240 │ 68 │ 30    │ 0.164  │
+│ 9       │ 270 │ 34 │ 69    │ 0.305  │
+│ 10      │ 300 │ 43 │ 57    │ 0.294  │
+│ 11      │ 330 │ 60 │ 38    │ 0.317  │
+└─────────┴─────┴────┴───────┴────────┘
