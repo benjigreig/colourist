@@ -1,12 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://colouri.st/schemas/rules-1.schema.json",
+  "$id": "https://colouri.st/schemas/rules-2.schema.json",
   "title": "colouri.st rules",
   "description": "The colouri.st method as versioned, declarative data the engine reads (ADR 0005). Every rule carries a reason key into the language files.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "meta",
+    "questions",
+    "recipes",
     "ladders",
     "contrast",
     "vividness",
@@ -26,15 +28,105 @@
       "required": ["rulesVersion", "schemaVersion"],
       "properties": {
         "rulesVersion": { "type": "string", "pattern": "^[0-9]{1,4}\\.[0-9]{1,4}\\.[0-9]{1,4}$" },
-        "schemaVersion": { "type": "integer", "const": 1 }
+        "schemaVersion": { "type": "integer", "const": 2 }
       }
     },
-    "ladders": {
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "labelKey", "choices"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+          "labelKey": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
+          "choices": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 16,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "labelKey", "exampleKey", "reason", "default", "effects"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                "labelKey": {
+                  "type": "string",
+                  "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$"
+                },
+                "exampleKey": {
+                  "type": "string",
+                  "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$"
+                },
+                "reason": {
+                  "type": "string",
+                  "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$"
+                },
+                "default": { "type": "string", "enum": ["always", "on", "off"] },
+                "effects": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [],
+                  "properties": {
+                    "addsUses": {
+                      "type": "array",
+                      "items": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                      "uniqueItems": true,
+                      "maxItems": 32
+                    },
+                    "addsContexts": {
+                      "type": "array",
+                      "items": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                      "uniqueItems": true,
+                      "maxItems": 8
+                    },
+                    "suggestsTarget": { "type": "string", "enum": ["aa", "aaa"] },
+                    "separationMultipliers": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [],
+                      "minProperties": 1,
+                      "properties": {
+                        "lightBackground": { "type": "number", "minimum": 1, "maximum": 4 },
+                        "contrast": { "type": "number", "minimum": 1, "maximum": 4 },
+                        "darkBackground": { "type": "number", "minimum": 1, "maximum": 4 }
+                      }
+                    },
+                    "placeholder": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["ticket", "note"],
+                      "properties": {
+                        "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
+                        "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                      }
+                    }
+                  }
+                },
+                "later": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["ticket", "note"],
+                  "properties": {
+                    "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
+                    "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "recipes": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["presets", "recommended", "states"],
+      "required": ["default", "items"],
       "properties": {
-        "presets": {
+        "default": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+        "items": {
           "type": "object",
           "required": [],
           "minProperties": 1,
@@ -43,41 +135,189 @@
           "additionalProperties": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["steps", "reason"],
+            "required": ["nameKey", "reason", "answers", "themes", "ladders"],
             "properties": {
-              "steps": {
-                "type": "array",
-                "minItems": 2,
-                "maxItems": 32,
-                "items": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "required": ["lstar", "grade"],
-                  "properties": {
-                    "lstar": { "type": "number", "minimum": 0, "maximum": 100 },
-                    "grade": { "type": "integer", "minimum": 0, "maximum": 100 }
-                  }
-                }
-              },
+              "nameKey": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
               "reason": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
-              "placeholder": {
+              "answers": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                "uniqueItems": true,
+                "maxItems": 32
+              },
+              "themes": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                "uniqueItems": true,
+                "minItems": 1,
+                "maxItems": 16
+              },
+              "ladders": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["ticket", "note"],
+                "required": ["aa", "aaa"],
                 "properties": {
-                  "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
-                  "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                  "aa": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 48,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["name", "grade", "lstar", "zone", "uses"],
+                      "properties": {
+                        "name": { "type": "integer", "minimum": 0, "maximum": 100 },
+                        "grade": { "type": "number", "minimum": 0, "maximum": 100 },
+                        "lstar": { "type": "number", "minimum": 0, "maximum": 100 },
+                        "zone": {
+                          "type": "string",
+                          "enum": ["lightBackground", "contrast", "darkBackground"]
+                        },
+                        "uses": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 64,
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["theme", "family", "use"],
+                            "properties": {
+                              "theme": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                              "family": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                              "use": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "aaa": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 48,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["name", "grade", "lstar", "zone", "uses"],
+                      "properties": {
+                        "name": { "type": "integer", "minimum": 0, "maximum": 100 },
+                        "grade": { "type": "number", "minimum": 0, "maximum": 100 },
+                        "lstar": { "type": "number", "minimum": 0, "maximum": 100 },
+                        "zone": {
+                          "type": "string",
+                          "enum": ["lightBackground", "contrast", "darkBackground"]
+                        },
+                        "uses": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 64,
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["theme", "family", "use"],
+                            "properties": {
+                              "theme": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                              "family": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+                              "use": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ladders": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["zones", "minimumGap", "uses", "states"],
+      "properties": {
+        "zones": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lightBackground", "contrast", "darkBackground"],
+          "properties": {
+            "lightBackground": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["reason"],
+              "properties": {
+                "reason": {
+                  "type": "string",
+                  "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$"
+                },
+                "placeholder": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["ticket", "note"],
+                  "properties": {
+                    "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
+                    "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                  }
+                }
+              }
+            },
+            "contrast": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["gradesFromEachPage", "reason"],
+              "properties": {
+                "gradesFromEachPage": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "uniqueItems": true,
+                  "items": { "type": "integer", "minimum": 1, "maximum": 100 }
+                },
+                "reason": {
+                  "type": "string",
+                  "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$"
+                },
+                "placeholder": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["ticket", "note"],
+                  "properties": {
+                    "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
+                    "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                  }
+                }
+              }
+            },
+            "darkBackground": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["separationMultiplier", "reason"],
+              "properties": {
+                "separationMultiplier": { "type": "number", "minimum": 1, "maximum": 4 },
+                "reason": {
+                  "type": "string",
+                  "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$"
+                },
+                "placeholder": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["ticket", "note"],
+                  "properties": {
+                    "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
+                    "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                  }
                 }
               }
             }
           }
         },
-        "recommended": {
+        "minimumGap": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["preset", "reason"],
+          "required": ["grades", "reason"],
           "properties": {
-            "preset": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+            "grades": { "type": "number", "minimum": 0, "maximum": 10 },
             "reason": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
             "placeholder": {
               "type": "object",
@@ -87,6 +327,22 @@
                 "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
                 "note": { "type": "string", "minLength": 1, "maxLength": 500 }
               }
+            }
+          }
+        },
+        "uses": {
+          "type": "object",
+          "required": [],
+          "minProperties": 1,
+          "maxProperties": 128,
+          "propertyNames": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nameKey"],
+            "properties": {
+              "nameKey": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
+              "contrastUse": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" }
             }
           }
         },
@@ -308,7 +564,7 @@
     "vividness": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["presets", "defaults"],
+      "required": ["presets", "defaults", "styles"],
       "properties": {
         "presets": {
           "type": "object",
@@ -343,6 +599,31 @@
           "maxProperties": 128,
           "propertyNames": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
           "additionalProperties": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" }
+        },
+        "styles": {
+          "type": "object",
+          "required": [],
+          "minProperties": 1,
+          "maxProperties": 128,
+          "propertyNames": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nameKey", "reason"],
+            "properties": {
+              "nameKey": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
+              "reason": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
+              "placeholder": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["ticket", "note"],
+                "properties": {
+                  "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
+                  "note": { "type": "string", "minLength": 1, "maxLength": 500 }
+                }
+              }
+            }
+          }
         }
       }
     },

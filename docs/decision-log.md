@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-057 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-058 |
 
 ---
 
@@ -918,3 +918,38 @@ Two things often drawn as layers aren't tiers:
 **Consequences:**
 - In the rules (CLR-100), each recipe holds a ladder per target.
 - The AAA ladders are slightly smaller than the AA ones (12 to 21 steps, against 12 to 23), because more steps are shared between light and dark.
+
+### D-058 · The rules schema holds recipes, questions and zones in place of ladder presets
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-048 · **Plane:** CLR-100, CLR-7 · **ADR:** amends [adr/0005-rules-schema.md](adr/0005-rules-schema.md)
+
+**Decision:**
+- **The rules file holds `questions` and `recipes`, and `ladders` holds the zone rules,** replacing D-048's ladder presets and recommendation. The schema is now version 2, and the rules version is 0.2.0.
+- **Recipes are copied from the model** ([`research/ladder-derivation/recipes.json`](research/ladder-derivation/recipes.json), D-056, D-057). There are six, each with an AA and an AAA ladder. The default is the layered app, light and dark. IDs are converted to camelCase, the `grey` family is the `neutral` palette preset, `brand` is the brand group, and the four feedback families are their palette presets.
+- **A recipe's answers list only the choices that add uses,** leaving out choices that are always on. Its themes are contexts.
+- **Step uses are their own list,** `ladders.uses`, with 15 uses. Each links to a contrast use only where the meaning is exactly the same: text and muted text to body text, control border to interface element, and surface, hover and subtle border to their namesakes. Joining the rest is CLR-27's relationship work.
+- **Choosing a recipe:** an exact match first, then the smallest recipe that covers every ticked answer, then the one covering the most, with what it misses returned. Smallest means fewest answers, then fewest themes, then fewest steps at the project's target, then ID. Only choices that add uses or themes count, so "people who need more contrast" changes the suggested target, not the recipe. The engine's `chooseRecipe` does this, without depending on the rules package.
+- **The questions:**
+  - **Shown in the beta:** reading content and a plain page (always on); controls, a light theme, a dark theme, cards and overlays (on); selection, following the device and people who need more contrast (off).
+  - **Held for after the beta,** each marked with its ticket: charts (CLR-55), a high-contrast version and bright light (CLR-98).
+  - **What each choice adds** is copied from the model's `recipes.mjs`.
+- **Placeholders:**
+  - The separation multipliers (1.6 for bright light, 1.5 for people who need more contrast) are CLR-95 placeholders.
+  - The dark zone's multiplier of about 2 is a CLR-98 placeholder.
+  - The three vividness styles are CLR-15 placeholders with no values.
+  - The minimum gap of 1 grade is decided (D-056), though CLR-95 tests it.
+- **The precompiled validator is not part of this change.** It belongs to CLR-20 and CLR-75 (D-048). Only the published schema is regenerated.
+
+**Context:** CLR-100 turns D-054 to D-057 into the rules schema. Its first version used the 13-step ladder as the default recipe's stand-in, which D-056 replaced with ladders worked out by the model.
+
+**Alternatives considered:** keeping recipes under `ladders`; listing every choice, including the always-on ones, in each recipe's answers; adding the step uses to `contrast.uses`, with new targets; a single ladder per recipe, used at both targets.
+
+**Why:** Recipes and questions are their own steps of the ladder stage, and the zones are rules every recipe follows. Leaving always-on choices out keeps answers to what tells recipes apart. A separate list of step uses avoids inventing contrast targets that CLR-27 will define as relationships. The target moves the contrast zone, so each target needs its own ladder (D-057).
+
+**Consequences:**
+- Tests check every recipe's ladder at both targets:
+  - every step has a zone and at least one real use
+  - names are unique rounded grades that match each step's L\*
+  - steps are at least the minimum gap apart, with zones in order
+  - the US-02 contrast rule holds on exact values
+- The default answers choose the default recipe, and each recipe is chosen by its own answers.
+- D-048's CLR-13 placeholders for ladder presets and the recommendation are gone. Its other placeholders are unchanged.

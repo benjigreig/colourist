@@ -8,8 +8,9 @@
  * rounded only for people; checks use the exact values (D-043).
  *
  * Because names are rounded, the simple numbers are promised only for colouri.st's own steps.
- * D-049 requires a test that no pair of steps on any ladder preset passes on rounded names while
- * failing on exact values. Any other pair of colours is checked on its exact grades.
+ * The rules tests check that no pair of steps on any recipe's ladder, at either target, passes on
+ * rounded names while failing on exact values (D-049, US-02). Any other pair of colours is
+ * checked on its exact grades.
  */
 
 const LOG_21 = Math.log(21);

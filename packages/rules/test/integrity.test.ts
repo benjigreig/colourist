@@ -1,4 +1,4 @@
-import { contrastGrade, gradesForRatio, yFromLstar } from '@colourist/engine';
+import { gradesForRatio } from '@colourist/engine';
 import { describe, expect, it } from 'vitest';
 import { defaultRules as rules, type Placeholder } from '../src/index.ts';
 
@@ -24,19 +24,6 @@ function placeholders(): { path: string; placeholder: Placeholder }[] {
 
 describe('the default rules hang together', () => {
   // Checks a schema can't express: order, consistency with the engine, and references.
-
-  it(`${VALIDATES} — each ladder runs from light to dark, with grades that match its L*`, () => {
-    for (const [id, preset] of Object.entries(rules.ladders.presets)) {
-      preset.steps.forEach((step, i) => {
-        const previous = preset.steps[i - 1];
-        if (previous) expect(step.lstar, id).toBeLessThan(previous.lstar);
-        expect(step.grade, `${id} step ${i + 1}`).toBe(
-          Math.round(contrastGrade(yFromLstar(step.lstar))),
-        );
-      });
-    }
-    expect(Object.keys(rules.ladders.presets)).toContain(rules.ladders.recommended.preset);
-  });
 
   it(`${VALIDATES} — each contrast target's grade difference is its ratio, rounded up`, () => {
     for (const [id, use] of Object.entries(rules.contrast.uses)) {
@@ -126,10 +113,14 @@ describe('the default rules hang together', () => {
   it(`${VALIDATES} — every placeholder names the ticket deciding it, and the rules stay 0.x until none are left`, () => {
     const found = placeholders();
     const tickets = new Set(found.map(({ placeholder }) => placeholder.ticket));
-    // The tickets still deciding values, as agreed for CLR-7. A new ticket here is deliberate.
+    // The tickets still deciding values, as agreed for CLR-7 and CLR-100. A new ticket here is
+    // deliberate.
     expect([...tickets].sort()).toEqual(
       [
         'CLR-13',
+        'CLR-55',
+        'CLR-95',
+        'CLR-98',
         'CLR-14',
         'CLR-15',
         'CLR-16',

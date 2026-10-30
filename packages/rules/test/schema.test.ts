@@ -57,9 +57,10 @@ describe('the rules schema', () => {
 
   it(`${VERSIONED} — the schema and the rules both carry a version`, () => {
     expect(publishedSchema.$id).toBe(SCHEMA_ID);
-    expect(publishedSchema.$id).toMatch(/rules-1\.schema\.json$/);
+    // Replacing ladder presets with recipes was a breaking change, so the schema is at 2 (D-058).
+    expect(publishedSchema.$id).toMatch(/rules-2\.schema\.json$/);
     const rules = JSON.parse(rulesText);
-    expect(rules.meta.schemaVersion).toBe(1);
+    expect(rules.meta.schemaVersion).toBe(2);
     expect(rules.meta.rulesVersion).toMatch(/^\d+\.\d+\.\d+$/);
   });
 
@@ -76,11 +77,51 @@ describe('the rules schema', () => {
   const invalid: [string, string][] = [
     ['an unknown top-level property', changed((r) => (r.extra = 1))],
     [
-      'an unknown property in a ladder preset',
-      changed((r) => (at(r, 'ladders', 'presets', 'steps13').extra = 1)),
+      'an unknown property in a recipe',
+      changed((r) => (at(r, 'recipes', 'items', 'contentLight').extra = 1)),
     ],
+    [
+      'the old ladder presets',
+      changed((r) => (at(r, 'ladders').presets = { steps13: { steps: [], reason: 'rules.x.y' } })),
+    ],
+    [
+      'a recipe with only an AA ladder',
+      changed((r) => delete at(r, 'recipes', 'items', 'contentLight', 'ladders').aaa),
+    ],
+    [
+      'a step with no uses',
+      changed((r) => (at(r, 'recipes', 'items', 'contentLight', 'ladders', 'aa', '0').uses = [])),
+    ],
+    [
+      'a step with an unknown zone',
+      changed(
+        (r) => (at(r, 'recipes', 'items', 'contentLight', 'ladders', 'aa', '0').zone = 'middle'),
+      ),
+    ],
+    [
+      'a step name that is not a whole number',
+      changed((r) => (at(r, 'recipes', 'items', 'contentLight', 'ladders', 'aa', '1').name = 3.4)),
+    ],
+    [
+      'a choice default other than always, on or off',
+      changed((r) => (at(r, 'questions', '0', 'choices', '1').default = 'maybe')),
+    ],
+    [
+      'a choice without an example key',
+      changed((r) => delete at(r, 'questions', '0', 'choices', '1').exampleKey),
+    ],
+    [
+      'a separation multiplier for a zone that does not exist',
+      changed(
+        (r) =>
+          (at(r, 'questions', '2', 'choices', '5', 'effects').separationMultipliers = {
+            middle: 2,
+          }),
+      ),
+    ],
+    ['a missing zone', changed((r) => delete at(r, 'ladders', 'zones').darkBackground)],
     ['a missing section', changed((r) => delete r.guidance)],
-    ['the wrong schema version', changed((r) => (at(r, 'meta').schemaVersion = 2))],
+    ['the wrong schema version', changed((r) => (at(r, 'meta').schemaVersion = 1))],
     ['a badly formed rules version', changed((r) => (at(r, 'meta').rulesVersion = 'one'))],
     ['a lowercase hex value', changed((r) => (at(r, 'palettePresets', 'error').value = '#c4362b'))],
     [
@@ -156,10 +197,10 @@ describe('the rules schema', () => {
       rulesText.replace('"note": "Stand-in grey."', `"note": ${'['.repeat(500)}${']'.repeat(500)}`),
     ],
     [
-      'too many ladder presets (129)',
+      'too many recipes (129)',
       changed((r) => {
-        const presets = at(r, 'ladders', 'presets');
-        for (let i = 0; i < 129; i++) presets[`extra${i}`] = presets.steps13;
+        const items = at(r, 'recipes', 'items');
+        for (let i = 0; i < 129; i++) items[`extra${i}`] = items.contentLight;
       }),
     ],
   ];
@@ -171,7 +212,10 @@ describe('the rules schema', () => {
   it(`${RATIONALE} — a rule without a reason is rejected`, async () => {
     const withoutReason = [
       changed((r) => delete at(r, 'contrast', 'uses', 'bodyText').reason),
-      changed((r) => delete at(r, 'ladders', 'presets', 'steps13').reason),
+      changed((r) => delete at(r, 'recipes', 'items', 'contentLight').reason),
+      changed((r) => delete at(r, 'ladders', 'zones', 'contrast').reason),
+      changed((r) => delete at(r, 'questions', '0', 'choices', '0').reason),
+      changed((r) => delete at(r, 'vividness', 'styles', 'vivid').reason),
       changed((r) => delete at(r, 'semantic', 'text.body').reason),
       changed((r) => delete at(r, 'naming', 'direction').reason),
       changed((r) => delete at(r, 'distinctness', 'similarHue').reason),

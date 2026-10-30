@@ -43,6 +43,14 @@ export { srgbToHsl, type Hsl } from './hsl.ts';
 export { deltaE2000, deltaEOk } from './delta-e.ts';
 export { contrastGrade, gradesForRatio } from './grade.ts';
 export {
+  chooseRecipe,
+  type ChoiceDefault,
+  type RecipeChoice,
+  type RecipeChoiceResult,
+  type RecipeOption,
+  type RecipeQuestion,
+} from './recipe.ts';
+export {
   CIE_LCH,
   CIE_LCH_METHOD,
   CIE_LSTAR,

@@ -1,7 +1,8 @@
 /**
  * @module types
  * TypeScript types for the rules file, written by hand and checked against the schema by Ajv's
- * `JSONSchemaType` (ADR 0006). The shape follows ADR 0005; D-048 records what CLR-7 added.
+ * `JSONSchemaType` (ADR 0006). The shape follows ADR 0005; D-048 records what CLR-7 added, and
+ * D-058 the recipes, questions and zones that replaced fixed ladder presets (CLR-100).
  *
  * Every rule carries a `reason`: a key into the app's language files, never the text itself
  * (D-035). A value that isn't decided yet carries a `placeholder` naming the ticket deciding it.
@@ -26,31 +27,112 @@ export interface Meta {
   schemaVersion: number;
 }
 
-/** One step of a ladder. */
+/** A WCAG conformance level a project can target (D-030, D-044). */
+export type Level = 'aa' | 'aaa';
+
+/** The three zones of a ladder (D-054). */
+export type ZoneId = 'lightBackground' | 'contrast' | 'darkBackground';
+
+/** One use a step was placed for: a use, in one theme, for one colour family (D-056). */
+export interface StepUse {
+  /** The ID of a context, such as `light` or `dark`. */
+  theme: string;
+  /**
+   * The colour family: a palette preset ID such as `neutral` or `error`, or a group ID such as
+   * `brand`, meaning every colour in that group.
+   */
+  family: string;
+  /** The ID of a ladder use, such as `hover`. */
+  use: string;
+}
+
+/** One step of a recipe's ladder. Steps are placed by uses, never by position (D-054). */
 export interface LadderStep {
+  /** The step's name: its contrast grade, rounded for people (D-041, D-043). */
+  name: number;
+  /** The exact contrast grade, as worked out by the model, to one decimal place. */
+  grade: number;
   /** The CIE L* (D65) the engine solves each colour to (ADR 0001). */
   lstar: number;
-  /** The step's contrast grade, rounded for people (D-041, D-043). */
-  grade: number;
+  zone: ZoneId;
+  /** The uses that placed the step, across themes and families. At least one. */
+  uses: StepUse[];
 }
 
-/** A ladder preset: a shared set of lightness steps for every colour. */
-export interface LadderPreset {
-  /** Steps from lightest to darkest. */
-  steps: LadderStep[];
+/** A recipe's ladder for each target, since the target moves the contrast zone (D-057). */
+export interface LevelLadders {
+  aa: LadderStep[];
+  aaa: LadderStep[];
+}
+
+/** A recipe: a named set of answers, with the ladder they build (D-054, D-056). */
+export interface Recipe {
+  /** Language-file key for the recipe's name. */
+  nameKey: string;
   reason: ReasonKey;
-  placeholder?: Placeholder;
+  /**
+   * The IDs of the choices it covers that add uses. Choices that are always on, and theme
+   * choices, aren't listed; themes are in `themes`.
+   */
+  answers: string[];
+  /** The context IDs of the themes it builds for, such as `light` and `dark`. */
+  themes: string[];
+  /** Steps from lightest to darkest, for each target. */
+  ladders: LevelLadders;
 }
 
-/** Ladder presets, and which one is recommended (US-02). */
-export interface Ladders {
-  presets: Record<string, LadderPreset>;
-  recommended: {
-    /** The ID of the recommended preset. */
-    preset: string;
+/** The beta recipes, and the one used when nothing is changed (D-056). */
+export interface Recipes {
+  /** The ID of the default recipe. The default answers choose it. */
+  default: string;
+  items: Record<string, Recipe>;
+}
+
+/** A use a step can be placed for, such as hover or text (D-056). */
+export interface LadderUse {
+  /** Language-file key for the use's name. */
+  nameKey: string;
+  /**
+   * The contrast use with the same meaning, where there is one exactly. Joining the rest is
+   * CLR-27's relationship work.
+   */
+  contrastUse?: string;
+}
+
+/** The rules for each zone of the ladder, as data (D-054). */
+export interface Zones {
+  lightBackground: {
     reason: ReasonKey;
     placeholder?: Placeholder;
   };
+  contrast: {
+    /**
+     * Grades from each page that the zone's steps sit on: 37, 50 and 64 at both targets. The
+     * target changes which use needs which threshold, not the thresholds.
+     */
+    gradesFromEachPage: number[];
+    reason: ReasonKey;
+    placeholder?: Placeholder;
+  };
+  darkBackground: {
+    /** How much further apart steps near the dark page are than near the light page. */
+    separationMultiplier: number;
+    reason: ReasonKey;
+    placeholder?: Placeholder;
+  };
+}
+
+/** The ladder: its zones, the uses steps are placed for, and its rules (US-02). */
+export interface Ladders {
+  zones: Zones;
+  /** The smallest gap allowed between any two steps (D-056). */
+  minimumGap: {
+    grades: number;
+    reason: ReasonKey;
+    placeholder?: Placeholder;
+  };
+  /** Ladder uses, keyed by ID. */
+  uses: Record<string, LadderUse>;
   /** Whether states (hover, pressed and so on) are ladder steps or overlays (CLR-13). */
   states: {
     reason: ReasonKey;
@@ -58,8 +140,43 @@ export interface Ladders {
   };
 }
 
-/** A WCAG conformance level a project can target (D-030, D-044). */
-export type Level = 'aa' | 'aaa';
+/** How a choice is set when the person hasn't changed it (D-055). */
+export type ChoiceDefault = 'always' | 'on' | 'off';
+
+/** What ticking a choice changes, as data. */
+export interface ChoiceEffects {
+  /** The IDs of the ladder uses it adds. */
+  addsUses?: string[];
+  /** The IDs of the contexts it adds, such as a dark theme. */
+  addsContexts?: string[];
+  /** The target it suggests. */
+  suggestsTarget?: Level;
+  /** How much it widens separations, keyed by zone ID. */
+  separationMultipliers?: Partial<Record<ZoneId, number>>;
+  placeholder?: Placeholder;
+}
+
+/** A tick-box choice at the ladder stage (D-055). */
+export interface Choice {
+  id: string;
+  /** Language-file key for its label. */
+  labelKey: string;
+  /** Language-file key for its modelled example, still to be designed (CLR-95). */
+  exampleKey: string;
+  reason: ReasonKey;
+  default: ChoiceDefault;
+  effects: ChoiceEffects;
+  /** Set when the choice is held in the rules but not shown in the beta. */
+  later?: Placeholder;
+}
+
+/** A group of choices, asked together (D-055). */
+export interface QuestionGroup {
+  id: string;
+  /** Language-file key for the question. */
+  labelKey: string;
+  choices: Choice[];
+}
 
 /** A contrast requirement. */
 export interface ContrastTarget {
@@ -147,11 +264,21 @@ export interface VividnessPreset {
   placeholder?: Placeholder;
 }
 
-/** Vividness presets, and the default preset for each group. */
+/** How colour should feel: neutral, tinted or vivid (US-04, D-055). */
+export interface VividnessStyle {
+  /** Language-file key for the style's name. */
+  nameKey: string;
+  reason: ReasonKey;
+  placeholder?: Placeholder;
+}
+
+/** Vividness presets, the default preset for each group, and the styles. */
 export interface Vividness {
   presets: Record<string, VividnessPreset>;
   /** Preset ID keyed by group ID. */
   defaults: Record<string, string>;
+  /** Styles keyed by ID. What each changes is decided in CLR-15. */
+  styles: Record<string, VividnessStyle>;
 }
 
 /** A group of colours, such as the brand colours (D-025). */
@@ -274,6 +401,9 @@ export interface Rules {
   /** The schema the file follows, for editors. */
   $schema?: string;
   meta: Meta;
+  /** The ladder stage's questions, in the order they're asked (D-055). */
+  questions: QuestionGroup[];
+  recipes: Recipes;
   ladders: Ladders;
   contrast: Contrast;
   vividness: Vividness;

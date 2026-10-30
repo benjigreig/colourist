@@ -1,6 +1,6 @@
 # ADR 0005 · Rules schema design
 
-**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046 · **Amended:** 30 Oct 2026, D-052 (see the end)
+**Date:** 29 Oct 2026 · **Status:** Accepted · **Decided by:** Benji Greig · **Plane:** CLR-7 · **Decision log:** D-041 to D-046 · **Amended:** 30 Oct 2026, D-052 and D-058 (see the end)
 
 ## Decision
 
@@ -118,3 +118,53 @@ The decision above says semantic tokens name a grade, with a grade for light and
 - **The `semantic` section's shape**, including the illustrative fragment above, will be redesigned in CLR-27. Until then, `rules.json` keeps its four stand-in tokens, each with a grade per context and marked as a CLR-27 placeholder (D-048).
 
 See [`docs/research/colour-relationships.md`](../research/colour-relationships.md).
+
+## Amendment: recipes, questions and zones replace ladder presets (30 Oct 2026, D-058)
+
+D-054 replaced fixed ladder presets with one ladder per project, built in three zones from the product's answers, and D-055 to D-057 set the questions, the recipes and their AA and AAA ladders. The section table above changes as follows. Rows not listed here are unchanged.
+
+| Section | Holds | Used by |
+|---|---|---|
+| `questions` | The ladder stage's three question groups, in order. Each tick-box choice has a label key, an example key, a reason and a default (always, on or off), and its effects as data: the ladder uses and contexts it adds, a target it suggests, and separation multipliers by zone. Choices held for after the beta carry their ticket. Added in D-058 | Stage 2 (US-02) |
+| `recipes` | Named sets of answers, each with its themes and a ladder for each target, and the default recipe. Each step has a name (its rounded grade), its exact grade, its L\*, its zone, and the uses that placed it, as theme, family and use. Pages are steps. Added in D-058 | Stage 2 (US-02) |
+| `ladders` | Replaces ladder presets and the recommendation: the three zone rules (the contrast zone's 37, 50 and 64 grades from each page, and the dark zone's multiplier), the minimum gap between steps, the uses steps are placed for, and whether states are steps or overlays (still open). Changed in D-058 | Stage 2 (US-02) |
+| `vividness` | Also holds the three styles: neutral, tinted and vivid. Changed in D-058 | Stage 4 (US-04) |
+
+**Choosing a recipe.** The engine picks the recipe that matches the ticked answers and themes exactly. Failing that, it picks the smallest recipe that covers them all, or else the one covering the most, and returns the choices it doesn't cover. Only choices that add uses or themes count. The default answers choose the default recipe.
+
+### An illustrative fragment
+
+This shows the shape, abridged. The values are in `packages/rules/rules.json`, copied from [`research/ladder-derivation/recipes.json`](../research/ladder-derivation/recipes.json).
+
+```json
+{
+  "recipes": {
+    "default": "layeredAppLightDark",
+    "items": {
+      "layeredAppLightDark": {
+        "nameKey": "rules.recipes.layeredAppLightDark.name",
+        "reason": "rules.recipes.layeredAppLightDark.reason",
+        "answers": ["controls", "cards", "overlays"],
+        "themes": ["light", "dark"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            }
+          ],
+          "aaa": []
+        }
+      }
+    }
+  }
+}
+```
+
+The schema version goes from 1 to 2, because removing the presets breaks files written for version 1. The rules version goes to 0.2.0, and stays below 1.0 while placeholders remain.

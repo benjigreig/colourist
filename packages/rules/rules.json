@@ -1,82 +1,2539 @@
 {
   "$schema": "./schema/rules.schema.json",
-  "meta": { "rulesVersion": "0.1.0", "schemaVersion": 1 },
+  "meta": { "rulesVersion": "0.2.0", "schemaVersion": 2 },
+  "questions": [
+    {
+      "id": "activities",
+      "labelKey": "rules.questions.activities.label",
+      "choices": [
+        {
+          "id": "read",
+          "labelKey": "rules.questions.choices.read.label",
+          "exampleKey": "rules.questions.choices.read.example",
+          "reason": "rules.questions.choices.read.reason",
+          "default": "always",
+          "effects": {
+            "addsUses": ["page", "subtleBorder", "mutedText", "text"]
+          }
+        },
+        {
+          "id": "controls",
+          "labelKey": "rules.questions.choices.controls.label",
+          "exampleKey": "rules.questions.choices.controls.example",
+          "reason": "rules.questions.choices.controls.reason",
+          "default": "on",
+          "effects": {
+            "addsUses": ["hover", "pressed", "controlBorder"]
+          }
+        },
+        {
+          "id": "selection",
+          "labelKey": "rules.questions.choices.selection.label",
+          "exampleKey": "rules.questions.choices.selection.example",
+          "reason": "rules.questions.choices.selection.reason",
+          "default": "off",
+          "effects": {
+            "addsUses": ["selected"]
+          }
+        },
+        {
+          "id": "charts",
+          "labelKey": "rules.questions.choices.charts.label",
+          "exampleKey": "rules.questions.choices.charts.example",
+          "reason": "rules.questions.choices.charts.reason",
+          "default": "off",
+          "effects": {
+            "placeholder": {
+              "ticket": "CLR-55",
+              "note": "Which steps charts add is decided with the chart palette."
+            }
+          },
+          "later": { "ticket": "CLR-55", "note": "Held for after the beta (D-055)." }
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "labelKey": "rules.questions.structure.label",
+      "choices": [
+        {
+          "id": "plainPage",
+          "labelKey": "rules.questions.choices.plainPage.label",
+          "exampleKey": "rules.questions.choices.plainPage.example",
+          "reason": "rules.questions.choices.plainPage.reason",
+          "default": "always",
+          "effects": {}
+        },
+        {
+          "id": "cards",
+          "labelKey": "rules.questions.choices.cards.label",
+          "exampleKey": "rules.questions.choices.cards.example",
+          "reason": "rules.questions.choices.cards.reason",
+          "default": "on",
+          "effects": {
+            "addsUses": ["surface"]
+          }
+        },
+        {
+          "id": "overlays",
+          "labelKey": "rules.questions.choices.overlays.label",
+          "exampleKey": "rules.questions.choices.overlays.example",
+          "reason": "rules.questions.choices.overlays.reason",
+          "default": "on",
+          "effects": {
+            "addsUses": ["sunken"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "viewing",
+      "labelKey": "rules.questions.viewing.label",
+      "choices": [
+        {
+          "id": "lightTheme",
+          "labelKey": "rules.questions.choices.lightTheme.label",
+          "exampleKey": "rules.questions.choices.lightTheme.example",
+          "reason": "rules.questions.choices.lightTheme.reason",
+          "default": "on",
+          "effects": {
+            "addsContexts": ["light"]
+          }
+        },
+        {
+          "id": "darkTheme",
+          "labelKey": "rules.questions.choices.darkTheme.label",
+          "exampleKey": "rules.questions.choices.darkTheme.example",
+          "reason": "rules.questions.choices.darkTheme.reason",
+          "default": "on",
+          "effects": {
+            "addsContexts": ["dark"]
+          }
+        },
+        {
+          "id": "followDevice",
+          "labelKey": "rules.questions.choices.followDevice.label",
+          "exampleKey": "rules.questions.choices.followDevice.example",
+          "reason": "rules.questions.choices.followDevice.reason",
+          "default": "off",
+          "effects": {
+            "addsContexts": ["light", "dark"]
+          }
+        },
+        {
+          "id": "highContrast",
+          "labelKey": "rules.questions.choices.highContrast.label",
+          "exampleKey": "rules.questions.choices.highContrast.example",
+          "reason": "rules.questions.choices.highContrast.reason",
+          "default": "off",
+          "effects": {
+            "addsContexts": ["moreContrast"]
+          },
+          "later": { "ticket": "CLR-98", "note": "Held for after the beta." }
+        },
+        {
+          "id": "brightLight",
+          "labelKey": "rules.questions.choices.brightLight.label",
+          "exampleKey": "rules.questions.choices.brightLight.example",
+          "reason": "rules.questions.choices.brightLight.reason",
+          "default": "off",
+          "effects": {
+            "separationMultipliers": { "lightBackground": 1.6 },
+            "placeholder": {
+              "ticket": "CLR-95",
+              "note": "Stand-in multiplier. Assumption from single studies, to test with people (D-055, ladder-zones.md)."
+            }
+          },
+          "later": { "ticket": "CLR-98", "note": "Held for after the beta." }
+        },
+        {
+          "id": "moreContrastPeople",
+          "labelKey": "rules.questions.choices.moreContrastPeople.label",
+          "exampleKey": "rules.questions.choices.moreContrastPeople.example",
+          "reason": "rules.questions.choices.moreContrastPeople.reason",
+          "default": "off",
+          "effects": {
+            "suggestsTarget": "aaa",
+            "separationMultipliers": { "lightBackground": 1.5, "darkBackground": 1.5 },
+            "placeholder": {
+              "ticket": "CLR-95",
+              "note": "Stand-in multipliers. Assumption from single studies, to test with people (D-055, ladder-zones.md)."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "recipes": {
+    "default": "layeredAppLightDark",
+    "items": {
+      "contentLight": {
+        "nameKey": "rules.recipes.contentLight.name",
+        "reason": "rules.recipes.contentLight.reason",
+        "answers": ["controls"],
+        "themes": ["light"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.4,
+              "lstar": 95.86,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fill" }]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillHover" }]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillPressed" }]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 50,
+              "grade": 50,
+              "lstar": 49.39,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 61,
+              "grade": 61,
+              "lstar": 40.23,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 68,
+              "grade": 68,
+              "lstar": 34.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "text" }]
+            }
+          ],
+          "aaa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.4,
+              "lstar": 95.86,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fill" }]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillHover" }]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillPressed" }]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 64,
+              "grade": 64,
+              "lstar": 37.77,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 75,
+              "grade": 75,
+              "lstar": 28.65,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 82,
+              "grade": 82,
+              "lstar": 22.48,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "text" }]
+            }
+          ]
+        }
+      },
+      "contentLightDark": {
+        "nameKey": "rules.recipes.contentLightDark.name",
+        "reason": "rules.recipes.contentLightDark.reason",
+        "answers": ["controls"],
+        "themes": ["light", "dark"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.4,
+              "lstar": 95.86,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "warning", "use": "fill" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 21.8,
+              "lstar": 75.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 45,
+              "grade": 45.4,
+              "lstar": 53.34,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 50,
+              "grade": 50,
+              "lstar": 49.39,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "fill" }
+              ]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 61,
+              "grade": 61,
+              "lstar": 40.23,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 68,
+              "grade": 68,
+              "lstar": 34.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 81,
+              "grade": 81.2,
+              "lstar": 23.21,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 86,
+              "grade": 85.8,
+              "lstar": 18.82,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "hover" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "text" }]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ],
+          "aaa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.4,
+              "lstar": 95.86,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" }
+              ]
+            },
+            {
+              "name": 30,
+              "grade": 30,
+              "lstar": 67.37,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 64,
+              "grade": 64,
+              "lstar": 37.77,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 75,
+              "grade": 75,
+              "lstar": 28.65,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 82,
+              "grade": 82,
+              "lstar": 22.48,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "hover" }
+              ]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "text" }]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ]
+        }
+      },
+      "simpleAppLightDark": {
+        "nameKey": "rules.recipes.simpleAppLightDark.name",
+        "reason": "rules.recipes.simpleAppLightDark.reason",
+        "answers": ["controls", "cards"],
+        "themes": ["light", "dark"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.4,
+              "lstar": 95.86,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "warning", "use": "fill" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 21.8,
+              "lstar": 75.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 45,
+              "grade": 45.4,
+              "lstar": 53.34,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 50,
+              "grade": 50,
+              "lstar": 49.39,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "fill" }
+              ]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 61,
+              "grade": 61,
+              "lstar": 40.23,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 68,
+              "grade": 68,
+              "lstar": 34.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 81,
+              "grade": 81.2,
+              "lstar": 23.21,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 86,
+              "grade": 85.8,
+              "lstar": 18.82,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "hover" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "text" },
+                { "theme": "dark", "family": "neutral", "use": "surface" }
+              ]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ],
+          "aaa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.4,
+              "lstar": 95.86,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" }
+              ]
+            },
+            {
+              "name": 30,
+              "grade": 30,
+              "lstar": 67.37,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 64,
+              "grade": 64,
+              "lstar": 37.77,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 75,
+              "grade": 75,
+              "lstar": 28.65,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 82,
+              "grade": 82,
+              "lstar": 22.48,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "hover" }
+              ]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "text" },
+                { "theme": "dark", "family": "neutral", "use": "surface" }
+              ]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ]
+        }
+      },
+      "layeredAppLightDark": {
+        "nameKey": "rules.recipes.layeredAppLightDark.name",
+        "reason": "rules.recipes.layeredAppLightDark.reason",
+        "answers": ["controls", "cards", "overlays"],
+        "themes": ["light", "dark"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.1,
+              "lstar": 96.22,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "sunken" }]
+            },
+            {
+              "name": 4,
+              "grade": 4.1,
+              "lstar": 95.03,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "warning", "use": "fill" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 21.8,
+              "lstar": 75.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 45,
+              "grade": 45.4,
+              "lstar": 53.34,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 50,
+              "grade": 50,
+              "lstar": 49.39,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "fill" }
+              ]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 61,
+              "grade": 61,
+              "lstar": 40.23,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 68,
+              "grade": 68.1,
+              "lstar": 34.41,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 81,
+              "grade": 81.2,
+              "lstar": 23.21,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 86,
+              "grade": 85.8,
+              "lstar": 18.82,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "hover" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 88,
+              "grade": 87.5,
+              "lstar": 17.06,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "sunken" }]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "text" },
+                { "theme": "dark", "family": "neutral", "use": "surface" }
+              ]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ],
+          "aaa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 3.1,
+              "lstar": 96.22,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "sunken" }]
+            },
+            {
+              "name": 4,
+              "grade": 4.1,
+              "lstar": 95.03,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "hover" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" }
+              ]
+            },
+            {
+              "name": 30,
+              "grade": 30,
+              "lstar": 67.37,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 64,
+              "grade": 64,
+              "lstar": 37.77,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 75,
+              "grade": 75,
+              "lstar": 28.65,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 82,
+              "grade": 82,
+              "lstar": 22.48,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "hover" }
+              ]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 88,
+              "grade": 87.5,
+              "lstar": 17.06,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "sunken" }]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "text" },
+                { "theme": "dark", "family": "neutral", "use": "surface" }
+              ]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ]
+        }
+      },
+      "appLight": {
+        "nameKey": "rules.recipes.appLight.name",
+        "reason": "rules.recipes.appLight.reason",
+        "answers": ["controls", "cards", "overlays", "selection"],
+        "themes": ["light"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 2.9,
+              "lstar": 96.46,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "selected" }]
+            },
+            {
+              "name": 4,
+              "grade": 3.9,
+              "lstar": 95.26,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "sunken" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 5,
+              "grade": 4.9,
+              "lstar": 94.08,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "hover" }]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fill" }]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillHover" }]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillPressed" }]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 50,
+              "grade": 50,
+              "lstar": 49.39,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 61,
+              "grade": 61,
+              "lstar": 40.23,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 68,
+              "grade": 68,
+              "lstar": 34.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "text" }]
+            }
+          ],
+          "aaa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 2.9,
+              "lstar": 96.46,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "selected" }]
+            },
+            {
+              "name": 4,
+              "grade": 3.9,
+              "lstar": 95.26,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "sunken" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 5,
+              "grade": 4.9,
+              "lstar": 94.08,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "hover" }]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fill" }]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillHover" }]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "warning", "use": "fillPressed" }]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 64,
+              "grade": 64,
+              "lstar": 37.77,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 75,
+              "grade": 75,
+              "lstar": 28.65,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 82,
+              "grade": 82,
+              "lstar": 22.48,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "text" }]
+            }
+          ]
+        }
+      },
+      "appLightDark": {
+        "nameKey": "rules.recipes.appLightDark.name",
+        "reason": "rules.recipes.appLightDark.reason",
+        "answers": ["controls", "cards", "overlays", "selection"],
+        "themes": ["light", "dark"],
+        "ladders": {
+          "aa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 2.9,
+              "lstar": 96.46,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "selected" }]
+            },
+            {
+              "name": 4,
+              "grade": 3.9,
+              "lstar": 95.26,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "sunken" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 5,
+              "grade": 4.9,
+              "lstar": 94.08,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "hover" }]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "warning", "use": "fill" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 21.8,
+              "lstar": 75.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 45,
+              "grade": 45.4,
+              "lstar": 53.34,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 50,
+              "grade": 50,
+              "lstar": 49.39,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "fill" }
+              ]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 61,
+              "grade": 61,
+              "lstar": 40.23,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 68,
+              "grade": 68,
+              "lstar": 34.49,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 81,
+              "grade": 81.2,
+              "lstar": 23.21,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 83,
+              "grade": 83.4,
+              "lstar": 21.16,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "selected" }]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "pressed" }]
+            },
+            {
+              "name": 86,
+              "grade": 85.8,
+              "lstar": 18.82,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "hover" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 88,
+              "grade": 87.5,
+              "lstar": 17.06,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "sunken" }]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "text" },
+                { "theme": "dark", "family": "neutral", "use": "surface" }
+              ]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ],
+          "aaa": [
+            {
+              "name": 0,
+              "grade": 0,
+              "lstar": 100,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "page" }]
+            },
+            {
+              "name": 2,
+              "grade": 1.9,
+              "lstar": 97.67,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "surface" }]
+            },
+            {
+              "name": 3,
+              "grade": 2.9,
+              "lstar": 96.46,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "selected" }]
+            },
+            {
+              "name": 4,
+              "grade": 3.9,
+              "lstar": 95.26,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "sunken" },
+                { "theme": "light", "family": "brand", "use": "tint" },
+                { "theme": "light", "family": "error", "use": "tint" },
+                { "theme": "light", "family": "warning", "use": "tint" },
+                { "theme": "light", "family": "success", "use": "tint" },
+                { "theme": "light", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 5,
+              "grade": 4.9,
+              "lstar": 94.08,
+              "zone": "lightBackground",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "hover" }]
+            },
+            {
+              "name": 8,
+              "grade": 7.9,
+              "lstar": 90.58,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "neutral", "use": "text" }
+              ]
+            },
+            {
+              "name": 9,
+              "grade": 8.9,
+              "lstar": 89.43,
+              "zone": "lightBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "light", "family": "brand", "use": "tintBorder" },
+                { "theme": "light", "family": "error", "use": "tintBorder" },
+                { "theme": "light", "family": "warning", "use": "tintBorder" },
+                { "theme": "light", "family": "success", "use": "tintBorder" },
+                { "theme": "light", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 14,
+              "grade": 14,
+              "lstar": 83.74,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "fillPressed" },
+                { "theme": "dark", "family": "error", "use": "fillPressed" },
+                { "theme": "dark", "family": "warning", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "fillPressed" },
+                { "theme": "dark", "family": "info", "use": "fillPressed" }
+              ]
+            },
+            {
+              "name": 22,
+              "grade": 22,
+              "lstar": 75.29,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "brand", "use": "fillHover" },
+                { "theme": "dark", "family": "error", "use": "fillHover" },
+                { "theme": "dark", "family": "warning", "use": "fillHover" },
+                { "theme": "dark", "family": "success", "use": "fillHover" },
+                { "theme": "dark", "family": "info", "use": "fillHover" }
+              ]
+            },
+            {
+              "name": 29,
+              "grade": 29,
+              "lstar": 68.33,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "mutedText" },
+                { "theme": "dark", "family": "brand", "use": "fill" },
+                { "theme": "dark", "family": "brand", "use": "text" },
+                { "theme": "dark", "family": "error", "use": "fill" },
+                { "theme": "dark", "family": "error", "use": "text" },
+                { "theme": "dark", "family": "warning", "use": "text" }
+              ]
+            },
+            {
+              "name": 30,
+              "grade": 30,
+              "lstar": 67.37,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "dark", "family": "warning", "use": "fillPressed" },
+                { "theme": "dark", "family": "success", "use": "fill" },
+                { "theme": "dark", "family": "success", "use": "text" },
+                { "theme": "dark", "family": "info", "use": "fill" },
+                { "theme": "dark", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 37,
+              "grade": 37,
+              "lstar": 60.82,
+              "zone": "contrast",
+              "uses": [{ "theme": "light", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 58,
+              "grade": 58.4,
+              "lstar": 42.37,
+              "zone": "contrast",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "controlBorder" }]
+            },
+            {
+              "name": 64,
+              "grade": 64,
+              "lstar": 37.77,
+              "zone": "contrast",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "mutedText" },
+                { "theme": "light", "family": "brand", "use": "fill" },
+                { "theme": "light", "family": "brand", "use": "text" },
+                { "theme": "light", "family": "error", "use": "fill" },
+                { "theme": "light", "family": "error", "use": "text" },
+                { "theme": "light", "family": "warning", "use": "text" },
+                { "theme": "light", "family": "success", "use": "fill" },
+                { "theme": "light", "family": "success", "use": "text" },
+                { "theme": "light", "family": "info", "use": "fill" },
+                { "theme": "light", "family": "info", "use": "text" }
+              ]
+            },
+            {
+              "name": 75,
+              "grade": 75,
+              "lstar": 28.65,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillHover" },
+                { "theme": "light", "family": "error", "use": "fillHover" },
+                { "theme": "light", "family": "success", "use": "fillHover" },
+                { "theme": "light", "family": "info", "use": "fillHover" },
+                { "theme": "dark", "family": "neutral", "use": "subtleBorder" },
+                { "theme": "dark", "family": "brand", "use": "tintBorder" },
+                { "theme": "dark", "family": "error", "use": "tintBorder" },
+                { "theme": "dark", "family": "warning", "use": "tintBorder" },
+                { "theme": "dark", "family": "success", "use": "tintBorder" },
+                { "theme": "dark", "family": "info", "use": "tintBorder" }
+              ]
+            },
+            {
+              "name": 82,
+              "grade": 82,
+              "lstar": 22.48,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "brand", "use": "fillPressed" },
+                { "theme": "light", "family": "error", "use": "fillPressed" },
+                { "theme": "light", "family": "success", "use": "fillPressed" },
+                { "theme": "light", "family": "info", "use": "fillPressed" },
+                { "theme": "dark", "family": "neutral", "use": "hover" }
+              ]
+            },
+            {
+              "name": 83,
+              "grade": 83.4,
+              "lstar": 21.16,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "selected" }]
+            },
+            {
+              "name": 85,
+              "grade": 84.6,
+              "lstar": 20.01,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "dark", "family": "neutral", "use": "pressed" },
+                { "theme": "dark", "family": "brand", "use": "tint" },
+                { "theme": "dark", "family": "error", "use": "tint" },
+                { "theme": "dark", "family": "warning", "use": "tint" },
+                { "theme": "dark", "family": "success", "use": "tint" },
+                { "theme": "dark", "family": "info", "use": "tint" }
+              ]
+            },
+            {
+              "name": 88,
+              "grade": 87.5,
+              "lstar": 17.06,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "sunken" }]
+            },
+            {
+              "name": 91,
+              "grade": 91,
+              "lstar": 13.08,
+              "zone": "darkBackground",
+              "uses": [
+                { "theme": "light", "family": "neutral", "use": "text" },
+                { "theme": "dark", "family": "neutral", "use": "surface" }
+              ]
+            },
+            {
+              "name": 95,
+              "grade": 95.4,
+              "lstar": 6.79,
+              "zone": "darkBackground",
+              "uses": [{ "theme": "dark", "family": "neutral", "use": "page" }]
+            }
+          ]
+        }
+      }
+    }
+  },
   "ladders": {
-    "presets": {
-      "steps11": {
-        "steps": [
-          { "lstar": 98, "grade": 2 },
-          { "lstar": 94, "grade": 5 },
-          { "lstar": 86, "grade": 12 },
-          { "lstar": 76, "grade": 21 },
-          { "lstar": 65, "grade": 32 },
-          { "lstar": 54, "grade": 45 },
-          { "lstar": 43, "grade": 58 },
-          { "lstar": 33, "grade": 70 },
-          { "lstar": 23, "grade": 81 },
-          { "lstar": 14, "grade": 90 },
-          { "lstar": 7, "grade": 95 }
-        ],
-        "reason": "rules.ladders.steps11.reason",
-        "placeholder": {
-          "ticket": "CLR-13",
-          "note": "Stand-in L* values from the framework spike (docs/research/framework/core/config.ts)."
-        }
+    "zones": {
+      "lightBackground": { "reason": "rules.ladders.zones.lightBackground.reason" },
+      "contrast": {
+        "gradesFromEachPage": [37, 50, 64],
+        "reason": "rules.ladders.zones.contrast.reason"
       },
-      "steps13": {
-        "steps": [
-          { "lstar": 98, "grade": 2 },
-          { "lstar": 96, "grade": 3 },
-          { "lstar": 92, "grade": 7 },
-          { "lstar": 86, "grade": 12 },
-          { "lstar": 78, "grade": 19 },
-          { "lstar": 68, "grade": 29 },
-          { "lstar": 57, "grade": 41 },
-          { "lstar": 46, "grade": 54 },
-          { "lstar": 35, "grade": 67 },
-          { "lstar": 25, "grade": 79 },
-          { "lstar": 17, "grade": 88 },
-          { "lstar": 10, "grade": 93 },
-          { "lstar": 5, "grade": 97 }
-        ],
-        "reason": "rules.ladders.steps13.reason",
+      "darkBackground": {
+        "separationMultiplier": 2,
+        "reason": "rules.ladders.zones.darkBackground.reason",
         "placeholder": {
-          "ticket": "CLR-13",
-          "note": "Stand-in: the 13-step ladder ADR 0001 compared colour models on. The ladder distribution research suggests reshaping it."
-        }
-      },
-      "steps15": {
-        "steps": [
-          { "lstar": 98, "grade": 2 },
-          { "lstar": 96, "grade": 3 },
-          { "lstar": 93, "grade": 6 },
-          { "lstar": 88, "grade": 10 },
-          { "lstar": 82, "grade": 16 },
-          { "lstar": 74, "grade": 23 },
-          { "lstar": 65, "grade": 32 },
-          { "lstar": 56, "grade": 42 },
-          { "lstar": 47, "grade": 53 },
-          { "lstar": 38, "grade": 64 },
-          { "lstar": 30, "grade": 73 },
-          { "lstar": 22, "grade": 83 },
-          { "lstar": 15, "grade": 89 },
-          { "lstar": 9, "grade": 94 },
-          { "lstar": 4, "grade": 97 }
-        ],
-        "reason": "rules.ladders.steps15.reason",
-        "placeholder": {
-          "ticket": "CLR-13",
-          "note": "Stand-in L* values from the framework spike (docs/research/framework/core/config.ts)."
+          "ticket": "CLR-98",
+          "note": "Stand-in: about 2, from the separations design systems use in dark mode (ladder-distribution.md, Parts 4 and 5). Building ladders from answers sets it."
         }
       }
     },
-    "recommended": {
-      "preset": "steps13",
-      "reason": "rules.ladders.recommended.reason",
-      "placeholder": {
-        "ticket": "CLR-13",
-        "note": "Stand-in: always the 13-step ladder. CLR-13 decides the recommendation and what drives it, such as whether dark mode is needed."
-      }
+    "minimumGap": { "grades": 1, "reason": "rules.ladders.minimumGap.reason" },
+    "uses": {
+      "page": { "nameKey": "rules.ladders.uses.page.name" },
+      "surface": { "nameKey": "rules.ladders.uses.surface.name", "contrastUse": "surface" },
+      "sunken": { "nameKey": "rules.ladders.uses.sunken.name" },
+      "hover": { "nameKey": "rules.ladders.uses.hover.name", "contrastUse": "hover" },
+      "pressed": { "nameKey": "rules.ladders.uses.pressed.name" },
+      "selected": { "nameKey": "rules.ladders.uses.selected.name" },
+      "subtleBorder": {
+        "nameKey": "rules.ladders.uses.subtleBorder.name",
+        "contrastUse": "subtleBorder"
+      },
+      "controlBorder": {
+        "nameKey": "rules.ladders.uses.controlBorder.name",
+        "contrastUse": "interfaceElement"
+      },
+      "mutedText": { "nameKey": "rules.ladders.uses.mutedText.name", "contrastUse": "bodyText" },
+      "text": { "nameKey": "rules.ladders.uses.text.name", "contrastUse": "bodyText" },
+      "tint": { "nameKey": "rules.ladders.uses.tint.name" },
+      "tintBorder": { "nameKey": "rules.ladders.uses.tintBorder.name" },
+      "fill": { "nameKey": "rules.ladders.uses.fill.name" },
+      "fillHover": { "nameKey": "rules.ladders.uses.fillHover.name" },
+      "fillPressed": { "nameKey": "rules.ladders.uses.fillPressed.name" }
     },
     "states": {
       "reason": "rules.ladders.states.reason",
@@ -202,7 +2659,33 @@
         }
       }
     },
-    "defaults": { "brand": "hold", "feedback": "hold", "neutral": "hold" }
+    "defaults": { "brand": "hold", "feedback": "hold", "neutral": "hold" },
+    "styles": {
+      "neutral": {
+        "nameKey": "rules.vividness.styles.neutral.name",
+        "reason": "rules.vividness.styles.neutral.reason",
+        "placeholder": {
+          "ticket": "CLR-15",
+          "note": "What this style changes is decided with the vividness curves (US-04, D-055)."
+        }
+      },
+      "tinted": {
+        "nameKey": "rules.vividness.styles.tinted.name",
+        "reason": "rules.vividness.styles.tinted.reason",
+        "placeholder": {
+          "ticket": "CLR-15",
+          "note": "What this style changes is decided with the vividness curves (US-04, D-055)."
+        }
+      },
+      "vivid": {
+        "nameKey": "rules.vividness.styles.vivid.name",
+        "reason": "rules.vividness.styles.vivid.reason",
+        "placeholder": {
+          "ticket": "CLR-15",
+          "note": "What this style changes is decided with the vividness curves (US-04, D-055)."
+        }
+      }
+    }
   },
   "groups": {
     "brand": { "nameKey": "rules.groups.brand.name", "reason": "rules.groups.brand.reason" },

@@ -13,17 +13,23 @@ import type {
   ContextTargets,
   ContrastTarget,
   HueRule,
-  LadderPreset,
+  Choice,
+  LadderStep,
+  LadderUse,
+  LevelLadders,
   LevelTargets,
   Placeholder,
+  QuestionGroup,
+  Recipe,
   Rules,
   SemanticToken,
   SeparationRule,
   SeparationTargets,
+  Zones,
 } from './types.ts';
 
 /** The schema's version. A breaking change to the schema raises it. */
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 /** The schema's identifier. */
 export const SCHEMA_ID = `https://colouri.st/schemas/rules-${SCHEMA_VERSION}.schema.json`;
@@ -98,27 +104,147 @@ const contextTargets: JSONSchemaType<ContextTargets> = {
   },
 };
 
-const ladderPreset: JSONSchemaType<LadderPreset> = {
+const ZONES = ['lightBackground', 'contrast', 'darkBackground'] as const;
+
+const ladderStep: JSONSchemaType<LadderStep> = {
   type: 'object',
   additionalProperties: false,
-  required: ['steps', 'reason'],
+  required: ['name', 'grade', 'lstar', 'zone', 'uses'],
   properties: {
-    steps: {
+    name: { type: 'integer', minimum: 0, maximum: 100 },
+    grade: { type: 'number', minimum: 0, maximum: 100 },
+    lstar: { type: 'number', minimum: 0, maximum: 100 },
+    zone: { type: 'string', enum: [...ZONES] },
+    uses: {
       type: 'array',
-      minItems: 2,
-      maxItems: 32,
+      minItems: 1,
+      maxItems: 64,
       items: {
         type: 'object',
         additionalProperties: false,
-        required: ['lstar', 'grade'],
-        properties: {
-          lstar: { type: 'number', minimum: 0, maximum: 100 },
-          grade: { type: 'integer', minimum: 0, maximum: 100 },
-        },
+        required: ['theme', 'family', 'use'],
+        properties: { theme: id, family: id, use: id },
       },
     },
+  },
+};
+
+const ladder = { type: 'array', minItems: 2, maxItems: 48, items: ladderStep } as const;
+
+const levelLadders: JSONSchemaType<LevelLadders> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['aa', 'aaa'],
+  properties: { aa: ladder, aaa: ladder },
+};
+
+const recipe: JSONSchemaType<Recipe> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['nameKey', 'reason', 'answers', 'themes', 'ladders'],
+  properties: {
+    nameKey: textKey,
     reason,
-    placeholder: optionalPlaceholder,
+    answers: { type: 'array', items: id, uniqueItems: true, maxItems: 32 },
+    themes: { type: 'array', items: id, uniqueItems: true, minItems: 1, maxItems: 16 },
+    ladders: levelLadders,
+  },
+};
+
+const ladderUse: JSONSchemaType<LadderUse> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['nameKey'],
+  properties: { nameKey: textKey, contrastUse: { ...id, nullable: true } },
+};
+
+const choice: JSONSchemaType<Choice> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['id', 'labelKey', 'exampleKey', 'reason', 'default', 'effects'],
+  properties: {
+    id,
+    labelKey: textKey,
+    exampleKey: textKey,
+    reason,
+    default: { type: 'string', enum: ['always', 'on', 'off'] },
+    effects: {
+      type: 'object',
+      additionalProperties: false,
+      required: [],
+      properties: {
+        addsUses: { type: 'array', items: id, uniqueItems: true, maxItems: 32, nullable: true },
+        addsContexts: { type: 'array', items: id, uniqueItems: true, maxItems: 8, nullable: true },
+        suggestsTarget: { type: 'string', enum: ['aa', 'aaa'], nullable: true },
+        separationMultipliers: {
+          type: 'object',
+          additionalProperties: false,
+          required: [],
+          minProperties: 1,
+          properties: {
+            lightBackground: { type: 'number', minimum: 1, maximum: 4, nullable: true },
+            contrast: { type: 'number', minimum: 1, maximum: 4, nullable: true },
+            darkBackground: { type: 'number', minimum: 1, maximum: 4, nullable: true },
+          },
+          nullable: true,
+        },
+        placeholder: optionalPlaceholder,
+      },
+    },
+    later: optionalPlaceholder,
+  },
+};
+
+const questionGroup: JSONSchemaType<QuestionGroup> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['id', 'labelKey', 'choices'],
+  properties: {
+    id,
+    labelKey: textKey,
+    choices: { type: 'array', minItems: 1, maxItems: 16, items: choice },
+  },
+};
+
+const zoneRule = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['reason'],
+  properties: { reason, placeholder: optionalPlaceholder },
+} as const;
+
+const zones: JSONSchemaType<Zones> = {
+  type: 'object',
+  additionalProperties: false,
+  required: [...ZONES],
+  properties: {
+    lightBackground: zoneRule,
+    contrast: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['gradesFromEachPage', 'reason'],
+      properties: {
+        gradesFromEachPage: {
+          type: 'array',
+          minItems: 1,
+          maxItems: 8,
+          uniqueItems: true,
+          items: { type: 'integer', minimum: 1, maximum: 100 },
+        },
+        reason,
+        placeholder: optionalPlaceholder,
+      },
+    },
+    darkBackground: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['separationMultiplier', 'reason'],
+      properties: {
+        separationMultiplier: { type: 'number', minimum: 1, maximum: 4 },
+        reason,
+        placeholder: optionalPlaceholder,
+      },
+    },
   },
 };
 
@@ -199,6 +325,8 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
   additionalProperties: false,
   required: [
     'meta',
+    'questions',
+    'recipes',
     'ladders',
     'contrast',
     'vividness',
@@ -221,18 +349,30 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
         schemaVersion: { type: 'integer', const: SCHEMA_VERSION },
       },
     },
+    questions: { type: 'array', minItems: 1, maxItems: 8, items: questionGroup },
+    recipes: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['default', 'items'],
+      properties: { default: id, items: mapOf(recipe) },
+    },
     ladders: {
       type: 'object',
       additionalProperties: false,
-      required: ['presets', 'recommended', 'states'],
+      required: ['zones', 'minimumGap', 'uses', 'states'],
       properties: {
-        presets: mapOf(ladderPreset),
-        recommended: {
+        zones,
+        minimumGap: {
           type: 'object',
           additionalProperties: false,
-          required: ['preset', 'reason'],
-          properties: { preset: id, reason, placeholder: optionalPlaceholder },
+          required: ['grades', 'reason'],
+          properties: {
+            grades: { type: 'number', minimum: 0, maximum: 10 },
+            reason,
+            placeholder: optionalPlaceholder,
+          },
         },
+        uses: mapOf(ladderUse),
         states: {
           type: 'object',
           additionalProperties: false,
@@ -304,7 +444,7 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
     vividness: {
       type: 'object',
       additionalProperties: false,
-      required: ['presets', 'defaults'],
+      required: ['presets', 'defaults', 'styles'],
       properties: {
         presets: mapOf({
           type: 'object',
@@ -318,6 +458,12 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
           },
         }),
         defaults: mapOf<string>(id),
+        styles: mapOf({
+          type: 'object',
+          additionalProperties: false,
+          required: ['nameKey', 'reason'],
+          properties: { nameKey: textKey, reason, placeholder: optionalPlaceholder },
+        }),
       },
     },
     groups: mapOf({

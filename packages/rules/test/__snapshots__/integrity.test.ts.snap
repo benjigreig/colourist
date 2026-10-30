@@ -2,10 +2,10 @@
 
 exports[`the default rules hang together > CLR-7: Default configuration file validates against it — every placeholder names the ticket deciding it, and the rules stay 0.x until none are left 1`] = `
 [
-  "ladders.presets.steps11",
-  "ladders.presets.steps13",
-  "ladders.presets.steps15",
-  "ladders.recommended",
+  "questions[0].choices[3].effects",
+  "questions[2].choices[4].effects",
+  "questions[2].choices[5].effects",
+  "ladders.zones.darkBackground",
   "ladders.states",
   "contrast.contexts.moreContrast",
   "contrast.uses.bodyText.contexts.moreContrast",
@@ -16,6 +16,9 @@ exports[`the default rules hang together > CLR-7: Default configuration file val
   "contrast.uses.subtleBorder",
   "contrast.apca",
   "vividness.presets.hold",
+  "vividness.styles.neutral",
+  "vividness.styles.tinted",
+  "vividness.styles.vivid",
   "groups.feedback",
   "groups.neutral",
   "palettePresets.neutral",

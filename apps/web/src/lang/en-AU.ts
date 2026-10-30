@@ -53,11 +53,146 @@ export const placeholder = {
  * which ticket decides it, and is replaced when the rule is.
  */
 export const rules = {
+  questions: {
+    activities: { label: 'What will people do with it?' },
+    structure: { label: 'How is it put together?' },
+    viewing: { label: 'Where and how will it be seen?' },
+    choices: {
+      read: {
+        label: 'Read content',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'Every product has text on a page, so this is always on.',
+      },
+      controls: {
+        label: 'Use buttons, inputs and other controls',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason:
+          'Controls need hover and pressed states and a visible border, which add steps near the page.',
+      },
+      selection: {
+        label: 'Pick items from lists or tables',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason:
+          'A selected item needs its own shade near the page, so it can be told apart from hover.',
+      },
+      charts: {
+        label: 'See data in charts',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason:
+          'Charts need a lighter partner for each colour, in the band between the light page and the contrast steps.',
+      },
+      plainPage: {
+        label: 'Content on a plain page',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'Every product has a page, so this is always on.',
+      },
+      cards: {
+        label: 'Cards or panels',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'A card on the page needs a surface that stands just apart from it.',
+      },
+      overlays: {
+        label: 'Menus, dialogs or popovers on top',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'Things layered on top need a second surface, so each layer reads as separate.',
+      },
+      lightTheme: {
+        label: 'A light theme',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'A light theme needs fine steps near the white page.',
+      },
+      darkTheme: {
+        label: 'A dark theme',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason:
+          'A dark theme needs fine steps near the dark page, about twice as far apart, because dark tones are harder to tell apart.',
+      },
+      followDevice: {
+        label: "Following the device's setting",
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'Following the device means people see either theme, so both are built.',
+      },
+      highContrast: {
+        label: 'A high-contrast version',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason: 'A high-contrast version needs wider separations in both themes.',
+      },
+      brightLight: {
+        label: 'Often used in bright light',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason:
+          'Bright surroundings wash out small differences, so the steps near the light page spread further apart.',
+      },
+      moreContrastPeople: {
+        label: 'By people who need more contrast',
+        example: 'Placeholder: CLR-95 designs this modelled example.',
+        reason:
+          'People with low vision need more contrast, so this suggests AAA and widens the separations near each page.',
+      },
+    },
+  },
+  recipes: {
+    contentLight: {
+      name: 'Content site, light',
+      reason: 'For reading, with controls, in a light theme only.',
+    },
+    contentLightDark: {
+      name: 'Content site, light and dark',
+      reason: 'For reading, with controls, in light and dark themes.',
+    },
+    simpleAppLightDark: {
+      name: 'Simple app, light and dark',
+      reason: 'Adds cards or panels to a content site, in light and dark themes.',
+    },
+    layeredAppLightDark: {
+      name: 'Layered app, light and dark',
+      reason:
+        'Reading, controls, cards and things layered on top, in light and dark themes. This is the most common shape among established design systems, so it is the default.',
+    },
+    appLight: {
+      name: 'App with overlays and selection, light',
+      reason: 'Adds selectable lists or tables to a layered app, in a light theme only.',
+    },
+    appLightDark: {
+      name: 'App with overlays and selection, light and dark',
+      reason: 'Adds selectable lists or tables to a layered app, in light and dark themes.',
+    },
+  },
   ladders: {
-    steps11: { reason: 'Placeholder: CLR-13 decides the 11-step ladder.' },
-    steps13: { reason: 'Placeholder: CLR-13 decides the 13-step ladder.' },
-    steps15: { reason: 'Placeholder: CLR-13 decides the 15-step ladder.' },
-    recommended: { reason: 'Placeholder: CLR-13 decides which ladder is recommended, and why.' },
+    zones: {
+      lightBackground: {
+        reason:
+          'Near the light page, steps are close together, because small differences are easiest to see next to the background.',
+      },
+      contrast: {
+        reason:
+          'Through the middle, steps sit 37, 50 and 64 grades from each page, where text and borders reach 3:1, 4.5:1 and 7:1.',
+      },
+      darkBackground: {
+        reason: 'Placeholder: CLR-98 decides how much further apart steps are near the dark page.',
+      },
+    },
+    minimumGap: {
+      reason:
+        'No two steps are closer than 1 grade, about the smallest difference design systems use near the page.',
+    },
+    uses: {
+      page: { name: 'Page' },
+      surface: { name: 'Surface' },
+      sunken: { name: 'Second surface' },
+      hover: { name: 'Hover' },
+      pressed: { name: 'Pressed' },
+      selected: { name: 'Selected' },
+      subtleBorder: { name: 'Subtle border' },
+      controlBorder: { name: 'Control border' },
+      mutedText: { name: 'Muted text' },
+      text: { name: 'Text' },
+      tint: { name: 'Tint' },
+      tintBorder: { name: 'Tint border' },
+      fill: { name: 'Fill' },
+      fillHover: { name: 'Fill hover' },
+      fillPressed: { name: 'Fill pressed' },
+    },
     states: { reason: 'Placeholder: CLR-13 decides whether states are ladder steps or overlays.' },
   },
   contrast: {
@@ -104,6 +239,17 @@ export const rules = {
   },
   vividness: {
     hold: { reason: 'Placeholder: CLR-15 decides the vividness presets.' },
+    styles: {
+      neutral: {
+        name: 'Neutral',
+        reason: 'Placeholder: CLR-15 decides what the neutral style changes.',
+      },
+      tinted: {
+        name: 'Tinted',
+        reason: 'Placeholder: CLR-15 decides what the tinted style changes.',
+      },
+      vivid: { name: 'Vivid', reason: 'Placeholder: CLR-15 decides what the vivid style changes.' },
+    },
   },
   groups: {
     brand: {

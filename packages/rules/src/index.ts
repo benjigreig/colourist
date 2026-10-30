@@ -1,8 +1,9 @@
 /**
  * @module @colourist/rules
- * The colouri.st method as versioned, declarative data: ladder presets, contrast targets,
- * vividness, palette presets, distinctness, semantic tokens, naming and guidance (D-010,
- * ADR 0005). Recommendations are the default configuration, and each rule carries the key of
+ * The colouri.st method as versioned, declarative data: the ladder stage's questions, recipes
+ * and ladder zones, contrast targets, vividness, palette presets, distinctness, semantic tokens,
+ * naming and guidance (D-010, ADR 0005, D-058). Recommendations are the default configuration,
+ * and each rule carries the key of
  * its reasoning in the language files.
  *
  * Values not decided yet carry a `placeholder` naming the ticket that decides them (D-048).
