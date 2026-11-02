@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-059 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-060 |
 
 ---
 
@@ -978,3 +978,22 @@ Two things often drawn as layers aren't tiers:
 **Consequences:**
 - The `ladders.states` placeholder in the rules (CLR-13) is now decided, so the rules need a small follow-up to record it.
 - D-052's open question on the export format for states is answered.
+
+### D-060 · Commissioner is colouri.st's typeface, self-hosted
+**Date:** 31 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-102
+
+**Decision:**
+- **colouri.st's interface uses Commissioner,** a variable sans serif by Kostas Bartsokas, published on Google Fonts.
+- **Self-hosted, never loaded from Google's servers.** The font files ship with the app, with the licence alongside them.
+- **Weights for headings and text aren't decided.** The test-pattern mock-ups use ExtraBold (800) for headings, but that's for the mock-ups only.
+
+**Context:** Benji chose Commissioner while reviewing the test-pattern mock-ups (CLR-94).
+
+**Alternatives considered:** loading it from Google Fonts. Rejected: every visit would send the person's IP address to a third party, which D-020 rules out.
+
+**Why:** Benji's choice of typeface. Self-hosting keeps colouri.st free of third-party requests (D-020) and lets it work offline. The font is under the SIL Open Font License (it sits in the `ofl` folder of Google's fonts repository), which allows it to be bundled and works alongside Apache 2.0 (D-016). The licence text has to travel with the files.
+
+**Consequences:**
+- CLR-102 adds the font files and their licence to `apps/web`, with `@font-face` rules and a fallback stack.
+- The licence goes in the repo with the files, and the `NOTICE` file mentions the font.
+- Type sizes and weights are decided with the interface design, not here.
