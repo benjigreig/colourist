@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-060 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-061 |
 
 ---
 
@@ -997,3 +997,26 @@ Two things often drawn as layers aren't tiers:
 - CLR-102 adds the font files and their licence to `apps/web`, with `@font-face` rules and a fallback stack.
 - The licence goes in the repo with the files, and the `NOTICE` file mentions the font.
 - Type sizes and weights are decided with the interface design, not here.
+
+### D-061 · Three views at the ladder stage: the ladder, then two test patterns
+**Date:** 2 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-94
+
+**Decision:**
+- **The ladder stage has three views, as tabs:** Ladder (the default), Abstract and Components.
+- **Ladder:** the person's colour families on the recipe's ladder, as agreed in the brief.
+- **Abstract:** the test pattern as a grid, one row per background (page, card, overlay over a scrim, selected, notice, inverse), with the same marks in the same columns: heading, text, muted text, link, icon, control border and state. Fills and controls sit underneath.
+- **Components:** the "App with selection" pattern, made of recognisable components.
+- **The order is the reading order:** the ladder first, the check second, what it looks like in a product third.
+
+**Context:** the brief (31 Oct) had the ladder as the default with a switch to one test pattern. Mocking it up at 480 × 480 produced a component-based version, which Benji chose as the working pattern, and an abstracted one. Benji found both good ways to test the colours.
+
+**Alternatives considered:**
+- **One pattern only, components or abstract.** Rejected: each answers a different question. The grid shows whether each token holds up on every background. The components show what it'll look like in a product, which is what people recognise.
+- **The two patterns as tabs inside one pattern view.** Rejected in favour of three tabs side by side: simpler, with one level of switching.
+
+**Why:** the abstract grid makes per-background failures visible by reading down a column, the problem found in the mock-ups (CLR-27). The components view keeps recognition, the first job of the modelled examples.
+
+**Consequences:**
+- The three views need an accessible tab pattern: arrow keys between tabs, with the selected tab announced.
+- Both patterns use the same tokens, so a change shows in both.
+- Empty cells in the grid show relationships the palette has no token for yet.

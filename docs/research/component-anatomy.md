@@ -20,10 +20,10 @@ Agreed with Benji on 31 October:
 - **Themes:** a dark theme shows a duplicate of the pattern beside the light one. When there isn't room, down to 320 CSS pixels (WCAG 1.4.10), they stack.
 - **Colours:** the person's own, getting more refined as they go through the stages.
   - At the ladder stage the default view is the ladder itself: their colour families on the recipe's ladder.
-  - A switch shows the test pattern with those ladders applied.
+  - Two more tabs show the test pattern with those ladders applied: Abstract, then Components (D-061).
 - **States:** shown first, with a way to step through them (rest, hover, pressed, selected, focused), and an interactive mode on request. In interactive mode the pattern is a single stop in the tab order, and arrow keys move within it.
 - **At the mapping stage:** the same pattern again, or a more refined one that's clearly related.
-- **The working pattern (2 November):** "App with selection", one of three versions mocked up at 480 × 480. It's the only one that shows selection: the tinted row, its indicator and selected text. It fits the most relationships into the space. It's a sampling of components rather than an abstraction, so an abstracted version may follow. The mock-ups live in a private Claude canvas, not in the repo.
+- **The working patterns (2 November):** two of four versions mocked up at 480 × 480. "Abstract" is a grid with one row per background and the same marks in each column. "App with selection" is the component version, and the only one that shows selection. Both are kept, as tabs (D-061). The mock-ups live in a private Claude canvas, not in the repo.
 
 ## The question: what is "enough"?
 
