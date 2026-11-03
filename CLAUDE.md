@@ -2,6 +2,8 @@
 
 A free, open-source guided tool that turns a brand's colours into an accessible colour system, explaining the colour theory at each step. Static, browser-only, Apache 2.0. Work is tracked in Plane (project `CLR`).
 
+**Beta dates (D-063):** public material says December 2026; planning works to Fri 27 November. That's deliberate leeway, not a mismatch.
+
 ## Read before changing behaviour
 
 - `docs/user-stories.md`: what's being built. Every change traces to a story (`US-xx`) and a ticket (`CLR-xx`).

@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-061 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-063 |
 
 ---
 
@@ -1020,3 +1020,27 @@ Two things often drawn as layers aren't tiers:
 - The three views need an accessible tab pattern: arrow keys between tabs, with the selected tab announced.
 - Both patterns use the same tokens, so a change shows in both.
 - Empty cells in the grid show relationships the palette has no token for yet.
+
+### D-062 · colouri.st launches as an independent open-source project, with my manager's agreement
+**Date:** 3 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-10
+
+**Decision:** colouri.st goes ahead as an independent, open-source project. Benji's Head of UX has agreed to this.
+
+**Context:** the original colour generator was built during Benji's work at his employer. colouri.st is a clean re-implementation of the method from documentation.
+
+**Consequences:**
+- The existing rules stay in force: no employer code, colours or names in the repo; `fixtures/private/` is never committed; example brands are invented.
+
+### D-063 · Two beta dates: December 2026 in public, 27 November as the deadline
+**Date:** 3 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-42
+
+**Decision:**
+- **In public, the beta is planned for December 2026.** That's what the README and anything else people outside the project see should say.
+- **The working deadline is Friday 27 November 2026.** The cycles, estimates and Plane dates are planned to it, including D-021's closed beta (23 to 26 November) and open beta (27 November).
+- **The gap is deliberate.** It's leeway: if the deadline slips, the public date still holds.
+
+**Why:** a public date with no slack becomes a broken promise if anything slips. A deadline the plan works to keeps the pace.
+
+**Consequences:**
+- The two dates aren't a mismatch, and don't need correcting. Public material says December 2026; planning works to 27 November.
+- If the work runs past 27 November, the public date only changes if it's going to run past December.
