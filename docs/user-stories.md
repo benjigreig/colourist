@@ -163,10 +163,10 @@ HCT in the comparison, and switching methods, are post-beta (CLR-71, D-024).
 **Jobs:** 3, 10 · **Plane:** CLR-15, CLR-12, CLR-25 · **Stage:** 4
 
 ```gherkin
-Scenario: Choose a vividness preset
+Scenario: Adjust vividness for a group
   Given my scales are generated
-  When I choose a vividness preset for a group
-  Then that group's shades update and every other group stays the same
+  When I change the recovery or ceiling for a group, or for one colour in it
+  Then those shades update and every other group stays the same
 
 Scenario: The setting that matters is shown first
   Given a group's vividness is limited by its ceiling, not its recovery
@@ -189,9 +189,9 @@ Scenario: My colours start as supplied
   Then each colour keeps its own vividness, reduced only to fit the screen
   And I can continue without changing anything
 ```
-**Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection, and colours held as supplied by default · `[e2e]` presets, readouts and skipping the stage · `[content]` the explanation of vividness
+**Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection, and colours held as supplied by default · `[e2e]` adjusting a group and a colour, readouts and skipping the stage · `[content]` the explanation of vividness
 
-This stage is optional: most people keep their colours as supplied. Vividness is set per colour or group (D-066). The single "style" question was split in two: the greys are chosen with the neutrals in US-05, and there's no project-wide vivid style (D-068).
+This stage is optional: most people keep their colours as supplied. There are no named presets beyond "hold": people set recovery and ceiling themselves (D-071). Vividness is set per colour or group (D-066). The single "style" question was split in two: the greys are chosen with the neutrals in US-05, and there's no project-wide vivid style (D-068).
 
 ### US-05 · Add the rest of my palette
 **As an** individual designer, **I want** to set up my greys and add the other colours a product needs, such as error, warning, success and info, named the way my team already works, **so that** I have full coverage and every colour stays clearly distinct.

@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-070 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-071 |
 
 ---
 
@@ -1188,3 +1188,23 @@ Two things often drawn as layers aren't tiers:
 - Added steps carry no use, and are named by their rounded grade like any other step. The D-049 contrast rule is unaffected.
 - The recipe ladders in the rules gain steps. At 11 grades, the default recipe at AA gains one step in the 68 to 81 gap; the light-only and AAA ladders gain two or three.
 - **How ladders are shown (Benji):** as one seamless strip per family, with markers outside the colour (a bar above an added step, a bar below the step nearest the source), so the blend between steps can be judged. The Vividness Tuner has this view, for the Ladder tab (D-061).
+
+### D-071 · One vividness preset, "hold"; people adjust recovery and ceiling themselves
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-15 · **Builds on:** D-066, D-068, D-069
+
+**Decision:**
+- **The only preset is "hold": recovery 0 and ceiling 1.** Every group starts on it, so every colour starts as supplied (D-068).
+- **There are no other named presets.** People adjust recovery and ceiling themselves, per group or per colour, and see the result as they go.
+
+**Context:** in the Vividness Tuner, recovery 0.5 with no ceiling looked right to Benji across the three example brands. Asked whether that should become the default or a named preset for pastel brands, Benji chose neither.
+
+**Alternatives considered:**
+- **Recovery 0.5 as the default.** Rejected: it changes every colour without the person asking, against D-068.
+- **Named presets, such as one for pastel brands.** Rejected: a preset is a decision made for people, and can teach a habit that doesn't suit their brand.
+
+**Why:** "We don't want to force bad habits or anti-patterns by making decisions for them." Starting as supplied is honest to the input, and the sliders, with the setting that's limiting each step shown first, let people find what suits their own colours.
+
+**Consequences:**
+- The `hold` preset in the rules loses its placeholder; `vividness.presets` holds only it.
+- US-04's "Choose a vividness preset" becomes adjusting recovery and ceiling for a group.
+- The explainer for this stage (US-11) should say what each setting does and when it helps, such as recovery for a pastel brand's dark steps, without prescribing values.

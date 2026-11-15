@@ -74,20 +74,22 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); out
 .family-name { font-weight: 600; }
 .family-meta { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
 .source-chip { width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: -4px; margin-right: 6px; box-shadow: inset 0 0 0 1px rgba(127,127,127,0.35); }
-.strips { overflow-x: auto; display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; }
+.strips { overflow-x: auto; display: flex; flex-direction: column; gap: 1px; padding-bottom: 4px; }
 .strip, .binding, .grades { display: grid; grid-template-columns: repeat(var(--steps), minmax(30px, 1fr)); gap: 2px; min-width: calc(var(--steps) * 32px); }
 .strip-label { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
 .cell { height: 40px; border-radius: 3px; position: relative; }
 /* Markers sit outside the colour so they don't interrupt the blend: a bar above an added step, a bar below the source's step. */
-.strip { padding-block: 6px; }
-.cell.is-added::before { content: ""; position: absolute; left: 2px; right: 2px; top: -6px; height: 3px; border-radius: 2px; background: var(--fg); }
+.strip { padding-block: 4px; }
+.cell.is-added::before { content: ""; position: absolute; left: 2px; right: 2px; top: -4px; height: 3px; border-radius: 2px; background: var(--fg); }
 .families.seamless .strip, .families.seamless .binding, .families.seamless .grades { gap: 0; }
 .families.seamless .cell { border-radius: 0; }
 .grades span.is-added { color: var(--fg); font-weight: 600; }
 .gap-report { font-size: 14px; }
 .cell.is-source::after {
-  content: ""; position: absolute; left: 2px; right: 2px; bottom: -6px; height: 3px; border-radius: 2px; background: var(--fg); pointer-events: none;
+  content: ""; position: absolute; left: 2px; right: 2px; bottom: -4px; height: 3px; border-radius: 2px; background: var(--fg); pointer-events: none;
 }
+/* Scale cells sit in a grey one visible step from the page, with a 1px gap that keeps the columns aligned with the swatches. */
+.binding span, .grades span { background: var(--surface); background-clip: content-box; padding-inline: 0.5px; line-height: 18px; }
 .binding span { font-family: var(--font-data); font-size: 11px; text-align: center; color: var(--muted); }
 .binding span.limit-ceiling { color: var(--fg); font-weight: 600; }
 .grades span { font-family: var(--font-data); font-size: 11px; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -140,7 +142,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); out
     <div class="control">
       <span class="eyebrow" id="presets-label">Starting points</span>
       <div class="presets" role="group" aria-labelledby="presets-label" id="presets"></div>
-      <label class="toggle" for="compare"><input id="compare" type="checkbox" checked> Show "as supplied" under each</label>
+      <label class="toggle" for="compare"><input id="compare" type="checkbox" checked> Show default vividness</label>
       <label class="toggle" for="seamless"><input id="seamless" type="checkbox" checked> Seamless strips</label>
     </div>
   </section>
@@ -152,6 +154,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); out
     <span><b>·</b> no colour at this step</span>
     <span><b>▔</b> bar above: an added step</span>
     <span><b>▁</b> bar below: nearest the source</span>
+    <span>Default vividness: each colour's own chroma, reduced only to fit the screen</span>
   </div>
 
   <main id="families" class="families"></main>
@@ -364,8 +367,12 @@ function stripCells(fam, ladder, recovery, ceiling) {
 }
 
 /** Render a strip as HTML. */
-function stripHtml(cells, label) {
-  return `<span class="strip-label">${label}</span><div class="strip">${cells.map((c) =>
+/** A strip's label, shown only when there's more than one strip to tell apart. */
+function stripLabel(label) { return label ? `<span class="strip-label">${label}</span>` : ''; }
+
+/** Render a strip of swatches (its label, if any, is rendered separately). */
+function stripHtml(cells) {
+  return `<div class="strip">${cells.map((c) =>
     `<div class="cell${c.isSource ? ' is-source' : ''}${c.added ? ' is-added' : ''}" style="background:${c.hex}" role="img" aria-label="Grade ${c.grade}, ${c.hex}, chroma ${c.chroma.toFixed(3)} of ${c.max.toFixed(3)}, limited by ${LIMIT_WORDS[c.limit]}${c.added ? ', an added step' : ''}${c.isSource ? ', nearest the source colour' : ''}" title="Grade ${c.grade}${c.added ? ' (added)' : ''} · ${c.hex}\nChroma ${c.chroma.toFixed(3)} of ${c.max.toFixed(3)} possible\nLimited by ${LIMIT_WORDS[c.limit]}"></div>`).join('')}</div>`;
 }
 
@@ -393,7 +400,7 @@ function render() {
       <div class="brand-head"><h2 id="brand-${brand.name}">${brand.name}</h2><span class="muted">${brand.note}</span></div>
       ${families.filter((f) => f.brand === brand.name).map((fam) => {
         const cells = stripCells(fam, ladder, recovery, ceiling);
-        const held = els.compare.checked ? stripHtml(stripCells(fam, ladder, 0, 1), 'As supplied') : '';
+        const held = els.compare.checked ? stripLabel('Default vividness') + stripHtml(stripCells(fam, ladder, 0, 1)) : '';
         return `<div class="family">
           <div class="family-label">
             <span class="family-name"><span class="source-chip" style="background:${fam.hex}"></span>${fam.name}</span>
@@ -401,8 +408,9 @@ function render() {
             <span class="family-meta">chroma ${fam.chroma.toFixed(3)} · hue ${fam.hue.toFixed(0)}°</span>
           </div>
           <div class="strips">
+            ${stripLabel(els.compare.checked ? 'Your settings' : '')}
             ${gradeRow}
-            ${stripHtml(cells, 'Your settings')}
+            ${stripHtml(cells)}
             <div class="binding" aria-hidden="true">${cells.map((c) => `<span class="limit-${c.limit}">${LIMIT_LETTER[c.limit]}</span>`).join('')}</div>
             ${held}
           </div>
