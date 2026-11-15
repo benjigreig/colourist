@@ -1164,6 +1164,7 @@ Two things often drawn as layers aren't tiers:
 
 **Consequences:**
 - Contrast is unchanged by either setting, because it depends only on L* (D-012). US-04's property test proves it.
+  - **Corrected 15 Nov 2026, while building CLR-15:** L* and CIE Y don't change, but WCAG 2 weights the channels with rounded coefficients (0.2126, 0.7152, 0.0722), so a step's exact WCAG grade moves by up to a few thousandths as its chroma changes. No rounded grade, contrast rule or pass or fail changes. The property test allows 0.01 of a grade.
 - More chroma can make a colour look lighter (the Helmholtz–Kohlrausch effect), which WCAG and APCA ignore. Watch for it in CLR-95.
 - The presets' values, and the threshold for "very little chroma" (D-068), are still to decide in CLR-15.
 

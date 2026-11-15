@@ -181,7 +181,8 @@ Scenario: Small changes are made visible
 Scenario: Vividness never changes contrast
   Given any vividness settings
   When the scales are regenerated
-  Then every contrast figure is identical to before
+  Then every step's lightness is identical to before
+  And no contrast result, rounded grade or pass or fail changes
 
 Scenario: My colours start as supplied
   Given my scales are generated
@@ -191,7 +192,7 @@ Scenario: My colours start as supplied
 ```
 **Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection, and colours held as supplied by default · `[e2e]` adjusting a group and a colour, readouts and skipping the stage · `[content]` the explanation of vividness
 
-This stage is optional: most people keep their colours as supplied. There are no named presets beyond "hold": people set recovery and ceiling themselves (D-071). Vividness is set per colour or group (D-066). The single "style" question was split in two: the greys are chosen with the neutrals in US-05, and there's no project-wide vivid style (D-068).
+This stage is optional: most people keep their colours as supplied. There are no named presets beyond "hold": people set recovery and ceiling themselves (D-071). Chroma can move a step's exact WCAG grade by a few thousandths, because WCAG rounds its channel weights, but never enough to change a result (D-069). Vividness is set per colour or group (D-066). The single "style" question was split in two: the greys are chosen with the neutrals in US-05, and there's no project-wide vivid style (D-068).
 
 ### US-05 · Add the rest of my palette
 **As an** individual designer, **I want** to set up my greys and add the other colours a product needs, such as error, warning, success and info, named the way my team already works, **so that** I have full coverage and every colour stays clearly distinct.

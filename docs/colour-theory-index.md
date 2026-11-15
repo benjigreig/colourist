@@ -11,7 +11,7 @@ Terms are defined in the glossary (CLR-93). Sources to read later are in [`resea
 | Question | Answer | Where | Status |
 |---|---|---|---|
 | What sets lightness, and what sets hue and chroma? | CIE L\* (D65) for lightness; OKLCH for hue and chroma | [D-012](decision-log.md), [ADR 0001](adr/0001-colour-model.md) | Settled |
-| Does chroma affect contrast? | No. Contrast depends only on L\*, so chroma can be tuned freely | [D-012](decision-log.md); earlier work | Settled; re-validate the measurement |
+| Does chroma affect contrast? | Not in any way that counts. L\* and CIE Y don't change. WCAG 2's rounded channel weights move a step's exact grade by up to a few thousandths as its chroma changes, never enough to change a rounded grade or a pass or fail | [D-012, D-069](decision-log.md), CLR-15 tests | Settled; measured in CLR-15 |
 | How are steps within a family told apart? | By their L\* gap | [D-012, D-026](decision-log.md) | Settled |
 | How are families told apart? | By ΔE across every shade, allowing for the ends, and checked under colour vision deficiency | [D-026](decision-log.md) | Settled; thresholds still open (CLR-16, CLR-18) |
 | Can the lightest and darkest steps carry a colour's identity? | No. They sit close to neutral or converge | [D-026](decision-log.md); earlier work | Settled |
