@@ -1,0 +1,22 @@
+Doggly/Verdigris             {'srcC': 0.1041, 'srcH': 183.2, 'ok_deg': 1.29, 'ok_dH': 0.0012, 'cam_deg_max': 2.1000000000000001, 'cam_mid_spread': 1.5, 'cam_dH_max': 0.72, 'srcM': 30.699999999999999}
+Doggly/Neon pink             {'srcC': 0.2445, 'srcH': 5.6, 'ok_deg': 3.58, 'ok_dH': 0.0011, 'cam_deg_max': 24.100000000000001, 'cam_mid_spread': 0.69999999999999996, 'cam_dH_max': 5.01, 'srcM': 68.900000000000006}
+Doggly/Dusty grape           {'srcC': 0.1036, 'srcH': 277.9, 'ok_deg': 1.86, 'ok_dH': 0.001, 'cam_deg_max': 25.399999999999999, 'cam_mid_spread': 3.7999999999999998, 'cam_dH_max': 5.1, 'srcM': 28.800000000000001}
+Doggly/Tangerine dream       {'srcC': 0.1327, 'srcH': 43.2, 'ok_deg': 5.41, 'ok_dH': 0.0011, 'cam_deg_max': 23.899999999999999, 'cam_mid_spread': 1.8999999999999999, 'cam_dH_max': 2.82, 'srcM': 31.699999999999999}
+Kerfwell/Brick red           {'srcC': 0.1992, 'srcH': 24.6, 'ok_deg': 7.24, 'ok_dH': 0.0012, 'cam_deg_max': 17.0, 'cam_mid_spread': 0.90000000000000002, 'cam_dH_max': 2.95, 'srcM': 62.799999999999997}
+Kerfwell/Air Force blue      {'srcC': 0.0746, 'srcH': 227.7, 'ok_deg': 1.45, 'ok_dH': 0.001, 'cam_deg_max': 5.5999999999999996, 'cam_mid_spread': 3.6000000000000001, 'cam_dH_max': 1.26, 'srcM': 23.699999999999999}
+Kerfwell/Mono dark           {'srcC': 0.0024, 'srcH': 247.9, 'ok_deg': 19.24, 'ok_dH': 0.0009, 'cam_deg_max': 17.600000000000001, 'cam_mid_spread': 30.399999999999999, 'cam_dH_max': 0.7, 'srcM': 1.7}
+Kerfwell/Mono light          {'srcC': 0.0069, 'srcH': 354.9, 'ok_deg': 8.76, 'ok_dH': 0.001, 'cam_deg_max': 47.299999999999997, 'cam_mid_spread': 27.800000000000001, 'cam_dH_max': 1.46, 'srcM': 1.6000000000000001}
+Sorrel/Pink mist             {'srcC': 0.1012, 'srcH': 344.7, 'ok_deg': 2.03, 'ok_dH': 0.0009, 'cam_deg_max': 25.0, 'cam_mid_spread': 1.8, 'cam_dH_max': 4.0, 'srcM': 26.800000000000001}
+Sorrel/Sage green            {'srcC': 0.1511, 'srcH': 133.3, 'ok_deg': 0.55, 'ok_dH': 0.0005, 'cam_deg_max': 6.4000000000000004, 'cam_mid_spread': 2.1000000000000001, 'cam_dH_max': 2.71, 'srcM': 41.899999999999999}
+Sorrel/Muted olive           {'srcC': 0.1029, 'srcH': 129.8, 'ok_deg': 0.33, 'ok_dH': 0.0005, 'cam_deg_max': 4.0999999999999996, 'cam_mid_spread': 3.2999999999999998, 'cam_dH_max': 1.47, 'srcM': 27.300000000000001}
+Sorrel/Pink orchid           {'srcC': 0.0758, 'srcH': 334.9, 'ok_deg': 1.83, 'ok_dH': 0.0011, 'cam_deg_max': 21.699999999999999, 'cam_mid_spread': 2.8999999999999999, 'cam_dH_max': 3.39, 'srcM': 20.5}
+Sorrel/Petal frost           {'srcC': 0.0473, 'srcH': 334.7, 'ok_deg': 1.67, 'ok_dH': 0.0008, 'cam_deg_max': 19.199999999999999, 'cam_mid_spread': 2.8999999999999999, 'cam_dH_max': 2.41, 'srcM': 13.199999999999999}
+Kerfwell/Brick red: worst 7.24 deg at L* 97.67, chroma 0.0092, #fff6f6
+Doggly/Tangerine dream: worst 5.41 deg at L* 97.67, chroma 0.0100, #fff7f3
+Doggly/Neon pink: worst 3.58 deg at L* 97.67, chroma 0.0095, #fff6f8
+0.02 [29.0, 60.0]
+0.05 [11.5, 23.1]
+0.1 [5.7, 11.5]
+0.15 [3.8, 7.6]
+0.2 [2.9, 5.7]
+0.25 [2.3, 4.6]

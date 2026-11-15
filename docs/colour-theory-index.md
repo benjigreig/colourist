@@ -6,7 +6,7 @@ Questions already answered. Check here before raising a colour question, then bu
 - **Earlier work, to re-validate:** answered in Benji's earlier, private colour work. It's confirmed against public research or our own test before it's relied on, then marked settled and linked to where that's recorded. No detail from that work goes in this repo.
 - **Open:** being worked on.
 
-Terms are defined in the glossary (CLR-93). Each row stays one line and links to the detail.
+Terms are defined in the glossary (CLR-93). Sources to read later are in [`research/colour-theory-reading.md`](research/colour-theory-reading.md). Each row stays one line and links to the detail.
 
 | Question | Answer | Where | Status |
 |---|---|---|---|

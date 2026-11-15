@@ -2,7 +2,7 @@
 
 Invented brands for demos, tests and "Try an example" (US-01, CLR-9). Together they cover what the engine has to handle. Any resemblance to a real business is unintended. Names were checked with a quick web search on 3 November 2026, not a trademark search.
 
-Each colour's role (primary, secondary, tertiary or mono) is part of the brand data, as Benji agreed on 3 November 2026.
+Each colour's role (primary, secondary or tertiary) is part of the brand data, as Benji agreed on 3 November 2026. The engine carries it but doesn't act on it (D-025).
 
 ## Doggly: the saturated brand
 
@@ -17,7 +17,7 @@ Bright, playful collars, leads and toys for dogs with big personalities. The col
 
 **What it tests:** gamut mapping, with Neon pink near the edge of sRGB; brand colours in the middle of the ladder that miss 4.5:1 against white (Verdigris and Neon pink); and four hues spread around the wheel.
 
-## Kerfwell: strong primary, own greys
+## Kerfwell: strong primary, with greys of its own
 
 An online store for carpenters and keen DIYers: timber, fixings and hand tools, delivered fast. A strong brick red and a steady blue, with its own near-black and a warm off-white.
 
@@ -25,10 +25,12 @@ An online store for carpenters and keen DIYers: timber, fixings and hand tools, 
 |---|---|---|---|---|---|---|
 | Primary | Brick red | `#bb0a21` | 39 | 74 | 32° | 6.61:1 |
 | Secondary | Air Force blue | `#4b88a2` | 54 | 23 | 238° | 3.93:1 |
-| Mono | Mono dark | `#252627` | 15 | 1 | — | 15.16:1 |
-| Mono | Mono light | `#fff9fb` | 98 | 2 | 354° | 1.04:1 |
+| Tertiary | Mono dark | `#252627` | 15 | 1 | — | 15.16:1 |
+| Tertiary | Mono light | `#fff9fb` | 98 | 2 | 354° | 1.04:1 |
 
-**What it tests:** a dark, saturated primary; greys supplied by the brand rather than generated, with a near-white that carries a faint pink tint; and a muted secondary.
+**What it tests:** a dark, saturated primary; greys supplied by the brand, with a near-white that carries a faint pink tint; and a muted secondary.
+
+**How the greys are treated (Benji, 15 November 2026):** Mono dark and Mono light are tertiary colours like any other. colouri.st doesn't assume they're the brand's neutrals. If they're the only greys supplied, colouri.st can suggest basing the neutrals on them, but that's the person's choice. Either way they keep the tint they were supplied with: colouri.st works with what it's given and stays true to it.
 
 ## Sorrel: the pastel stress test, with close hues
 

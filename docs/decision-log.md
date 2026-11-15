@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-063 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-064 |
 
 ---
 
@@ -1044,3 +1044,23 @@ Two things often drawn as layers aren't tiers:
 **Consequences:**
 - The two dates aren't a mismatch, and don't need correcting. Public material says December 2026; planning works to 27 November.
 - If the work runs past 27 November, the public date only changes if it's going to run past December.
+
+### D-064 · Brand colours are taken as supplied; greys keep their tint, and aren't assumed to be the neutrals
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-14, CLR-9
+
+**Decision:**
+- **colouri.st works with what it's given, and stays true to it.** A brand colour keeps the hue and tint it was supplied with, however faint.
+- **Greys a brand supplies are brand colours like any other,** usually tertiary. colouri.st doesn't assume they're the brand's neutrals.
+- **Basing the neutrals on them is the person's choice.** If they're the only greys supplied, colouri.st can suggest it, but doesn't do it on its own.
+
+**Context:** Kerfwell, an example brand (CLR-9), supplies its own near-black and a near-white with a faint pink tint (`#fff9fb`). Writing the CLR-14 handoff raised whether those should become the neutral group, and whether to keep the tint or treat them as pure grey.
+
+**Alternatives considered:**
+- **Treat supplied greys as the neutrals automatically.** Rejected: it's an assumption about the brand that the person should make.
+- **Strip the tint and treat them as pure grey.** Rejected: it changes what the brand supplied.
+
+**Why:** colouri.st's value depends on being faithful to the brand. Quietly changing an input, or deciding what it's for, would undermine that.
+
+**Consequences:**
+- The engine keeps a near-grey's hue wherever it has one. Only a true grey has an empty hue (D-047).
+- The neutral group's suggestion, when the only greys come from the brand, belongs in the palette stage (US-05), as a choice the person makes.
