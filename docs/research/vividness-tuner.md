@@ -29,7 +29,7 @@ Checked against the engine and the research: at "hold", Brick red's palest step 
 
 - **A visible jump between grades 68 and 81** in every family on the default recipe at AA: 13 grades, where no use places a step. Benji spotted it.
 - **Bigger holes elsewhere:** 21.4 grades in the AAA ladders (37 to 58, because AAA text skips the steps AA uses), and 23 to 27 grades in the light-only recipes (68 to 91, because nothing uses the dark end).
-- **A maximum gap of 11 grades looked right on every colour** (D-070). At 11, the default recipe at AA gains one step, at grade 75; the AAA and light-only ladders gain two or three.
+- **A maximum gap of 11 grades looked right on every colour** (D-070). At 11, every light-and-dark recipe gains one step at AA (75, in the 68 to 81 gap) and one at AAA (48, in the 37 to 58 gap); the light-only recipes gain three at AA (44, 76 and 83) and two at AAA (46 and 55). Corrected 15 Nov 2026: the first version gave the counts for a 9-grade gap.
 - **Recovery changes some colours far more than others.** At 0.5, Dusty grape turned a bright violet-blue, while the pastels changed gently. One setting doesn't suit every colour.
 - **Recovery 0.5 with no ceiling looked right to Benji across the brands,** but he chose not to make it a default or a named preset (D-071): people adjust it themselves.
 

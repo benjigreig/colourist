@@ -1187,7 +1187,7 @@ Two things often drawn as layers aren't tiers:
 
 **Consequences:**
 - Added steps carry no use, and are named by their rounded grade like any other step. The D-049 contrast rule is unaffected.
-- The recipe ladders in the rules gain steps. At 11 grades, the default recipe at AA gains one step in the 68 to 81 gap; the light-only and AAA ladders gain two or three.
+- The recipe ladders in the rules gain steps. At 11 grades, every light-and-dark recipe gains one step at AA (75, in the 68 to 81 gap) and one at AAA (48, in the 37 to 58 gap); the light-only recipes gain three at AA (44, 76 and 83) and two at AAA (46 and 55). Corrected 15 Nov 2026: the first version gave the counts for a 9-grade gap.
 - **How ladders are shown (Benji):** as one seamless strip per family, with markers outside the colour (a bar above an added step, a bar below the step nearest the source), so the blend between steps can be judged. The Vividness Tuner has this view, for the Ladder tab (D-061).
 
 ### D-071 · One vividness preset, "hold"; people adjust recovery and ceiling themselves
