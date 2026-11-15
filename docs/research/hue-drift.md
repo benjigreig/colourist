@@ -5,7 +5,7 @@
 ## Summary
 
 - **A threshold in degrees measures the wrong thing.** How visible a hue change is depends on chroma. The same angle is obvious in a vivid colour and invisible in a near-grey. At chroma 0.25, 10° is more than two just noticeable differences (JND). At chroma 0.02, 10° is about a sixth of one.
-- **The engine holds OKLCH hue exactly** (D-012, D-047), so the only drift in what it controls comes from rounding to hex. On the three example brands, that drift is at most 0.0012 as a hue difference: about a sixteenth of a JND. In degrees it reaches 7.2°, but only in the lightest step, where the chroma is close to nothing.
+- **The engine holds OKLCH hue exactly** (D-012, D-047), so the only drift in what it controls comes from rounding to hex. On the three example brands, that drift is at most 0.0012 as a hue difference: about a sixteenth of a JND. In degrees it reaches 7.3°, but only in the lightest step, where the chroma is close to nothing.
 - **Recommendation:** measure drift as a hue difference weighted by chroma (ΔH in OKLab units), not as an angle. Hold it to **0.01, half a JND**. That's tight enough that no drift the threshold allows is visible, and loose enough to absorb hex rounding with a wide margin. In degrees, it allows about 2.3° at chroma 0.25, 5.7° at 0.10 and 11.5° at 0.05.
 - **Perceived drift is a separate question.** An independent appearance model, CAM16, sees 0.7° to 3.8° of drift across the middle steps of each colour, and more in the palest tints. That's where the colour models disagree with each other, not something the engine can correct. Report it in the method comparison (US-03), but don't use it as a threshold.
 
@@ -38,19 +38,19 @@ Each example colour was built the way the method builds it: CIE L* from the defa
 |---|---|---|---|---|
 | Verdigris | 0.104 | 1.3° | 0.0012 | 1.5° |
 | Neon pink | 0.245 | 3.6° | 0.0011 | 0.7° |
-| Dusty grape | 0.104 | 1.9° | 0.0010 | 3.8° |
+| Dusty grape | 0.104 | 1.8° | 0.0010 | 3.8° |
 | Tangerine dream | 0.133 | 5.4° | 0.0011 | 1.9° |
-| Brick red | 0.199 | 7.2° | 0.0012 | 0.9° |
+| Brick red | 0.199 | 7.3° | 0.0012 | 0.9° |
 | Air Force blue | 0.075 | 1.5° | 0.0010 | 3.6° |
-| Mono dark | 0.002 | 19.2° | 0.0009 | n/a (near-grey) |
+| Mono dark | 0.002 | 19.1° | 0.0009 | n/a (near-grey) |
 | Mono light | 0.007 | 8.8° | 0.0010 | n/a (near-grey) |
-| Pink mist | 0.101 | 2.0° | 0.0009 | 1.8° |
+| Pink mist | 0.101 | 2.1° | 0.0009 | 1.8° |
 | Sage green | 0.151 | 0.6° | 0.0005 | 2.1° |
 | Muted olive | 0.103 | 0.3° | 0.0005 | 3.3° |
-| Pink orchid | 0.076 | 1.8° | 0.0011 | 2.9° |
-| Petal frost | 0.047 | 1.7° | 0.0008 | 2.9° |
+| Pink orchid | 0.076 | 1.9° | 0.0011 | 2.9° |
+| Petal frost | 0.047 | 1.7° | 0.0009 | 2.9° |
 
-- **The largest OKLCH drifts in degrees all sit in the lightest step** (L* 97.7), where gamut mapping leaves about 0.01 chroma. For example, Brick red's 7.2° is `#fff6f6`. As a hue difference, it's the same size as everywhere else.
+- **The largest OKLCH drifts in degrees all sit in the lightest step** (L* 97.7), where gamut mapping leaves about 0.01 chroma. For example, Brick red's 7.3° is `#fff6f6`. As a hue difference, it's the same size as everywhere else.
 - **The middle steps are L* 75 to 23,** close to ADR 0001's steps 200 to 900. The CAM16 figures there are lower than ADR 0001's 13.4° worst case, which came from a saturated blue in a different brand set.
 - **Near-greys have no meaningful hue drift.** Their hue is kept as supplied (D-064), and any drift is too small to see.
 
@@ -59,6 +59,10 @@ Each example colour was built the way the method builds it: CIE L* from the defa
 - `hue.maxDrift` becomes a hue difference in OKLab units, `0.01`, with its reason, in place of `degrees: 10`.
 - The engine reports each family's worst ΔH, and also its worst angle, so the interface can say "about 3° in your darkest step" in terms people know.
 - US-03's "unless the sRGB limit forces it" stays: gamut mapping keeps hue exactly (D-047), so in practice only hex rounding moves it, and that stays far below the threshold.
+
+## Correction
+
+- **15 November 2026:** the first version of `drift.py` had a typo in one sRGB matrix value (`1053342` where CSS Color 4 has `1053270`), found by Claude Code while planning CLR-14. Fixing it moved some figures in the second decimal place; the tables above use the corrected run. No finding changed.
 
 ## Limits
 

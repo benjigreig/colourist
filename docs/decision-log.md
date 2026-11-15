@@ -1073,7 +1073,7 @@ Two things often drawn as layers aren't tiers:
 - **The threshold is 0.01: half of one just noticeable difference** in OKLCH, which CSS Color 4 sets at 0.02. It replaces the 10° stand-in in `hue.maxDrift`.
 - **The engine also reports each family's worst drift in degrees,** so the interface can describe it in terms people know.
 
-**Context:** the rules held a 10° stand-in for CLR-14. Benji thought it too loose. On the three example brands, built the way the method builds them and rounded to hex, the worst drift is 0.0012, about a sixteenth of a just noticeable difference. In degrees it reaches 7.2°, but only in the palest step, where almost no chroma is left.
+**Context:** the rules held a 10° stand-in for CLR-14. Benji thought it too loose. On the three example brands, built the way the method builds them and rounded to hex, the worst drift is 0.0012, about a sixteenth of a just noticeable difference. In degrees it reaches 7.3°, but only in the palest step, where almost no chroma is left.
 
 **Alternatives considered:**
 - **A tighter threshold in degrees.** Rejected: how visible a hue change is depends on chroma. 10° is more than two just noticeable differences in a vivid colour and a sixth of one in a near-grey, so no single angle works for both.
