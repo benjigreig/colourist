@@ -12,6 +12,7 @@ import type { JSONSchemaType } from 'ajv';
 import type {
   ContextTargets,
   ContrastTarget,
+  HueDifferenceRule,
   HueRule,
   Choice,
   LadderStep,
@@ -29,7 +30,7 @@ import type {
 } from './types.ts';
 
 /** The schema's version. A breaking change to the schema raises it. */
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 
 /** The schema's identifier. */
 export const SCHEMA_ID = `https://colouri.st/schemas/rules-${SCHEMA_VERSION}.schema.json`;
@@ -266,6 +267,17 @@ const hueRule: JSONSchemaType<HueRule> = {
   required: ['degrees', 'reason'],
   properties: {
     degrees: { type: 'number', minimum: 0, maximum: 180 },
+    reason,
+    placeholder: optionalPlaceholder,
+  },
+};
+
+const hueDifferenceRule: JSONSchemaType<HueDifferenceRule> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['hueDifference', 'reason'],
+  properties: {
+    hueDifference: { type: 'number', minimum: 0, maximum: 1 },
     reason,
     placeholder: optionalPlaceholder,
   },
@@ -514,7 +526,7 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
       type: 'object',
       additionalProperties: false,
       required: ['maxDrift'],
-      properties: { maxDrift: hueRule },
+      properties: { maxDrift: hueDifferenceRule },
     },
     semantic: mapOf(semanticToken, TOKEN_ID_PATTERN),
     naming: {

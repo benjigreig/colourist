@@ -4,6 +4,8 @@ Invented brands for demos, tests and "Try an example" (US-01, CLR-9). Together t
 
 Each colour's role (primary, secondary or tertiary) is part of the brand data, as Benji agreed on 3 November 2026. The engine carries it but doesn't act on it (D-025).
 
+The colour data itself lives in [`packages/examples`](../packages/examples/src/index.ts) (`@colourist/examples`), which the app and the tests share. This page holds each brand's story and what it tests (D-067).
+
 ## Doggly: the saturated brand
 
 Bright, playful collars, leads and toys for dogs with big personalities. The colours are loud on purpose: a teal primary with hot pink, grape and tangerine accents.

@@ -10,5 +10,9 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p . && tsc --noEmit -p test"
+  },
+  "devDependencies": {
+    "@colourist/examples": "0.0.0",
+    "@colourist/rules": "0.0.0"
   }
 }

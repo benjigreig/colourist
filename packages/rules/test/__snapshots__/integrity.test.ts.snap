@@ -29,7 +29,6 @@ exports[`the default rules hang together > CLR-7: Default configuration file val
   "distinctness.withinGroup",
   "distinctness.extremeSteps",
   "distinctness.similarHue",
-  "hue.maxDrift",
   "semantic.surface.default",
   "semantic.surface.raised",
   "semantic.text.body",

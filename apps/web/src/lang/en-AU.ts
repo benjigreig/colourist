@@ -284,7 +284,8 @@ export const rules = {
   },
   hue: {
     maxDrift: {
-      reason: "Placeholder: CLR-14 decides how far a colour's hue may drift across its scale.",
+      reason:
+        "Each colour keeps its hue in every shade. Rounding to hex can shift it very slightly, so it's held to half the smallest hue change people can see.",
     },
   },
   semantic: {

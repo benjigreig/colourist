@@ -43,6 +43,21 @@ export { srgbToHsl, type Hsl } from './hsl.ts';
 export { deltaE2000, deltaEOk } from './delta-e.ts';
 export { contrastGrade, gradesForRatio } from './grade.ts';
 export {
+  CHROMA_STAND_IN,
+  generateScales,
+  groupSettings,
+  type Drift,
+  type Family,
+  type FamilyStep,
+  type GroupSettings,
+  type Palette,
+  type Placement,
+  type ScaleColor,
+  type ScaleGroup,
+  type ScaleLadderStep,
+  type ScaleRequest,
+} from './scales.ts';
+export {
   chooseRecipe,
   type ChoiceDefault,
   type RecipeChoice,

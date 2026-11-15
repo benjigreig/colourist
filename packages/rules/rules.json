@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/rules.schema.json",
-  "meta": { "rulesVersion": "0.2.0", "schemaVersion": 2 },
+  "meta": { "rulesVersion": "0.3.0", "schemaVersion": 3 },
   "questions": [
     {
       "id": "activities",
@@ -2766,14 +2766,7 @@
     }
   },
   "hue": {
-    "maxDrift": {
-      "degrees": 10,
-      "reason": "rules.hue.maxDrift.reason",
-      "placeholder": {
-        "ticket": "CLR-14",
-        "note": "Stand-in threshold. ADR 0001 measured a worst drift of 3.7° in OKLCH for the recommended method."
-      }
-    }
+    "maxDrift": { "hueDifference": 0.01, "reason": "rules.hue.maxDrift.reason" }
   },
   "semantic": {
     "surface.default": {

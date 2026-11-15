@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://colouri.st/schemas/rules-2.schema.json",
+  "$id": "https://colouri.st/schemas/rules-3.schema.json",
   "title": "colouri.st rules",
   "description": "The colouri.st method as versioned, declarative data the engine reads (ADR 0005). Every rule carries a reason key into the language files.",
   "type": "object",
@@ -28,7 +28,7 @@
       "required": ["rulesVersion", "schemaVersion"],
       "properties": {
         "rulesVersion": { "type": "string", "pattern": "^[0-9]{1,4}\\.[0-9]{1,4}\\.[0-9]{1,4}$" },
-        "schemaVersion": { "type": "integer", "const": 2 }
+        "schemaVersion": { "type": "integer", "const": 3 }
       }
     },
     "questions": {
@@ -770,9 +770,9 @@
         "maxDrift": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["degrees", "reason"],
+          "required": ["hueDifference", "reason"],
           "properties": {
-            "degrees": { "type": "number", "minimum": 0, "maximum": 180 },
+            "hueDifference": { "type": "number", "minimum": 0, "maximum": 1 },
             "reason": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
             "placeholder": {
               "type": "object",

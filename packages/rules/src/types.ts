@@ -340,9 +340,20 @@ export interface Distinctness {
   similarHue: HueRule;
 }
 
-/** Hue: how far a colour's hue may drift across its scale (US-03). */
+/**
+ * A limit on a hue difference weighted by chroma, ΔH = 2·√(C₁·C₂)·sin(Δh/2), in OKLab units.
+ * Unlike an angle, it tracks what people can see at any chroma (D-065).
+ */
+export interface HueDifferenceRule {
+  hueDifference: number;
+  reason: ReasonKey;
+  placeholder?: Placeholder;
+}
+
+/** Hue: how far a colour's hue may drift across its scale (US-03, D-065). */
 export interface Hue {
-  maxDrift: HueRule;
+  /** 0.01, half of one just noticeable difference in OKLCH. */
+  maxDrift: HueDifferenceRule;
 }
 
 /** A semantic token: a named job in the interface, mapped to a grade in each context (US-06). */

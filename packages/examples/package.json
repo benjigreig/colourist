@@ -1,0 +1,14 @@
+{
+  "name": "@colourist/examples",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Invented example brands for demos, tests and \"Try an example\" (US-01, CLR-9). Data only.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ."
+  }
+}

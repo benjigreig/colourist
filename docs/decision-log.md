@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-065 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-067 |
 
 ---
 
@@ -1085,3 +1085,34 @@ Two things often drawn as layers aren't tiers:
 **Consequences:**
 - CLR-14 changes `hue.maxDrift` to a hue difference of 0.01 and removes its placeholder, with the reason text updated.
 - In degrees, the threshold allows about 2.3° at chroma 0.25, 5.7° at 0.10 and 11.5° at 0.05.
+
+### D-066 · A group carries its vividness preset, reported until vividness is applied
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-14, CLR-15
+
+**Decision:**
+- **A group's settings are its vividness preset:** `{ vividness: presetId }`, taken from the rules' defaults (`vividness.defaults`), and the person can override it for any group.
+- **The engine reports each group's settings with its colours, but doesn't apply them yet.** Every step asks for the source's own chroma until the vividness curve is decided (CLR-15), and each family's result says so.
+
+**Context:** CLR-14's acceptance criteria say colours can be grouped and groups carry their own settings (D-025). The only per-group setting the rules hold so far is the vividness preset.
+
+**Alternatives considered:** inventing other group settings now; leaving groups without settings until CLR-15.
+
+**Why:** It meets the criterion with a setting that already exists, without inventing one, and gives CLR-15 the place to apply it.
+
+**Consequences:** CLR-15 applies the preset to each group's steps. Other group settings are added when a decision calls for them.
+
+### D-067 · The example brands' colours live in a data-only package, `@colourist/examples`
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-14, CLR-9, CLR-22
+
+**Decision:**
+- **The colours of Doggly, Kerfwell and Sorrel live in `packages/examples`** (`@colourist/examples`): each colour's ID, name, group, role and hex, and nothing else. The app's "Try an example" (US-01) and the tests share it.
+- **[`docs/example-brands.md`](example-brands.md) holds each brand's story and what it tests.** Brand descriptions are text people read, so they go in the language files when "Try an example" is built (CLR-22).
+
+**Context:** CLR-14's tests and the app both need the example brands. The engine can't import the app, and the rules package holds the method, not sample input.
+
+**Alternatives considered:** an `examples` export from the rules package; a copy in the app and another in the tests.
+
+**Why:** Sample input isn't part of the method, and one copy keeps the tests and the app in step. A data-only package has no dependencies of its own.
+
+**Consequences:** The engine's tests import it as a development dependency. A change to an example brand's colours goes in the package, and the doc's tables are kept to match.
+

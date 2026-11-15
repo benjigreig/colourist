@@ -16,6 +16,7 @@ colouri.st runs entirely in your browser. Your colours never leave it, and there
 |---|---|
 | [`packages/engine`](packages/engine) | Pure TypeScript colour maths. No interface or framework code. |
 | [`packages/rules`](packages/rules) | The method as versioned, declarative data the engine reads, with the rationale for each rule. |
+| [`packages/examples`](packages/examples) | The invented example brands' colours, as data for demos, tests and "Try an example". |
 | [`apps/web`](apps/web) | The guided app. Logic is plain TypeScript; Svelte 5 is used only in the view components. |
 | [`scripts`](scripts) | Repo tooling, such as the scenario report. |
 | [`docs`](docs) | The master copies of the problem statement, jobs to be done, user stories, decision log and ADRs. |
