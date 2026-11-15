@@ -1,6 +1,8 @@
 # Colour theory reading list
 
-Sources to draw on later, for research and for the explainers (US-11). Collected by Benji on 15 November 2026 from recommendations in a generative art community. Links and short descriptions only: no copies of the material (repo rule). Nothing here has been read for colouri.st yet. When a source is used, cite it where it's used and note it here.
+Sources to draw on later, for research and for the explainers (US-11). Collected by Benji on 15 November 2026 from recommendations in a generative art community. Links and short descriptions only: no copies of the material (repo rule). When a source is used, cite it where it's used and note it here.
+
+**Used so far:** huevaluechroma.com, "Blackness and brilliance" (`018.php`), and handprint's *Geometry of color perception*, for recovery and ceiling (D-069, 15 November 2026).
 
 | Source | What it covers | Why it may help |
 |---|---|---|

@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-068 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-069 |
 
 ---
 
@@ -1141,3 +1141,28 @@ Two things often drawn as layers aren't tiers:
 - The `vividness.styles` placeholders in the rules are removed in CLR-15. The default preset holds each colour's own chroma.
 - The threshold for "very little chroma" is a placeholder, decided with CLR-15. Kerfwell's Mono dark (0.002) and Mono light (0.007) must count as candidates.
 - How much tint the greys get is decided with CLR-15.
+
+### D-069 · Vividness is two settings, recovery and ceiling, each a share of what a step can show
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-15 · **Builds on:** D-012, D-066, D-068
+
+**Decision:**
+- **Each step's maximum** is the most chroma the screen can show at that step's lightness and the colour's hue (D-047).
+- **Recovery** lifts each step's chroma from the source's own chroma towards that maximum. At 0 the family holds the source's chroma ("hold"); at 1 every step is as vivid as the screen allows.
+- **Ceiling** caps each step's chroma at a share of that maximum. At 1 there's no cap.
+- **A step's chroma is the lower of the two:** min(ceiling × maximum, source chroma + recovery × (maximum − source chroma)), and never more than the maximum.
+- **The engine reports which one limits each step:** recovery, the ceiling, or the screen's gamut. The interface shows that setting first (US-04).
+- **Both are set per group, through its preset, and can be changed per colour (D-066, D-068).** The source colour itself is never changed (D-064).
+- **Recovery and ceiling stay in the beta,** for pastel brands in particular.
+
+**Context:** holding the source's chroma at every step leaves a pastel family's dark steps muddy: a dark Pink mist reads as brown. Holding a vivid colour's chroma makes its middle steps loud. Benji confirmed the definitions match the earlier work they come from. Benji decided against deferring them to after the beta.
+
+**Alternatives considered:**
+- **One "more or less vivid" control for the beta.** Rejected: it can't fix a pastel's dark steps without also making the vivid ones louder.
+- **Settings in absolute chroma.** Rejected: the maximum differs greatly by hue and lightness, so a fixed number does different things to different colours.
+
+**Why:** relative settings treat every hue alike, and keep a family's proportion of colour steady across its steps. That's NCS's "nuance", which many observers find more pleasing than equal chroma (huevaluechroma.com, "Blackness and brilliance"). Dark colours take on blackness as well as losing lightness, which is what recovery counteracts.
+
+**Consequences:**
+- Contrast is unchanged by either setting, because it depends only on L* (D-012). US-04's property test proves it.
+- More chroma can make a colour look lighter (the Helmholtz–Kohlrausch effect), which WCAG and APCA ignore. Watch for it in CLR-95.
+- The presets' values, and the threshold for "very little chroma" (D-068), are still to decide in CLR-15.
