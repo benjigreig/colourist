@@ -1168,7 +1168,7 @@ Two things often drawn as layers aren't tiers:
 - The presets' values, and the threshold for "very little chroma" (D-068), are still to decide in CLR-15.
 
 ### D-070 · Ladders have a maximum gap of 11 grades; a control for it comes after the beta
-**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-054 · **Plane:** CLR-13, CLR-98, CLR-15 · **Tool:** the Vividness Tuner (`docs/research/vividness-tuner/`)
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-054 · **Plane:** CLR-13, CLR-98, CLR-15 · **Research:** [research/vividness-tuner.md](research/vividness-tuner.md)
 
 **Decision:**
 - **No two neighbouring steps in a ladder are more than 11 grades apart.** Where a recipe's steps are further apart, steps are added evenly between them, even if no token uses them yet. It applies to every recipe at AA and AAA, alongside the 1-grade minimum (D-056).

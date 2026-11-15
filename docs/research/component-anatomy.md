@@ -24,7 +24,7 @@ Agreed with Benji on 31 October:
 - **States:** shown first, with a way to step through them (rest, hover, pressed, selected, focused), and an interactive mode on request. In interactive mode the pattern is a single stop in the tab order, and arrow keys move within it.
 - **At the mapping stage:** the same pattern again, or a more refined one that's clearly related.
 - **The working patterns (2 November):** two of four versions mocked up at 480 × 480. "Abstract" is a grid with one row per background and the same marks in each column. "App with selection" is the component version, and the only one that shows selection. Both are kept, as tabs (D-061). The mock-ups live in a private Claude canvas, not in the repo.
-- **The ladder view (15 November):** one seamless strip per colour family, with markers outside the colour so they don't break the blend: a bar above an added step, a bar below the step nearest the source. Benji found it much cleaner than bordered swatches. It's in the Vividness Tuner (`research/vividness-tuner/`) (D-070).
+- **The ladder view (15 November):** one seamless strip per colour family, with markers outside the colour so they don't break the blend: a bar above an added step, a bar below the step nearest the source. Benji found it much cleaner than bordered swatches. It's in the Vividness Tuner (D-070); every display choice made with it is listed in [`vividness-tuner.md`](vividness-tuner.md).
 
 ## The question: what is "enough"?
 
