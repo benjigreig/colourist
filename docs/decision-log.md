@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-064 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-065 |
 
 ---
 
@@ -1064,3 +1064,24 @@ Two things often drawn as layers aren't tiers:
 **Consequences:**
 - The engine keeps a near-grey's hue wherever it has one. Only a true grey has an empty hue (D-047).
 - The neutral group's suggestion, when the only greys come from the brand, belongs in the palette stage (US-05), as a choice the person makes.
+
+### D-065 · Hue drift is measured as a chroma-weighted hue difference, held to half a just noticeable difference
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-14 · **Research:** [research/hue-drift.md](research/hue-drift.md)
+
+**Decision:**
+- **Drift is measured as a hue difference weighted by chroma** (ΔH in OKLab units, 2·√(C₁·C₂)·sin(Δh/2)), not as an angle.
+- **The threshold is 0.01: half of one just noticeable difference** in OKLCH, which CSS Color 4 sets at 0.02. It replaces the 10° stand-in in `hue.maxDrift`.
+- **The engine also reports each family's worst drift in degrees,** so the interface can describe it in terms people know.
+
+**Context:** the rules held a 10° stand-in for CLR-14. Benji thought it too loose. On the three example brands, built the way the method builds them and rounded to hex, the worst drift is 0.0012, about a sixteenth of a just noticeable difference. In degrees it reaches 7.2°, but only in the palest step, where almost no chroma is left.
+
+**Alternatives considered:**
+- **A tighter threshold in degrees.** Rejected: how visible a hue change is depends on chroma. 10° is more than two just noticeable differences in a vivid colour and a sixth of one in a near-grey, so no single angle works for both.
+- **One full just noticeable difference (0.02).** Rejected in favour of half, which leaves room for people whose hue discrimination is finer than average.
+- **A threshold on perceived drift from an appearance model (CAM16).** Rejected as a threshold: it measures where colour models disagree, which the engine can't correct. It belongs in the method comparison (US-03).
+
+**Why:** a chroma-weighted difference tracks what people can see. At half a just noticeable difference, nothing the threshold allows is visible, and hex rounding stays far inside it.
+
+**Consequences:**
+- CLR-14 changes `hue.maxDrift` to a hue difference of 0.01 and removes its placeholder, with the reason text updated.
+- In degrees, the threshold allows about 2.3° at chroma 0.25, 5.7° at 0.10 and 11.5° at 0.05.

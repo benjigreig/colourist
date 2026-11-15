@@ -42,3 +42,4 @@ Terms are defined in the glossary (CLR-93). Sources to read later are in [`resea
 | Are exports trimmed to the steps in use? | No. Full ladders are exported as primitives | [D-053](decision-log.md) | Settled |
 | How do semantic tokens relate to steps? | Through their relationships; each theme resolves them | [D-051, D-052](decision-log.md), [colour-relationships.md](research/colour-relationships.md) | Settled |
 | Are states steps or overlays? | Solid steps, in the model and the default export; overlays an optional export after the beta, matched and checked on every surface | [D-059](decision-log.md), CLR-101 | Settled |
+| How much hue drift is acceptable? | A chroma-weighted hue difference of at most 0.01 in OKLab, half a just noticeable difference; not a fixed angle | [D-065](decision-log.md), [hue-drift.md](research/hue-drift.md) | Settled |
