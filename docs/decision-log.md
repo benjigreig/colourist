@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-067 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-068 |
 
 ---
 
@@ -831,7 +831,7 @@ Two things often drawn as layers aren't tiers:
 - The question set and its modelled interface examples are designed next, then tested with people (CLR-95).
 
 ### D-055 · The ladder stage asks three groups of tick-box questions; style moves to vividness
-**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-94, CLR-55, CLR-99 · **Research:** [research/ladder-zones.md](research/ladder-zones.md)
+**Date:** 30 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted, amended by D-068 · **Plane:** CLR-94, CLR-55, CLR-99 · **Research:** [research/ladder-zones.md](research/ladder-zones.md)
 
 **Decision:**
 - **The ladder stage asks three groups of questions.** Answers are ticked, not picked, and each is shown as a modelled example rather than asked in the abstract:
@@ -1116,3 +1116,28 @@ Two things often drawn as layers aren't tiers:
 
 **Consequences:** The engine's tests import it as a development dependency. A change to an example brand's colours goes in the package, and the doc's tables are kept to match.
 
+### D-068 · "Style" is split in two: the greys are chosen with the neutrals, and vividness is per colour and optional
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-055 · **Plane:** CLR-15, CLR-26, CLR-25
+
+**Decision:**
+- **There's no single "How should colour feel?" question.** It bundled two separate choices, borrowed from Material's scheme styles. It's replaced by the two below.
+- **The greys are chosen with the neutral group, at stage 5:** pure grey, or tinted, and if tinted, which colour the tint comes from.
+  - **Brand colours with very little chroma are flagged as candidates for the neutral group,** such as a grey, charcoal or near-black with a warm or cool cast. colouri.st suggests using one as the neutrals' base; the person decides, and can change it (D-064).
+  - **Without a candidate, the person chooses:** pure grey, or a tint taken from one of their colours.
+- **Stage 5's order is brand colours, then neutrals, then feedback colours.**
+- **Vividness is set per colour or per group (D-066), starting from each colour as supplied.** Adjusting it at stage 4 is optional; most people won't need to.
+- **Fills aren't moved to the step where a hue is most vivid.** That only made sense as part of a "vivid" style.
+
+**Context:** reviewing CLR-15, Benji asked what the neutral, tinted and vivid styles actually did, and whether they'd be recommended or chosen. Neutral and tinted were about the greys; vivid was about each colour's chroma. Nothing said how someone would choose between them, or let them see the effect.
+
+**Alternatives considered:**
+- **Keep one project-wide style.** Rejected: it ties the greys to every colour's vividness, and forces Neon pink and Muted olive into the same answer.
+- **Recommend a style from the colours.** Rejected: it would mostly guess at intent. Starting from the colours as supplied is the honest default (D-064).
+
+**Why:** the greys are one choice for the whole project and depend on what the brand supplies. Vividness differs from colour to colour. Keeping them apart makes each easier to understand, and starting from the input keeps colouri.st true to the brand.
+
+**Consequences:**
+- US-04 loses "Say how colour should feel" and becomes an optional, per-colour stage. US-05 gains the neutrals, before the feedback colours.
+- The `vividness.styles` placeholders in the rules are removed in CLR-15. The default preset holds each colour's own chroma.
+- The threshold for "very little chroma" is a placeholder, decided with CLR-15. Kerfwell's Mono dark (0.002) and Mono light (0.007) must count as candidates.
+- How much tint the greys get is decided with CLR-15.

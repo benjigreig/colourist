@@ -159,7 +159,7 @@ Scenario: Compare colour methods
 HCT in the comparison, and switching methods, are post-beta (CLR-71, D-024).
 
 ### US-04 · Keep vividness in the dark shades
-**As an** individual designer with a soft or pastel brand, **I want** to control how vivid my shades are, **so that** dark shades keep the brand's character.
+**As an** individual designer with a soft or pastel brand, **I want** to adjust how vivid my shades are, colour by colour, if I need to, **so that** dark shades keep the brand's character.
 **Jobs:** 3, 10 · **Plane:** CLR-15, CLR-12, CLR-25 · **Stage:** 4
 
 ```gherkin
@@ -183,24 +183,35 @@ Scenario: Vividness never changes contrast
   When the scales are regenerated
   Then every contrast figure is identical to before
 
-Scenario: Say how colour should feel
+Scenario: My colours start as supplied
   Given my scales are generated
-  When I choose how colour should feel: neutral greys, greys tinted with the brand, or vivid
-  Then the greys' tint and each colour family's vividness update to match
-  And each colour's fill moves to the step where its hue is most vivid for that style, with the reason shown
-  And no step's contrast changes
+  When I reach the vividness stage
+  Then each colour keeps its own vividness, reduced only to fit the screen
+  And I can continue without changing anything
 ```
-**Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection, and the fill step chosen for each hue · `[e2e]` presets and readouts · `[content]` the explanation of each style
+**Tested:** `[engine, property]` contrast unchanged · `[engine]` binding-control detection, and colours held as supplied by default · `[e2e]` presets, readouts and skipping the stage · `[content]` the explanation of vividness
 
-The style question moved here from the ladder stage, because it changes chroma, not the ladder (D-055).
+This stage is optional: most people keep their colours as supplied. Vividness is set per colour or group (D-066). The single "style" question was split in two: the greys are chosen with the neutrals in US-05, and there's no project-wide vivid style (D-068).
 
 ### US-05 · Add the rest of my palette
-**As an** individual designer, **I want** to add the other colours a product needs, such as error, warning, success and info, named the way my team already works, **so that** I have full coverage and every colour stays clearly distinct.
+**As an** individual designer, **I want** to set up my greys and add the other colours a product needs, such as error, warning, success and info, named the way my team already works, **so that** I have full coverage and every colour stays clearly distinct.
 **Jobs:** 4, 9, 14 · **Plane:** CLR-26, CLR-16, CLR-67, CLR-3 · **Stage:** 5
 
 ```gherkin
+Scenario: A brand grey suggested as the base for my neutrals
+  Given one of my brand colours has very little chroma, such as a charcoal with a warm cast
+  When I reach the "rest of your palette" stage
+  Then it's suggested as the base for my neutral group, with the reason
+  And I can accept it, pick another colour, or choose pure grey
+
+Scenario: Choose my greys
+  Given none of my brand colours is a candidate for the neutrals
+  When I set up my neutral group
+  Then I can choose pure grey, or a tint taken from one of my colours
+  And I see the greys in use before I continue
+
 Scenario: Start from a preset
-  Given I've entered my brand colours
+  Given I've set up my neutrals
   When I reach the "rest of your palette" stage
   Then I can pick a preset (for example error, warning, success and info) that adds named colours with starting values in their own group
 
@@ -233,7 +244,9 @@ Scenario: Preview in use
   When I view the preview
   Then I see each colour in use as badges and alerts, with tints, solid fills and labels
 ```
-**Tested:** `[engine, property]` shade-by-shade distinctness and label choice · `[engine]` colour vision deficiency check and hue suggestion · `[e2e]` presets, editing, accept, reject and remove, and the preview · `[content]` explainers
+**Tested:** `[engine, property]` shade-by-shade distinctness and label choice · `[engine]` neutral candidates, colour vision deficiency check and hue suggestion · `[e2e]` neutrals, presets, editing, accept, reject and remove, and the preview · `[content]` explainers
+
+The neutrals come before the feedback colours. A brand colour with very little chroma is suggested as their base, but the person decides (D-064, D-068).
 
 Colour names are configuration, with presets for common frameworks (D-025). The token pattern is colouri.st's own, with a choice of case and separator. Full naming templates are post-beta (CLR-72, D-027).
 
