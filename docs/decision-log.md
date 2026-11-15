@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-069 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-070 |
 
 ---
 
@@ -1166,3 +1166,25 @@ Two things often drawn as layers aren't tiers:
 - Contrast is unchanged by either setting, because it depends only on L* (D-012). US-04's property test proves it.
 - More chroma can make a colour look lighter (the Helmholtz–Kohlrausch effect), which WCAG and APCA ignore. Watch for it in CLR-95.
 - The presets' values, and the threshold for "very little chroma" (D-068), are still to decide in CLR-15.
+
+### D-070 · Ladders have a maximum gap of 11 grades; a control for it comes after the beta
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-054 · **Plane:** CLR-13, CLR-98, CLR-15 · **Tool:** the Vividness Tuner (`docs/research/vividness-tuner/`)
+
+**Decision:**
+- **No two neighbouring steps in a ladder are more than 11 grades apart.** Where a recipe's steps are further apart, steps are added evenly between them, even if no token uses them yet. It applies to every recipe at AA and AAA, alongside the 1-grade minimum (D-056).
+- **In the beta it's a rule, not a control.** People don't set the number of steps anywhere: it comes from their answers (D-054).
+- **A control for the gap comes after the beta, with tuning (CLR-98).** It's the same kind of lever as adding in-between steps (D-053), so "how many steps" stays one question in one place.
+
+**Context:** in the Vividness Tuner, Benji noticed a visible jump in every family between grades 68 and 81: 13 grades, where the default recipe has no use. The AAA ladders and the light-only recipes have larger holes, of 21 to 27 grades, because nothing uses the dark end or the steps AAA text skips. Benji tried maximum gaps from 5 to 20 grades across all six recipes and both targets; 11 looked right on every colour.
+
+**Alternatives considered:**
+- **Leave the gaps, and explain them.** Rejected: full ladders are used as primitives (D-053), and uneven jumps make them harder to work with.
+- **Wait for tuning after the beta.** Rejected for the rule: the holes are there from the start. Kept for the control.
+- **A gap control in the beta.** Deferred. Benji felt the need for it while tuning vividness, and expects people would feel it the first time they see their shades. CLR-98 should consider offering it there.
+
+**Why:** a ladder built only from uses can leave holes that read as mistakes. A maximum gap keeps it usable as a set of primitives and only adds a step where there's a real hole.
+
+**Consequences:**
+- Added steps carry no use, and are named by their rounded grade like any other step. The D-049 contrast rule is unaffected.
+- The recipe ladders in the rules gain steps. At 11 grades, the default recipe at AA gains one step in the 68 to 81 gap; the light-only and AAA ladders gain two or three.
+- **How ladders are shown (Benji):** as one seamless strip per family, with markers outside the colour (a bar above an added step, a bar below the step nearest the source), so the blend between steps can be judged. The Vividness Tuner has this view, for the Ladder tab (D-061).

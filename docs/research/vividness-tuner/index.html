@@ -1,0 +1,460 @@
+<!doctype html>
+<!-- Vividness Tuner: a research tool for CLR-15 (recovery and ceiling, D-069) and the maximum gap (D-070). Open in a browser; it needs no build. Colours are computed with the engine's method, reimplemented here. Ladders from docs/research/ladder-derivation/recipes.json; brands from @colourist/examples. -->
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>Vividness Tuner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of colour families, each a strip of ladder steps; controls sit in a sticky bar above.
+   The interface is deliberately pure grey so it doesn't tint how the swatches are judged. */
+:root {
+  --bg: #ffffff;
+  --surface: #f4f4f4;
+  --fg: #1d1d1d;
+  --muted: #5f5f5f;
+  --line: #d6d6d6;
+  --accent: #1d1d1d;
+  --focus: #2563eb;
+  --font-body: 'Commissioner', system-ui, sans-serif;
+  --font-data: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161616; --surface: #222222; --fg: #ededed; --muted: #a3a3a3; --line: #3a3a3a; --accent: #ededed; --focus: #7aa2ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161616; --surface: #222222; --fg: #ededed; --muted: #a3a3a3; --line: #3a3a3a; --accent: #ededed; --focus: #7aa2ff;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 48px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1 { font-size: 30px; line-height: 1.15; font-weight: 800; margin: 0; text-wrap: balance; }
+h2 { font-size: 20px; font-weight: 800; margin: 0; }
+p { margin: 0; max-width: 68ch; }
+.intro { display: flex; flex-direction: column; gap: 10px; }
+.muted { color: var(--muted); }
+.eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+/* Controls */
+.controls {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  border-bottom: 1px solid var(--line); padding-block: 14px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 28px; align-items: end;
+}
+.control { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.control label { font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+.control output { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-weight: 500; }
+.control .hint { font-size: 13px; color: var(--muted); }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+select { font: 500 14px var(--font-body); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; max-width: 100%; }
+button {
+  font: 600 13px var(--font-body); color: var(--fg); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 6px; padding: 6px 12px; cursor: pointer;
+}
+button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.control .toggle { display: flex; justify-content: flex-start; align-items: center; gap: 8px; font-size: 14px; font-weight: 400; }
+
+/* Families */
+.families { display: flex; flex-direction: column; gap: 36px; width: 100%; }
+.brand { display: flex; flex-direction: column; gap: 14px; }
+.brand-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.family { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 6px 16px; align-items: start; }
+.family-label { display: flex; flex-direction: column; gap: 2px; padding-top: 4px; min-width: 0; }
+.family-name { font-weight: 600; }
+.family-meta { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+.source-chip { width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: -4px; margin-right: 6px; box-shadow: inset 0 0 0 1px rgba(127,127,127,0.35); }
+.strips { overflow-x: auto; display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; }
+.strip, .binding, .grades { display: grid; grid-template-columns: repeat(var(--steps), minmax(30px, 1fr)); gap: 2px; min-width: calc(var(--steps) * 32px); }
+.strip-label { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.cell { height: 40px; border-radius: 3px; position: relative; }
+/* Markers sit outside the colour so they don't interrupt the blend: a bar above an added step, a bar below the source's step. */
+.strip { padding-block: 6px; }
+.cell.is-added::before { content: ""; position: absolute; left: 2px; right: 2px; top: -6px; height: 3px; border-radius: 2px; background: var(--fg); }
+.families.seamless .strip, .families.seamless .binding, .families.seamless .grades { gap: 0; }
+.families.seamless .cell { border-radius: 0; }
+.grades span.is-added { color: var(--fg); font-weight: 600; }
+.gap-report { font-size: 14px; }
+.cell.is-source::after {
+  content: ""; position: absolute; left: 2px; right: 2px; bottom: -6px; height: 3px; border-radius: 2px; background: var(--fg); pointer-events: none;
+}
+.binding span { font-family: var(--font-data); font-size: 11px; text-align: center; color: var(--muted); }
+.binding span.limit-ceiling { color: var(--fg); font-weight: 600; }
+.grades span { font-family: var(--font-data); font-size: 11px; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); }
+.key b { font-family: var(--font-data); color: var(--fg); font-weight: 600; }
+.footer { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; }
+.footer code { font-family: var(--font-data); background: var(--surface); padding: 4px 8px; border-radius: 4px; }
+.status { font-size: 13px; color: var(--muted); }
+
+@media (max-width: 640px) {
+  .family { grid-template-columns: minmax(0, 1fr); }
+  h1 { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <span class="eyebrow">colouri.st · CLR-15 · D-069</span>
+    <h1>Vividness Tuner</h1>
+    <p>Pick the recovery and ceiling settings that look right, by eye. Each strip is one brand colour on a recipe's ladder, lightest to darkest. Lightness never changes, so no contrast figure moves.</p>
+    <p class="muted">You can also try a maximum gap between steps. Where two steps are further apart than that, steps are added evenly between them, marked with a bar above the swatch and a bold grade.</p>
+    <p class="muted">Recovery lifts each step's chroma from the source's own towards the most the screen can show at that step. Ceiling caps it at a share of that maximum. Each step takes the lower of the two. The bar below a swatch marks the step nearest the source colour.</p>
+  </header>
+
+  <section class="controls" aria-label="Ladder and vividness settings">
+    <div class="control">
+      <label for="recipe">Recipe</label>
+      <select id="recipe"></select>
+      <label for="target">Target</label>
+      <select id="target"><option value="aa">AA</option><option value="aaa">AAA</option></select>
+    </div>
+    <div class="control">
+      <label class="toggle" for="fill-gaps"><input id="fill-gaps" type="checkbox"> Fill gaps wider than</label>
+      <label for="max-gap">Maximum gap <output id="max-gap-out" for="max-gap">9 grades</output></label>
+      <input id="max-gap" type="range" min="5" max="20" step="1" value="9">
+      <span class="hint gap-report" id="gap-report" role="status"></span>
+    </div>
+    <div class="control">
+      <label for="recovery">Recovery <output id="recovery-out" for="recovery">0.00</output></label>
+      <input id="recovery" type="range" min="0" max="1" step="0.05" value="0">
+      <span class="hint">0 holds the source's chroma. 1 is as vivid as the screen allows.</span>
+    </div>
+    <div class="control">
+      <label for="ceiling">Ceiling <output id="ceiling-out" for="ceiling">1.00</output></label>
+      <input id="ceiling" type="range" min="0" max="1" step="0.05" value="1">
+      <span class="hint">1 is no cap. Lower values tame loud steps.</span>
+    </div>
+    <div class="control">
+      <span class="eyebrow" id="presets-label">Starting points</span>
+      <div class="presets" role="group" aria-labelledby="presets-label" id="presets"></div>
+      <label class="toggle" for="compare"><input id="compare" type="checkbox" checked> Show "as supplied" under each</label>
+      <label class="toggle" for="seamless"><input id="seamless" type="checkbox" checked> Seamless strips</label>
+    </div>
+  </section>
+
+  <div class="key" aria-label="Key to the letters under each strip">
+    <span><b>R</b> recovery is setting the chroma</span>
+    <span><b>C</b> the ceiling is capping it</span>
+    <span><b>G</b> the screen's gamut is the limit</span>
+    <span><b>·</b> no colour at this step</span>
+    <span><b>▔</b> bar above: an added step</span>
+    <span><b>▁</b> bar below: nearest the source</span>
+  </div>
+
+  <main id="families" class="families"></main>
+
+  <footer class="footer">
+    <span>Your settings:</span>
+    <code id="summary">recovery 0.00, ceiling 1.00</code>
+    <button type="button" id="copy">Copy</button>
+    <span class="status" id="copy-status" role="status"></span>
+  </footer>
+  <p class="muted" style="font-size: 13px">Colours are computed in this page with the engine's method: CIE L* (D65) from the ladder, OKLCH hue and chroma, CSS Color 4 matrices, sRGB gamut. The starting points are examples to try, not decisions.</p>
+</div>
+
+<script>
+/* ============================================================================================
+ * Configuration: the ladder, the example brands and the starting points.
+ * ========================================================================================== */
+
+/** Every beta recipe's AA and AAA ladders: [rounded grade name, exact grade, CIE L*] (recipes.json, D-056, D-057). */
+const RECIPES = {"default":"layered-app-light-dark","recipes":{"content-light":{"aa":[[0,0,100],[3,3.4,95.86],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[37,37,60.82],[50,50,49.39],[61,61,40.23],[68,68,34.49],[91,91,13.08]],"aaa":[[0,0,100],[3,3.4,95.86],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[37,37,60.82],[64,64,37.77],[75,75,28.65],[82,82,22.48],[91,91,13.08]]},"content-light-dark":{"aa":[[0,0,100],[3,3.4,95.86],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,21.8,75.49],[29,29,68.33],[37,37,60.82],[45,45.4,53.34],[50,50,49.39],[58,58.4,42.37],[61,61,40.23],[68,68,34.49],[81,81.2,23.21],[85,84.6,20.01],[86,85.8,18.82],[91,91,13.08],[95,95.4,6.79]],"aaa":[[0,0,100],[3,3.4,95.86],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[30,30,67.37],[37,37,60.82],[58,58.4,42.37],[64,64,37.77],[75,75,28.65],[82,82,22.48],[85,84.6,20.01],[91,91,13.08],[95,95.4,6.79]]},"simple-app-light-dark":{"aa":[[0,0,100],[2,1.9,97.67],[3,3.4,95.86],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,21.8,75.49],[29,29,68.33],[37,37,60.82],[45,45.4,53.34],[50,50,49.39],[58,58.4,42.37],[61,61,40.23],[68,68,34.49],[81,81.2,23.21],[85,84.6,20.01],[86,85.8,18.82],[91,91,13.08],[95,95.4,6.79]],"aaa":[[0,0,100],[2,1.9,97.67],[3,3.4,95.86],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[30,30,67.37],[37,37,60.82],[58,58.4,42.37],[64,64,37.77],[75,75,28.65],[82,82,22.48],[85,84.6,20.01],[91,91,13.08],[95,95.4,6.79]]},"layered-app-light-dark":{"aa":[[0,0,100],[2,1.9,97.67],[3,3.1,96.22],[4,4.1,95.03],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,21.8,75.49],[29,29,68.33],[37,37,60.82],[45,45.4,53.34],[50,50,49.39],[58,58.4,42.37],[61,61,40.23],[68,68.1,34.41],[81,81.2,23.21],[85,84.6,20.01],[86,85.8,18.82],[88,87.5,17.06],[91,91,13.08],[95,95.4,6.79]],"aaa":[[0,0,100],[2,1.9,97.67],[3,3.1,96.22],[4,4.1,95.03],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[30,30,67.37],[37,37,60.82],[58,58.4,42.37],[64,64,37.77],[75,75,28.65],[82,82,22.48],[85,84.6,20.01],[88,87.5,17.06],[91,91,13.08],[95,95.4,6.79]]},"app-light":{"aa":[[0,0,100],[2,1.9,97.67],[3,2.9,96.46],[4,3.9,95.26],[5,4.9,94.08],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[37,37,60.82],[50,50,49.39],[61,61,40.23],[68,68,34.49],[91,91,13.08]],"aaa":[[0,0,100],[2,1.9,97.67],[3,2.9,96.46],[4,3.9,95.26],[5,4.9,94.08],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[37,37,60.82],[64,64,37.77],[75,75,28.65],[82,82,22.48],[91,91,13.08]]},"app-light-dark":{"aa":[[0,0,100],[2,1.9,97.67],[3,2.9,96.46],[4,3.9,95.26],[5,4.9,94.08],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,21.8,75.49],[29,29,68.33],[37,37,60.82],[45,45.4,53.34],[50,50,49.39],[58,58.4,42.37],[61,61,40.23],[68,68,34.49],[81,81.2,23.21],[83,83.4,21.16],[85,84.6,20.01],[86,85.8,18.82],[88,87.5,17.06],[91,91,13.08],[95,95.4,6.79]],"aaa":[[0,0,100],[2,1.9,97.67],[3,2.9,96.46],[4,3.9,95.26],[5,4.9,94.08],[8,7.9,90.58],[9,8.9,89.43],[14,14,83.74],[22,22,75.29],[29,29,68.33],[30,30,67.37],[37,37,60.82],[58,58.4,42.37],[64,64,37.77],[75,75,28.65],[82,82,22.48],[83,83.4,21.16],[85,84.6,20.01],[88,87.5,17.06],[91,91,13.08],[95,95.4,6.79]]}}};
+
+/** Plain names for the recipes. */
+const RECIPE_NAMES = {
+  'layered-app-light-dark': 'Layered app, light and dark (default)', 'app-light-dark': 'App, light and dark',
+  'simple-app-light-dark': 'Simple app, light and dark', 'app-light': 'App, light only',
+  'content-light-dark': 'Content site, light and dark', 'content-light': 'Content site, light only',
+};
+
+/** The invented example brands (docs/example-brands.md, @colourist/examples). */
+const BRANDS = [
+  { name: 'Doggly', note: 'the saturated brand', colors: [
+    ['Verdigris', 'primary', '#1b998b'], ['Neon pink', 'secondary', '#ff297b'],
+    ['Dusty grape', 'secondary', '#53599a'], ['Tangerine dream', 'secondary', '#ff9b71'] ] },
+  { name: 'Kerfwell', note: 'strong primary, with greys of its own', colors: [
+    ['Brick red', 'primary', '#bb0a21'], ['Air Force blue', 'secondary', '#4b88a2'],
+    ['Mono dark', 'tertiary', '#252627'], ['Mono light', 'tertiary', '#fff9fb'] ] },
+  { name: 'Sorrel', note: 'the pastel stress test', colors: [
+    ['Pink mist', 'primary', '#d991ba'], ['Sage green', 'secondary', '#60992d'],
+    ['Muted olive', 'secondary', '#8cae68'], ['Pink orchid', 'tertiary', '#ebb9df'],
+    ['Petal frost', 'tertiary', '#f5d5ed'] ] },
+];
+
+/** Example settings to start from. Not decisions: CLR-15 sets the real presets. */
+const STARTING_POINTS = [
+  { name: 'Hold', recovery: 0, ceiling: 1 },
+  { name: 'Gentle', recovery: 0.25, ceiling: 1 },
+  { name: 'Balanced', recovery: 0.5, ceiling: 0.9 },
+  { name: 'Strong', recovery: 0.75, ceiling: 0.85 },
+];
+
+/* ============================================================================================
+ * Colour maths: the engine's method (D-012, D-047), reimplemented for this page.
+ * ========================================================================================== */
+
+// CSS Color 4 matrices: linear sRGB <-> XYZ (D65), XYZ -> LMS, LMS' -> OKLab.
+const LIN_TO_XYZ = [[506752/1228815, 87881/245763, 12673/70218], [87098/409605, 175762/245763, 12673/175545], [7918/409605, 87881/737289, 1001167/1053270]];
+const XYZ_TO_LMS = [[0.8190224379967030, 0.3619062600528904, -0.1288737815209879], [0.0329836539323885, 0.9292868615863434, 0.0361446663506424], [0.0481771893596242, 0.2642395317527308, 0.6335478284694309]];
+const LMS_TO_LAB = [[0.2104542683093140, 0.7936177747023054, -0.0040720430116193], [1.9779985324311684, -2.4285922420485799, 0.4505937096174110], [0.0259040424655478, 0.7827717124575296, -0.8086757549230774]];
+const XYZ_TO_LIN = invert3(LIN_TO_XYZ);
+const LMS_TO_XYZ = invert3(XYZ_TO_LMS);
+const LAB_TO_LMS = invert3(LMS_TO_LAB);
+
+/** Multiply a 3x3 matrix by a 3-vector. */
+function mul(m, v) { return m.map((r) => r[0] * v[0] + r[1] * v[1] + r[2] * v[2]); }
+
+/** Invert a 3x3 matrix (by cofactors). */
+function invert3(m) {
+  const [[a, b, c], [d, e, f], [g, h, i]] = m;
+  const A = e * i - f * h, B = -(d * i - f * g), C = d * h - e * g;
+  const det = a * A + b * B + c * C;
+  return [[A, -(b * i - c * h), b * f - c * e], [B, a * i - c * g, -(a * f - c * d)], [C, -(a * h - b * g), a * e - b * d]]
+    .map((r) => r.map((x) => x / det));
+}
+
+const toLinear = (c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+const fromLinear = (c) => (c <= 0.0031308 ? 12.92 * c : 1.055 * Math.sign(c) * Math.abs(c) ** (1 / 2.4) - 0.055);
+
+/** Hex to OKLab [L, a, b]. */
+function hexToOklab(hex) {
+  const rgb = [1, 3, 5].map((i) => toLinear(parseInt(hex.slice(i, i + 2), 16) / 255));
+  return mul(LMS_TO_LAB, mul(XYZ_TO_LMS, mul(LIN_TO_XYZ, rgb)).map(Math.cbrt));
+}
+
+/** OKLab to XYZ (D65, Y of white = 1). */
+function oklabToXyz(lab) { return mul(LMS_TO_XYZ, mul(LAB_TO_LMS, lab).map((x) => x ** 3)); }
+
+/** CIE L* from relative luminance Y. */
+function lstarOf(y) { return y > 216 / 24389 ? 116 * Math.cbrt(y) - 16 : (24389 / 27) * y; }
+
+/** The OKLab colour with this OKLCH hue and chroma whose CIE L* equals the target (bisection on OKLab L). */
+function solveAtLstar(lstar, chroma, hueDeg) {
+  const a = chroma * Math.cos((hueDeg * Math.PI) / 180), b = chroma * Math.sin((hueDeg * Math.PI) / 180);
+  let lo = 0, hi = 1;
+  for (let i = 0; i < 40; i++) {
+    const mid = (lo + hi) / 2;
+    if (lstarOf(oklabToXyz([mid, a, b])[1]) < lstar) lo = mid; else hi = mid;
+  }
+  return [(lo + hi) / 2, a, b];
+}
+
+/** Whether an OKLab colour is inside sRGB, with a hair of tolerance for rounding. */
+function inGamut(lab) { return mul(XYZ_TO_LIN, oklabToXyz(lab)).every((c) => c >= -1e-7 && c <= 1 + 1e-7); }
+
+/** The most chroma the screen can show at this L* and hue: each step's "maximum" (D-069). */
+function maxChroma(lstar, hueDeg) {
+  if (lstar >= 99.999 || lstar <= 0.001) return 0;
+  let lo = 0, hi = 0.5;
+  for (let i = 0; i < 30; i++) {
+    const mid = (lo + hi) / 2;
+    if (inGamut(solveAtLstar(lstar, mid, hueDeg))) lo = mid; else hi = mid;
+  }
+  return lo;
+}
+
+/** OKLab to a hex string, clamped to sRGB. */
+function oklabToHex(lab) {
+  return '#' + mul(XYZ_TO_LIN, oklabToXyz(lab))
+    .map((c) => Math.round(Math.min(1, Math.max(0, fromLinear(Math.min(1, Math.max(0, c))))) * 255).toString(16).padStart(2, '0'))
+    .join('');
+}
+
+/**
+ * One step's chroma under D-069: the lower of what recovery gives and what the ceiling allows,
+ * never above the step's maximum. Returns the chroma and which setting is limiting it.
+ */
+function stepChroma(sourceChroma, maximum, recovery, ceiling) {
+  if (maximum <= 1e-6) return { chroma: 0, limit: 'none' };
+  const lifted = sourceChroma + recovery * (maximum - sourceChroma);
+  const capped = ceiling * maximum;
+  if (capped < lifted && capped < maximum) return { chroma: capped, limit: 'ceiling' };
+  if (lifted >= maximum) return { chroma: maximum, limit: 'gamut' };
+  return { chroma: lifted, limit: 'recovery' };
+}
+
+/* ============================================================================================
+ * Model: each family's source and per-step maximum, computed once on load.
+ * ========================================================================================== */
+
+/** CIE L* for a contrast grade: the inverse of grade = 100 · log(1.05 / (Y + 0.05)) / log(21). */
+function lstarForGrade(grade) { return lstarOf(1.05 / 21 ** (grade / 100) - 0.05); }
+
+/**
+ * The ladder to show: the recipe's steps at the target, plus, if asked, steps added evenly
+ * wherever two neighbours are more than maxGap grades apart. Added steps are marked.
+ */
+function buildLadder(recipeId, target, fillGaps, maxGap) {
+  const base = RECIPES.recipes[recipeId][target].map(([name, grade, L]) => ({ name, grade, L, added: false }));
+  if (!fillGaps) return base;
+  const out = [];
+  base.forEach((step, i) => {
+    out.push(step);
+    const next = base[i + 1];
+    if (!next) return;
+    const gap = next.grade - step.grade;
+    const extra = Math.ceil(gap / maxGap) - 1;
+    for (let k = 1; k <= extra; k++) {
+      const grade = step.grade + (gap * k) / (extra + 1);
+      out.push({ name: Math.round(grade), grade, L: lstarForGrade(grade), added: true });
+    }
+  });
+  return out;
+}
+
+/** Each family's source colour, computed once. */
+const families = BRANDS.flatMap((brand) => brand.colors.map(([name, role, hex]) => {
+  const lab = hexToOklab(hex);
+  return {
+    brand: brand.name, name, role, hex,
+    chroma: Math.hypot(lab[1], lab[2]),
+    hue: ((Math.atan2(lab[2], lab[1]) * 180) / Math.PI + 360) % 360,
+    lstar: lstarOf(oklabToXyz(lab)[1]),
+    maxCache: new Map(),
+  };
+}));
+
+/** A family's maximum chroma at an L*, cached because it doesn't depend on the settings. */
+function familyMax(fam, L) {
+  const key = L.toFixed(3);
+  if (!fam.maxCache.has(key)) fam.maxCache.set(key, maxChroma(L, fam.hue));
+  return fam.maxCache.get(key);
+}
+
+/* ============================================================================================
+ * View: render the families and keep them in step with the controls.
+ * ========================================================================================== */
+
+const els = {
+  recovery: document.getElementById('recovery'), ceiling: document.getElementById('ceiling'),
+  recoveryOut: document.getElementById('recovery-out'), ceilingOut: document.getElementById('ceiling-out'),
+  compare: document.getElementById('compare'), seamless: document.getElementById('seamless'), presets: document.getElementById('presets'),
+  families: document.getElementById('families'), summary: document.getElementById('summary'),
+  copy: document.getElementById('copy'), copyStatus: document.getElementById('copy-status'),
+  recipe: document.getElementById('recipe'), target: document.getElementById('target'),
+  fillGaps: document.getElementById('fill-gaps'), maxGap: document.getElementById('max-gap'),
+  maxGapOut: document.getElementById('max-gap-out'), gapReport: document.getElementById('gap-report'),
+};
+
+const LIMIT_LETTER = { recovery: 'R', ceiling: 'C', gamut: 'G', none: '·' };
+const LIMIT_WORDS = { recovery: 'recovery', ceiling: 'ceiling', gamut: 'gamut limit', none: 'no colour' };
+
+/** Build one strip of swatches for a family on a ladder under the given settings. */
+function stripCells(fam, ladder, recovery, ceiling) {
+  const nearest = ladder.reduce((best, st, i) => (Math.abs(st.L - fam.lstar) < Math.abs(ladder[best].L - fam.lstar) ? i : best), 0);
+  return ladder.map((st, i) => {
+    const max = familyMax(fam, st.L);
+    const { chroma, limit } = stepChroma(fam.chroma, max, recovery, ceiling);
+    const hex = oklabToHex(solveAtLstar(st.L, chroma, fam.hue));
+    return { grade: st.name, L: st.L, hex, chroma, limit, max, added: st.added, isSource: i === nearest };
+  });
+}
+
+/** Render a strip as HTML. */
+function stripHtml(cells, label) {
+  return `<span class="strip-label">${label}</span><div class="strip">${cells.map((c) =>
+    `<div class="cell${c.isSource ? ' is-source' : ''}${c.added ? ' is-added' : ''}" style="background:${c.hex}" role="img" aria-label="Grade ${c.grade}, ${c.hex}, chroma ${c.chroma.toFixed(3)} of ${c.max.toFixed(3)}, limited by ${LIMIT_WORDS[c.limit]}${c.added ? ', an added step' : ''}${c.isSource ? ', nearest the source colour' : ''}" title="Grade ${c.grade}${c.added ? ' (added)' : ''} · ${c.hex}\nChroma ${c.chroma.toFixed(3)} of ${c.max.toFixed(3)} possible\nLimited by ${LIMIT_WORDS[c.limit]}"></div>`).join('')}</div>`;
+}
+
+/** Draw every brand and family. */
+function render() {
+  const recovery = Number(els.recovery.value), ceiling = Number(els.ceiling.value);
+  const maxGap = Number(els.maxGap.value);
+  const ladder = buildLadder(els.recipe.value, els.target.value, els.fillGaps.checked, maxGap);
+  const added = ladder.filter((st) => st.added);
+  const widest = Math.max(...RECIPES.recipes[els.recipe.value][els.target.value].slice(1).map(([, g], i, arr) => g - RECIPES.recipes[els.recipe.value][els.target.value][i][1]));
+  els.maxGapOut.value = `${maxGap} grades`;
+  els.maxGap.disabled = !els.fillGaps.checked;
+  els.gapReport.textContent = `${ladder.length} steps. Widest gap in this ladder: ${widest.toFixed(1)} grades.` +
+    (els.fillGaps.checked ? (added.length ? ` Adds ${added.length}: ${added.map((st) => st.name).join(', ')}.` : ' Nothing to add.') : '');
+  els.families.style.setProperty('--steps', ladder.length);
+  els.families.classList.toggle('seamless', els.seamless.checked);
+  els.recoveryOut.value = recovery.toFixed(2);
+  els.ceilingOut.value = ceiling.toFixed(2);
+  els.summary.textContent = `recovery ${recovery.toFixed(2)}, ceiling ${ceiling.toFixed(2)}; ${els.recipe.value} ${els.target.value.toUpperCase()}` + (els.fillGaps.checked ? `; maximum gap ${maxGap} (adds ${added.map((st) => st.name).join(', ') || 'none'})` : '');
+  [...els.presets.children].forEach((btn) => btn.setAttribute('aria-pressed', String(Number(btn.dataset.r) === recovery && Number(btn.dataset.c) === ceiling)));
+
+  const gradeRow = `<div class="grades" aria-hidden="true">${ladder.map((st) => `<span class="${st.added ? 'is-added' : ''}">${st.added ? '+' : ''}${st.name}</span>`).join('')}</div>`;
+  els.families.innerHTML = BRANDS.map((brand) => `
+    <section class="brand" aria-labelledby="brand-${brand.name}">
+      <div class="brand-head"><h2 id="brand-${brand.name}">${brand.name}</h2><span class="muted">${brand.note}</span></div>
+      ${families.filter((f) => f.brand === brand.name).map((fam) => {
+        const cells = stripCells(fam, ladder, recovery, ceiling);
+        const held = els.compare.checked ? stripHtml(stripCells(fam, ladder, 0, 1), 'As supplied') : '';
+        return `<div class="family">
+          <div class="family-label">
+            <span class="family-name"><span class="source-chip" style="background:${fam.hex}"></span>${fam.name}</span>
+            <span class="family-meta">${fam.hex} · ${fam.role}</span>
+            <span class="family-meta">chroma ${fam.chroma.toFixed(3)} · hue ${fam.hue.toFixed(0)}°</span>
+          </div>
+          <div class="strips">
+            ${gradeRow}
+            ${stripHtml(cells, 'Your settings')}
+            <div class="binding" aria-hidden="true">${cells.map((c) => `<span class="limit-${c.limit}">${LIMIT_LETTER[c.limit]}</span>`).join('')}</div>
+            ${held}
+          </div>
+        </div>`;
+      }).join('')}
+    </section>`).join('');
+}
+
+/** Set the sliders to a starting point. */
+function applyPoint(point) { els.recovery.value = point.recovery; els.ceiling.value = point.ceiling; render(); remember(); }
+
+/** Remember the settings for this viewer only; the page works without it. */
+function remember() {
+  try { localStorage.setItem('vividness-tuner', JSON.stringify({ r: els.recovery.value, c: els.ceiling.value, cmp: els.compare.checked, sl: els.seamless.checked, rec: els.recipe.value, t: els.target.value, fg: els.fillGaps.checked, mg: els.maxGap.value })); } catch (e) { /* storage unavailable */ }
+}
+function restore() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('vividness-tuner') || 'null');
+    if (saved) {
+      els.recovery.value = saved.r; els.ceiling.value = saved.c; els.compare.checked = saved.cmp; if (typeof saved.sl === 'boolean') els.seamless.checked = saved.sl;
+      if (saved.rec && RECIPES.recipes[saved.rec]) els.recipe.value = saved.rec;
+      if (saved.t) els.target.value = saved.t;
+      els.fillGaps.checked = !!saved.fg; if (saved.mg) els.maxGap.value = saved.mg;
+    }
+  } catch (e) { /* storage unavailable */ }
+}
+
+STARTING_POINTS.forEach((p) => {
+  const btn = document.createElement('button');
+  btn.type = 'button'; btn.textContent = p.name; btn.dataset.r = p.recovery; btn.dataset.c = p.ceiling;
+  btn.setAttribute('aria-pressed', 'false');
+  btn.addEventListener('click', () => applyPoint(p));
+  els.presets.appendChild(btn);
+});
+Object.keys(RECIPES.recipes).forEach((id) => {
+  const opt = document.createElement('option'); opt.value = id; opt.textContent = RECIPE_NAMES[id] || id;
+  if (id === RECIPES.default) opt.selected = true;
+  els.recipe.appendChild(opt);
+});
+[els.recovery, els.ceiling, els.compare, els.seamless, els.recipe, els.target, els.fillGaps, els.maxGap].forEach((el) => el.addEventListener('input', () => { render(); remember(); }));
+els.copy.addEventListener('click', () => {
+  const text = els.summary.textContent;
+  navigator.clipboard.writeText(text)
+    .then(() => { els.copyStatus.textContent = 'Copied'; })
+    .catch(() => {
+      const range = document.createRange(); range.selectNodeContents(els.summary);
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      els.copyStatus.textContent = 'Selected: copy it with your keyboard';
+    });
+});
+
+restore();
+render();
+</script>
+</body></html>
