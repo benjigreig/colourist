@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-072 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-073 |
 
 ---
 
@@ -79,7 +79,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 **Consequences:** Ladder presets and the rules for recommending one live in the rules schema (D-010). The step-distance contrast rule is reported for whichever preset is chosen.
 
 ### D-006 · APCA and WCAG 2 both in the beta
-**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-17
+**Date:** 28 Oct 2026 · **Decided by:** Benji Greig · **Status:** Accepted, amended by D-073 · **Plane:** CLR-17
 
 **Decision:** Every contrast check reports both WCAG 2 and APCA, and points out where they disagree.
 
@@ -1230,3 +1230,28 @@ Two things often drawn as layers aren't tiers:
 **Consequences:**
 - The engine reports, for each family, its preset, its recovery and ceiling with their sources, and its limit. Each step reports its maximum and what limits it.
 - The gamut and the ceiling never actually tie: with any ceiling below 1, the ceiling caps a step before the gamut would.
+
+### D-073 · WCAG 2 is the requirement; APCA guides the choices
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Amends:** D-006 · **Plane:** CLR-17, CLR-27, CLR-26 · **Research:** [research/apca-roles.md](research/apca-roles.md)
+
+**Decision:**
+- **WCAG 2 is the requirement.** The project's AA or AAA target (D-044) decides what passes and fails, in the checks, the exports and the known issues.
+- **APCA guides the choices.** Wherever colouri.st picks or suggests a pairing, APCA decides between the options that already meet the WCAG target. For example, it chooses whether a fill's label is light or dark (US-05).
+- **APCA never lowers the bar.** Its leniency on saturated mid-tones applies only among options that pass WCAG.
+- **The mapping's defaults are the steps WCAG needs.** Where APCA's guidance prefers a different step that also passes, colouri.st offers it as a suggestion, with the reason. People opt in; it isn't applied for them (D-071).
+- **APCA's reading is shown beside every WCAG result,** and disagreements are explained (US-07), as D-006 says.
+
+**Context:** measuring the default ladder for CLR-17, the light theme passes APCA's guidance comfortably, but the dark theme doesn't. Dark-theme muted text passes WCAG AA at 4.56:1 but scores APCA Lc 33.5, against a guide of 60; dark control borders score Lc 21.4 against 45.
+
+**Alternatives considered:**
+- **Report only.** Rejected as too little: it wastes what APCA is best at, choosing combinations.
+- **Both must pass.** Rejected: it reworks the dark theme and needs APCA ladders, 12 days from the deadline, and it puts APCA's still-developing guidance on the same footing as the standard people are held to.
+- **A scale of targets: AA, AAA, then APCA (Benji).** Rejected: APCA isn't uniformly stricter. It's stricter for light-on-dark text, and more lenient for white labels on saturated mid-tones, so a top tier would have to be "APCA plus AA", with its own ladders.
+- **APCA's preferred step as the default.** Rejected: it would make choices for people that they haven't asked for, against D-068 and D-071.
+
+**Why:** Benji: APCA "ends up being useful in supporting better choices and combos and yes, it does give some leniency, but we're still focusing on WCAG". It keeps compliance clear, and uses APCA where earlier work found it matched the eye better (D-006).
+
+**Consequences:**
+- The rules hold APCA guidance per use as data for suggestions, not as pass-or-fail targets.
+- CLR-17 reports both models for every pairing and flags disagreements. CLR-27's mapping offers APCA's preferred step as a suggestion where it differs. US-05's label choice already uses APCA.
+- In the dark theme, many pairings will show a disagreement. The explanation needs to be clear that WCAG 2 is met, and what APCA's suggestion would improve.

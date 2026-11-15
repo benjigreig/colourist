@@ -1,0 +1,15 @@
+Light Body text on page              step 91 on  0  WCAG 15.91:1  Lc 102.9  (APCA guide 75) pass
+Light Muted text on page             step 50 on  0  WCAG  4.61:1  Lc  72.0  (APCA guide 60) pass
+Light Control border on page         step 37 on  0  WCAG  3.07:1  Lc  57.6  (APCA guide 45) pass
+Light Label (white) on brand fill    step  0 on 50  WCAG  4.61:1  Lc  77.5  (APCA guide 60) pass
+Light Text on card (2)               step 91 on  2  WCAG 14.98:1  Lc  98.7  (APCA guide 75) pass
+Light Muted text on card             step 50 on  2  WCAG  4.34:1  Lc  67.8  (APCA guide 60) pass
+Dark  Body text on page              step  8 on 95  WCAG 14.36:1  Lc  89.6  (APCA guide 75) pass
+Dark  Muted text on page             step 45 on 95  WCAG  4.56:1  Lc  33.5  (APCA guide 60) FAIL
+Dark  Control border on page         step 58 on 95  WCAG  3.09:1  Lc  21.4  (APCA guide 45) FAIL
+Dark  Label (white) on brand fill    step  0 on 50  WCAG  4.61:1  Lc  77.5  (APCA guide 60) pass
+Dark  Text on surface (91)           step  8 on 91  WCAG 12.51:1  Lc  88.0  (APCA guide 75) pass
+Dark  Muted text on surface          step 45 on 91  WCAG  3.97:1  Lc  31.9  (APCA guide 60) FAIL
+dark muted text Lc 60: needs L* 73 (grade 24)
+dark body text Lc 75: needs L* 82.25 (grade 15)
+light body text Lc 75 on white: needs L* 46.5 (grade 53)

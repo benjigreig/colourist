@@ -1,0 +1,7 @@
+Greys: text step against each page, at the grade rule distances
+  light page (0): 37 grades -> step 37  WCAG 3.07:1  APCA Lc 57.6
+  light page (0): 50 grades -> step 50  WCAG 4.61:1  APCA Lc 72.0
+  light page (0): 64 grades -> step 68  WCAG 7.94:1  APCA Lc 87.6
+  dark page (95): 37 grades -> step 58  WCAG 3.09:1  APCA Lc -21.4
+  dark page (95): 50 grades -> step 45  WCAG 4.56:1  APCA Lc -33.5
+  dark page (95): 64 grades -> step 29  WCAG 7.59:1  APCA Lc -53.8
