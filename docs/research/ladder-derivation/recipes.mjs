@@ -16,6 +16,9 @@
  *     MIN_GAP grades from every other step, which also keeps rounded names unique
  * If a pair of steps then misses the contrast rule only through rounding (D-049), one step is
  * nudged by up to 1 grade within all its tokens' ranges until the rule holds.
+ * Then, where two neighbouring steps are more than MAX_GAP grades apart, ⌈gap / MAX_GAP⌉ − 1 steps
+ * are added evenly between them (D-070). An added step has no uses, sits in the zone of the step
+ * it follows, and is marked `added: "maximumGap"`.
  * Then each ladder is checked: every token placed in range; rounded names unique; and the
  * contrast rule (D-049) on rounded names: pairs 37, 50 or 64 apart meet 3:1, 4.5:1 or 7:1 exactly.
  *
@@ -28,6 +31,7 @@ import { writeFileSync } from "node:fs";
 import { LIGHT_PAGE, DARK_PAGE, rangeOf, theme, familyTokens, LIGHT, DARK } from "./model.mjs";
 
 const MIN_GAP = 1; // grades between any two steps; about 1.2 L* near white, the stand-in for D-053's minimum gap
+const MAX_GAP = 11; // the most grades between neighbouring steps (D-070); wider gaps get steps added evenly
 
 /** Grey uses each answer adds (D-055). Reading and a plain page are always on; controls are on by default. */
 const ANSWER_USES = {
@@ -95,7 +99,23 @@ function build(recipe, level) {
   }
   steps.sort((a, b) => a.grade - b.grade);
   repair(steps);
-  return { steps, conflicts, themes };
+  return { steps: fillGaps(steps), conflicts, themes };
+}
+
+/** Adds steps evenly wherever neighbours are more than MAX_GAP grades apart (D-070). */
+function fillGaps(steps) {
+  const out = [];
+  steps.forEach((step, i) => {
+    out.push(step);
+    const next = steps[i + 1];
+    if (!next) return;
+    const gap = next.grade - step.grade;
+    const extra = Math.ceil(gap / MAX_GAP - 1e-9) - 1;
+    for (let k = 1; k <= extra; k++) {
+      out.push({ grade: +(step.grade + (gap * k) / (extra + 1)).toFixed(2), purposes: [], uses: [], added: "maximumGap", after: step });
+    }
+  });
+  return out;
 }
 
 /** Nudges steps so no pair misses the contrast rule only through rounding (D-049). */
@@ -138,11 +158,13 @@ function check(steps) {
       if (dn >= need && 21 ** (dg / 100) < ratio) fails.push(`${names[i]} and ${names[j]}: ${(21 ** (dg / 100)).toFixed(2)}:1 < ${ratio}:1`);
   }
   const gapsL = steps.slice(1).map((s, i) => Lstar(Y(steps[i].grade)) - Lstar(Y(s.grade)));
-  return { unique, fails, minGapL: Math.min(...gapsL) };
+  const gaps = steps.slice(1).map((s, i) => s.grade - steps[i].grade);
+  return { unique, fails, minGapL: Math.min(...gapsL), minGap: Math.min(...gaps), maxGap: Math.max(...gaps) };
 }
 
-/** Zones by position: up to the furthest light background use, from the nearest dark one, and between. */
+/** Zones by position: up to the furthest light background use, from the nearest dark one, and between. An added step takes the zone of the step it follows. */
 function zoneOf(step, steps) {
+  if (step.added) return zoneOf(step.after, steps);
   const bg = /(page|surface|sunken|selected|hover|pressed|subtle border|tint)/;
   const lightEdge = Math.max(...steps.filter((s) => s.purposes.some((p) => p.startsWith("light") && bg.test(p) && !/fill/.test(p))).map((s) => s.grade));
   const darkBg = steps.filter((s) => s.purposes.some((p) => p.startsWith("dark") && bg.test(p) && !/fill/.test(p)));
@@ -150,19 +172,19 @@ function zoneOf(step, steps) {
   return step.grade <= lightEdge ? "light background" : step.grade >= darkEdge ? "dark background" : "contrast";
 }
 
-const summary = [], out = { default: DEFAULT_RECIPE, minGapGrades: MIN_GAP, recipes: {} };
+const summary = [], out = { default: DEFAULT_RECIPE, minGapGrades: MIN_GAP, maxGapGrades: MAX_GAP, recipes: {} };
 for (const [id, recipe] of Object.entries(RECIPES)) {
   out.recipes[id] = { answers: recipe.answers, themes: recipe.themes, ladders: {} };
   for (const level of ["aa", "aaa"]) {
     const { steps, conflicts } = build(recipe, level);
     const c = check(steps);
     console.log(`\n=== ${id}, ${level.toUpperCase()} (${recipe.answers.join(", ")}; ${recipe.themes.join(" and ")}) ===`);
-    console.table(steps.map((s) => ({ name: Math.round(s.grade), grade: s.grade, "L*": +Lstar(Y(s.grade)).toFixed(1), zone: zoneOf(s, steps), purposes: s.purposes.join("; ") })));
-    console.log(`conflicts: ${conflicts.length ? conflicts.join(" | ") : "none"} · names unique: ${c.unique ? "yes" : "no"} · contrast rule: ${c.fails.length ? c.fails.join(" | ") : "holds"} · smallest L* gap: ${c.minGapL.toFixed(1)}`);
+    console.table(steps.map((s) => ({ name: Math.round(s.grade), grade: s.grade, "L*": +Lstar(Y(s.grade)).toFixed(1), zone: zoneOf(s, steps), purposes: s.added ? `(added: maximum gap)` : s.purposes.join("; ") })));
+    console.log(`conflicts: ${conflicts.length ? conflicts.join(" | ") : "none"} · names unique: ${c.unique ? "yes" : "no"} · contrast rule: ${c.fails.length ? c.fails.join(" | ") : "holds"} · smallest L* gap: ${c.minGapL.toFixed(1)} · gaps: ${c.minGap.toFixed(2)} to ${c.maxGap.toFixed(2)} grades`);
     out.recipes[id].ladders[level] = steps.map((s) => ({
-      name: Math.round(s.grade), grade: s.grade, lstar: +Lstar(Y(s.grade)).toFixed(2), zone: zoneOf(s, steps), uses: s.uses }));
+      name: Math.round(s.grade), grade: s.grade, lstar: +Lstar(Y(s.grade)).toFixed(2), zone: zoneOf(s, steps), uses: s.uses, ...(s.added ? { added: s.added } : {}) }));
     const z = (n) => steps.filter((s) => zoneOf(s, steps) === n).length;
-    summary.push({ recipe: id, target: level.toUpperCase(), steps: steps.length, "light zone": z("light background"), contrast: z("contrast"), "dark zone": z("dark background"), "rule holds": c.fails.length === 0 && c.unique && conflicts.length === 0 });
+    summary.push({ recipe: id, target: level.toUpperCase(), steps: steps.length, added: steps.filter((s) => s.added).length, "light zone": z("light background"), contrast: z("contrast"), "dark zone": z("dark background"), "rule holds": c.fails.length === 0 && c.unique && conflicts.length === 0 });
   }
 }
 console.log("\nSummary (default: " + DEFAULT_RECIPE + "):"); console.table(summary);

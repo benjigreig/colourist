@@ -50,13 +50,24 @@ export interface StepUse {
 export interface LadderStep {
   /** The step's name: its contrast grade, rounded for people (D-041, D-043). */
   name: number;
-  /** The exact contrast grade, as worked out by the model, to one decimal place. */
+  /**
+   * The exact contrast grade, as worked out by the model: to one decimal place for a step a use
+   * placed, and to two for an added step.
+   */
   grade: number;
   /** The CIE L* (D65) the engine solves each colour to (ADR 0001). */
   lstar: number;
   zone: ZoneId;
-  /** The uses that placed the step, across themes and families. At least one. */
+  /**
+   * The uses that placed the step, across themes and families. Empty only for a step added to
+   * keep the maximum gap.
+   */
   uses: StepUse[];
+  /**
+   * Set when the step was added to keep neighbouring steps within the maximum gap, rather than
+   * placed by a use (D-070). Its grade is evenly spaced between its neighbours.
+   */
+  added?: 'maximumGap';
 }
 
 /** A recipe's ladder for each target, since the target moves the contrast zone (D-057). */
@@ -127,6 +138,12 @@ export interface Ladders {
   zones: Zones;
   /** The smallest gap allowed between any two steps (D-056). */
   minimumGap: {
+    grades: number;
+    reason: ReasonKey;
+    placeholder?: Placeholder;
+  };
+  /** The largest gap allowed between neighbouring steps; wider gaps get steps added (D-070). */
+  maximumGap: {
     grades: number;
     reason: ReasonKey;
     placeholder?: Placeholder;

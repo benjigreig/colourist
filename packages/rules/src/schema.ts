@@ -30,7 +30,7 @@ import type {
 } from './types.ts';
 
 /** The schema's version. A breaking change to the schema raises it. */
-export const SCHEMA_VERSION = 4;
+export const SCHEMA_VERSION = 5;
 
 /** The schema's identifier. */
 export const SCHEMA_ID = `https://colouri.st/schemas/rules-${SCHEMA_VERSION}.schema.json`;
@@ -116,9 +116,10 @@ const ladderStep: JSONSchemaType<LadderStep> = {
     grade: { type: 'number', minimum: 0, maximum: 100 },
     lstar: { type: 'number', minimum: 0, maximum: 100 },
     zone: { type: 'string', enum: [...ZONES] },
+    // Empty only for an added step, below.
     uses: {
       type: 'array',
-      minItems: 1,
+      minItems: 0,
       maxItems: 64,
       items: {
         type: 'object',
@@ -127,7 +128,11 @@ const ladderStep: JSONSchemaType<LadderStep> = {
         properties: { theme: id, family: id, use: id },
       },
     },
+    added: { type: 'string', enum: ['maximumGap'], nullable: true },
   },
+  // A step placed by a use has at least one; only an added step has none (D-070).
+  if: { not: { required: ['added'] } },
+  then: { properties: { uses: { type: 'array', minItems: 1 } } },
 };
 
 const ladder = { type: 'array', minItems: 2, maxItems: 48, items: ladderStep } as const;
@@ -371,7 +376,7 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
     ladders: {
       type: 'object',
       additionalProperties: false,
-      required: ['zones', 'minimumGap', 'uses', 'states'],
+      required: ['zones', 'minimumGap', 'maximumGap', 'uses', 'states'],
       properties: {
         zones,
         minimumGap: {
@@ -380,6 +385,16 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
           required: ['grades', 'reason'],
           properties: {
             grades: { type: 'number', minimum: 0, maximum: 10 },
+            reason,
+            placeholder: optionalPlaceholder,
+          },
+        },
+        maximumGap: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['grades', 'reason'],
+          properties: {
+            grades: { type: 'number', minimum: 1, maximum: 100 },
             reason,
             placeholder: optionalPlaceholder,
           },

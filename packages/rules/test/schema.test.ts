@@ -59,9 +59,9 @@ describe('the rules schema', () => {
     expect(publishedSchema.$id).toBe(SCHEMA_ID);
     // Recipes replaced ladder presets at 2 (D-058), and hue drift became a hue difference at 3
     // (D-065).
-    expect(publishedSchema.$id).toMatch(/rules-4\.schema\.json$/);
+    expect(publishedSchema.$id).toMatch(/rules-5\.schema\.json$/);
     const rules = JSON.parse(rulesText);
-    expect(rules.meta.schemaVersion).toBe(4);
+    expect(rules.meta.schemaVersion).toBe(5);
     expect(rules.meta.rulesVersion).toMatch(/^\d+\.\d+\.\d+$/);
   });
 
@@ -93,6 +93,13 @@ describe('the rules schema', () => {
       'a step with no uses',
       changed((r) => (at(r, 'recipes', 'items', 'contentLight', 'ladders', 'aa', '0').uses = [])),
     ],
+    [
+      'an added step with an unknown reason (D-070)',
+      changed(
+        (r) => (at(r, 'recipes', 'items', 'contentLight', 'ladders', 'aa', '0').added = 'other'),
+      ),
+    ],
+    ['no maximum gap (D-070)', changed((r) => delete at(r, 'ladders').maximumGap)],
     [
       'a step with an unknown zone',
       changed(
@@ -129,7 +136,7 @@ describe('the rules schema', () => {
     ],
     ['a missing zone', changed((r) => delete at(r, 'ladders', 'zones').darkBackground)],
     ['a missing section', changed((r) => delete r.guidance)],
-    ['the wrong schema version', changed((r) => (at(r, 'meta').schemaVersion = 3))],
+    ['the wrong schema version', changed((r) => (at(r, 'meta').schemaVersion = 4))],
     ['a badly formed rules version', changed((r) => (at(r, 'meta').rulesVersion = 'one'))],
     ['a lowercase hex value', changed((r) => (at(r, 'palettePresets', 'error').value = '#c4362b'))],
     [

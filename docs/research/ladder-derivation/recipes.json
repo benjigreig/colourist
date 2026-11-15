@@ -1,6 +1,7 @@
 {
  "default": "layered-app-light-dark",
  "minGapGrades": 1,
+ "maxGapGrades": 11,
  "recipes": {
   "content-light": {
    "answers": [
@@ -167,6 +168,14 @@
       ]
      },
      {
+      "name": 44,
+      "grade": 43.5,
+      "lstar": 55,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
       "name": 50,
       "grade": 50,
       "lstar": 49.39,
@@ -279,6 +288,22 @@
         "use": "fill pressed"
        }
       ]
+     },
+     {
+      "name": 76,
+      "grade": 75.67,
+      "lstar": 28.08,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
+      "name": 83,
+      "grade": 83.33,
+      "lstar": 21.23,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 91,
@@ -448,6 +473,22 @@
         "use": "control border"
        }
       ]
+     },
+     {
+      "name": 46,
+      "grade": 46,
+      "lstar": 52.82,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
+      "name": 55,
+      "grade": 55,
+      "lstar": 45.19,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 64,
@@ -990,6 +1031,14 @@
       ]
      },
      {
+      "name": 75,
+      "grade": 74.6,
+      "lstar": 28.99,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
       "name": 81,
       "grade": 81.2,
       "lstar": 23.21,
@@ -1377,6 +1426,14 @@
         "use": "control border"
        }
       ]
+     },
+     {
+      "name": 48,
+      "grade": 47.7,
+      "lstar": 51.35,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 58,
@@ -2032,6 +2089,14 @@
       ]
      },
      {
+      "name": 75,
+      "grade": 74.6,
+      "lstar": 28.99,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
       "name": 81,
       "grade": 81.2,
       "lstar": 23.21,
@@ -2437,6 +2502,14 @@
         "use": "control border"
        }
       ]
+     },
+     {
+      "name": 48,
+      "grade": 47.7,
+      "lstar": 51.35,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 58,
@@ -3111,6 +3184,14 @@
       ]
      },
      {
+      "name": 75,
+      "grade": 74.65,
+      "lstar": 28.95,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
       "name": 81,
       "grade": 81.2,
       "lstar": 23.21,
@@ -3542,6 +3623,14 @@
         "use": "control border"
        }
       ]
+     },
+     {
+      "name": 48,
+      "grade": 47.7,
+      "lstar": 51.35,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 58,
@@ -3997,6 +4086,14 @@
       ]
      },
      {
+      "name": 44,
+      "grade": 43.5,
+      "lstar": 55,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
       "name": 50,
       "grade": 50,
       "lstar": 49.39,
@@ -4109,6 +4206,22 @@
         "use": "fill pressed"
        }
       ]
+     },
+     {
+      "name": 76,
+      "grade": 75.67,
+      "lstar": 28.08,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
+      "name": 83,
+      "grade": 83.33,
+      "lstar": 21.23,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 91,
@@ -4317,6 +4430,22 @@
         "use": "control border"
        }
       ]
+     },
+     {
+      "name": 46,
+      "grade": 46,
+      "lstar": 52.82,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
+      "name": 55,
+      "grade": 55,
+      "lstar": 45.19,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 64,
@@ -4901,6 +5030,14 @@
       ]
      },
      {
+      "name": 75,
+      "grade": 74.6,
+      "lstar": 28.99,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
+     },
+     {
       "name": 81,
       "grade": 81.2,
       "lstar": 23.21,
@@ -5358,6 +5495,14 @@
         "use": "control border"
        }
       ]
+     },
+     {
+      "name": 48,
+      "grade": 47.7,
+      "lstar": 51.35,
+      "zone": "contrast",
+      "uses": [],
+      "added": "maximumGap"
      },
      {
       "name": 58,

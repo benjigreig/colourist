@@ -1,6 +1,6 @@
 # Recipe ladders: the beta recipes, worked out step by step
 
-> Worked out 30 October 2026 for CLR-13, before CLR-100 builds recipes into the rules schema. Decided the same day (D-056), with AAA ladders added in D-057. Scripts and outputs: [`ladder-derivation/`](ladder-derivation/) (`recipes.mjs`, `recipes.json`, `prevalence.mjs`). Builds on [`ladder-zones.md`](ladder-zones.md) (D-054, D-055).
+> Worked out 30 October 2026 for CLR-13, before CLR-100 builds recipes into the rules schema. Decided the same day (D-056), with AAA ladders added in D-057. Scripts and outputs: [`ladder-derivation/`](ladder-derivation/) (`recipes.mjs`, `recipes.json`, `prevalence.mjs`). Builds on [`ladder-zones.md`](ladder-zones.md) (D-054, D-055). **Updated 15 November 2026 for CLR-103:** every ladder now keeps an 11-grade maximum gap (D-070), which adds 1 to 3 steps to each; see "The maximum gap between steps".
 
 ## Why this came first
 
@@ -30,19 +30,20 @@ Under D-054, every step exists because a use put it there. So the recipe ladders
   - the contrast rule (D-049) holds on exact values: names 37, 50 or 64 apart give 3:1, 4.5:1 or 7:1
   - where rounding alone breaks the rule, one step is nudged by up to 1 grade within its ranges
 - **Zones** come from the positions. The light background zone runs up to the furthest light-theme background use, the dark background zone from the nearest dark-theme one, and the contrast zone sits between.
+- **The maximum gap (D-070):** where two neighbouring steps are more than 11 grades apart, ⌈gap / 11⌉ − 1 steps are added evenly between them. An added step has no use, takes the zone of the step it follows, and is marked `added: "maximumGap"`. Its grade is kept to two decimal places, so the spacing stays even.
 
 ## The six recipes
 
 | Recipe | Answers | Themes | Steps | Light zone | Contrast | Dark zone |
 |---|---|---|---|---|---|---|
-| Content site, light | reading, controls | light | 12 | 4 | 8 | 0 |
-| Content site, light and dark | reading, controls | light, dark | 18 | 4 | 9 | 5 |
-| Simple app, light and dark | + cards | light, dark | 19 | 5 | 9 | 5 |
-| **Layered app, light and dark (default)** | + cards, overlays | light, dark | **21** | 6 | 9 | 6 |
-| App, light | + cards, overlays, selection | light | 15 | 7 | 8 | 0 |
-| App, light and dark | + cards, overlays, selection | light, dark | 23 | 7 | 9 | 7 |
+| Content site, light | reading, controls | light | 15 (12 + 3 added) | 4 | 11 | 0 |
+| Content site, light and dark | reading, controls | light, dark | 19 (18 + 1) | 4 | 10 | 5 |
+| Simple app, light and dark | + cards | light, dark | 20 (19 + 1) | 5 | 10 | 5 |
+| **Layered app, light and dark (default)** | + cards, overlays | light, dark | **22 (21 + 1)** | 6 | 10 | 6 |
+| App, light | + cards, overlays, selection | light | 18 (15 + 3) | 7 | 11 | 0 |
+| App, light and dark | + cards, overlays, selection | light, dark | 24 (23 + 1) | 7 | 10 | 7 |
 
-All six pass every check. One step needed nudging for rounding: a warning hover moved from 22.0 to 21.8 grades. The full steps of each are in [`recipes.txt`](ladder-derivation/recipes.txt) and [`recipes.json`](ladder-derivation/recipes.json).
+Steps are at AA, with the steps the maximum gap adds counted separately. All six pass every check. One step needed nudging for rounding: a warning hover moved from 22.0 to 21.8 grades. The full steps of each are in [`recipes.txt`](ladder-derivation/recipes.txt) and [`recipes.json`](ladder-derivation/recipes.json).
 
 ### The default recipe
 
@@ -63,6 +64,7 @@ All six pass every check. One step needed nudging for rounding: a warning hover 
 | 58 | 42.4 | Contrast | Dark: control border (3:1) |
 | 61 | 40.2 | Contrast | Both: colour fill hover |
 | 68 | 34.4 | Contrast | Both: colour fill pressed |
+| 75 | 29.0 | Contrast | Added for the maximum gap (D-070): evenly between 68 and 81 |
 | 81 | 23.2 | Dark background | Dark: subtle border; every tint border |
 | 85 | 20.0 | Dark background | Dark: pressed |
 | 86 | 18.8 | Dark background | Dark: hover; every colour's tint |
@@ -78,14 +80,14 @@ US-02 says the contrast zone reflects the target, so every recipe also has an AA
 
 | Recipe | AA | AAA |
 |---|---|---|
-| Content site, light | 12 | 12 |
-| Content site, light and dark | 18 | 16 |
-| Simple app, light and dark | 19 | 17 |
-| **Layered app, light and dark (default)** | **21** | **19** |
-| App, light | 15 | 15 |
-| App, light and dark | 23 | 21 |
+| Content site, light | 15 (12 + 3) | 14 (12 + 2) |
+| Content site, light and dark | 19 (18 + 1) | 17 (16 + 1) |
+| Simple app, light and dark | 20 (19 + 1) | 18 (17 + 1) |
+| **Layered app, light and dark (default)** | **22 (21 + 1)** | **20 (19 + 1)** |
+| App, light | 18 (15 + 3) | 17 (15 + 2) |
+| App, light and dark | 24 (23 + 1) | 22 (21 + 1) |
 
-All twelve pass every check. The AAA ladders come out slightly smaller, because more steps are shared between light and dark: the dark theme's dark-text fills sit near the light theme's warning fill and its states. Both targets are in [`recipes.json`](ladder-derivation/recipes.json), under each recipe's `ladders`.
+All twelve pass every check, with the added steps counted after the plus. The AAA ladders come out slightly smaller, because more steps are shared between light and dark: the dark theme's dark-text fills sit near the light theme's warning fill and its states. Both targets are in [`recipes.json`](ladder-derivation/recipes.json), under each recipe's `ladders`.
 
 ## What the ladders show
 
@@ -100,6 +102,23 @@ All twelve pass every check. The AAA ladders come out slightly smaller, because 
 Near the light page, steps are about 1 grade apart, roughly 1.1 to 1.2 L\*. In the default recipe, page, surface, sunken surface and hover all sit within 4 grades of white. Those are the median separations design systems use, but they're near the limit of what people can see, and the less sensitive third may not see them ([`ladder-distribution.md`](ladder-distribution.md), Part 8).
 
 **Benji's decision:** start with 1 grade, and test both 1 and 2 grades with people in CLR-95. At 2 grades, those uses would spread out to about grades 0, 2, 4 and 6: clearer, and further from the page than practice puts them.
+
+## The maximum gap between steps
+
+Built from uses alone, the ladders had holes: 13 grades between 68 and 81 in the default recipe at AA, 21.4 between 37 and 58 in the light-and-dark AAA ladders (AAA text skips the steps AA uses), and 23 to 27 in the light-only ladders, where nothing uses the dark end. Benji saw the 68 to 81 jump in the Vividness Tuner and chose a maximum gap of 11 grades (D-070, [`vividness-tuner.md`](vividness-tuner.md)).
+
+Steps the rule adds (name, with its exact grade and L\*), all in the contrast zone:
+
+| Recipe | AA | AAA |
+|---|---|---|
+| Content site, light | 44 (43.5, L\* 55.0), 76 (75.67, 28.1), 83 (83.33, 21.2) | 46 (46.0, 52.8), 55 (55.0, 45.2) |
+| Content site, light and dark | 75 (74.6, 29.0) | 48 (47.7, 51.4) |
+| Simple app, light and dark | 75 (74.6, 29.0) | 48 (47.7, 51.4) |
+| **Layered app, light and dark (default)** | **75 (74.65, 29.0)** | **48 (47.7, 51.4)** |
+| App, light | 44 (43.5, 55.0), 76 (75.67, 28.1), 83 (83.33, 21.2) | 46 (46.0, 52.8), 55 (55.0, 45.2) |
+| App, light and dark | 75 (74.6, 29.0) | 48 (47.7, 51.4) |
+
+The contrast rule still holds on every ladder, names stay unique, and no step moved. The largest gap left is exactly 11 grades, between steps uses already placed: 50 to 61 in the light-only ladders at AA, and 64 to 75 in every AAA ladder. The light-and-dark AA ladders' largest is now 8.4.
 
 ## Choosing the default recipe
 
@@ -137,6 +156,7 @@ Benji wanted light and dark by default, and the default to reflect the most comm
 ## Limits
 
 - Steps are placed by a greedy method, which gives a good answer but not a proven minimum.
+- Added steps fill gaps evenly. They aren't placed for any use, so a token mapped to one later is there by chance, not by the model.
 - Separations come from practice medians. The 1-grade gap is a stand-in until CLR-95.
 - Every recipe assumes white text on coloured fills (dark text in the dark theme at AAA), and one light-fill warning. Brands whose colours need dark text get different fills, which the vividness stage handles (US-04).
 
@@ -144,7 +164,7 @@ Benji wanted light and dark by default, and the default to reflect the most comm
 
 | File | What it does |
 |---|---|
-| [`ladder-derivation/recipes.mjs`](ladder-derivation/recipes.mjs) | Works out each beta recipe's ladder at AA and AAA, and checks it. Output in `recipes.txt` and `recipes.json` |
+| [`ladder-derivation/recipes.mjs`](ladder-derivation/recipes.mjs) | Works out each beta recipe's ladder at AA and AAA, fills gaps over 11 grades (D-070), and checks it. Output in `recipes.txt` and `recipes.json` |
 | [`ladder-derivation/prevalence.mjs`](ladder-derivation/prevalence.mjs) | Counts how many of the 27 systems publish each use and a dark mode. Output in `prevalence.txt` |
 | [`ladder-derivation/model.mjs`](ladder-derivation/model.mjs) | Gains the shared-ladder model (theme, family tokens and separation tables), moved out of `untested.mjs`, whose output is unchanged |
 

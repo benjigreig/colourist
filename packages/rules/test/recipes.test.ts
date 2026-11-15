@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { defaultRules as rules, type LadderStep, type Level } from '../src/index.ts';
 
 const COVERS = 'CLR-100: The integrity tests cover the recipes, questions and zones';
+const GAP = 'CLR-103: Every recipe keeps the 11-grade maximum gap (D-070)';
 const LEVELS: Level[] = ['aa', 'aaa'];
 const choices = rules.questions.flatMap((group) => group.choices);
 const recipes = Object.entries(rules.recipes.items);
@@ -116,12 +117,14 @@ describe('recipes and questions', () => {
 
 describe('recipe ladders', () => {
   it.each(ladders)(
-    'US-02: Every step has a reason — %s: a zone and at least one real use',
+    'US-02: Every step has a reason — %s: a zone, and a real use or the maximum gap',
     (_, steps) => {
       const families = [...Object.keys(rules.palettePresets), ...Object.keys(rules.groups)];
       for (const step of steps) {
         expect(Object.keys(rules.ladders.zones)).toContain(step.zone);
-        expect(step.uses.length).toBeGreaterThan(0);
+        // A step is placed by a use, or added to keep the maximum gap, whose reason it shows.
+        if (step.added) expect(step.uses).toEqual([]);
+        else expect(step.uses.length).toBeGreaterThan(0);
         for (const use of step.uses) {
           expect(Object.keys(rules.ladders.uses)).toContain(use.use);
           expect(Object.keys(rules.contrast.contexts)).toContain(use.theme);
@@ -181,6 +184,55 @@ describe('recipe ladders', () => {
           }
         }
       }
+    },
+  );
+
+  it(`${GAP} — the rule is 11 grades, decided, with its reason`, () => {
+    expect(rules.ladders.maximumGap).toEqual({
+      grades: 11,
+      reason: 'rules.ladders.maximumGap.reason',
+    });
+  });
+
+  it.each(ladders)(
+    `${GAP} — %s: no two neighbouring steps more than 11 grades apart`,
+    (_, steps) => {
+      steps.forEach((step, i) => {
+        const previous = steps[i - 1];
+        // Added grades are kept to 2 places, so allow for that rounding.
+        if (previous) {
+          expect(
+            step.grade - previous.grade,
+            `${previous.name} to ${step.name}`,
+          ).toBeLessThanOrEqual(rules.ladders.maximumGap.grades + 0.005);
+        }
+      });
+    },
+  );
+
+  it.each(ladders)(
+    `${GAP} — %s: steps with no uses are exactly the added ones, spaced evenly in the zone they follow`,
+    (_, steps) => {
+      const placed = steps.filter((step) => !step.added);
+      expect(placed.every((step) => step.uses.length > 0)).toBe(true);
+      // Rebuild the added steps from the placed ones, as the Vividness Tuner's buildLadder does.
+      const expected: { name: number; grade: number; zone: string }[] = [];
+      placed.forEach((step, i) => {
+        const next = placed[i + 1];
+        if (!next) return;
+        const gap = next.grade - step.grade;
+        const extra = Math.ceil(gap / rules.ladders.maximumGap.grades - 1e-9) - 1;
+        for (let k = 1; k <= extra; k++) {
+          const grade = step.grade + (gap * k) / (extra + 1);
+          expect(grade).toBeGreaterThan(step.grade);
+          expected.push({ name: Math.round(grade), grade, zone: step.zone });
+        }
+      });
+      const added = steps.filter((step) => step.added);
+      expect(added.map((s) => s.added)).toEqual(added.map(() => 'maximumGap'));
+      expect(added.map((s) => s.name)).toEqual(expected.map((e) => e.name));
+      expect(added.map((s) => s.zone)).toEqual(expected.map((e) => e.zone));
+      added.forEach((step, i) => expect(step.grade).toBeCloseTo(expected[i]?.grade ?? NaN, 2));
     },
   );
 });

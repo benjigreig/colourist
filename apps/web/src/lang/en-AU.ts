@@ -176,6 +176,10 @@ export const rules = {
       reason:
         'No two steps are closer than 1 grade, about the smallest difference design systems use near the page.',
     },
+    maximumGap: {
+      reason:
+        'No two neighbouring steps are more than 11 grades apart, so each colour’s shades change evenly. Where no use needs a step in a wider gap, one is added evenly between.',
+    },
     uses: {
       page: { name: 'Page' },
       surface: { name: 'Surface' },

@@ -178,3 +178,9 @@ The D-058 table above describes `ladders` as including "whether states are steps
 D-068 removed the single "How should colour feel?" question, so `vividness.styles` and its three placeholder styles are removed. D-069 defined recovery and ceiling, and D-071 made "hold" (recovery 0, ceiling 1) the only preset, so `vividness.presets` holds only it, with no placeholder. The `vividness` row of the D-058 table no longer holds styles.
 
 The schema version goes from 3 to 4, because removing a required section breaks files written for version 3. The rules version goes to 0.4.0.
+
+## Amendment: a maximum gap between steps (15 Nov 2026, D-070)
+
+D-070 sets the most grades allowed between neighbouring steps. `ladders` gains `maximumGap: { grades: 11, reason }`, beside `minimumGap`. Every recipe's ladder gains the steps it adds: each has an empty `uses` and `added: "maximumGap"`, takes the zone of the step it follows, and is named by its rounded grade. The schema allows empty `uses` only on an added step.
+
+The schema version goes from 4 to 5, because `maximumGap` is required and the ladders change. The rules version goes to 0.5.0 (CLR-103).
