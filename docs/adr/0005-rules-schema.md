@@ -172,3 +172,9 @@ The schema version goes from 1 to 2, because removing the presets breaks files w
 ## Amendment: states are solid steps (30 Oct 2026, D-059)
 
 The D-058 table above describes `ladders` as including "whether states are steps or overlays (still open)". D-059 decides it: states are solid steps, and `ladders.states` records `form: solid`. Overlays are an optional export after the beta (CLR-101), not a form in the rules.
+
+## Amendment: vividness is recovery and ceiling, with one preset (15 Nov 2026, D-068, D-071)
+
+D-068 removed the single "How should colour feel?" question, so `vividness.styles` and its three placeholder styles are removed. D-069 defined recovery and ceiling, and D-071 made "hold" (recovery 0, ceiling 1) the only preset, so `vividness.presets` holds only it, with no placeholder. The `vividness` row of the D-058 table no longer holds styles.
+
+The schema version goes from 3 to 4, because removing a required section breaks files written for version 3. The rules version goes to 0.4.0.

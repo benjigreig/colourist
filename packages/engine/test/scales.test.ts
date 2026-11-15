@@ -2,9 +2,10 @@ import { exampleBrands, kerfwell, doggly, sorrel } from '@colourist/examples';
 import { defaultRules as rules, type Level } from '@colourist/rules';
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
+import tuner from './fixtures/vividness-tuner.json' with { type: 'json' };
 import {
-  CHROMA_STAND_IN,
   coordinatesOf,
+  formatHex,
   generateScales,
   groupSettings,
   hueDifference,
@@ -12,8 +13,13 @@ import {
   parseHex,
   relativeLuminance,
   srgbToXyz,
+  mapToGamut,
+  type GroupSettings,
+  type Rgb,
   type Palette,
   type ScaleColor,
+  type ScaleLadderStep,
+  type VividnessSettings,
 } from '../src/index.ts';
 
 const LEVELS: Level[] = ['aa', 'aaa'];
@@ -23,9 +29,13 @@ const ladders = Object.entries(rules.recipes.items).flatMap(([id, recipe]) =>
 const defaultLadder = rules.recipes.items[rules.recipes.default]?.ladders.aa ?? [];
 const groups = groupSettings(rules.vividness.defaults);
 const maxDrift = rules.hue.maxDrift.hueDifference;
+const presets = rules.vividness.presets;
 
-const build = (colors: readonly ScaleColor[], ladder = defaultLadder): Palette =>
-  generateScales({ colors, groups, ladder, maxDrift });
+const build = (
+  colors: readonly ScaleColor[],
+  ladder: readonly ScaleLadderStep[] = defaultLadder,
+  groupsUsed: Readonly<Record<string, GroupSettings>> = groups,
+): Palette => generateScales({ colors, groups: groupsUsed, presets, ladder, maxDrift });
 
 /** Any valid hex colour. */
 const anyHex = fc
@@ -43,6 +53,31 @@ const asColors = (hexes: string[]): ScaleColor[] =>
 const contrast = (a: { rgb: Parameters<typeof relativeLuminance>[0] }, b: typeof a): number => {
   const [ya, yb] = [relativeLuminance(a.rgb), relativeLuminance(b.rgb)];
   return (Math.max(ya, yb) + 0.05) / (Math.min(ya, yb) + 0.05);
+};
+
+/** The D-049 rule: steps 37, 50 and 64 grades apart give 3:1, 4.5:1 and 7:1. */
+const contrastRule = rules.ladders.zones.contrast.gradesFromEachPage.map((grades, i) => ({
+  grades,
+  ratio: [3, 4.5, 7][i] as number,
+}));
+
+/**
+ * Checks the contrast rule between every pair of steps, within and between families, on exact
+ * values.
+ * @param families - the families to check
+ */
+const expectContrastRule = (families: Palette['families']): void => {
+  for (const a of families) {
+    for (const b of families) {
+      for (const [i, sa] of a.steps.entries()) {
+        for (const sb of b.steps.slice(i + 1)) {
+          for (const { grades, ratio } of contrastRule) {
+            if (sb.name - sa.name >= grades) expect(contrast(sa, sb)).toBeGreaterThanOrEqual(ratio);
+          }
+        }
+      }
+    }
+  }
 };
 
 describe('scales from several brand colours', () => {
@@ -89,25 +124,9 @@ describe('scales from several brand colours', () => {
   });
 
   it('US-02: Contrast rule holds on every recipe — between families, on exact values', () => {
-    const rule = rules.ladders.zones.contrast.gradesFromEachPage.map((grades, i) => ({
-      grades,
-      ratio: [3, 4.5, 7][i] as number,
-    }));
     fc.assert(
       fc.property(anyPalette, ({ hexes, ladder }) => {
-        const families = build(asColors(hexes), ladder.steps).families;
-        for (const a of families) {
-          for (const b of families) {
-            for (const [i, sa] of a.steps.entries()) {
-              for (const sb of b.steps.slice(i + 1)) {
-                for (const { grades, ratio } of rule) {
-                  if (sb.name - sa.name >= grades)
-                    expect(contrast(sa, sb)).toBeGreaterThanOrEqual(ratio);
-                }
-              }
-            }
-          }
-        }
+        expectContrastRule(build(asColors(hexes), ladder.steps).families);
       }),
       { numRuns: 25 },
     );
@@ -133,28 +152,18 @@ describe('scales from several brand colours', () => {
     );
   });
 
-  it('CLR-14: Colours can be grouped, and groups carry their own settings — reported, not yet applied', () => {
+  it('CLR-14: Colours can be grouped, and groups carry their own settings', () => {
     const colors: ScaleColor[] = [
       { id: 'a', name: 'A', group: 'brand', value: '#1b998b' },
       { id: 'b', name: 'B', group: 'feedback', value: '#c4362b' },
       { id: 'c', name: 'C', group: 'brand', value: '#53599a' },
     ];
-    const withOverride = groupSettings(rules.vividness.defaults, { brand: { vividness: 'other' } });
-    const palette = generateScales({
-      colors,
-      groups: withOverride,
-      ladder: defaultLadder,
-      maxDrift,
-    });
+    const withOverride = groupSettings(rules.vividness.defaults, { brand: { recovery: 0.4 } });
+    const palette = build(colors, defaultLadder, withOverride);
     expect(palette.groups).toEqual([
-      { id: 'brand', settings: { vividness: 'other' }, colors: ['a', 'c'] },
+      { id: 'brand', settings: { vividness: 'hold', recovery: 0.4 }, colors: ['a', 'c'] },
       { id: 'feedback', settings: { vividness: 'hold' }, colors: ['b'] },
     ]);
-    // Settings don't change the steps until vividness is applied (CLR-15).
-    expect(palette.families.map((f) => f.steps)).toEqual(
-      build(colors).families.map((f) => f.steps),
-    );
-    for (const family of palette.families) expect(family.chroma.placeholder).toBe(CHROMA_STAND_IN);
   });
 
   it("CLR-14: A colour's role is carried, never acted on (D-025)", () => {
@@ -189,8 +198,19 @@ describe('scales from several brand colours', () => {
     expect(() => build([ok], [])).toThrow(RangeError);
     expect(() => build([ok], [...defaultLadder].reverse())).toThrow(RangeError);
     expect(() =>
-      generateScales({ colors: [ok], groups, ladder: defaultLadder, maxDrift: -1 }),
+      generateScales({ colors: [ok], groups, presets, ladder: defaultLadder, maxDrift: -1 }),
     ).toThrow(RangeError);
+  });
+
+  it('CLR-15: Refuses vividness settings it can’t apply', () => {
+    const ok: ScaleColor = { id: 'a', name: 'A', group: 'brand', value: '#123456' };
+    const withGroup = (settings: GroupSettings): Palette =>
+      build([ok], defaultLadder, { brand: settings });
+    expect(() => withGroup({ vividness: 'nope' })).toThrow(RangeError);
+    expect(() => withGroup({ vividness: 'hold', recovery: 1.1 })).toThrow(RangeError);
+    expect(() => withGroup({ vividness: 'hold', ceiling: -0.1 })).toThrow(RangeError);
+    expect(() => withGroup({ vividness: 'hold', ceiling: Number.NaN })).toThrow(RangeError);
+    expect(() => build([{ ...ok, vividness: { recovery: 2 } }])).toThrow(RangeError);
   });
 
   it('CLR-14: A true grey has no hue and no drift; a near-grey keeps its hue (D-064)', () => {
@@ -279,5 +299,249 @@ describe('the example brands', () => {
     expect(placed.petalFrost?.step).toBeLessThan(placed.pinkMist?.step ?? 0);
     for (const placement of Object.values(placed))
       expect(placement.deltaE).toBeGreaterThanOrEqual(0);
+  });
+});
+
+/** Any recovery and ceiling, boundaries included. */
+const anySetting = fc.oneof(fc.constantFrom(0, 1), fc.double({ min: 0, max: 1, noNaN: true }));
+const anySettings = fc.record({ recovery: anySetting, ceiling: anySetting });
+/** Every brand colour in one group with these settings. */
+const brandWith = (settings: Partial<VividnessSettings>): Record<string, GroupSettings> => ({
+  brand: { vividness: 'hold', ...settings },
+});
+
+describe('vividness: recovery and ceiling', () => {
+  it('US-04: Vividness never changes contrast — any recovery and ceiling, on every recipe at AA and AAA', () => {
+    fc.assert(
+      fc.property(anyPalette, anySettings, anySettings, ({ hexes, ladder }, group, own) => {
+        const colors = asColors(hexes);
+        // One colour overrides its group's settings, so both levels are exercised.
+        const adjusted = colors.map((c, i) => (i === 0 ? { ...c, vividness: own } : c));
+        const held = build(colors, ladder.steps).families;
+        const changed = build(adjusted, ladder.steps, brandWith(group)).families;
+        changed.forEach((family, f) => {
+          family.steps.forEach((step, i) => {
+            const before = held[f]?.steps[i];
+            // Every step keeps its grade and its L*, so its CIE luminance is unchanged.
+            expect(step.name).toBe(before?.name);
+            expect(step.lstar).toBe(before?.lstar);
+            expect(
+              Math.abs(coordinatesOf(srgbToXyz(step.rgb)).lightness - step.lstar),
+            ).toBeLessThan(1e-6);
+            // WCAG 2 weights the channels with rounded coefficients (0.2126, 0.7152, 0.0722)
+            // rather than CIE Y's, so a step's exact WCAG grade moves by a few thousandths as
+            // its chroma changes. That's far below the 0.5 that would change a rounded grade.
+            expect(Math.abs(step.grade - (before?.grade ?? NaN))).toBeLessThan(0.01);
+          });
+          expect(family.placement.step).toBe(held[f]?.placement.step);
+        });
+        // And the contrast rule still holds on exact values, within and between families.
+        expectContrastRule(changed);
+      }),
+      { numRuns: 40 },
+    );
+  });
+
+  it('US-04: My colours start as supplied — by default every step keeps the source’s chroma, reduced only to fit the screen', () => {
+    fc.assert(
+      fc.property(anyPalette, ({ hexes, ladder }) => {
+        const colors = asColors(hexes);
+        for (const family of build(colors, ladder.steps).families) {
+          expect(family.vividness).toMatchObject({
+            preset: 'hold',
+            recovery: { value: 0, from: 'preset' },
+            ceiling: { value: 1, from: 'preset' },
+          });
+          const { c, h } = family.source.oklch;
+          family.steps.forEach((step, i) => {
+            // As CLR-14 built it: the source's own chroma, through the gamut mapping. Where the
+            // gamut limits a step, its most vivid colour is reused from an earlier search, which
+            // agrees to floating-point precision and gives the same hex.
+            const lstar = ladder.steps[i]?.lstar as number;
+            const clr14 = mapToGamut({ lightness: lstar, chroma: c, hue: h });
+            expect(step.hex).toBe(formatHex(clr14.rgb));
+            for (const channel of ['r', 'g', 'b'] as const)
+              expect(Math.abs(step.rgb[channel] - clr14.rgb[channel])).toBeLessThan(1e-12);
+            expect(step.reduced).toBe(clr14.reduced);
+            if (step.limit !== null) expect(step.limit).toBe(step.reduced ? 'gamut' : 'recovery');
+          });
+        }
+        // The source colours themselves are never changed (D-064).
+        expect(build(colors, ladder.steps).families.map((f) => f.color)).toEqual(colors);
+      }),
+      { numRuns: 40 },
+    );
+  });
+
+  it('US-04: Adjust vividness for a group — changing one group changes only that group', () => {
+    const colors: ScaleColor[] = [
+      { id: 'pink', name: 'Pink', group: 'brand', value: '#d991ba' },
+      { id: 'olive', name: 'Olive', group: 'brand', value: '#8cae68' },
+      { id: 'red', name: 'Red', group: 'feedback', value: '#c4362b' },
+    ];
+    const held = build(colors).families;
+    const adjusted = build(colors, defaultLadder, {
+      ...groups,
+      brand: { vividness: 'hold', recovery: 0.5 },
+    }).families;
+    expect(adjusted[0]?.steps).not.toEqual(held[0]?.steps);
+    expect(adjusted[1]?.steps).not.toEqual(held[1]?.steps);
+    expect(adjusted[2]).toEqual(held[2]);
+    expect(adjusted[0]?.vividness.recovery).toEqual({ value: 0.5, from: 'group' });
+    expect(adjusted[0]?.vividness.ceiling).toEqual({ value: 1, from: 'preset' });
+  });
+
+  it('US-04: Adjust vividness for a group — a colour’s own setting changes only that colour', () => {
+    const colors: ScaleColor[] = [
+      { id: 'pink', name: 'Pink', group: 'brand', value: '#d991ba', vividness: { ceiling: 0.6 } },
+      { id: 'olive', name: 'Olive', group: 'brand', value: '#8cae68' },
+    ];
+    const groupOnly = brandWith({ recovery: 0.5 });
+    const plain = build(
+      colors.map(({ id, name, group, value }) => ({ id, name, group, value })),
+      defaultLadder,
+      groupOnly,
+    );
+    const [pink, olive] = build(colors, defaultLadder, groupOnly).families;
+    expect(pink?.steps).not.toEqual(plain.families[0]?.steps);
+    expect(olive?.steps).toEqual(plain.families[1]?.steps);
+    // The colour's own ceiling wins over the preset's; recovery still comes from the group.
+    expect(pink?.vividness).toMatchObject({
+      recovery: { value: 0.5, from: 'group' },
+      ceiling: { value: 0.6, from: 'color' },
+    });
+    expect(pink?.color.vividness).toEqual({ ceiling: 0.6 });
+  });
+
+  describe('US-04: The setting that matters is shown first', () => {
+    const neonPink = doggly.colors.find((c) => c.id === 'neonPink') as ScaleColor;
+    const pinkMist = sorrel.colors.find((c) => c.id === 'pinkMist') as ScaleColor;
+    const familyOf = (
+      color: ScaleColor,
+      settings: Partial<VividnessSettings>,
+      ladder: readonly ScaleLadderStep[] = defaultLadder,
+    ) => build([color], ladder, brandWith(settings)).families[0];
+    const withColor = (color: ScaleColor, settings: Partial<VividnessSettings>) =>
+      familyOf(color, settings)?.steps.filter((s) => s.limit !== null) ?? [];
+
+    it('US-04: The setting that matters is shown first — at recovery 1 the gamut limits every step', () => {
+      for (const color of [neonPink, pinkMist]) {
+        const steps = withColor(color, { recovery: 1 });
+        expect(steps.length).toBeGreaterThan(10);
+        for (const step of steps) {
+          expect(step.limit).toBe('gamut');
+          expect(step.chroma).toBeCloseTo(step.maximum, 9);
+        }
+        expect(familyOf(color, { recovery: 1 })?.vividness.limit).toBe('gamut');
+      }
+    });
+
+    it('US-04: The setting that matters is shown first — at recovery 0 recovery limits each step the source fits, and the gamut the rest', () => {
+      const steps = withColor(neonPink, { recovery: 0 });
+      expect(steps.some((s) => s.limit === 'recovery')).toBe(true);
+      expect(steps.some((s) => s.limit === 'gamut')).toBe(true);
+      for (const step of steps) {
+        const fits = (familyOf(neonPink, {})?.source.oklch.c ?? NaN) < step.maximum;
+        expect(step.limit).toBe(fits ? 'recovery' : 'gamut');
+      }
+    });
+
+    it('US-04: The setting that matters is shown first — at ceiling 0 the ceiling limits every step, and no step has colour', () => {
+      for (const recovery of [0, 0.5, 1]) {
+        const family = familyOf(pinkMist, { recovery, ceiling: 0 });
+        for (const step of family?.steps.filter((s) => s.limit !== null) ?? []) {
+          expect(step.limit).toBe('ceiling');
+          expect(step.chroma).toBe(0);
+        }
+        expect(family?.vividness.limit).toBe('ceiling');
+      }
+    });
+
+    it('US-04: The setting that matters is shown first — at ceiling 1 the ceiling never limits', () => {
+      fc.assert(
+        fc.property(anyHex, anySetting, (value, recovery) => {
+          const family = familyOf(
+            { id: 'x', name: 'X', group: 'brand', value },
+            { recovery, ceiling: 1 },
+          );
+          for (const step of family?.steps ?? []) expect(step.limit).not.toBe('ceiling');
+        }),
+        { numRuns: 40 },
+      );
+    });
+
+    it('US-04: The setting that matters is shown first — a ceiling below what recovery gives is the limit', () => {
+      const family = familyOf(pinkMist, { recovery: 1, ceiling: 0.5 });
+      expect(family?.vividness.limit).toBe('ceiling');
+      for (const step of family?.steps.filter((s) => s.limit !== null) ?? []) {
+        expect(step.limit).toBe('ceiling');
+        expect(step.chroma).toBeCloseTo(0.5 * step.maximum, 9);
+      }
+    });
+
+    it('US-04: The setting that matters is shown first — a tie goes to the ceiling, then recovery, then the gamut (D-072)', () => {
+      /** A two-step ladder: the first step limited by each of two limits, in ladder order. */
+      const tie = (
+        color: ScaleColor,
+        settings: Partial<VividnessSettings>,
+        a: string,
+        b: string,
+      ) => {
+        const steps = familyOf(color, settings)?.steps ?? [];
+        const picked = [a, b].map((limit) => steps.find((s) => s.limit === limit));
+        expect(picked.every(Boolean), `${a} and ${b} both occur`).toBe(true);
+        const ladder = picked
+          .map((s) => ({ name: s?.name ?? 0, lstar: s?.lstar ?? 0 }))
+          .sort((x, y) => y.lstar - x.lstar);
+        return familyOf(color, settings, ladder)?.vividness.limit;
+      };
+      expect(tie(neonPink, { recovery: 0 }, 'recovery', 'gamut')).toBe('recovery');
+      expect(tie(pinkMist, { recovery: 0, ceiling: 0.4 }, 'recovery', 'ceiling')).toBe('ceiling');
+      // The gamut and the ceiling can't tie: with any ceiling below 1, the ceiling caps a step
+      // before the gamut would, so the gamut limits nothing.
+    });
+
+    it('US-04: The setting that matters is shown first — a true grey has no colour to limit', () => {
+      const family = familyOf(
+        { id: 'g', name: 'Grey', group: 'brand', value: '#777777' },
+        { recovery: 1 },
+      );
+      for (const step of family?.steps ?? []) {
+        expect(step.limit).toBeNull();
+        expect(step.maximum).toBe(0);
+      }
+      expect(family?.vividness.limit).toBeNull();
+    });
+  });
+
+  it.each(
+    tuner.cases.map(
+      (c) => [`recovery ${c.recovery}, ceiling ${c.ceiling}, ${c.recipe} ${c.level}`, c] as const,
+    ),
+  )('CLR-15: The example brands match the Vividness Tuner — %s', (_, c) => {
+    const ladder = rules.recipes.items[c.recipe]?.ladders[c.level as Level] ?? [];
+    const colors = exampleBrands.flatMap((b) => b.colors);
+    const families = build(colors, ladder, brandWith(c)).families;
+    const expected: Record<string, string[][]> = c.families;
+    for (const family of families) {
+      const tunerSteps = expected[family.color.id] ?? [];
+      expect(family.steps.map((s) => s.limit ?? 'none')).toEqual(tunerSteps.map(([, l]) => l));
+      family.steps.forEach((step, i) => {
+        const tunerHex = tunerSteps[i]?.[0] ?? '';
+        if (step.hex.toLowerCase() === tunerHex) return;
+        // The Tuner's search for the maximum is coarser (30 rounds against 60), so where a
+        // channel sits on a rounding half the two can round apart. That's the only difference
+        // allowed: one hex unit, on a channel within 1e-4 of a half (Sage green at step 9).
+        const ours = parseHex(step.hex) as Rgb;
+        const theirs = parseHex(tunerHex) as Rgb;
+        for (const channel of ['r', 'g', 'b'] as const) {
+          const units = Math.round(Math.abs(ours[channel] - theirs[channel]) * 255);
+          if (units === 0) continue;
+          expect(units, `${family.color.id} step ${step.name}`).toBe(1);
+          const exact = step.rgb[channel] * 255;
+          expect(Math.abs(exact - Math.floor(exact) - 0.5)).toBeLessThan(1e-4);
+        }
+      });
+    }
   });
 });

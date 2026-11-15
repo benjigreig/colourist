@@ -121,7 +121,6 @@ describe('the default rules hang together', () => {
         'CLR-55',
         'CLR-95',
         'CLR-98',
-        'CLR-15',
         'CLR-16',
         'CLR-17',
         'CLR-18',

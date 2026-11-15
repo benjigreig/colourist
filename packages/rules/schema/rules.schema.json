@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://colouri.st/schemas/rules-3.schema.json",
+  "$id": "https://colouri.st/schemas/rules-4.schema.json",
   "title": "colouri.st rules",
   "description": "The colouri.st method as versioned, declarative data the engine reads (ADR 0005). Every rule carries a reason key into the language files.",
   "type": "object",
@@ -28,7 +28,7 @@
       "required": ["rulesVersion", "schemaVersion"],
       "properties": {
         "rulesVersion": { "type": "string", "pattern": "^[0-9]{1,4}\\.[0-9]{1,4}\\.[0-9]{1,4}$" },
-        "schemaVersion": { "type": "integer", "const": 3 }
+        "schemaVersion": { "type": "integer", "const": 4 }
       }
     },
     "questions": {
@@ -565,7 +565,7 @@
     "vividness": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["presets", "defaults", "styles"],
+      "required": ["presets", "defaults"],
       "properties": {
         "presets": {
           "type": "object",
@@ -600,31 +600,6 @@
           "maxProperties": 128,
           "propertyNames": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
           "additionalProperties": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" }
-        },
-        "styles": {
-          "type": "object",
-          "required": [],
-          "minProperties": 1,
-          "maxProperties": 128,
-          "propertyNames": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]{0,47}$" },
-          "additionalProperties": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["nameKey", "reason"],
-            "properties": {
-              "nameKey": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
-              "reason": { "type": "string", "pattern": "^rules(\\.[a-z][a-zA-Z0-9]{0,47}){2,6}$" },
-              "placeholder": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": ["ticket", "note"],
-                "properties": {
-                  "ticket": { "type": "string", "pattern": "^CLR-[0-9]{1,5}$" },
-                  "note": { "type": "string", "minLength": 1, "maxLength": 500 }
-                }
-              }
-            }
-          }
         }
       }
     },

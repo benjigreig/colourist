@@ -30,7 +30,7 @@ import type {
 } from './types.ts';
 
 /** The schema's version. A breaking change to the schema raises it. */
-export const SCHEMA_VERSION = 3;
+export const SCHEMA_VERSION = 4;
 
 /** The schema's identifier. */
 export const SCHEMA_ID = `https://colouri.st/schemas/rules-${SCHEMA_VERSION}.schema.json`;
@@ -461,7 +461,7 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
     vividness: {
       type: 'object',
       additionalProperties: false,
-      required: ['presets', 'defaults', 'styles'],
+      required: ['presets', 'defaults'],
       properties: {
         presets: mapOf({
           type: 'object',
@@ -475,12 +475,6 @@ export const rulesSchemaSource: JSONSchemaType<Rules> = {
           },
         }),
         defaults: mapOf<string>(id),
-        styles: mapOf({
-          type: 'object',
-          additionalProperties: false,
-          required: ['nameKey', 'reason'],
-          properties: { nameKey: textKey, reason, placeholder: optionalPlaceholder },
-        }),
       },
     },
     groups: mapOf({

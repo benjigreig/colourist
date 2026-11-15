@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/rules.schema.json",
-  "meta": { "rulesVersion": "0.3.0", "schemaVersion": 3 },
+  "meta": { "rulesVersion": "0.4.0", "schemaVersion": 4 },
   "questions": [
     {
       "id": "activities",
@@ -2646,40 +2646,10 @@
       "hold": {
         "ceiling": 1,
         "recovery": 0,
-        "reason": "rules.vividness.hold.reason",
-        "placeholder": {
-          "ticket": "CLR-15",
-          "note": "Stand-in: holds each colour's own chroma and reduces it only to fit sRGB, as ADR 0001's comparison did. CLR-15 decides the curves."
-        }
+        "reason": "rules.vividness.hold.reason"
       }
     },
-    "defaults": { "brand": "hold", "feedback": "hold", "neutral": "hold" },
-    "styles": {
-      "neutral": {
-        "nameKey": "rules.vividness.styles.neutral.name",
-        "reason": "rules.vividness.styles.neutral.reason",
-        "placeholder": {
-          "ticket": "CLR-15",
-          "note": "What this style changes is decided with the vividness curves (US-04, D-055)."
-        }
-      },
-      "tinted": {
-        "nameKey": "rules.vividness.styles.tinted.name",
-        "reason": "rules.vividness.styles.tinted.reason",
-        "placeholder": {
-          "ticket": "CLR-15",
-          "note": "What this style changes is decided with the vividness curves (US-04, D-055)."
-        }
-      },
-      "vivid": {
-        "nameKey": "rules.vividness.styles.vivid.name",
-        "reason": "rules.vividness.styles.vivid.reason",
-        "placeholder": {
-          "ticket": "CLR-15",
-          "note": "What this style changes is decided with the vividness curves (US-04, D-055)."
-        }
-      }
-    }
+    "defaults": { "brand": "hold", "feedback": "hold", "neutral": "hold" }
   },
   "groups": {
     "brand": { "nameKey": "rules.groups.brand.name", "reason": "rules.groups.brand.reason" },

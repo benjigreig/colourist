@@ -241,17 +241,9 @@ export const rules = {
     apca: { reason: 'Placeholder: CLR-17 decides the APCA targets.' },
   },
   vividness: {
-    hold: { reason: 'Placeholder: CLR-15 decides the vividness presets.' },
-    styles: {
-      neutral: {
-        name: 'Neutral',
-        reason: 'Placeholder: CLR-15 decides what the neutral style changes.',
-      },
-      tinted: {
-        name: 'Tinted',
-        reason: 'Placeholder: CLR-15 decides what the tinted style changes.',
-      },
-      vivid: { name: 'Vivid', reason: 'Placeholder: CLR-15 decides what the vivid style changes.' },
+    hold: {
+      reason:
+        "Each colour starts as supplied: every shade keeps the colour's own vividness, reduced only where the screen can't show it.",
     },
   },
   groups: {

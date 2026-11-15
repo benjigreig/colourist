@@ -9,7 +9,7 @@ To add a decision: copy an entry, give it the next number, and link the ticket. 
 | [Product](#product) | D-001 to D-007 |
 | [Architecture and platform](#architecture-and-platform) | D-008 to D-018 |
 | [Reach and audience](#reach-and-audience) | D-019 to D-023 |
-| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-071 |
+| [User stories and delivery](#user-stories-and-delivery) | D-024 to D-072 |
 
 ---
 
@@ -1208,3 +1208,24 @@ Two things often drawn as layers aren't tiers:
 - The `hold` preset in the rules loses its placeholder; `vividness.presets` holds only it.
 - US-04's "Choose a vividness preset" becomes adjusting recovery and ceiling for a group.
 - The explainer for this stage (US-11) should say what each setting does and when it helps, such as recovery for a pastel brand's dark steps, without prescribing values.
+
+### D-072 · A group can set its own recovery and ceiling; a tie between limits goes to the ceiling, then recovery
+**Date:** 15 Nov 2026 · **Decided by:** Benji Greig · **Status:** Accepted · **Plane:** CLR-15 · **Amends:** D-066 · **Builds on:** D-069, D-071
+
+**Decision:**
+- **A group's settings are its preset, and optionally its own recovery and ceiling:** `{ vividness: presetId, recovery?, ceiling? }`. D-066 gave a group only its preset ID.
+- **Each value comes from the colour if set there, otherwise the group, otherwise the group's preset.** Each family's result names where each value came from: `color`, `group` or `preset`.
+- **A family's limit is whichever setting limits the most steps,** counting only steps that can show colour. **A tie goes to the ceiling, then recovery, then the gamut.**
+
+**Context:** building CLR-15. US-04's "Adjust vividness for a group" has people change recovery or ceiling for a whole group. With "hold" the only preset (D-071), a group couldn't do that through its preset alone. The interface shows the limiting setting first (US-04), so a family needs one limit even when two settings limit the same number of steps.
+
+**Alternatives considered:**
+- **Adding a preset for each group's changed settings.** Rejected: presets are a named choice in the rules, not somewhere to keep a person's changes.
+- **Setting recovery and ceiling only per colour.** Rejected: the scenario changes a group, and setting each colour in it would lose which colours follow the group.
+- **Breaking a tie towards the gamut, or by ladder order.** Rejected: the gamut isn't something people can change, and ladder order says nothing about which control matters.
+
+**Why:** the order of precedence follows the order things get more specific, and naming the source lets the interface say whether a colour follows its group. In a tie, the settings people can change come first. The ceiling leads because US-04 asks for it to be shown first when it's having an effect.
+
+**Consequences:**
+- The engine reports, for each family, its preset, its recovery and ceiling with their sources, and its limit. Each step reports its maximum and what limits it.
+- The gamut and the ceiling never actually tie: with any ceiling below 1, the ceiling caps a step before the gamut would.

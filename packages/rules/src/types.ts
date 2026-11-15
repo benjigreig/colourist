@@ -259,31 +259,27 @@ export interface Contrast {
   };
 }
 
-/** A vividness preset (US-04). */
+/** A vividness preset (US-04, D-069). */
 export interface VividnessPreset {
-  /** The most of a colour's own chroma any step may keep, from 0 to 1. */
+  /**
+   * Caps each step's chroma at this share of the most the screen can show at that step, from 0
+   * to 1. At 1 there's no cap.
+   */
   ceiling: number;
-  /** How much chroma the dark steps get back, from 0 to 1. */
+  /**
+   * Lifts each step's chroma from the source's own towards the most the screen can show, from 0
+   * to 1. At 0 the source's chroma is held.
+   */
   recovery: number;
   reason: ReasonKey;
   placeholder?: Placeholder;
 }
 
-/** How colour should feel: neutral, tinted or vivid (US-04, D-055). */
-export interface VividnessStyle {
-  /** Language-file key for the style's name. */
-  nameKey: string;
-  reason: ReasonKey;
-  placeholder?: Placeholder;
-}
-
-/** Vividness presets, the default preset for each group, and the styles. */
+/** Vividness presets and the default preset for each group (D-071). */
 export interface Vividness {
   presets: Record<string, VividnessPreset>;
   /** Preset ID keyed by group ID. */
   defaults: Record<string, string>;
-  /** Styles keyed by ID. What each changes is decided in CLR-15. */
-  styles: Record<string, VividnessStyle>;
 }
 
 /** A group of colours, such as the brand colours (D-025). */
