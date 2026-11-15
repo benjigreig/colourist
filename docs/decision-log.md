@@ -1252,6 +1252,6 @@ Two things often drawn as layers aren't tiers:
 **Why:** Benji: APCA "ends up being useful in supporting better choices and combos and yes, it does give some leniency, but we're still focusing on WCAG". It keeps compliance clear, and uses APCA where earlier work found it matched the eye better (D-006).
 
 **Consequences:**
-- The rules hold APCA guidance per use as data for suggestions, not as pass-or-fail targets.
+- The rules hold APCA guidance per use as data for suggestions, not as pass-or-fail targets. **The values (Benji, 15 Nov 2026):** body text Lc 75 in an AA project and Lc 90 in an AAA project; large text Lc 60 and 75; interface elements Lc 45 in both. APCA has no AA or AAA, so an AA project aims for APCA's minimum and an AAA project for its preferred level.
 - CLR-17 reports both models for every pairing and flags disagreements. CLR-27's mapping offers APCA's preferred step as a suggestion where it differs. US-05's label choice already uses APCA.
 - In the dark theme, many pairings will show a disagreement. The explanation needs to be clear that WCAG 2 is met, and what APCA's suggestion would improve.

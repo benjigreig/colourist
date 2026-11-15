@@ -39,6 +39,16 @@ From APCA's published levels ([APCA in a Nutshell](https://git.apcacontrast.com/
 - **Lc 30:** absolute minimum for any other text, such as placeholder and disabled text, and for solid non-text shapes.
 - **Lc 15:** absolute minimum for anything that must be discernible, such as dividers.
 
+## The guidance values colouri.st uses
+
+Agreed with Benji, 15 November 2026 (D-073). APCA has no AA or AAA, so an AA project aims for APCA's minimum and an AAA project for its preferred level. These drive suggestions only; WCAG 2 decides pass and fail.
+
+| Use | AA project | AAA project |
+|---|---|---|
+| Body text | Lc 75 | Lc 90 |
+| Large text | Lc 60 | Lc 75 |
+| Interface elements (borders, icons) | Lc 45 | Lc 45 |
+
 ## Options considered
 
 1. **Report only.** WCAG 2 drives everything, and APCA is shown alongside.
